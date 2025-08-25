@@ -334,7 +334,8 @@ body {
 }
 
 /* Light themes get the light gray background */
-body:not(.dark-theme) .markdown-body pre {
+body:not(.dark-theme) .markdown-body pre,
+body:not(.dark-theme) .collapsible-content .content-inner pre {
     background-color: #f0f2f5 !important;
 }
 
@@ -550,12 +551,14 @@ body.dark-theme .lbl-toggle:hover {
     transition: max-height .25s ease-in-out;
 }
 
-.toggle:checked+.lbl-toggle+.collapsible-content {
-    max-height: 70vh;
+/* Ultra-specific selector to override mobile CSS framework */
+.markdown-body .toggle:checked+.lbl-toggle+.collapsible-content,
+body .toggle:checked+.lbl-toggle+.collapsible-content {
+    max-height: 600px !important; /* Much taller to show more lines */
     overflow-y: auto !important;
     overflow-x: auto !important; /* Horizontal scrollbar at collapsible window level */
     /* Ensure scrollbars are properly positioned */
-    position: relative;
+    position: relative !important;
 }
 
 .toggle:checked+.lbl-toggle {
@@ -595,11 +598,21 @@ body.dark-theme .collapsible-content .content-inner {
     border-radius: 0;
     scrollbar-width: thin;
     box-sizing: border-box;
+    line-height: 1.4; /* Ensure reasonable line height */
 }
 
 .collapsible-content pre code {
     white-space: pre;
     word-wrap: normal;
+    /* Ensure background extends to full content */
+    display: block;
+    min-height: 100%;
+}
+
+/* Ensure the content-inner has consistent background */
+.collapsible-content .content-inner {
+    /* Match the theme background consistently */
+    background: inherit;
 }
 
 /* Add some left padding for better readability in collapsible sections */
@@ -613,7 +626,16 @@ body.dark-theme .collapsible-content .content-inner {
     /* Let the container handle scrolling - no scrollbars on pre itself */
     overflow-x: visible !important;
     overflow-y: visible !important;
+    /* Ensure background is inherited from theme */
+    background: inherit !important;
 }
+
+/* Ensure code elements inherit background properly and match theme */
+.collapsible-content .content-inner pre code {
+    background: transparent !important;
+}
+
+/* Dark theme background rule moved to end of file for proper cascade order */
 
 /* Thin scrollbars for collapsible code sections */
 .collapsible-content::-webkit-scrollbar,
@@ -644,20 +666,51 @@ body.dark-theme .collapsible-content .content-inner {
     background: rgba(0, 0, 0, 0.5);
 }
 
-/* Dark theme scrollbars */
-body.dark-theme .collapsible-content::-webkit-scrollbar-track,
-body.dark-theme .collapsible-content pre::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
+/* Dark theme scrollbars - highly visible for all elements */
+body.dark-theme *::-webkit-scrollbar {
+    width: 8px !important;
+    height: 7px !important; /* 1px thinner horizontal scrollbar */
 }
 
-body.dark-theme .collapsible-content::-webkit-scrollbar-thumb,
-body.dark-theme .collapsible-content pre::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
+body.dark-theme *::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2) !important; /* Highly visible track */
+    border-radius: 3px !important;
 }
 
-body.dark-theme .collapsible-content::-webkit-scrollbar-thumb:hover,
-body.dark-theme .collapsible-content pre::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5);
+body.dark-theme *::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.6) !important; /* Very visible thumb */
+    border-radius: 3px !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important; /* Add border for definition */
+}
+
+body.dark-theme *::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8) !important; /* Very bright on hover */
+}
+
+/* Visible but elegant scrollbars for dark theme */
+body.dark-theme .toggle:checked+.lbl-toggle+.collapsible-content::-webkit-scrollbar {
+    width: 8px !important;
+    height: 7px !important; /* 1px thinner horizontal scrollbar as requested */
+}
+
+body.dark-theme .toggle:checked+.lbl-toggle+.collapsible-content::-webkit-scrollbar-track {
+    background: #555555 !important; /* Visible gray track */
+    border-radius: 3px !important;
+}
+
+body.dark-theme .toggle:checked+.lbl-toggle+.collapsible-content::-webkit-scrollbar-thumb {
+    background: #BBBBBB !important; /* Visible light gray thumb */
+    border-radius: 3px !important;
+    border: 1px solid #999999 !important; /* Subtle border for definition */
+}
+
+body.dark-theme .toggle:checked+.lbl-toggle+.collapsible-content::-webkit-scrollbar-thumb:hover {
+    background: #DDDDDD !important; /* Brighter on hover */
+}
+
+/* Make sure pre elements inside don't have their own scrollbars in dark theme */
+body.dark-theme .collapsible-content pre::-webkit-scrollbar {
+    display: none !important; /* Hide pre element scrollbars */
 }
 
 /* End Implementing A Pure CSS Collapsible */
@@ -743,4 +796,215 @@ body div.code-toolbar>.toolbar span {
     height: auto !important;
     min-height: auto !important;
     box-sizing: border-box !important;
+}
+
+/* Global consistent selection colors - override all theme selections */
+/* Apply to all elements for uniform selection behavior across all themes */
+*::selection {
+    background-color: #C0D4F3 !important; /* Consistent uniform selection color */
+    color: inherit !important;
+}
+
+*::-moz-selection {
+    background-color: #C0D4F3 !important;
+    color: inherit !important;
+}
+
+/* Ensure code elements specifically use the same color */
+.markdown-body code:not(pre code)::selection,
+.markdown-body pre code::selection,
+.markdown-body pre::selection {
+    background-color: #C0D4F3 !important; /* Consistent uniform selection color */
+    color: inherit !important;
+}
+
+.markdown-body code:not(pre code)::-moz-selection,
+.markdown-body pre code::-moz-selection,
+.markdown-body pre::-moz-selection {
+    background-color: #C0D4F3 !important;
+    color: inherit !important;
+}
+
+/* Override any Prism theme-specific selection colors */
+code[class*="language-"]::selection,
+pre[class*="language-"]::selection,
+code[class*="language-"] *::selection,
+pre[class*="language-"] *::selection {
+    background-color: #C0D4F3 !important;
+    color: inherit !important;
+}
+
+code[class*="language-"]::-moz-selection,
+pre[class*="language-"]::-moz-selection,
+code[class*="language-"] *::-moz-selection,
+pre[class*="language-"] *::-moz-selection {
+    background-color: #C0D4F3 !important;
+    color: inherit !important;
+}
+
+/* Force inline code to use Prism light theme display style completely in dark theme */
+body.dark-theme .markdown-body code:not(pre code),
+body.dark-theme code:not(pre code) {
+    background-color: rgba(27, 31, 35, .05) !important; /* Prism light theme background */
+    color: #333 !important; /* Prism light theme text color */
+    border-radius: 3px !important;
+    font-size: 90% !important;
+    margin: 0 !important;
+    padding: 1px 3px !important;
+    text-shadow: none !important; /* Override any dark theme text shadow */
+    border: none !important; /* Override any dark theme borders */
+}
+
+body.dark-theme .markdown-body code:not(pre code)::selection,
+body.dark-theme code:not(pre code)::selection {
+    background-color: #C0D4F3 !important; /* Light theme selection color */
+    color: inherit !important;
+}
+
+body.dark-theme .markdown-body code:not(pre code)::-moz-selection,
+body.dark-theme code:not(pre code)::-moz-selection {
+    background-color: #C0D4F3 !important; /* Light theme selection color */
+    color: inherit !important;
+}
+
+/* Dark theme pre code selection - use light theme selection color to avoid weird appearance */
+body.dark-theme pre[class*="language-"]::selection,
+body.dark-theme pre[class*="language-"] *::selection,
+body.dark-theme .markdown-body pre code::selection,
+body.dark-theme .markdown-body pre::selection,
+body.dark-theme .collapsible-content .content-inner pre::selection,
+body.dark-theme .collapsible-content .content-inner pre code::selection {
+    background-color: #C0D4F3 !important; /* Use light theme selection color */
+    color: inherit !important; /* Keep original text colors */
+}
+
+body.dark-theme pre[class*="language-"]::-moz-selection,
+body.dark-theme pre[class*="language-"] *::-moz-selection,
+body.dark-theme .markdown-body pre code::-moz-selection,
+body.dark-theme .markdown-body pre::-moz-selection,
+body.dark-theme .collapsible-content .content-inner pre::-moz-selection,
+body.dark-theme .collapsible-content .content-inner pre code::-moz-selection {
+    background-color: #C0D4F3 !important; /* Use light theme selection color */
+    color: inherit !important; /* Keep original text colors */
+}
+
+/* FINAL RULE: Dark theme background for collapsible pre code - specific color that works */
+body.dark-theme .collapsible-content .content-inner pre {
+    background-color: #282C34 !important; /* Specific one-dark theme background color */
+}
+
+/* Modern Universal Section/Subsection Folding System */
+.collapsible-header {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    border-radius: 8px;
+    margin: 1.5rem 0 1rem 0;
+    padding: 0.8rem 1rem 0.8rem 3rem;
+    background: linear-gradient(135deg, rgba(106, 176, 222, 0.1), rgba(106, 176, 222, 0.05));
+    border-left: 4px solid #6AB0DE;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.collapsible-header:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    background: linear-gradient(135deg, rgba(106, 176, 222, 0.15), rgba(106, 176, 222, 0.08));
+}
+
+/* Dark theme styling */
+body.dark-theme .collapsible-header {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+    border-left: 4px solid #64B5F6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-theme .collapsible-header:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Beautiful animated collapse arrow */
+.collapse-arrow {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 0 8px 12px;
+    border-color: transparent transparent transparent #6AB0DE;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+body.dark-theme .collapse-arrow {
+    border-color: transparent transparent transparent #64B5F6;
+}
+
+.collapsible-header.collapsed .collapse-arrow {
+    transform: translateY(-50%) rotate(90deg);
+    opacity: 0.7;
+}
+
+/* Modern section content with smooth animations */
+.collapsible-content {
+    overflow: hidden;
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    margin-left: 1rem;
+    border-left: 2px solid rgba(106, 176, 222, 0.2);
+    padding-left: 1.5rem;
+}
+
+body.dark-theme .collapsible-content {
+    border-left: 2px solid rgba(100, 181, 246, 0.2);
+}
+
+.collapsible-content.collapsed {
+    max-height: 0 !important;
+    opacity: 0;
+    transform: translateY(-10px);
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.collapsible-content.expanded {
+    max-height: 5000px; /* Large enough for any content */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Header styling adjustments when collapsible */
+.collapsible-header h1,
+.collapsible-header h2,
+.collapsible-header h3,
+.collapsible-header h4,
+.collapsible-header h5,
+.collapsible-header h6 {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .collapsible-header {
+        padding: 0.6rem 0.8rem 0.6rem 2.5rem;
+        margin: 1rem 0 0.8rem 0;
+    }
+    
+    .collapse-arrow {
+        left: 0.8rem;
+        border-width: 6px 0 6px 9px;
+    }
+    
+    .collapsible-content {
+        margin-left: 0.5rem;
+        padding-left: 1rem;
+    }
 }

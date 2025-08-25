@@ -164,6 +164,42 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             </section>
         </div>
     </div>
+    
+    <!-- Universal Section Folding JavaScript -->
+    <script>
+    function toggleSection(sectionId) {{
+        const content = document.getElementById(sectionId);
+        const header = content.previousElementSibling;
+        
+        // Toggle with smooth animation
+        if (content.classList.contains('collapsed')) {{
+            // Expand
+            content.style.maxHeight = content.scrollHeight + "px";
+            content.classList.remove('collapsed');
+            content.classList.add('expanded');
+            header.classList.remove('collapsed');
+            header.classList.add('expanded');
+        }} else {{
+            // Collapse  
+            content.style.maxHeight = content.scrollHeight + "px";
+            // Force reflow
+            content.offsetHeight;
+            content.style.maxHeight = "0";
+            content.classList.remove('expanded');
+            content.classList.add('collapsed');
+            header.classList.remove('expanded');
+            header.classList.add('collapsed');
+        }}
+    }}
+    
+    // Initialize all sections on page load
+    document.addEventListener('DOMContentLoaded', function() {{
+        const expandedSections = document.querySelectorAll('.collapsible-content.expanded');
+        expandedSections.forEach(function(section) {{
+            section.style.maxHeight = section.scrollHeight + "px";
+        }});
+    }});
+    </script>
 </body>
 </html>"""
 
@@ -232,7 +268,85 @@ def download_all_prism_themes():
     print(f"Total available themes: {len(official_themes + prism_themes)}")
     print("Popular editor themes now available: one-dark, gruvbox-dark, gruvbox-light, material-dark, nord, night-owl, dracula")
 
-def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='prism', line_numbers=False, collapse_lines=10, inline_lang='python', enable_toc=True):
+def add_universal_section_folding(html_content, default_collapsed_sections=None):
+    """
+    Add beautiful collapsible functionality to ALL headers (h2-h6).
+    Each header becomes clickable and can collapse/expand its content.
+    
+    Args:
+        html_content (str): HTML content with headers
+        default_collapsed_sections (list): Section titles that start collapsed (default: ["Solution"])
+    
+    Returns:
+        str: HTML content with universal collapsible headers
+    """
+    if default_collapsed_sections is None:
+        default_collapsed_sections = ["Solution"]
+    
+    # Split content by headers to process each section
+    import re
+    
+    # Find all headers h2-h6 and their content
+    header_pattern = r'(<h([2-6])([^>]*)>(.*?)</h[2-6]>)'
+    headers = list(re.finditer(header_pattern, html_content, re.IGNORECASE | re.DOTALL))
+    
+    if not headers:
+        return html_content
+    
+    result = ""
+    last_pos = 0
+    
+    for i, header_match in enumerate(headers):
+        header_full = header_match.group(1)  # Full header HTML
+        header_level = int(header_match.group(2))  # Header level (2-6)  
+        header_attrs = header_match.group(3)  # Header attributes
+        header_text = header_match.group(4)  # Header text content
+        header_start = header_match.start()
+        header_end = header_match.end()
+        
+        # Add content before this header
+        result += html_content[last_pos:header_start]
+        
+        # Determine if this section should start collapsed
+        is_collapsed = any(section.lower() in header_text.lower() for section in default_collapsed_sections)
+        collapsed_class = "collapsed" if is_collapsed else "expanded"
+        
+        # Generate unique ID
+        section_id = f"section-{abs(hash(header_text)) % 100000}"
+        
+        # Create collapsible header
+        result += f'''<div class="collapsible-header {collapsed_class}" onclick="toggleSection('{section_id}')">
+    <div class="collapse-arrow"></div>
+    <h{header_level}{header_attrs}>{header_text}</h{header_level}>
+</div>'''
+        
+        # Find content for this section (everything until next header of same or higher level)
+        content_start = header_end
+        content_end = len(html_content)  # Default to end of content
+        
+        # Look for next header of same or higher level
+        for j in range(i + 1, len(headers)):
+            next_header_level = int(headers[j].group(2))
+            if next_header_level <= header_level:
+                content_end = headers[j].start()
+                break
+        
+        # Extract section content
+        section_content = html_content[content_start:content_end].strip()
+        
+        # Wrap content in collapsible container
+        result += f'''<div class="collapsible-content {collapsed_class}" id="{section_id}">
+{section_content}
+</div>'''
+        
+        last_pos = content_end
+    
+    # Add any remaining content after the last header
+    result += html_content[last_pos:]
+    
+    return result
+
+def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='prism', line_numbers=False, collapse_lines=10, inline_lang='python', enable_toc=True, foldable_sections=None):
     """
     Converts a Markdown file to a full HTML document with styling.
 
@@ -404,7 +518,11 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
     if collapse_lines:
         html_body = wrap_long_code_blocks(html_body, collapse_lines)
     
-    # --- 4.4. Convert JSON code blocks to use JavaScript highlighting ---
+    # --- 4.5. Add universal section folding functionality ---
+    if foldable_sections is not None:
+        html_body = add_universal_section_folding(html_body, foldable_sections)
+    
+    # --- 4.6. Convert JSON code blocks to use JavaScript highlighting ---
     # Replace language-json with language-javascript for Prism compatibility
     html_body = html_body.replace('class="language-json"', 'class="language-javascript"')
     
@@ -493,6 +611,12 @@ def main():
         help="Language for highlighting inline code (default: python). Use 'none' to disable inline code highlighting."
     )
     parser.add_argument(
+        "--fold-sections",
+        nargs='*',
+        default=["Solution"],
+        help="Section titles to make foldable (default: ['Solution']). Use empty list to disable section folding."
+    )
+    parser.add_argument(
         "--no-toc",
         action="store_true",
         help="Disable automatic table of contents generation from headings."
@@ -520,7 +644,8 @@ def main():
     inline_lang = None if args.inline_lang.lower() == 'none' else args.inline_lang
     collapse_lines = None if args.collapse == 0 else args.collapse
     enable_toc = not args.no_toc
-    full_html = convert_md_to_html(args.input_file, args.css, args.theme, args.line_numbers, collapse_lines, inline_lang, enable_toc)
+    foldable_sections = args.fold_sections if args.fold_sections else None
+    full_html = convert_md_to_html(args.input_file, args.css, args.theme, args.line_numbers, collapse_lines, inline_lang, enable_toc, foldable_sections)
 
     # Write to output file
     try:
