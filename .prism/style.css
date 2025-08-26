@@ -136,9 +136,9 @@ body {
     /* background-color: #eee; */
 }
 
-body.dark-theme .markdown-body h1 {
+/* DISABLED body.dark-theme .markdown-body h1 {
     color: #FFFFFF !important; /* White in dark theme */
-}
+} */
 
 .markdown-body h2 {
     border-bottom: 1px solid rgba(239, 73, 73, 0.5);
@@ -377,8 +377,8 @@ body.dark-theme .markdown-body h1 {
 }
 
 /* Light themes get the light gray background */
-body:not(.dark-theme) .markdown-body pre,
-body:not(.dark-theme) .collapsible-content pre {
+.markdown-body pre:not(.dark-theme),
+.collapsible-content pre:not(.dark-theme) {
     background-color: #f0f2f5 !important;
 }
 
@@ -652,8 +652,8 @@ body .toggle:checked+.lbl-toggle+.content-collapsible-content {
     min-width: 100% !important;
 }
 
-body.dark-theme .toggle:checked+.lbl-toggle+.content-collapsible-content pre,
-body.dark-theme .content-collapsible-content pre {
+.toggle:checked+.lbl-toggle+.content-collapsible-content pre.dark-theme,
+.content-collapsible-content pre.dark-theme {
     background-color: #282C34 !important;
 }
 
@@ -816,9 +816,9 @@ pre[class*="language-"] *::-moz-selection {
     color: inherit !important;
 }
 
-/* Force inline code to use Prism light theme display style completely in dark theme */
-body.dark-theme .markdown-body code:not(pre code),
-body.dark-theme code:not(pre code) {
+/* Force inline code to use Prism light theme display style completely - always apply */
+.markdown-body code:not(pre code),
+code:not(pre code) {
     background-color: rgba(27, 31, 35, .05) !important; /* Prism light theme background */
     color: #333 !important; /* Prism light theme text color */
     border-radius: 3px !important;
@@ -944,7 +944,7 @@ body.dark-theme .collapsible-content pre {
     color: #ef9500 !important;
 }
 
-/* Dark theme overrides */
+/* DISABLED Dark theme overrides - only content-collapsible pre code should have dark theme
 body.dark-theme .section-collapsible-header {
     background: transparent !important;
     color: #e2e8f0 !important;
@@ -960,7 +960,7 @@ body.dark-theme .section-collapsible-header.collapsed {
 
 body.dark-theme .section-collapsible-content {
     color: #e2e8f0 !important;
-}
+} */
 
 /* Content-inner container styling for collapsible sections */
 body:not(.dark-theme) .collapsible-content pre {
@@ -982,8 +982,8 @@ body.dark-theme .collapsible-content pre {
 }
 
 /* Collapsible content pre block styling - restore scrollbars and backgrounds */
-.collapsible-content pre,
-.wrap-content-collapsible .content-collapsible-content pre {
+.collapsible-content pre:not(.dark-theme),
+.wrap-content-collapsible .content-collapsible-content pre:not(.dark-theme) {
     overflow: auto !important;
     overflow-x: auto !important;
     overflow-y: auto !important;
@@ -996,6 +996,16 @@ body.dark-theme .collapsible-content pre {
 body.dark-theme .collapsible-content pre,
 body.dark-theme .wrap-content-collapsible .content-collapsible-content pre {
     background-color: #282C34 !important; /* Dark theme background */
+}
+
+/* New rules for when dark-theme class is applied directly to pre elements */
+pre.dark-theme,
+pre.dark-theme[class*="language-"],
+.markdown-body pre.dark-theme,
+.collapsible-content pre.dark-theme,
+.wrap-content-collapsible .content-collapsible-content pre.dark-theme {
+    background-color: #282C34 !important; /* Dark theme background */
+    color: #abb2bf !important; /* Light text for dark background */
 }
 
 /* Scrollbar styling for collapsible pre blocks */

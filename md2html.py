@@ -234,7 +234,7 @@ def download_all_prism_themes():
     print(f"Total available themes: {len(official_themes + prism_themes)}")
     print("Popular editor themes now available: one-dark, gruvbox-dark, gruvbox-light, material-dark, nord, night-owl, dracula")
 
-def add_universal_section_folding(html_content, default_collapsed_sections=None):
+def add_universal_section_folding(html_content, default_collapsed_sections=None, is_dark_theme=False):
     """
     Simple section folding using JavaScript DOM manipulation instead of complex HTML parsing.
     This avoids breaking existing HTML structure and code blocks.
@@ -242,6 +242,7 @@ def add_universal_section_folding(html_content, default_collapsed_sections=None)
     Args:
         html_content (str): HTML content with headers  
         default_collapsed_sections (list): Section titles that start collapsed (default: ["Solution"])
+        is_dark_theme (bool): Whether to apply dark theme to code blocks (default: False)
     
     Returns:
         str: HTML content with collapsible sections added via JavaScript
@@ -258,6 +259,15 @@ def add_universal_section_folding(html_content, default_collapsed_sections=None)
     <script>
     document.addEventListener('DOMContentLoaded', function() {{
         const collapsedSections = {collapsed_sections_js};
+        const isDarkTheme = {str(is_dark_theme).lower()};
+        
+        // Apply dark theme only to pre code blocks if needed
+        if (isDarkTheme) {{
+            const codeBlocks = document.querySelectorAll('pre');
+            codeBlocks.forEach(function(pre) {{
+                pre.classList.add('dark-theme');
+            }});
+        }}
         
         // Find all headers h2-h6
         const headers = document.querySelectorAll('.markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6');
@@ -378,7 +388,7 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
     if prism_theme in theme_aliases:
         prism_theme = theme_aliases[prism_theme]
     
-    # Determine if this is a dark theme for body class
+    # Determine if this is a dark theme - but don't apply to body
     dark_themes = [
         'prism-one-dark', 'prism-gruvbox-dark', 'prism-material-dark', 'prism-nord',
         'prism-night-owl', 'prism-dracula', 'prism-atom-dark', 'prism-dark',
@@ -457,22 +467,15 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
             'permalink': False  # Don't add permalink anchors to headings
         }
     
-    # Configure line numbers and theme classes based on parameters
-    classes = []
+    # Configure line numbers but don't add theme classes to body
     if line_numbers:
         line_numbers_css = '<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />'
         line_numbers_js = '<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>'
-        classes.append("line-numbers")
+        body_class = ' class="line-numbers"'
     else:
         line_numbers_css = ''
         line_numbers_js = ''
-    
-    if is_dark_theme:
-        classes.append("dark-theme")
-    else:
-        classes.append("light-theme")
-    
-    body_class = f' class="{" ".join(classes)}"' if classes else ''
+        body_class = ''
 
     # --- 3. Convert Markdown to an HTML fragment with proper math handling ---
     # Temporarily replace math expressions with placeholders (like md_to_html.py does)
@@ -625,7 +628,7 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
     
     # --- 4.5. Add universal section folding functionality ---
     if foldable_sections is not None:
-        html_body = add_universal_section_folding(html_body, foldable_sections)
+        html_body = add_universal_section_folding(html_body, foldable_sections, is_dark_theme)
     
     # --- 4.6. Convert JSON code blocks to use JavaScript highlighting ---
     # Replace language-json with language-javascript for Prism compatibility
