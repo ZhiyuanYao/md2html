@@ -378,7 +378,7 @@ body.dark-theme .markdown-body h1 {
 
 /* Light themes get the light gray background */
 body:not(.dark-theme) .markdown-body pre,
-body:not(.dark-theme) .collapsible-content .content-inner pre {
+body:not(.dark-theme) .collapsible-content pre {
     background-color: #f0f2f5 !important;
 }
 
@@ -540,7 +540,7 @@ body:not(.dark-theme) .markdown-body pre code .token.string {
 }
 
 /* Legacy collapsible system - keeping for code block collapsing only */
-.wrap-collabsible {
+.wrap-content-collapsible {
     margin-bottom: 1.2rem 0;
     padding: 1em 0em 1em 0em;
 }
@@ -602,18 +602,91 @@ body.dark-theme .lbl-toggle:hover {
 }
 
 /* Legacy collapsible content rules - only for code blocks */
-.wrap-collabsible .collapsible-content {
+.wrap-content-collapsible .content-collapsible-content {
     max-height: 0px;
     overflow: hidden;
     transition: max-height .25s ease-in-out;
 }
 
-.markdown-body .toggle:checked+.lbl-toggle+.collapsible-content,
-body .toggle:checked+.lbl-toggle+.collapsible-content {
-    max-height: 600px !important;
+/* Content area when expanded - with horizontal scrolling */
+.toggle:checked+.lbl-toggle+.content-collapsible-content {
+    max-height: 100vh !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+}
+
+/* Content-inner background styling - matches zhiyuanyao.css */
+.content-collapsible-content .content-inner {
+    background: rgba(106, 176, 222, .15);
+    border-bottom: 2px solid rgba(106, 176, 222, .8);
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    margin-top: -0.8rem;
+    padding: 10px 0px 0px 0px;
+}
+
+.toggle:checked+.lbl-toggle {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.markdown-body .toggle:checked+.lbl-toggle+.content-collapsible-content,
+body .toggle:checked+.lbl-toggle+.content-collapsible-content {
+    max-height: 100vh !important;
     overflow-y: auto !important;
     overflow-x: auto !important;
     position: relative !important;
+}
+
+/* Ensure pre code blocks display properly in content-collapsible when expanded */
+.toggle:checked+.lbl-toggle+.content-collapsible-content pre,
+.content-collapsible-content pre {
+    display: block !important;
+    visibility: visible !important;
+    margin: 0 !important;
+    padding: 10px 0px 10px 20px !important;
+    background-color: #f0f2f5 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    width: max-content !important;
+    min-width: 100% !important;
+}
+
+body.dark-theme .toggle:checked+.lbl-toggle+.content-collapsible-content pre,
+body.dark-theme .content-collapsible-content pre {
+    background-color: #282C34 !important;
+}
+
+/* Horizontal scrollbar styling for content-collapsible window */
+.content-collapsible-content::-webkit-scrollbar {
+    width: 8px !important;
+    height: 7px !important;
+}
+
+.content-collapsible-content::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1) !important;
+}
+
+.content-collapsible-content::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.3) !important;
+    border-radius: 4px !important;
+}
+
+.content-collapsible-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.5) !important;
+}
+
+/* Dark theme scrollbar colors for content-collapsible window */
+body.dark-theme .content-collapsible-content::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1) !important;
+}
+
+body.dark-theme .content-collapsible-content::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3) !important;
+}
+
+body.dark-theme .content-collapsible-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.5) !important;
 }
 
 /* Prism.js Toolbar and Copy-to-Clipboard Styles - copied from demo.html */
@@ -773,8 +846,8 @@ body.dark-theme pre[class*="language-"]::selection,
 body.dark-theme pre[class*="language-"] *::selection,
 body.dark-theme .markdown-body pre code::selection,
 body.dark-theme .markdown-body pre::selection,
-body.dark-theme .collapsible-content .content-inner pre::selection,
-body.dark-theme .collapsible-content .content-inner pre code::selection {
+body.dark-theme .collapsible-content pre::selection,
+body.dark-theme .collapsible-content pre code::selection {
     background-color: #C0D4F3 !important; /* Use light theme selection color */
     color: inherit !important; /* Keep original text colors */
 }
@@ -783,19 +856,19 @@ body.dark-theme pre[class*="language-"]::-moz-selection,
 body.dark-theme pre[class*="language-"] *::-moz-selection,
 body.dark-theme .markdown-body pre code::-moz-selection,
 body.dark-theme .markdown-body pre::-moz-selection,
-body.dark-theme .collapsible-content .content-inner pre::-moz-selection,
-body.dark-theme .collapsible-content .content-inner pre code::-moz-selection {
+body.dark-theme .collapsible-content pre::-moz-selection,
+body.dark-theme .collapsible-content pre code::-moz-selection {
     background-color: #C0D4F3 !important; /* Use light theme selection color */
     color: inherit !important; /* Keep original text colors */
 }
 
 /* FINAL RULE: Dark theme background for collapsible pre code - specific color that works */
-body.dark-theme .collapsible-content .content-inner pre {
+body.dark-theme .collapsible-content pre {
     background-color: #282C34 !important; /* Specific one-dark theme background color */
 }
 
 /* Clean Universal Section/Subsection Folding System */
-.collapsible-header {
+.section-collapsible-header {
     cursor: pointer !important;
     user-select: none !important;
     padding: 8px 0 !important;
@@ -807,11 +880,11 @@ body.dark-theme .collapsible-content .content-inner pre {
     border: none !important;
 }
 
-.collapsible-header:hover {
+.section-collapsible-header:hover {
     background: rgba(0, 0, 0, 0.02) !important;
 }
 
-.collapsible-header.collapsed {
+.section-collapsible-header.collapsed {
     background: rgba(0, 0, 0, 0.01) !important;
 }
 
@@ -825,25 +898,25 @@ body.dark-theme .collapsible-content .content-inner pre {
     transition: transform 0.2s ease !important;
 }
 
-.collapsible-header.collapsed .collapse-icon {
+.section-collapsible-header.collapsed .collapse-icon {
     transform: translateY(-50%) rotate(-90deg) !important;
 }
 
-.collapsible-content.collapsed {
+.section-collapsible-content.collapsed {
     display: none !important;
 }
 
-.collapsible-content.expanded {
+.section-collapsible-content.expanded {
     display: block !important;
     padding: 0 !important;
 }
 
-.collapsible-header h1,
-.collapsible-header h2,
-.collapsible-header h3,
-.collapsible-header h4,
-.collapsible-header h5,
-.collapsible-header h6 {
+.section-collapsible-header h1,
+.section-collapsible-header h2,
+.section-collapsible-header h3,
+.section-collapsible-header h4,
+.section-collapsible-header h5,
+.section-collapsible-header h6 {
     margin: 0 !important;
     display: inline-block !important;
     width: calc(100% - 25px) !important;
@@ -851,40 +924,115 @@ body.dark-theme .collapsible-content .content-inner pre {
 }
 
 /* Preserve original beautiful header colors in collapsible headers */
-.collapsible-header h2 {
+.section-collapsible-header h2 {
     color: #ef4949 !important;
 }
 
-.collapsible-header h3 {
+.section-collapsible-header h3 {
     color: #149963 !important;
 }
 
-.collapsible-header h4 {
+.section-collapsible-header h4 {
     color: #248be5 !important;
 }
 
-.collapsible-header h5 {
+.section-collapsible-header h5 {
     color: #111 !important;
 }
 
-.collapsible-header h6 {
+.section-collapsible-header h6 {
     color: #ef9500 !important;
 }
 
 /* Dark theme overrides */
-body.dark-theme .collapsible-header {
+body.dark-theme .section-collapsible-header {
     background: transparent !important;
     color: #e2e8f0 !important;
 }
 
-body.dark-theme .collapsible-header:hover {
+body.dark-theme .section-collapsible-header:hover {
     background: rgba(255, 255, 255, 0.02) !important;
 }
 
-body.dark-theme .collapsible-header.collapsed {
+body.dark-theme .section-collapsible-header.collapsed {
     background: rgba(255, 255, 255, 0.01) !important;
 }
 
-body.dark-theme .collapsible-content {
+body.dark-theme .section-collapsible-content {
     color: #e2e8f0 !important;
+}
+
+/* Content-inner container styling for collapsible sections */
+body:not(.dark-theme) .collapsible-content pre {
+    background: rgba(106, 176, 222, .15) !important;
+    border-bottom: 2px solid rgba(106, 176, 222, .8);
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    padding: 10px;
+    overflow-x: visible;
+}
+
+body.dark-theme .collapsible-content pre {
+    background: rgba(40, 44, 52, .8) !important;
+    border-bottom: 2px solid rgba(255, 255, 255, .2);
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+    padding: 10px;
+    overflow-x: visible;
+}
+
+/* Collapsible content pre block styling - restore scrollbars and backgrounds */
+.collapsible-content pre,
+.wrap-content-collapsible .content-collapsible-content pre {
+    overflow: auto !important;
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+    background-color: #f0f2f5 !important; /* Light theme background */
+    border-radius: 3px !important;
+    padding: 0.5em 1em !important;
+}
+
+/* Dark theme collapsible pre styling */
+body.dark-theme .collapsible-content pre,
+body.dark-theme .wrap-content-collapsible .content-collapsible-content pre {
+    background-color: #282C34 !important; /* Dark theme background */
+}
+
+/* Scrollbar styling for collapsible pre blocks */
+.collapsible-content pre::-webkit-scrollbar,
+.wrap-content-collapsible .content-collapsible-content pre::-webkit-scrollbar {
+    width: 8px !important;
+    height: 7px !important;
+}
+
+.collapsible-content pre::-webkit-scrollbar-track,
+.wrap-content-collapsible .content-collapsible-content pre::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.1) !important;
+}
+
+.collapsible-content pre::-webkit-scrollbar-thumb,
+.wrap-content-collapsible .content-collapsible-content pre::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.3) !important;
+    border-radius: 4px !important;
+}
+
+.collapsible-content pre::-webkit-scrollbar-thumb:hover,
+.wrap-content-collapsible .content-collapsible-content pre::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.5) !important;
+}
+
+/* Dark theme scrollbar colors for collapsible pre */
+body.dark-theme .collapsible-content pre::-webkit-scrollbar-track,
+body.dark-theme .wrap-content-collapsible .content-collapsible-content pre::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1) !important;
+}
+
+body.dark-theme .collapsible-content pre::-webkit-scrollbar-thumb,
+body.dark-theme .wrap-content-collapsible .content-collapsible-content pre::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3) !important;
+}
+
+body.dark-theme .collapsible-content pre::-webkit-scrollbar-thumb:hover,
+body.dark-theme .wrap-content-collapsible .content-collapsible-content pre::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.5) !important;
 }

@@ -72,10 +72,10 @@ def wrap_long_code_blocks(html_content, max_lines):
                 language = "json"
         
         # Create collapsible wrapper (Prism.js will add toolbar automatically)
-        collapsible_html = f'''<div class="wrap-collabsible">
+        collapsible_html = f'''<div class="wrap-content-collapsible">
     <input id="{collapse_id}" class="toggle" type="checkbox">
     <label for="{collapse_id}" class="lbl-toggle">{language.upper()} ({lines} lines)</label>
-    <div class="collapsible-content">
+    <div class="content-collapsible-content">
         <div class="content-inner">
 {full_match}
         </div>
@@ -279,7 +279,7 @@ def add_universal_section_folding(html_content, default_collapsed_sections=None)
             
             // Create wrapper div for the header
             const headerDiv = document.createElement('div');
-            headerDiv.className = 'collapsible-header ' + (isCollapsed ? 'collapsed' : 'expanded');
+            headerDiv.className = 'section-collapsible-header ' + (isCollapsed ? 'collapsed' : 'expanded');
             headerDiv.onclick = function() {{ toggleSection(sectionId); }};
             
             // Create collapse icon
@@ -294,7 +294,7 @@ def add_universal_section_folding(html_content, default_collapsed_sections=None)
             
             // Create content div and collect content until next same-level header
             const contentDiv = document.createElement('div');
-            contentDiv.className = 'collapsible-content ' + (isCollapsed ? 'collapsed' : 'expanded');
+            contentDiv.className = 'section-collapsible-content ' + (isCollapsed ? 'collapsed' : 'expanded');
             contentDiv.id = sectionId;
             
             let nextElement = headerDiv.nextElementSibling;
@@ -492,13 +492,61 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
         lines = text.split('\n')
         fixed_lines = []
         
+        def is_table_header(line):
+            """Check if line looks like a table header row."""
+            stripped = line.strip()
+            if not stripped or not stripped.startswith('|') or not stripped.endswith('|'):
+                return False
+            # Count pipe symbols - should have at least 3 (start + separators + end)
+            pipe_count = stripped.count('|')
+            return pipe_count >= 3
+        
+        def is_table_separator(line):
+            """Check if line looks like a table separator row."""
+            stripped = line.strip()
+            if not stripped or not stripped.startswith('|') or not stripped.endswith('|'):
+                return False
+            # Should contain dashes and optionally colons for alignment
+            content_between_pipes = stripped[1:-1]  # Remove outer pipes
+            cells = [cell.strip() for cell in content_between_pipes.split('|')]
+            
+            # Each cell should be a combination of dashes, colons, and spaces
+            for cell in cells:
+                if not cell:  # Empty cell
+                    continue
+                # Valid separator cell contains only dashes, colons, and spaces
+                if not all(c in '-: ' for c in cell):
+                    return False
+                # Must contain at least one dash
+                if '-' not in cell:
+                    return False
+            return len(cells) >= 2  # At least 2 columns
+        
         for i, line in enumerate(lines):
-            # Check if this line looks like a table header (contains | and is followed by a separator line)
-            if '|' in line and i + 1 < len(lines) and '|' in lines[i + 1] and ':' in lines[i + 1]:
-                # Check if previous line exists and is not blank
-                if i > 0 and lines[i - 1].strip() != '':
-                    # Add blank line before table
-                    fixed_lines.append('')
+            # Check if this line looks like a table header
+            if is_table_header(line):
+                # Verify next line is separator row
+                if (i + 1 < len(lines) and is_table_separator(lines[i + 1])):
+                    # This is definitely a table start
+                    # Check if previous line exists and is not blank
+                    if i > 0 and lines[i - 1].strip() != '':
+                        # Add blank line before table
+                        fixed_lines.append('')
+            
+            # Also check for table separator rows (handle cases where header detection missed)
+            elif is_table_separator(line):
+                # Look back to see if previous line could be a table header  
+                if (i > 0 and is_table_header(lines[i - 1])):
+                    # Previous line is a header, check if we need spacing before it
+                    if i > 1 and lines[i - 2].strip() != '':
+                        # Need to insert blank line before the header (which is already in fixed_lines)
+                        # Remove the header from fixed_lines and re-add with spacing
+                        if fixed_lines and len(fixed_lines) >= 2:
+                            # Check if the line before the header (in fixed_lines) is not blank
+                            if len(fixed_lines) >= 2 and fixed_lines[-2].strip() != '':
+                                header_line = fixed_lines.pop()  # Remove header
+                                fixed_lines.append('')  # Add blank line
+                                fixed_lines.append(header_line)  # Re-add header
             
             fixed_lines.append(line)
         
