@@ -525,6 +525,52 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
     
     html_body = re.sub(r'MATHPLACEHOLDER(\d+)MATHPLACEHOLDER', restore_math, html_body)
     
+    # Add Topic and Thumbnail admonition styling for Problem sections
+    def add_topic_thumbnail_admonitions(html_content):
+        """
+        Convert Topic and Thumbnail pairs under Problem sections to a single orange admonition.
+        
+        Example:
+        **Topic**: Multicritical points (123)
+        **Thumbnail**: Description text
+        
+        Becomes:
+        <div class="admonition orange">
+            <p class="admonition-orange">Multicritical points (123)</p>
+            Description text
+        </div>
+        """
+        import re
+        
+        # Pattern to match Topic followed by Thumbnail
+        pattern = r'<p><strong>Topic</strong>:\s*(.*?)</p>\s*<p><strong>Thumbnail</strong>:\s*(.*?)</p>'
+        
+        def replace_with_combined_admonition(match):
+            topic_content = match.group(1)    # Content of Topic (becomes title)
+            thumbnail_content = match.group(2) # Content of Thumbnail (becomes body)
+            
+            return f'''<div class="admonition orange">
+        <p class="admonition-orange">{topic_content}</p>
+        {thumbnail_content}
+    </div>'''
+        
+        # Also handle cases where there's only Topic (no Thumbnail)
+        pattern_topic_only = r'<p><strong>Topic</strong>:\s*(.*?)</p>(?!\s*<p><strong>Thumbnail</strong>)'
+        
+        def replace_topic_only(match):
+            topic_content = match.group(1)
+            return f'''<div class="admonition orange">
+        <p class="admonition-orange">{topic_content}</p>
+    </div>'''
+        
+        # First handle Topic+Thumbnail pairs, then handle standalone Topics
+        html_content = re.sub(pattern, replace_with_combined_admonition, html_content, flags=re.DOTALL)
+        html_content = re.sub(pattern_topic_only, replace_topic_only, html_content, flags=re.DOTALL)
+        
+        return html_content
+    
+    html_body = add_topic_thumbnail_admonitions(html_body)
+    
     # --- 4. Auto-collapse long code blocks if specified ---
     if collapse_lines:
         html_body = wrap_long_code_blocks(html_body, collapse_lines)
