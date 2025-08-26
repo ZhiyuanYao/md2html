@@ -165,41 +165,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         </div>
     </div>
     
-    <!-- Universal Section Folding JavaScript -->
-    <script>
-    function toggleSection(sectionId) {{
-        const content = document.getElementById(sectionId);
-        const header = content.previousElementSibling;
-        
-        // Toggle with smooth animation
-        if (content.classList.contains('collapsed')) {{
-            // Expand
-            content.style.maxHeight = content.scrollHeight + "px";
-            content.classList.remove('collapsed');
-            content.classList.add('expanded');
-            header.classList.remove('collapsed');
-            header.classList.add('expanded');
-        }} else {{
-            // Collapse  
-            content.style.maxHeight = content.scrollHeight + "px";
-            // Force reflow
-            content.offsetHeight;
-            content.style.maxHeight = "0";
-            content.classList.remove('expanded');
-            content.classList.add('collapsed');
-            header.classList.remove('expanded');
-            header.classList.add('collapsed');
-        }}
-    }}
-    
-    // Initialize all sections on page load
-    document.addEventListener('DOMContentLoaded', function() {{
-        const expandedSections = document.querySelectorAll('.collapsible-content.expanded');
-        expandedSections.forEach(function(section) {{
-            section.style.maxHeight = section.scrollHeight + "px";
-        }});
-    }});
-    </script>
+    <!-- Section folding JavaScript is included by the folding function -->
 </body>
 </html>"""
 
@@ -270,81 +236,106 @@ def download_all_prism_themes():
 
 def add_universal_section_folding(html_content, default_collapsed_sections=None):
     """
-    Add beautiful collapsible functionality to ALL headers (h2-h6).
-    Each header becomes clickable and can collapse/expand its content.
+    Simple section folding using JavaScript DOM manipulation instead of complex HTML parsing.
+    This avoids breaking existing HTML structure and code blocks.
     
     Args:
-        html_content (str): HTML content with headers
+        html_content (str): HTML content with headers  
         default_collapsed_sections (list): Section titles that start collapsed (default: ["Solution"])
     
     Returns:
-        str: HTML content with universal collapsible headers
+        str: HTML content with collapsible sections added via JavaScript
     """
     if default_collapsed_sections is None:
-        default_collapsed_sections = ["Solution"]
+        default_collapsed_sections = ["Solution", "Answer"]
     
-    # Split content by headers to process each section
-    import re
+    # Convert collapsed sections list to JavaScript array
+    collapsed_sections_js = str(default_collapsed_sections).replace("'", '"')
     
-    # Find all headers h2-h6 and their content
-    header_pattern = r'(<h([2-6])([^>]*)>(.*?)</h[2-6]>)'
-    headers = list(re.finditer(header_pattern, html_content, re.IGNORECASE | re.DOTALL))
+    # Add JavaScript that will process the DOM after page load
+    folding_script = f'''
     
-    if not headers:
-        return html_content
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {{
+        const collapsedSections = {collapsed_sections_js};
+        
+        // Find all headers h2-h6
+        const headers = document.querySelectorAll('.markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6');
+        
+        headers.forEach(function(header, index) {{
+            // Skip headers inside code blocks
+            if (header.closest('pre, code')) {{
+                return;
+            }}
+            
+            const level = parseInt(header.tagName.substring(1));
+            const text = header.textContent;
+            const sectionId = 'section-' + index;
+            
+            // Check if this section should be collapsed by default
+            const isCollapsed = collapsedSections.some(section => 
+                text.toLowerCase().includes(section.toLowerCase())
+            );
+            
+            // Create wrapper div for the header
+            const headerDiv = document.createElement('div');
+            headerDiv.className = 'collapsible-header ' + (isCollapsed ? 'collapsed' : 'expanded');
+            headerDiv.onclick = function() {{ toggleSection(sectionId); }};
+            
+            // Create collapse icon
+            const icon = document.createElement('span');
+            icon.className = 'collapse-icon';
+            icon.innerHTML = '⌄';
+            
+            // Replace header with wrapped version
+            header.parentNode.insertBefore(headerDiv, header);
+            headerDiv.appendChild(header);
+            headerDiv.appendChild(icon);
+            
+            // Create content div and collect content until next same-level header
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'collapsible-content ' + (isCollapsed ? 'collapsed' : 'expanded');
+            contentDiv.id = sectionId;
+            
+            let nextElement = headerDiv.nextElementSibling;
+            while (nextElement) {{
+                // Stop at next header of same or higher level
+                if (nextElement.tagName && nextElement.tagName.match(/^H[1-6]$/)) {{
+                    const nextLevel = parseInt(nextElement.tagName.substring(1));
+                    if (nextLevel <= level) {{
+                        break;
+                    }}
+                }}
+                
+                const elementToMove = nextElement;
+                nextElement = nextElement.nextElementSibling;
+                contentDiv.appendChild(elementToMove);
+            }}
+            
+            // Insert content div after header
+            headerDiv.parentNode.insertBefore(contentDiv, headerDiv.nextElementSibling);
+        }});
+    }});
     
-    result = ""
-    last_pos = 0
+    function toggleSection(sectionId) {{
+        const content = document.getElementById(sectionId);
+        const header = content.previousElementSibling;
+        
+        if (content.classList.contains('collapsed')) {{
+            content.classList.remove('collapsed');
+            content.classList.add('expanded');
+            header.classList.remove('collapsed');
+            header.classList.add('expanded');
+        }} else {{
+            content.classList.remove('expanded');
+            content.classList.add('collapsed');
+            header.classList.remove('expanded');
+            header.classList.add('collapsed');
+        }}
+    }}
+    </script>'''
     
-    for i, header_match in enumerate(headers):
-        header_full = header_match.group(1)  # Full header HTML
-        header_level = int(header_match.group(2))  # Header level (2-6)  
-        header_attrs = header_match.group(3)  # Header attributes
-        header_text = header_match.group(4)  # Header text content
-        header_start = header_match.start()
-        header_end = header_match.end()
-        
-        # Add content before this header
-        result += html_content[last_pos:header_start]
-        
-        # Determine if this section should start collapsed
-        is_collapsed = any(section.lower() in header_text.lower() for section in default_collapsed_sections)
-        collapsed_class = "collapsed" if is_collapsed else "expanded"
-        
-        # Generate unique ID
-        section_id = f"section-{abs(hash(header_text)) % 100000}"
-        
-        # Create collapsible header
-        result += f'''<div class="collapsible-header {collapsed_class}" onclick="toggleSection('{section_id}')">
-    <div class="collapse-arrow"></div>
-    <h{header_level}{header_attrs}>{header_text}</h{header_level}>
-</div>'''
-        
-        # Find content for this section (everything until next header of same or higher level)
-        content_start = header_end
-        content_end = len(html_content)  # Default to end of content
-        
-        # Look for next header of same or higher level
-        for j in range(i + 1, len(headers)):
-            next_header_level = int(headers[j].group(2))
-            if next_header_level <= header_level:
-                content_end = headers[j].start()
-                break
-        
-        # Extract section content
-        section_content = html_content[content_start:content_end].strip()
-        
-        # Wrap content in collapsible container
-        result += f'''<div class="collapsible-content {collapsed_class}" id="{section_id}">
-{section_content}
-</div>'''
-        
-        last_pos = content_end
-    
-    # Add any remaining content after the last header
-    result += html_content[last_pos:]
-    
-    return result
+    return html_content + folding_script
 
 def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='prism', line_numbers=False, collapse_lines=10, inline_lang='python', enable_toc=True, foldable_sections=None):
     """
@@ -495,6 +486,26 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
     temp_md_text = re.sub(r'\$\$([^$]+?)\$\$', replace_math, md_text, flags=re.DOTALL)
     temp_md_text = re.sub(r'\$([^$\n]+?)\$', replace_math, temp_md_text)
     
+    # Preprocess markdown to fix table formatting issues
+    # Add blank lines before tables that don't have them
+    def fix_table_formatting(text):
+        lines = text.split('\n')
+        fixed_lines = []
+        
+        for i, line in enumerate(lines):
+            # Check if this line looks like a table header (contains | and is followed by a separator line)
+            if '|' in line and i + 1 < len(lines) and '|' in lines[i + 1] and ':' in lines[i + 1]:
+                # Check if previous line exists and is not blank
+                if i > 0 and lines[i - 1].strip() != '':
+                    # Add blank line before table
+                    fixed_lines.append('')
+            
+            fixed_lines.append(line)
+        
+        return '\n'.join(fixed_lines)
+    
+    temp_md_text = fix_table_formatting(temp_md_text)
+    
     # Convert markdown to HTML
     md_converter = markdown.Markdown(extensions=extensions, extension_configs=extension_configs)
     html_body = md_converter.convert(temp_md_text)
@@ -613,8 +624,8 @@ def main():
     parser.add_argument(
         "--fold-sections",
         nargs='*',
-        default=["Solution"],
-        help="Section titles to make foldable (default: ['Solution']). Use empty list to disable section folding."
+        default=None,  # Use None as default to distinguish from empty list
+        help="Section titles to make foldable (default: ['Solution']). Use --fold-sections without arguments for default sections, or provide specific section names."
     )
     parser.add_argument(
         "--no-toc",
@@ -644,7 +655,13 @@ def main():
     inline_lang = None if args.inline_lang.lower() == 'none' else args.inline_lang
     collapse_lines = None if args.collapse == 0 else args.collapse
     enable_toc = not args.no_toc
-    foldable_sections = args.fold_sections if args.fold_sections else None
+    # Handle fold-sections argument properly  
+    if args.fold_sections == []:  # Empty list when --fold-sections used without args - use default
+        foldable_sections = ["Solution"]  # Use the default value
+    elif args.fold_sections is None:  # Not provided at all - use default sections
+        foldable_sections = ["Solution", "Answer"]  # Enable by default
+    else:  # Non-empty list - use as provided
+        foldable_sections = args.fold_sections
     full_html = convert_md_to_html(args.input_file, args.css, args.theme, args.line_numbers, collapse_lines, inline_lang, enable_toc, foldable_sections)
 
     # Write to output file
