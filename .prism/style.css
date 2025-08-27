@@ -276,16 +276,15 @@ body {
 
 /* Light Modern Table Design */
 .markdown-body table {
-    width: 100%;
-    border-collapse: collapse;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 0;
     margin: 24px auto;
-    border-radius: 16px;
-    overflow: hidden;
+    border-radius: 8px;
     background: #ffffff;
     border: 1px solid #e5e7eb;
-    box-shadow: 
-        0 10px 25px rgba(0, 0, 0, 0.08),
-        0 0 0 1px rgba(59, 130, 246, 0.05);
+    width: auto;
+    overflow: hidden;
 }
 
 .markdown-body table thead {
@@ -294,7 +293,7 @@ body {
 }
 
 .markdown-body table th {
-    padding: 20px 24px;
+    padding: 12px 24px;
     text-align: left;
     font-weight: 600;
     color: #374151;
@@ -305,12 +304,57 @@ body {
 }
 
 .markdown-body table td {
-    padding: 18px 24px;
+    padding: 11px 24px;
     border-bottom: 1px solid #f3f4f6;
     color: #4b5563;
     background: #ffffff;
     border-left: none;
     border-right: none;
+}
+
+/* Reduce padding when table approaches 70% of content width (490px of 700px) */
+/* Use container-based breakpoints that consider the actual content constraints */
+@media (max-width: 1000px) {
+    /* When viewport allows content + some margin, but table might be getting wide */
+    .markdown-body table {
+        font-size: 0.9em; /* Slightly smaller text to help fit */
+    }
+}
+
+@media (max-width: 800px) {
+    /* Content area becoming constrained, reduce table padding */
+    .markdown-body table th {
+        padding: 12px 16px !important;
+        background: red !important;
+    }
+    .markdown-body table td {
+        padding: 11px 16px !important;
+        background: yellow !important;
+    }
+}
+
+@media (max-width: 750px) {
+    /* Approaching 70% threshold for 700px content */
+    .markdown-body table th {
+        padding: 12px 12px !important;
+        background: blue !important;
+    }
+    .markdown-body table td {
+        padding: 11px 12px !important;
+        background: green !important;
+    }
+}
+
+@media (max-width: 700px) {
+    /* At content width limit, minimal padding */
+    .markdown-body table th {
+        padding: 12px 8px !important;
+        background: purple !important;
+    }
+    .markdown-body table td {
+        padding: 11px 8px !important;
+        background: orange !important;
+    }
 }
 
 .markdown-body table tr {
@@ -321,17 +365,17 @@ body {
 }
 
 .markdown-body table tbody tr:hover {
-    background: #f9fafb !important;
-    color: #1f2937 !important;
+    background: #f0fdf4 !important;
+    color: #166534 !important;
     transform: translateY(-1px) !important;
     box-shadow: 
-        inset 3px 0 0 #3b82f6,
-        0 4px 20px rgba(59, 130, 246, 0.08) !important;
+        inset 3px 0 0 #22c55e,
+        0 4px 20px rgba(34, 197, 94, 0.12) !important;
 }
 
 .markdown-body table tbody tr:hover td {
-    background: #f9fafb !important;
-    color: #1f2937 !important;
+    background: #f0fdf4 !important;
+    color: #166534 !important;
 }
 
 .markdown-body table tr:nth-child(2n) {
@@ -828,6 +872,8 @@ code:not(pre code) {
     text-shadow: none !important; /* Override any dark theme text shadow */
     border: none !important; /* Override any dark theme borders */
 }
+
+/* Table padding adjustments now handled by JavaScript based on actual table width vs content width */
 
 body.dark-theme .markdown-body code:not(pre code)::selection,
 body.dark-theme code:not(pre code)::selection {

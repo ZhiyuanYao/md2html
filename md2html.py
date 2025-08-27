@@ -269,6 +269,34 @@ def add_universal_section_folding(html_content, default_collapsed_sections=None,
             }});
         }}
         
+        // Check table widths and apply reduced padding if they exceed 70% of content width
+        const markdownBody = document.querySelector('.markdown-body');
+        const contentWidth = 700; // markdown-body width is 700px
+        const threshold = contentWidth * 0.7; // 70% = 490px
+        
+        const tables = document.querySelectorAll('.markdown-body table');
+        tables.forEach(function(table) {{
+            // Force table layout to calculate natural width
+            table.style.width = 'auto';
+            
+            // Get the actual rendered width of the table
+            const tableWidth = table.getBoundingClientRect().width;
+            
+            if (tableWidth > threshold) {{
+                // Table exceeds 70% of content width, reduce padding
+                const ths = table.querySelectorAll('th');
+                const tds = table.querySelectorAll('td');
+                
+                ths.forEach(function(th) {{
+                    th.style.padding = '12px 20px';
+                }});
+                
+                tds.forEach(function(td) {{
+                    td.style.padding = '11px 20px';
+                }});
+            }}
+        }});
+        
         // Find all headers h2-h6
         const headers = document.querySelectorAll('.markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body h6');
         
