@@ -585,6 +585,44 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
     
     temp_md_text = fix_table_formatting(temp_md_text)
     
+    # Preprocess markdown to fix list formatting issues
+    # Add blank lines before lists that don't have them
+    def fix_list_formatting(text):
+        lines = text.split('\n')
+        fixed_lines = []
+        
+        def is_list_item(line):
+            """Check if line looks like a list item."""
+            stripped = line.strip()
+            if not stripped:
+                return False
+            
+            # Check for unordered list markers: -, *, +
+            if stripped.startswith(('- ', '* ', '+ ')):
+                return True
+            
+            # Check for ordered list markers: 1., 2., etc.
+            import re
+            if re.match(r'^\d+\.\s+', stripped):
+                return True
+                
+            return False
+        
+        for i, line in enumerate(lines):
+            # Check if this line is a list item
+            if is_list_item(line):
+                # Check if previous line exists and is not blank
+                # Also check that the previous line was not already a list item (continuation)
+                if (i > 0 and lines[i - 1].strip() != '' and not is_list_item(lines[i - 1])):
+                    # Add blank line before list
+                    fixed_lines.append('')
+            
+            fixed_lines.append(line)
+        
+        return '\n'.join(fixed_lines)
+    
+    temp_md_text = fix_list_formatting(temp_md_text)
+    
     # Convert markdown to HTML
     md_converter = markdown.Markdown(extensions=extensions, extension_configs=extension_configs)
     html_body = md_converter.convert(temp_md_text)

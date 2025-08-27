@@ -1764,6 +1764,7 @@ body.dark-theme .wrap-content-collapsible .content-collapsible-content pre::-web
 <li><a href="#table-of-contents">Table of Contents</a></li>
 <li><a href="#features">Features</a><ul>
 <li><a href="#python-example">Python Example</a></li>
+<li><a href="#list-example">List Example</a></li>
 </ul>
 </li>
 <li><a href="#problem-1">Problem 1</a><ul>
@@ -1827,6 +1828,34 @@ if __name__ == &quot;__main__&quot;:
         </div>
     </div>
 </div>
+<h3 id="list-example">List Example</h3>
+<p>Knowledge Points Tested:</p>
+<ul>
+<li>Angular displacement (<script type="math/tex">\theta</script>), angular velocity (<script type="math/tex">\omega</script>), and angular acceleration (<script type="math/tex">\alpha</script>)</li>
+<li>Relationship between linear distance (arc length) and angular displacement: <script type="math/tex">S = R\theta</script></li>
+<li>Kinematic equations for constant angular acceleration: <script type="math/tex">\theta = \omega_0 t + \frac{1}{2}\alpha t^2</script> and <script type="math/tex">\omega = \omega_0 + \alpha t</script></li>
+<li>Tangential speed as the linear velocity of a point on the rim: <script type="math/tex">v = R\omega</script></li>
+</ul>
+<p>Knowledge Points Tested:</p>
+<ul>
+<li>Angular displacement (<script type="math/tex">\theta</script>), angular velocity (<script type="math/tex">\omega</script>), and angular acceleration (<script type="math/tex">\alpha</script>)</li>
+<li>Relationship between linear distance (arc length) and angular displacement: <script type="math/tex">S = R\theta</script></li>
+<li>Kinematic equations for constant angular acceleration: <script type="math/tex">\theta = \omega_0 t + \frac{1}{2}\alpha t^2</script> and <script type="math/tex">\omega = \omega_0 + \alpha t</script></li>
+<li>Tangential speed as the linear velocity of a point on the rim: <script type="math/tex">v = R\omega</script></li>
+</ul>
+<p>Knowledge Points Tested:</p>
+<pre><code>- Angular displacement (<script type="math/tex">\theta</script>), angular velocity (<script type="math/tex">\omega</script>), and angular acceleration (<script type="math/tex">\alpha</script>)
+- Relationship between linear distance (arc length) and angular displacement: <script type="math/tex">S = R\theta</script>
+- Kinematic equations for constant angular acceleration: <script type="math/tex">\theta = \omega_0 t + \frac{1}{2}\alpha t^2</script> and <script type="math/tex">\omega = \omega_0 + \alpha t</script>
+- Tangential speed as the linear velocity of a point on the rim: <script type="math/tex">v = R\omega</script>
+</code></pre>
+<p>Knowledge Points Tested:</p>
+<ul>
+<li>Angular displacement (<script type="math/tex">\theta</script>), angular velocity (<script type="math/tex">\omega</script>), and angular acceleration (<script type="math/tex">\alpha</script>)</li>
+<li>Relationship between linear distance (arc length) and angular displacement: <script type="math/tex">S = R\theta</script></li>
+<li>Kinematic equations for constant angular acceleration: <script type="math/tex">\theta = \omega_0 t + \frac{1}{2}\alpha t^2</script> and <script type="math/tex">\omega = \omega_0 + \alpha t</script></li>
+<li>Tangential speed as the linear velocity of a point on the rim: <script type="math/tex">v = R\omega</script></li>
+</ul>
 <h2 id="problem-1">Problem 1</h2>
 <div class="admonition orange">
         <p class="admonition-orange">Multicritical points (123)</p>
@@ -2101,7 +2130,7 @@ if __name__ == &quot;__main__&quot;:
 <h2 id="python-code">Python code</h2>
 <div class="wrap-content-collapsible">
     <input id="code-collapse-5" class="toggle" type="checkbox">
-    <label for="code-collapse-5" class="lbl-toggle">PYTHON (154 lines)</label>
+    <label for="code-collapse-5" class="lbl-toggle">PYTHON (155 lines)</label>
     <div class="content-collapsible-content">
         <div class="content-inner">
 <pre><code class="language-python">import numpy as np
@@ -2116,6 +2145,7 @@ def solve_electron_moles(params: dict) -&gt; float:
     electrons transferred per event.
 
     The process involves:
+
     1. Generating a signal with baseline, Gaussian peaks, and noise.
     2. Estimating and removing the linear baseline.
     3. Detecting peaks (events) in the corrected signal.

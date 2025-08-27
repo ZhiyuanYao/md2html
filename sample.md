@@ -26,6 +26,40 @@ if __name__ == "__main__":
     print(greet(person))
 ```
 
+### List Example
+
+Knowledge Points Tested:
+- Angular displacement ($\theta$), angular velocity ($\omega$), and angular acceleration ($\alpha$)
+- Relationship between linear distance (arc length) and angular displacement: $S = R\theta$
+- Kinematic equations for constant angular acceleration: $\theta = \omega_0 t + \frac{1}{2}\alpha t^2$ and $\omega = \omega_0 + \alpha t$
+- Tangential speed as the linear velocity of a point on the rim: $v = R\omega$
+
+
+Knowledge Points Tested:
+
+- Angular displacement ($\theta$), angular velocity ($\omega$), and angular acceleration ($\alpha$)
+- Relationship between linear distance (arc length) and angular displacement: $S = R\theta$
+- Kinematic equations for constant angular acceleration: $\theta = \omega_0 t + \frac{1}{2}\alpha t^2$ and $\omega = \omega_0 + \alpha t$
+- Tangential speed as the linear velocity of a point on the rim: $v = R\omega$
+
+Knowledge Points Tested:
+    - Angular displacement ($\theta$), angular velocity ($\omega$), and angular acceleration ($\alpha$)
+    - Relationship between linear distance (arc length) and angular displacement: $S = R\theta$
+    - Kinematic equations for constant angular acceleration: $\theta = \omega_0 t + \frac{1}{2}\alpha t^2$ and $\omega = \omega_0 + \alpha t$
+    - Tangential speed as the linear velocity of a point on the rim: $v = R\omega$
+
+
+Knowledge Points Tested:
+
+  - Angular displacement ($\theta$), angular velocity ($\omega$), and angular acceleration ($\alpha$)
+  - Relationship between linear distance (arc length) and angular displacement: $S = R\theta$
+  - Kinematic equations for constant angular acceleration: $\theta = \omega_0 t + \frac{1}{2}\alpha t^2$ and $\omega = \omega_0 + \alpha t$
+  - Tangential speed as the linear velocity of a point on the rim: $v = R\omega$
+
+
+
+
+
 ## Problem 1
 
 **Topic**: Multicritical points (123)
