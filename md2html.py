@@ -585,41 +585,173 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
     
     temp_md_text = fix_table_formatting(temp_md_text)
     
-    # Preprocess markdown to fix list formatting issues
-    # Add blank lines before lists that don't have them
+    # === LIST PROCESSING MODULE ===
+    # Modular functions for nested list detection and formatting
+    
+    def is_list_item(line):
+        """Check if line looks like a list item, including indented ones."""
+        stripped = line.strip()
+        if not stripped:
+            return False
+        
+        # Check for unordered list markers: -, *, +
+        if stripped.startswith(('- ', '* ', '+ ')):
+            return True
+        
+        # Check for ordered list markers: 1., 2., etc.
+        import re
+        if re.match(r'^\d+\.\s+', stripped):
+            return True
+            
+        return False
+    
+    def is_heading(line):
+        """Check if line is a markdown heading (##, ###, ####, #####)."""
+        stripped = line.strip()
+        import re
+        return re.match(r'^#{2,5}\s+', stripped) is not None
+    
+    def get_raw_indent(line):
+        """Get the raw indentation count (spaces + tabs*4)."""
+        indent = 0
+        for char in line:
+            if char == ' ':
+                indent += 1
+            elif char == '\t':
+                indent += 4
+            else:
+                break
+        return indent
+    
+    def detect_indent_pattern_in_section(section_lines):
+        """Auto-detect indentation pattern using minimal spacing as base unit."""
+        indents = []
+        for line in section_lines:
+            if is_list_item(line):
+                raw_indent = get_raw_indent(line)
+                indents.append(raw_indent)  # Include all indents, even 0
+        
+        if not indents:
+            return 4  # Default to 4-space if no list items found
+        
+        # Find the minimal spacing (which could be 0 for top-level items)
+        min_indent = min(indents)
+        
+        # If all items are at the same level (all same indent), use standard patterns
+        if len(set(indents)) == 1:
+            if min_indent == 0:
+                return 4  # Default for single-level lists
+            elif min_indent <= 2:
+                return 2
+            elif min_indent <= 4:
+                return 4
+            else:
+                return min_indent  # Use the actual spacing
+        
+        # For multi-level lists, use the minimal non-zero spacing as the unit
+        non_zero_indents = [indent for indent in indents if indent > 0]
+        if non_zero_indents:
+            base_unit = min(non_zero_indents)
+            return base_unit
+        else:
+            return 4  # All items are at level 0, use default
+    
+    def split_into_sections(lines):
+        """Split the document into sections based on headings (##, ###, ####, #####)."""
+        sections = []
+        current_section_lines = []
+        current_section_start = 0
+        
+        for i, line in enumerate(lines):
+            if is_heading(line):
+                # If we have accumulated lines, save the previous section
+                if current_section_lines:
+                    sections.append((current_section_start, i - 1, current_section_lines))
+                # Start new section with this heading
+                current_section_lines = [line]
+                current_section_start = i
+            else:
+                current_section_lines.append(line)
+        
+        # Add the final section
+        if current_section_lines:
+            sections.append((current_section_start, len(lines) - 1, current_section_lines))
+        
+        return sections
+    
+    def get_list_indent_level(line, indent_unit):
+        """Get the logical indentation level of a list item."""
+        if not is_list_item(line):
+            return -1
+        
+        raw_indent = get_raw_indent(line)
+        return raw_indent // indent_unit
+    
+    # Main list formatting function
     def fix_list_formatting(text):
+        """Fix list formatting issues by adding blank lines and normalizing indentation."""
         lines = text.split('\n')
         fixed_lines = []
         
-        def is_list_item(line):
-            """Check if line looks like a list item."""
-            stripped = line.strip()
-            if not stripped:
-                return False
-            
-            # Check for unordered list markers: -, *, +
-            if stripped.startswith(('- ', '* ', '+ ')):
-                return True
-            
-            # Check for ordered list markers: 1., 2., etc.
-            import re
-            if re.match(r'^\d+\.\s+', stripped):
-                return True
-                
-            return False
+        # Split document into sections and process each with its own indentation pattern
+        sections = split_into_sections(lines)
+        section_indent_units = {}
         
+        # Detect indentation pattern for each section
+        for start_idx, end_idx, section_lines in sections:
+            indent_unit = detect_indent_pattern_in_section(section_lines)
+            section_indent_units[(start_idx, end_idx)] = indent_unit
+        
+        # Process lines with section-specific indentation detection
         for i, line in enumerate(lines):
+            # Find which section this line belongs to
+            current_indent_unit = 4  # default
+            for (start_idx, end_idx), indent_unit in section_indent_units.items():
+                if start_idx <= i <= end_idx:
+                    current_indent_unit = indent_unit
+                    break
+            
             # Check if this line is a list item
             if is_list_item(line):
-                # Check if previous line exists and is not blank
-                # Also check that the previous line was not already a list item (continuation)
-                if (i > 0 and lines[i - 1].strip() != '' and not is_list_item(lines[i - 1])):
-                    # Add blank line before list
+                # Calculate the logical nesting level using our detection
+                raw_indent = get_raw_indent(line)
+                current_level = raw_indent // current_indent_unit
+                
+                # Normalize ALL list items to use 4-space indentation standard
+                stripped_content = line.strip()
+                if current_level > 0:
+                    # Create normalized line with exactly 4 spaces per nesting level
+                    normalized_indent = '    ' * current_level  # 4 spaces per level
+                    normalized_line = normalized_indent + stripped_content
+                else:
+                    # Top-level items have no indentation
+                    normalized_line = stripped_content
+                
+                line = normalized_line
+                
+                # Check if we need to add a blank line before this list item
+                should_add_blank = False
+                
+                if i > 0 and lines[i - 1].strip() != '':
+                    prev_line = lines[i - 1]
+                    
+                    # If previous line is NOT a list item, this starts a new list
+                    # Exception: Don't add blank after headings as it's usually not needed
+                    if not is_list_item(prev_line) and not is_heading(prev_line):
+                        should_add_blank = True
+                    # If previous line IS a list item, never add blank lines
+                    # This preserves the nested structure and continuous lists
+                
+                if should_add_blank:
                     fixed_lines.append('')
             
             fixed_lines.append(line)
         
         return '\n'.join(fixed_lines)
+    
+    # === END LIST PROCESSING MODULE ===
+    
+    # Preprocess markdown to fix list formatting issues
     
     temp_md_text = fix_list_formatting(temp_md_text)
     

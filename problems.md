@@ -8,7 +8,7 @@ This file contains 10 randomly sampled problems with verify_status: success.
   - For a system described by two coupled scalar order parameters at a stable tetracritical point, calculate the mean-field ratio of the two order parameter magnitudes in the mixed-symmetry phase.
 - **[Problem 2](#problem-2)**: **Experimental Characterization of Crystal Structure**
   - Given the total structure factor $S(Q)$ for a liquid, write the integral transformation to obtain the pair correlation function $g(r)$.
-- **[Problem 3](#problem-3)**: **1 N Expansion**
+- **[Problem 3](#problem-3)**: **1/N Expansion**
   - Calculate the one-loop beta function for the gauge coupling in an SU(N) Yang-Mills theory coupled to $N_f$ flavors of massless adjoint Majorana fermions in the 't Hooft limit.
 ---
 
