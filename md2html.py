@@ -7,70 +7,74 @@ import re
 
 # --- Helper Functions ---
 
+
 def wrap_long_code_blocks(html_content, max_lines):
     """
     Wrap code blocks longer than max_lines in collapsible HTML structure.
-    
+
     Args:
         html_content (str): HTML content with code blocks
         max_lines (int): Maximum lines before wrapping in collapsible
-    
+
     Returns:
         str: HTML content with long code blocks wrapped in collapsible sections
     """
     # Counter for unique IDs
     collapse_counter = 0
-    
+
     def replace_code_block(match):
         nonlocal collapse_counter
-        
+
         # Extract the full code block
         full_match = match.group(0)
         start_pos = match.start()
-        
+
         # Check if this code block is inside a <details> tag or existing collapsible
         # Look backwards from the match position for unclosed <details> tags
         text_before = html_content[:start_pos]
-        
+
         # Count <details> tags (opening) and </details> tags (closing) before this position
-        details_open = len(re.findall(r'<details[^>]*>', text_before, re.IGNORECASE))
-        details_close = len(re.findall(r'</details>', text_before, re.IGNORECASE))
-        
+        details_open = len(re.findall(
+            r'<details[^>]*>', text_before, re.IGNORECASE))
+        details_close = len(re.findall(
+            r'</details>', text_before, re.IGNORECASE))
+
         # If we're inside an unclosed <details> tag, don't add additional collapse
         if details_open > details_close:
             return full_match
-        
+
         # Also check for existing wrap-collabsible divs
         if '<div class="wrap-collabsible">' in text_before.split('</div>')[-1]:
             return full_match
-            
+
         # Count lines in the code block
         # Look for the content between <code> and </code>
-        code_content = re.search(r'<code[^>]*>(.*?)</code>', full_match, re.DOTALL)
+        code_content = re.search(
+            r'<code[^>]*>(.*?)</code>', full_match, re.DOTALL)
         if not code_content:
             return full_match
-            
+
         lines = code_content.group(1).count('\n') + 1
-        
+
         # If code block is short enough, return as-is
         if lines <= max_lines:
             return full_match
-        
+
         # Generate unique ID for this collapsible
         collapse_counter += 1
         collapse_id = f"code-collapse-{collapse_counter}"
-        
+
         # Extract language from class attribute if present
         lang_match = re.search(r'class="[^"]*language-([^"\s]+)', full_match)
         language = lang_match.group(1) if lang_match else "code"
-        
+
         # Special handling for JSON - if it looks like JSON but uses javascript class, show as JSON
         if language == "javascript":
             # Check if the content looks like JSON (starts with { or [, has quotes around keys)
             content_text = code_content.group(1).strip()
             if re.search(r'^\s*[\{\[]', content_text) and re.search(r'"[^"]+"\s*:', content_text):
                 language = "json"
-        
+
         # Create collapsible wrapper (Prism.js will add toolbar automatically)
         collapsible_html = f'''<div class="wrap-content-collapsible">
     <input id="{collapse_id}" class="toggle" type="checkbox">
@@ -81,14 +85,14 @@ def wrap_long_code_blocks(html_content, max_lines):
         </div>
     </div>
 </div>'''
-        
+
         return collapsible_html
-    
+
     # Find and replace code blocks
     # Pattern matches <pre><code>...</code></pre> structures
     pattern = r'<pre[^>]*><code[^>]*>.*?</code></pre>'
     result = re.sub(pattern, replace_code_block, html_content, flags=re.DOTALL)
-    
+
     return result
 
 
@@ -169,15 +173,16 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 </body>
 </html>"""
 
+
 def download_all_prism_themes():
     """Download and cache all available Prism themes for offline use."""
     # Official Prism themes from CDNJS
     official_themes = [
-        'prism', 'prism-dark', 'prism-funky', 'prism-okaidia', 
-        'prism-twilight', 'prism-coy', 'prism-solarizedlight', 
+        'prism', 'prism-dark', 'prism-funky', 'prism-okaidia',
+        'prism-twilight', 'prism-coy', 'prism-solarizedlight',
         'prism-tomorrow'
     ]
-    
+
     # Popular editor themes from prism-themes repository
     prism_themes = [
         'prism-one-dark', 'prism-gruvbox-dark', 'prism-gruvbox-light',
@@ -189,13 +194,13 @@ def download_all_prism_themes():
         'prism-ghcolors', 'prism-hopscotch', 'prism-pojoaque', 'prism-vs',
         'prism-xonokai', 'prism-z-touch'
     ]
-    
+
     import urllib.request
     import os
-    
+
     os.makedirs('.prism', exist_ok=True)
     downloaded = 0
-    
+
     # Download official themes
     for theme in official_themes:
         cache_file = f".prism/theme-{theme}.css"
@@ -205,13 +210,13 @@ def download_all_prism_themes():
                 print(f"Downloading official theme: {theme}")
                 with urllib.request.urlopen(theme_url) as response:
                     theme_css = response.read().decode('utf-8')
-                
+
                 with open(cache_file, 'w', encoding='utf-8') as f:
                     f.write(theme_css)
                 downloaded += 1
             except Exception as e:
                 print(f"Failed to download {theme}: {e}")
-    
+
     # Download prism-themes repository themes
     for theme in prism_themes:
         cache_file = f".prism/theme-{theme}.css"
@@ -223,36 +228,38 @@ def download_all_prism_themes():
                 print(f"Downloading prism-themes: {theme}")
                 with urllib.request.urlopen(theme_url) as response:
                     theme_css = response.read().decode('utf-8')
-                
+
                 with open(cache_file, 'w', encoding='utf-8') as f:
                     f.write(theme_css)
                 downloaded += 1
             except Exception as e:
                 print(f"Failed to download {theme}: {e}")
-    
-    print(f"Downloaded {downloaded} new themes. All themes are now cached locally!")
+
+    print(
+        f"Downloaded {downloaded} new themes. All themes are now cached locally!")
     print(f"Total available themes: {len(official_themes + prism_themes)}")
     print("Popular editor themes now available: one-dark, gruvbox-dark, gruvbox-light, material-dark, nord, night-owl, dracula")
+
 
 def add_universal_section_folding(html_content, default_collapsed_sections=None, is_dark_theme=False):
     """
     Simple section folding using JavaScript DOM manipulation instead of complex HTML parsing.
     This avoids breaking existing HTML structure and code blocks.
-    
+
     Args:
         html_content (str): HTML content with headers  
         default_collapsed_sections (list): Section titles that start collapsed (default: ["Solution"])
         is_dark_theme (bool): Whether to apply dark theme to code blocks (default: False)
-    
+
     Returns:
         str: HTML content with collapsible sections added via JavaScript
     """
     if default_collapsed_sections is None:
         default_collapsed_sections = ["Solution", "Answer"]
-    
+
     # Convert collapsed sections list to JavaScript array
     collapsed_sections_js = str(default_collapsed_sections).replace("'", '"')
-    
+
     # Add JavaScript that will process the DOM after page load
     folding_script = f'''
     
@@ -372,8 +379,9 @@ def add_universal_section_folding(html_content, default_collapsed_sections=None,
         }}
     }}
     </script>'''
-    
+
     return html_content + folding_script
+
 
 def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='prism', line_numbers=False, collapse_lines=10, inline_lang='python', enable_toc=True, foldable_sections=None):
     """
@@ -411,11 +419,11 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
         'solarizedlight': 'prism-solarizedlight',
         'funky': 'prism-funky'
     }
-    
+
     # Convert short names to full prism theme names
     if prism_theme in theme_aliases:
         prism_theme = theme_aliases[prism_theme]
-    
+
     # Determine if this is a dark theme - but don't apply to body
     dark_themes = [
         'prism-one-dark', 'prism-gruvbox-dark', 'prism-material-dark', 'prism-nord',
@@ -437,8 +445,9 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
         with open(css_file_path, 'r', encoding='utf-8') as f:
             custom_css = f.read()
     except FileNotFoundError:
-        print(f"Warning: Custom CSS file not found at '{css_file_path}'. Proceeding without it.")
-    
+        print(
+            f"Warning: Custom CSS file not found at '{css_file_path}'. Proceeding without it.")
+
     # Read the exact prism.js that demo.html uses
     prism_js_content = ""
     try:
@@ -447,7 +456,7 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
     except FileNotFoundError:
         print(f"Warning: Local prism.js not found. Using fallback CDN approach.")
         prism_js_content = ""
-    
+
     # Load cached Prism theme CSS for 100% offline support
     prism_theme_css = ""
     cache_file = f".prism/theme-{prism_theme}.css"
@@ -455,26 +464,28 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
         with open(cache_file, 'r', encoding='utf-8') as f:
             prism_theme_css = f.read()
     except FileNotFoundError:
-        print(f"Warning: Theme '{prism_theme}' not found in cache. Run 'python converter.py --download-themes' first.")
+        print(
+            f"Warning: Theme '{prism_theme}' not found in cache. Run 'python converter.py --download-themes' first.")
         prism_theme_css = ""
 
     # Load modern CSS frameworks for cross-platform support
     normalize_css = ""
     modern_base_css = ""
     mobile_responsive_css = ""
-    
+
     try:
         with open('.prism/normalize.css', 'r', encoding='utf-8') as f:
             normalize_css = f.read()
     except FileNotFoundError:
-        print("Warning: normalize.css not found. Cross-browser consistency may be affected.")
-    
+        print(
+            "Warning: normalize.css not found. Cross-browser consistency may be affected.")
+
     try:
         with open('.prism/modern-base.css', 'r', encoding='utf-8') as f:
             modern_base_css = f.read()
     except FileNotFoundError:
         print("Warning: modern-base.css not found. Modern styling may be affected.")
-        
+
     try:
         with open('.prism/mobile-responsive.css', 'r', encoding='utf-8') as f:
             mobile_responsive_css = f.read()
@@ -488,13 +499,13 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
     # 'toc': Table of contents generation from headings (optional)
     extensions = ['extra']
     extension_configs = {}
-    
+
     if enable_toc:
         extensions.append('toc')
         extension_configs['toc'] = {
             'permalink': False  # Don't add permalink anchors to headings
         }
-    
+
     # Configure line numbers but don't add theme classes to body
     if line_numbers:
         line_numbers_css = '<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet" />'
@@ -509,20 +520,22 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
     # Temporarily replace math expressions with placeholders (like md_to_html.py does)
     import re
     math_expressions = []
+
     def replace_math(match):
         math_expressions.append(match.group(0))
         return f"MATHPLACEHOLDER{len(math_expressions)-1}MATHPLACEHOLDER"
-    
+
     # Replace display math first ($$...$$ - can span lines), then inline math ($...$)
-    temp_md_text = re.sub(r'\$\$([^$]+?)\$\$', replace_math, md_text, flags=re.DOTALL)
+    temp_md_text = re.sub(r'\$\$([^$]+?)\$\$',
+                          replace_math, md_text, flags=re.DOTALL)
     temp_md_text = re.sub(r'\$([^$\n]+?)\$', replace_math, temp_md_text)
-    
+
     # Preprocess markdown to fix table formatting issues
     # Add blank lines before tables that don't have them
     def fix_table_formatting(text):
         lines = text.split('\n')
         fixed_lines = []
-        
+
         def is_table_header(line):
             """Check if line looks like a table header row."""
             stripped = line.strip()
@@ -531,7 +544,7 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
             # Count pipe symbols - should have at least 3 (start + separators + end)
             pipe_count = stripped.count('|')
             return pipe_count >= 3
-        
+
         def is_table_separator(line):
             """Check if line looks like a table separator row."""
             stripped = line.strip()
@@ -540,7 +553,7 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
             # Should contain dashes and optionally colons for alignment
             content_between_pipes = stripped[1:-1]  # Remove outer pipes
             cells = [cell.strip() for cell in content_between_pipes.split('|')]
-            
+
             # Each cell should be a combination of dashes, colons, and spaces
             for cell in cells:
                 if not cell:  # Empty cell
@@ -552,7 +565,7 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
                 if '-' not in cell:
                     return False
             return len(cells) >= 2  # At least 2 columns
-        
+
         for i, line in enumerate(lines):
             # Check if this line looks like a table header
             if is_table_header(line):
@@ -563,10 +576,10 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
                     if i > 0 and lines[i - 1].strip() != '':
                         # Add blank line before table
                         fixed_lines.append('')
-            
+
             # Also check for table separator rows (handle cases where header detection missed)
             elif is_table_separator(line):
-                # Look back to see if previous line could be a table header  
+                # Look back to see if previous line could be a table header
                 if (i > 0 and is_table_header(lines[i - 1])):
                     # Previous line is a header, check if we need spacing before it
                     if i > 1 and lines[i - 2].strip() != '':
@@ -577,40 +590,41 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
                             if len(fixed_lines) >= 2 and fixed_lines[-2].strip() != '':
                                 header_line = fixed_lines.pop()  # Remove header
                                 fixed_lines.append('')  # Add blank line
-                                fixed_lines.append(header_line)  # Re-add header
-            
+                                fixed_lines.append(
+                                    header_line)  # Re-add header
+
             fixed_lines.append(line)
-        
+
         return '\n'.join(fixed_lines)
-    
+
     temp_md_text = fix_table_formatting(temp_md_text)
-    
+
     # === LIST PROCESSING MODULE ===
     # Modular functions for nested list detection and formatting
-    
+
     def is_list_item(line):
         """Check if line looks like a list item, including indented ones."""
         stripped = line.strip()
         if not stripped:
             return False
-        
+
         # Check for unordered list markers: -, *, +
         if stripped.startswith(('- ', '* ', '+ ')):
             return True
-        
+
         # Check for ordered list markers: 1., 2., etc.
         import re
         if re.match(r'^\d+\.\s+', stripped):
             return True
-            
+
         return False
-    
+
     def is_heading(line):
         """Check if line is a markdown heading (##, ###, ####, #####)."""
         stripped = line.strip()
         import re
         return re.match(r'^#{2,5}\s+', stripped) is not None
-    
+
     def get_raw_indent(line):
         """Get the raw indentation count (spaces + tabs*4)."""
         indent = 0
@@ -622,101 +636,225 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
             else:
                 break
         return indent
-    
+
     def detect_indent_pattern_in_section(section_lines):
-        """Auto-detect indentation pattern using minimal spacing as base unit."""
+        """Auto-detect indentation pattern using GCD of spacings for mixed patterns."""
         indents = []
         for line in section_lines:
             if is_list_item(line):
                 raw_indent = get_raw_indent(line)
-                indents.append(raw_indent)  # Include all indents, even 0
-        
+                indents.append(raw_indent)
+
         if not indents:
             return 4  # Default to 4-space if no list items found
-        
-        # Find the minimal spacing (which could be 0 for top-level items)
-        min_indent = min(indents)
-        
-        # If all items are at the same level (all same indent), use standard patterns
-        if len(set(indents)) == 1:
-            if min_indent == 0:
-                return 4  # Default for single-level lists
-            elif min_indent <= 2:
+
+        # Remove zero indents for pattern detection
+        non_zero_indents = [indent for indent in indents if indent > 0]
+
+        if not non_zero_indents:
+            return 4  # All items at top level
+
+        # If only one non-zero level, determine standard pattern
+        if len(set(non_zero_indents)) == 1:
+            indent = non_zero_indents[0]
+            if indent <= 2:
                 return 2
-            elif min_indent <= 4:
+            elif indent <= 4:
                 return 4
             else:
-                return min_indent  # Use the actual spacing
-        
-        # For multi-level lists, use the minimal non-zero spacing as the unit
-        non_zero_indents = [indent for indent in indents if indent > 0]
-        if non_zero_indents:
-            base_unit = min(non_zero_indents)
-            return base_unit
+                return indent
+
+        # Multiple indent levels - find GCD to handle mixed patterns
+        import math
+
+        # Calculate differences between consecutive indent levels
+        unique_indents = sorted(set(non_zero_indents))
+
+        # Find the greatest common divisor of all non-zero indents
+        # This handles cases like [2, 4, 4, 8] -> GCD=2 or [4, 8] -> GCD=4
+        gcd_result = unique_indents[0]
+        for indent in unique_indents[1:]:
+            gcd_result = math.gcd(gcd_result, indent)
+
+        # Ensure we get a reasonable base unit (2 or 4 typically)
+        if gcd_result == 1:
+            # If GCD is 1, fall back to minimum non-zero indent
+            return min(non_zero_indents)
         else:
-            return 4  # All items are at level 0, use default
-    
+            return gcd_result
+
     def split_into_sections(lines):
         """Split the document into sections based on headings (##, ###, ####, #####)."""
         sections = []
         current_section_lines = []
         current_section_start = 0
-        
+
         for i, line in enumerate(lines):
             if is_heading(line):
                 # If we have accumulated lines, save the previous section
                 if current_section_lines:
-                    sections.append((current_section_start, i - 1, current_section_lines))
+                    sections.append(
+                        (current_section_start, i - 1, current_section_lines))
                 # Start new section with this heading
                 current_section_lines = [line]
                 current_section_start = i
             else:
                 current_section_lines.append(line)
-        
+
         # Add the final section
         if current_section_lines:
-            sections.append((current_section_start, len(lines) - 1, current_section_lines))
-        
+            sections.append((current_section_start, len(
+                lines) - 1, current_section_lines))
+
         return sections
-    
+
     def get_list_indent_level(line, indent_unit):
         """Get the logical indentation level of a list item."""
         if not is_list_item(line):
             return -1
-        
+
         raw_indent = get_raw_indent(line)
         return raw_indent // indent_unit
-    
+
+    def detect_list_blocks(lines):
+        """Detect separate list blocks and their indentation patterns."""
+        list_blocks = []
+        current_block = []
+        current_start = -1
+
+        for i, line in enumerate(lines):
+            if is_list_item(line):
+                current_indent = get_raw_indent(line)
+
+                # Check if this should start a new block
+                should_start_new_block = False
+
+                if not current_block:
+                    # First list item - start new block
+                    should_start_new_block = True
+                elif current_indent == 0:
+                    # This is a top-level item
+                    # Check if previous item was also top-level with nested items after it
+                    last_item_indent = get_raw_indent(current_block[-1][1])
+
+                    # If we have a current block and this is a new top-level item,
+                    # and the last item in the block was nested (not top-level),
+                    # then this likely starts a new list
+                    if last_item_indent > 0:
+                        should_start_new_block = True
+                    # Also check if we're switching from an ordered to unordered list or vice versa
+                    elif last_item_indent == 0:
+                        last_item_type = 'ordered' if re.match(
+                            r'^\d+\.', current_block[-1][1].strip()) else 'unordered'
+                        current_item_type = 'ordered' if re.match(
+                            r'^\d+\.', line.strip()) else 'unordered'
+                        # For consecutive top-level items of the same type, check indentation pattern compatibility
+                        block_indents = [get_raw_indent(
+                            item[1]) for item in current_block if get_raw_indent(item[1]) > 0]
+                        if block_indents:
+                            # If current block has mixed indentation (both small and large values), split
+                            min_indent = min(block_indents)
+                            max_indent = max(block_indents)
+                            if min_indent <= 2 and max_indent >= 4:
+                                should_start_new_block = True
+
+                if should_start_new_block and current_block:
+                    # End current block
+                    block_lines = [item[1] for item in current_block]
+                    indent_pattern = detect_indent_pattern_for_block(
+                        block_lines)
+                    list_blocks.append(
+                        (current_start, current_block[-1][0], indent_pattern, current_block))
+                    current_block = []
+
+                if not current_block:  # Start new block
+                    current_start = i
+                current_block.append((i, line))
+            else:
+                # Non-list line
+                if current_block:
+                    # End current block and detect its pattern
+                    block_lines = [item[1] for item in current_block]
+                    indent_pattern = detect_indent_pattern_for_block(
+                        block_lines)
+                    list_blocks.append(
+                        (current_start, current_block[-1][0], indent_pattern, current_block))
+                    current_block = []
+
+        # Handle final block
+        if current_block:
+            block_lines = [item[1] for item in current_block]
+            indent_pattern = detect_indent_pattern_for_block(block_lines)
+            list_blocks.append(
+                (current_start, current_block[-1][0], indent_pattern, current_block))
+
+        return list_blocks
+
+    def detect_indent_pattern_for_block(block_lines):
+        """Detect indentation pattern for a single list block."""
+        indents = []
+        for line in block_lines:
+            raw_indent = get_raw_indent(line)
+            indents.append(raw_indent)
+
+        non_zero_indents = [indent for indent in indents if indent > 0]
+
+        if not non_zero_indents:
+            return 4  # All items at top level
+
+        # For a single block, use the minimal spacing between levels
+        unique_indents = sorted(set(indents))
+
+        # If only two levels (0 and something), use standard patterns
+        if len(unique_indents) == 2 and unique_indents[0] == 0:
+            indent = unique_indents[1]
+            if indent <= 2:
+                return 2
+            elif indent <= 4:
+                return 4
+            else:
+                return indent
+
+        # Find minimum non-zero spacing between levels
+        if len(unique_indents) > 1:
+            min_diff = float('inf')
+            for i in range(1, len(unique_indents)):
+                diff = unique_indents[i] - unique_indents[i-1]
+                if diff > 0:
+                    min_diff = min(min_diff, diff)
+
+            if min_diff != float('inf'):
+                return min_diff
+
+        # Fallback to minimum non-zero indent
+        return min(non_zero_indents) if non_zero_indents else 4
+
     # Main list formatting function
     def fix_list_formatting(text):
         """Fix list formatting issues by adding blank lines and normalizing indentation."""
         lines = text.split('\n')
         fixed_lines = []
-        
-        # Split document into sections and process each with its own indentation pattern
-        sections = split_into_sections(lines)
-        section_indent_units = {}
-        
-        # Detect indentation pattern for each section
-        for start_idx, end_idx, section_lines in sections:
-            indent_unit = detect_indent_pattern_in_section(section_lines)
-            section_indent_units[(start_idx, end_idx)] = indent_unit
-        
-        # Process lines with section-specific indentation detection
+
+        # Detect separate list blocks with their own patterns
+        list_blocks = detect_list_blocks(lines)
+        block_patterns = {}
+
+        # Store pattern for each line index
+        for start_idx, end_idx, pattern, block_items in list_blocks:
+            for line_idx, line_content in block_items:
+                block_patterns[line_idx] = pattern
+
+        # Process lines with block-specific indentation detection
         for i, line in enumerate(lines):
-            # Find which section this line belongs to
-            current_indent_unit = 4  # default
-            for (start_idx, end_idx), indent_unit in section_indent_units.items():
-                if start_idx <= i <= end_idx:
-                    current_indent_unit = indent_unit
-                    break
-            
             # Check if this line is a list item
             if is_list_item(line):
-                # Calculate the logical nesting level using our detection
+                # Get the pattern for this specific list block
+                current_indent_unit = block_patterns.get(i, 4)
+
+                # Calculate the logical nesting level using block-specific pattern
                 raw_indent = get_raw_indent(line)
                 current_level = raw_indent // current_indent_unit
-                
+
                 # Normalize ALL list items to use 4-space indentation standard
                 stripped_content = line.strip()
                 if current_level > 0:
@@ -726,39 +864,40 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
                 else:
                     # Top-level items have no indentation
                     normalized_line = stripped_content
-                
+
                 line = normalized_line
-                
+
                 # Check if we need to add a blank line before this list item
                 should_add_blank = False
-                
+
                 if i > 0 and lines[i - 1].strip() != '':
                     prev_line = lines[i - 1]
-                    
+
                     # If previous line is NOT a list item, this starts a new list
                     # Exception: Don't add blank after headings as it's usually not needed
                     if not is_list_item(prev_line) and not is_heading(prev_line):
                         should_add_blank = True
                     # If previous line IS a list item, never add blank lines
                     # This preserves the nested structure and continuous lists
-                
+
                 if should_add_blank:
                     fixed_lines.append('')
-            
+
             fixed_lines.append(line)
-        
+
         return '\n'.join(fixed_lines)
-    
+
     # === END LIST PROCESSING MODULE ===
-    
+
     # Preprocess markdown to fix list formatting issues
-    
+
     temp_md_text = fix_list_formatting(temp_md_text)
-    
+
     # Convert markdown to HTML
-    md_converter = markdown.Markdown(extensions=extensions, extension_configs=extension_configs)
+    md_converter = markdown.Markdown(
+        extensions=extensions, extension_configs=extension_configs)
     html_body = md_converter.convert(temp_md_text)
-    
+
     # Restore math expressions as proper MathJax script tags
     def restore_math(match):
         index = int(match.group(1))
@@ -771,18 +910,19 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
             # Inline math
             content = original_math[1:-1]
             return f'<script type="math/tex">{content}</script>'
-    
-    html_body = re.sub(r'MATHPLACEHOLDER(\d+)MATHPLACEHOLDER', restore_math, html_body)
-    
+
+    html_body = re.sub(r'MATHPLACEHOLDER(\d+)MATHPLACEHOLDER',
+                       restore_math, html_body)
+
     # Add Topic and Thumbnail admonition styling for Problem sections
     def add_topic_thumbnail_admonitions(html_content):
         """
         Convert Topic and Thumbnail pairs under Problem sections to a single orange admonition.
-        
+
         Example:
         **Topic**: Multicritical points (123)
         **Thumbnail**: Description text
-        
+
         Becomes:
         <div class="admonition orange">
             <p class="admonition-orange">Multicritical points (123)</p>
@@ -790,48 +930,54 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
         </div>
         """
         import re
-        
+
         # Pattern to match Topic followed by Thumbnail
         pattern = r'<p><strong>Topic</strong>:\s*(.*?)</p>\s*<p><strong>Thumbnail</strong>:\s*(.*?)</p>'
-        
+
         def replace_with_combined_admonition(match):
-            topic_content = match.group(1)    # Content of Topic (becomes title)
-            thumbnail_content = match.group(2) # Content of Thumbnail (becomes body)
-            
+            # Content of Topic (becomes title)
+            topic_content = match.group(1)
+            # Content of Thumbnail (becomes body)
+            thumbnail_content = match.group(2)
+
             return f'''<div class="admonition orange">
         <p class="admonition-orange">{topic_content}</p>
         {thumbnail_content}
     </div>'''
-        
+
         # Also handle cases where there's only Topic (no Thumbnail)
         pattern_topic_only = r'<p><strong>Topic</strong>:\s*(.*?)</p>(?!\s*<p><strong>Thumbnail</strong>)'
-        
+
         def replace_topic_only(match):
             topic_content = match.group(1)
             return f'''<div class="admonition orange">
         <p class="admonition-orange">{topic_content}</p>
     </div>'''
-        
+
         # First handle Topic+Thumbnail pairs, then handle standalone Topics
-        html_content = re.sub(pattern, replace_with_combined_admonition, html_content, flags=re.DOTALL)
-        html_content = re.sub(pattern_topic_only, replace_topic_only, html_content, flags=re.DOTALL)
-        
+        html_content = re.sub(
+            pattern, replace_with_combined_admonition, html_content, flags=re.DOTALL)
+        html_content = re.sub(
+            pattern_topic_only, replace_topic_only, html_content, flags=re.DOTALL)
+
         return html_content
-    
+
     html_body = add_topic_thumbnail_admonitions(html_body)
-    
+
     # --- 4. Auto-collapse long code blocks if specified ---
     if collapse_lines:
         html_body = wrap_long_code_blocks(html_body, collapse_lines)
-    
+
     # --- 4.5. Add universal section folding functionality ---
     if foldable_sections is not None:
-        html_body = add_universal_section_folding(html_body, foldable_sections, is_dark_theme)
-    
+        html_body = add_universal_section_folding(
+            html_body, foldable_sections, is_dark_theme)
+
     # --- 4.6. Convert JSON code blocks to use JavaScript highlighting ---
     # Replace language-json with language-javascript for Prism compatibility
-    html_body = html_body.replace('class="language-json"', 'class="language-javascript"')
-    
+    html_body = html_body.replace(
+        'class="language-json"', 'class="language-javascript"')
+
     # --- 4.5. Add language class to inline code for highlighting ---
     if inline_lang:
         # Replace inline code with language-specific classes for Prism.js highlighting
@@ -841,22 +987,22 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
             # Convert JSON to javascript for Prism highlighting (since JSON isn't in our bundle)
             highlight_lang = "javascript" if inline_lang == "json" else inline_lang
             return f'<code class="language-{highlight_lang}">{code_content}</code>'
-        
+
         # Only replace code tags that are not preceded by <pre> (inline code)
         # This regex finds <code>content</code> not preceded by <pre> on the same line
-        html_body = re.sub(r'(?<!<pre>)<code>([^<]+)</code>', add_inline_lang, html_body)
-    
+        html_body = re.sub(
+            r'(?<!<pre>)<code>([^<]+)</code>', add_inline_lang, html_body)
+
     # --- 4.5. Prism.js will automatically add toolbar to code blocks ---
     # No manual wrapping needed
 
     # --- 5. Prism.js handles code highlighting via CDN ---
     # No need to generate CSS for code highlighting
-    
+
     # Extract title from the first H1 tag, or use filename
     title = md_file_path.split('/')[-1].split('.')[0].replace('_', ' ').title()
     if '<h1>' in html_body:
         title = html_body.split('<h1>')[1].split('</h1>')[0]
-
 
     # --- 6. Assemble the final HTML document ---
     final_html = HTML_TEMPLATE.format(
@@ -876,14 +1022,17 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
 
     return final_html
 
+
 def main():
     """Main function to handle command-line arguments."""
     parser = argparse.ArgumentParser(
         description="Convert a Markdown file to a styled HTML document.",
         formatter_class=argparse.RawTextHelpFormatter
     )
-    parser.add_argument("input_file", nargs='?', help="Path to the input Markdown file (.md).")
-    parser.add_argument("output_file", nargs='?', help="Path for the output HTML file (.html). If not provided, uses input filename with .html extension.")
+    parser.add_argument("input_file", nargs='?',
+                        help="Path to the input Markdown file (.md).")
+    parser.add_argument("output_file", nargs='?',
+                        help="Path for the output HTML file (.html). If not provided, uses input filename with .html extension.")
     parser.add_argument(
         "--css",
         default=".prism/style.css",
@@ -950,24 +1099,26 @@ def main():
     inline_lang = None if args.inline_lang.lower() == 'none' else args.inline_lang
     collapse_lines = None if args.collapse == 0 else args.collapse
     enable_toc = not args.no_toc
-    # Handle fold-sections argument properly  
+    # Handle fold-sections argument properly
     if args.fold_sections == []:  # Empty list when --fold-sections used without args - use default
         foldable_sections = ["Solution"]  # Use the default value
     elif args.fold_sections is None:  # Not provided at all - use default sections
         foldable_sections = ["Solution", "Answer"]  # Enable by default
     else:  # Non-empty list - use as provided
         foldable_sections = args.fold_sections
-    full_html = convert_md_to_html(args.input_file, args.css, args.theme, args.line_numbers, collapse_lines, inline_lang, enable_toc, foldable_sections)
+    full_html = convert_md_to_html(args.input_file, args.css, args.theme,
+                                   args.line_numbers, collapse_lines, inline_lang, enable_toc, foldable_sections)
 
     # Write to output file
     try:
         with open(output_file, 'w', encoding='utf-8') as f:
             f.write(full_html)
-        print(f"✅ Successfully converted '{args.input_file}' to '{output_file}'")
+        print(
+            f"✅ Successfully converted '{args.input_file}' to '{output_file}'")
     except IOError as e:
         print(f"Error: Could not write to output file '{output_file}'.\n{e}")
         sys.exit(1)
 
+
 if __name__ == "__main__":
     main()
-

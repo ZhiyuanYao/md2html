@@ -239,10 +239,11 @@ The system uses this JavaScript solution to measure actual table width vs conten
 ```css
 .markdown-body {
     color: #24292e;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
     font-size: 13px;
     line-height: 1.5;
-    width: 700px;  /* ← Critical: This is our content width reference */
+    word-wrap: break-word;
+    width: 700px; /* Critical: This is our content width reference */
     text-align: left;
     padding: 1em 2em 2em 2em;
     margin: auto;
@@ -255,14 +256,14 @@ The system uses this JavaScript solution to measure actual table width vs conten
 ```css
 .markdown-body table {
     display: table;
-    border-collapse: separate;  /* ← Enables rounded corners */
+    border-collapse: separate;
     border-spacing: 0;
     margin: 24px auto;
     border-radius: 8px;
     background: #ffffff;
     border: 1px solid #e5e7eb;
-    width: auto;  /* ← Key: Natural width, not forced 100% */
-    overflow: hidden;  /* ← Clips content to rounded borders */
+    width: auto;
+    overflow: hidden;
 }
 ```
 
@@ -1168,6 +1169,116 @@ A `fix_list_formatting()` function similar to `fix_table_formatting()` that adds
 5. **Session 16**: Content collapsible padding conflicts and final polish
 6. **Current**: List detection issue identification (similar to table fix)
 
+### 8. Section Header Spacing Issues
+
+**The Problem:**
+Excessive spacing between section headers (h4) and their content in collapsible sections, creating large gaps that made the document look unprofessional.
+
+#### Root Cause Analysis:
+Multiple CSS rules were adding unwanted spacing:
+
+1. **Header Container Padding**:
+```css
+.section-collapsible-header {
+    padding: 8px 0 !important;  /* Top and bottom padding */
+    margin: 8px 0 !important;   /* Top and bottom margin */
+}
+```
+
+2. **Header Element Spacing**:
+```css
+.markdown-body h4 {
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+```
+
+3. **Content Container Top Margin**:
+```css
+.section-collapsible-content.expanded {
+    margin-top: 0px !important;  /* Still had top margin from other rules */
+}
+```
+
+#### The Complete Solution (✅):
+```css
+/* 1. Remove header container spacing */
+.section-collapsible-header {
+    padding: 6px 0 !important;  /* Minimal spacing between sections */
+    margin: 6px 0 !important;   /* Reduced from 8px */
+}
+
+/* 2. Remove header element spacing inside collapsible */
+.section-collapsible-header h1,
+.section-collapsible-header h2,
+.section-collapsible-header h3,
+.section-collapsible-header h4,
+.section-collapsible-header h5,
+.section-collapsible-header h6 {
+    margin: 0 !important;     /* Remove all margins */
+    padding: 0 !important;    /* Remove all padding */
+}
+
+/* 3. Remove content container spacing */
+.section-collapsible-content.expanded {
+    display: block !important;
+    padding: 0 !important;        /* Remove all padding */
+    margin-top: 0px !important;   /* Remove top margin */
+}
+
+/* 4. Remove first element margin in content */
+.section-collapsible-content.expanded > *:first-child {
+    margin-top: 0px !important;  /* Remove top margin from first paragraph/list */
+}
+```
+
+**Result:**
+- Tight spacing between section headers and content
+- Professional document appearance
+- No indentation issues
+- Clean alignment between headers and content
+
+### 9. Collapsible Code Block Shifting Fix
+
+**The Problem:**
+Code blocks would visually "jump" just before collapsing, creating jarring animation.
+
+**Root Cause:**
+Width property changed between collapsed and expanded states: `width: 100%` → `width: max-content`
+
+**The Essential Fix:**
+Keep width properties identical in both states to prevent layout recalculation.
+
+```css
+/* Fix for code shifting during collapse - keep width consistent in both states */
+.wrap-content-collapsible .content-collapsible-content pre,
+.wrap-content-collapsible .content-collapsible-content .content-inner pre {
+    display: block !important;
+    visibility: visible !important;
+    margin: 0 !important;
+    padding: 10px 0px 10px 20px !important;
+    background-color: #f0f2f5 !important;
+    max-height: none !important;
+    overflow: visible !important;
+    width: max-content !important; /* Key fix: collapsed state uses max-content (same as expanded) */
+    min-width: 100% !important;
+}
+
+/* Expanded state - inherits width: max-content from above to prevent shifting */
+.toggle:checked+.lbl-toggle+.content-collapsible-content pre,
+.toggle:checked+.lbl-toggle+.content-collapsible-content .content-inner pre {
+    /* Inherits width: max-content + min-width: 100% - no width change = no shift */
+}
+```
+
+**Why This Works:**
+- Both states use identical `width: max-content` + `min-width: 100%`
+- No property changes during transition = no layout recalculation = no shifting
+- Only the container's `max-height` changes during collapse animation
+
+**Essential Principle:**
+Don't change layout properties (width, padding, margins) between CSS states during transitions.
+
 ### Key Lessons Learned
 
 1. **DOM Manipulation > String Parsing**: JavaScript DOM manipulation is safer than HTML string parsing
@@ -1175,6 +1286,7 @@ A `fix_list_formatting()` function similar to `fix_table_formatting()` that adds
 3. **CSS Specificity**: Use `!important` strategically to override complex cascading
 4. **User Testing**: Real-world usage reveals edge cases not caught in initial development
 5. **Iterative Development**: Complex UI features require multiple refinement cycles
+6. **Spacing Control**: Multiple CSS rules can compound to create excessive spacing - systematic removal needed
 
 ### Development Approach That Worked
 

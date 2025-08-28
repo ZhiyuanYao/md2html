@@ -28,41 +28,19 @@ if __name__ == "__main__":
 
 ### List Example
 
-Knowledge Points Tested:
-- Angular displacement ($\theta$), angular velocity ($\omega$), and angular acceleration ($\alpha$)
-- Relationship between linear distance (arc length) and angular displacement: $S = R\theta$
-- Kinematic equations for constant angular acceleration: $\theta = \omega_0 t + \frac{1}{2}\alpha t^2$ and $\omega = \omega_0 + \alpha t$
-- Tangential speed as the linear velocity of a point on the rim: $v = R\omega$
+1. First list item
+    - First nested list item
+        - Second nested list item
 
-
-Knowledge Points Tested:
-
-- Angular displacement ($\theta$), angular velocity ($\omega$), and angular acceleration ($\alpha$)
-- Relationship between linear distance (arc length) and angular displacement: $S = R\theta$
-- Kinematic equations for constant angular acceleration: $\theta = \omega_0 t + \frac{1}{2}\alpha t^2$ and $\omega = \omega_0 + \alpha t$
-- Tangential speed as the linear velocity of a point on the rim: $v = R\omega$
-
-Knowledge Points Tested:
-    - Angular displacement ($\theta$), angular velocity ($\omega$), and angular acceleration ($\alpha$)
-    - Relationship between linear distance (arc length) and angular displacement: $S = R\theta$
-    - Kinematic equations for constant angular acceleration: $\theta = \omega_0 t + \frac{1}{2}\alpha t^2$ and $\omega = \omega_0 + \alpha t$
-    - Tangential speed as the linear velocity of a point on the rim: $v = R\omega$
-
-
-Knowledge Points Tested:
-
-  - Angular displacement ($\theta$), angular velocity ($\omega$), and angular acceleration ($\alpha$)
-  - Relationship between linear distance (arc length) and angular displacement: $S = R\theta$
-  - Kinematic equations for constant angular acceleration: $\theta = \omega_0 t + \frac{1}{2}\alpha t^2$ and $\omega = \omega_0 + \alpha t$
-  - Tangential speed as the linear velocity of a point on the rim: $v = R\omega$
-
-
-
-
+2. First list item
+    - First nested list item
+        - Second nested list item
 
 ## Problem 1
 
 **Topic**: Multicritical points (123)
+
+**Thumbnail**: For a system described by two coupled scalar order parameters at a stable tetracritical point, calculate the mean-field ratio of the two order parameter magnitudes in the mixed-symmetry phase.
 
 ### Problem Statement
 
