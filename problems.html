@@ -778,6 +778,7 @@ body {
     line-height: 1.25;
     margin-bottom: 0px;
     margin-top: 24px;
+    padding-bottom: 0px;
 }
 
 .markdown-body h1 {
@@ -804,18 +805,24 @@ body {
 }
 
 .markdown-body h3 {
-    /* color: green; */
     color: #149963;
     font-size: 1.5em;
     padding-bottom: 2px;
-    /* border-bottom: 1px solid rgba(106, 177, 106, 0.7); */
 }
 
 .markdown-body h4 {
-    /* color: #4545FF; */
     color: #248be5;
     font-size: 1.25em;
-    /* border-bottom: 1px solid #eaecef; */
+    padding-bottom: 0px;
+    margin-bottom: 8px;
+    margin-top: 12px;
+}
+
+/* Reduce spacing between h4 and following content */
+.markdown-body h4 + p,
+.markdown-body h4 + ul,
+.markdown-body h4 + ol {
+    margin-top: 0px;
 }
 
 .markdown-body h5 {
@@ -946,23 +953,24 @@ body {
 }
 
 .markdown-body table th {
-    padding: 12px 24px;
+    padding: 8px 24px;
     text-align: left;
     font-weight: 600;
     color: #374151;
-    font-size: 0.95em;
+    font-size: 0.9em;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     border: none;
 }
 
 .markdown-body table td {
-    padding: 11px 24px;
+    padding: 7px 24px;
     border-bottom: 1px solid #f3f4f6;
     color: #4b5563;
     background: #ffffff;
     border-left: none;
     border-right: none;
+    font-size: 0.95em;
 }
 
 /* Reduce padding when table approaches 70% of content width (490px of 700px) */
@@ -977,11 +985,11 @@ body {
 @media (max-width: 800px) {
     /* Content area becoming constrained, reduce table padding */
     .markdown-body table th {
-        padding: 12px 16px !important;
+        padding: 8px 16px !important;
         background: red !important;
     }
     .markdown-body table td {
-        padding: 11px 16px !important;
+        padding: 7px 16px !important;
         background: yellow !important;
     }
 }
@@ -989,11 +997,11 @@ body {
 @media (max-width: 750px) {
     /* Approaching 70% threshold for 700px content */
     .markdown-body table th {
-        padding: 12px 12px !important;
+        padding: 8px 12px !important;
         background: blue !important;
     }
     .markdown-body table td {
-        padding: 11px 12px !important;
+        padding: 7px 12px !important;
         background: green !important;
     }
 }
@@ -1001,11 +1009,11 @@ body {
 @media (max-width: 700px) {
     /* At content width limit, minimal padding */
     .markdown-body table th {
-        padding: 12px 8px !important;
+        padding: 8px 8px !important;
         background: purple !important;
     }
     .markdown-body table td {
-        padding: 11px 8px !important;
+        padding: 7px 8px !important;
         background: orange !important;
     }
 }
@@ -1302,7 +1310,8 @@ body.dark-theme .lbl-toggle:hover {
 .wrap-content-collapsible .content-collapsible-content {
     max-height: 0px;
     overflow: hidden;
-    transition: max-height .25s ease-in-out;
+    transition: max-height .25s ease-in-out, opacity .15s ease-in-out;
+    opacity: 0;
 }
 
 /* Content area when expanded - with horizontal scrolling */
@@ -1310,6 +1319,7 @@ body.dark-theme .lbl-toggle:hover {
     max-height: 100vh !important;
     overflow-x: auto !important;
     overflow-y: visible !important;
+    opacity: 1 !important;
 }
 
 /* Content-inner background styling - matches zhiyuanyao.css */
@@ -1335,9 +1345,9 @@ body .toggle:checked+.lbl-toggle+.content-collapsible-content {
     position: relative !important;
 }
 
-/* Ensure pre code blocks display properly in content-collapsible when expanded */
-.toggle:checked+.lbl-toggle+.content-collapsible-content pre,
-.content-collapsible-content pre {
+/* Fix for code shifting during collapse - keep width consistent in both states */
+.wrap-content-collapsible .content-collapsible-content pre,
+.wrap-content-collapsible .content-collapsible-content .content-inner pre {
     display: block !important;
     visibility: visible !important;
     margin: 0 !important;
@@ -1345,8 +1355,14 @@ body .toggle:checked+.lbl-toggle+.content-collapsible-content {
     background-color: #f0f2f5 !important;
     max-height: none !important;
     overflow: visible !important;
-    width: max-content !important;
+    width: max-content !important; /* Key fix: collapsed state uses max-content (same as expanded) */
     min-width: 100% !important;
+}
+
+/* Expanded state - inherits width: max-content from above to prevent shifting */
+.toggle:checked+.lbl-toggle+.content-collapsible-content pre,
+.toggle:checked+.lbl-toggle+.content-collapsible-content .content-inner pre {
+    /* Inherits width: max-content + min-width: 100% - no width change = no shift */
 }
 
 .toggle:checked+.lbl-toggle+.content-collapsible-content pre.dark-theme,
@@ -1570,8 +1586,9 @@ body.dark-theme .collapsible-content pre {
 .section-collapsible-header {
     cursor: pointer !important;
     user-select: none !important;
-    padding: 8px 0 !important;
-    margin: 8px 0 !important;
+    /*To have proper spacing between ## ### #### etc */
+    padding: 6px 0 !important;
+    margin: 6px 0 !important;
     background: transparent !important;
     border-radius: 0 !important;
     transition: all 0.2s ease !important;
@@ -1608,6 +1625,11 @@ body.dark-theme .collapsible-content pre {
 .section-collapsible-content.expanded {
     display: block !important;
     padding: 0 !important;
+    margin-top: 0px !important;
+}
+
+.section-collapsible-content.expanded > *:first-child {
+    margin-top: 0px !important;
 }
 
 .section-collapsible-header h1,
@@ -1616,7 +1638,9 @@ body.dark-theme .collapsible-content pre {
 .section-collapsible-header h4,
 .section-collapsible-header h5,
 .section-collapsible-header h6 {
+    /*spacing between section header and content*/
     margin: 0 !important;
+    padding: 0 !important;
     display: inline-block !important;
     width: calc(100% - 25px) !important;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol !important;
@@ -1680,15 +1704,15 @@ body.dark-theme .collapsible-content pre {
     overflow-x: visible;
 }
 
-/* Collapsible content pre block styling - restore scrollbars and backgrounds */
+/* Ensure consistent padding for collapsible pre elements */
 .collapsible-content pre:not(.dark-theme),
 .wrap-content-collapsible .content-collapsible-content pre:not(.dark-theme) {
     overflow: auto !important;
     overflow-x: auto !important;
     overflow-y: auto !important;
-    background-color: #f0f2f5 !important; /* Light theme background */
+    background-color: #f0f2f5 !important;
     border-radius: 3px !important;
-    padding: 0.5em 1em !important;
+    padding: 10px 0px 10px 20px !important; /* Must match padding above */
 }
 
 /* Dark theme collapsible pre styling */

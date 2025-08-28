@@ -1,44 +1,44 @@
 ## angular displacement, velocity, and acceleration
 
 ### Problem 0
-#### Background
+##### Background
 In mechanical systems, pulleys connected by belts are commonly used to transfer rotational motion. The linear displacement of the belt must be consistent across all pulleys in contact. A small pulley of radius $r$ is connected to a larger pulley of radius $R$ via a belt. When the small pulley rotates, it drives the larger pulley, but the angular displacements differ due to the radius ratio. Understanding this relationship requires converting angular units and applying fundamental kinematic principles.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conversion between degrees and radians.  
 2. Relationship between linear displacement and angular displacement: $s = r \theta$ (where $\theta$ is in radians).  
 3. Conservation of belt length: linear displacement is identical for both pulleys.  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Rotational kinematics: connects angular displacement to linear motion through radius.  
 - Geometry: arc length calculations rely on angular units.  
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Mechanical engineering: pulley systems are used in engines, conveyor belts, and elevators.  
 - Robotics: precise angular control is essential for robotic arm movements.  
 
-#### Real-World Applications
+##### Real-World Applications
 - Automotive timing belts: synchronize crankshaft and camshaft rotations in engines.  
 - Factory conveyor systems: transfer rotational motion between shafts of different diameters.  
 
-#### Problem Statement
+##### Problem Statement
 A motor rotates a small pulley of radius $r$ by 150 degrees. This pulley drives a larger pulley of radius $R$ via a belt. Determine the angular displacement of the larger pulley in radians. Express your answer as an analytic expression in terms of $r$ and $R$.
 
 ### Solution
-#### Step 1: Convert initial angular displacement to radians  
+##### Step 1: Convert initial angular displacement to radians  
 The small pulley's angular displacement is given as 150 degrees. To convert degrees to radians, use the conversion factor $\pi \text{ radians} = 180^\circ$:  
 $$  
 \theta_{\text{small}} = 150^\circ \times \frac{\pi}{180} = \frac{150\pi}{180} = \frac{5\pi}{6} \text{ radians}.  
 $$  
 
-#### Step 2: Relate angular displacement to linear belt displacement  
+##### Step 2: Relate angular displacement to linear belt displacement  
 The linear displacement $s$ of the belt is determined by the small pulley's rotation:  
 $$  
 s = r \cdot \theta_{\text{small}} = r \cdot \frac{5\pi}{6}.  
 $$  
 Since the belt is inextensible, this same linear displacement $s$ applies to the larger pulley.  
 
-#### Step 3: Express larger pulley's angular displacement  
+##### Step 3: Express larger pulley's angular displacement  
 For the larger pulley, linear displacement $s$ relates to its angular displacement $\theta_{\text{large}}$ (in radians) and radius $R$:  
 $$  
 s = R \cdot \theta_{\text{large}}.  
@@ -48,7 +48,7 @@ $$
 R \cdot \theta_{\text{large}} = r \cdot \frac{5\pi}{6}.  
 $$  
 
-#### Step 4: Solve for $\theta_{\text{large}}$  
+##### Step 4: Solve for $\theta_{\text{large}}$  
 Isolate $\theta_{\text{large}}$:  
 $$  
 \theta_{\text{large}} = \frac{r}{R} \cdot \frac{5\pi}{6} = \frac{5\pi r}{6R}.  
@@ -60,26 +60,26 @@ $$\boxed{\dfrac{5\pi r}{6R}}$$
 
 ------
 ### Problem 1
-#### Background  
+##### Background  
 In aerospace engineering, satellite reaction wheels control orientation by changing rotational speed. Consider a reaction wheel that begins rotating at $\omega_0$ rad/s but experiences a deliberate angular acceleration decay to prevent overshoot. The angular acceleration follows $\alpha(t) = -\kappa \omega(t)$, where $\kappa$ is a positive constant, and $\omega(t)$ is the instantaneous angular velocity.  
 
-#### Knowledge Points Tested  
+##### Knowledge Points Tested  
 1. Relationship between angular displacement ($\theta$), velocity ($\omega$), and acceleration ($\alpha$)  
 2. Solving differential equations for rotational motion  
 3. Definite integration of time-dependent angular velocity  
 
-#### Intradisciplinary Connections  
+##### Intradisciplinary Connections  
 - Connects to torque ($\tau = I\alpha$) in rotational dynamics  
 - Extends to conservation of angular momentum when external torque is zero  
 
-#### Interdisciplinary Connections  
+##### Interdisciplinary Connections  
 - Aerospace: Attitude control systems in satellites  
 - Control Theory: Exponential decay models in feedback systems  
 
-#### Real-World Applications  
+##### Real-World Applications  
 Reaction wheels in Hubble Space Telescope maintain precise pointing for astronomical observations. Acceleration decay prevents mechanical stress during maneuvers.  
 
-#### Problem Statement  
+##### Problem Statement  
 The reaction wheel starts with initial angular velocity $\omega_0$ at $t=0$. Given $\alpha(t) = -\kappa \omega(t)$ where $\kappa$ is constant:  
 1. Derive $\omega(t)$ as a function of $\omega_0$, $\kappa$, and $t$  
 2. Find the total angular displacement $\Delta\theta$ between $t=0$ and $t=T$  
@@ -87,13 +87,13 @@ Express $\Delta\theta$ symbolically using only $\omega_0$, $\kappa$, and $T$.
 *Final answer must be an analytic expression in simplest form.*
 
 ### Solution
-#### Step 1: Relate acceleration and velocity  
+##### Step 1: Relate acceleration and velocity  
 Angular acceleration is the derivative of angular velocity:  
 $$\alpha = \frac{d\omega}{dt}$$  
 Substitute given acceleration model:  
 $$\frac{d\omega}{dt} = -\kappa \omega$$  
 
-#### Step 2: Solve the differential equation  
+##### Step 2: Solve the differential equation  
 Separate variables and integrate:  
 $$\int_{\omega_0}^{\omega} \frac{d\omega'}{\omega'} = -\kappa \int_0^t dt'$$  
 Solve integrals:  
@@ -101,13 +101,13 @@ $$\ln \left| \frac{\omega}{\omega_0} \right| = -\kappa t$$
 Exponentiate both sides:  
 $$\omega(t) = \omega_0 e^{-\kappa t}$$  
 
-#### Step 3: Derive angular displacement  
+##### Step 3: Derive angular displacement  
 Angular velocity is the derivative of displacement:  
 $$\omega = \frac{d\theta}{dt} \implies d\theta = \omega  dt$$  
 Integrate from $t=0$ to $t=T$:  
 $$\Delta\theta = \int_0^T \omega(t)  dt = \int_0^T \omega_0 e^{-\kappa t}  dt$$  
 
-#### Step 4: Evaluate the integral  
+##### Step 4: Evaluate the integral  
 Compute the definite integral:  
 $$\Delta\theta = \omega_0 \left[ -\frac{1}{\kappa} e^{-\kappa t} \right]_0^T = \omega_0 \left( -\frac{e^{-\kappa T}}{\kappa} + \frac{1}{\kappa} \right)$$  
 Simplify:  
@@ -118,28 +118,28 @@ $$\boxed{\dfrac{\omega_{0}\left(1 - e^{-\kappa T}\right)}{\kappa}}$$
 
 ------
 ### Problem 10
-#### Background
+##### Background
 A wheel, modeled as a solid cylinder, is initially at rest on a horizontal surface. A constant horizontal force $F$ is applied at its center, causing it to roll without slipping. This scenario illustrates how forces induce rotational motion through torque and how constraints like rolling without slipping link linear and angular dynamics. The moment of inertia for a solid cylinder about its central axis is $I = \frac{1}{2} M R^2$, where $M$ is the mass and $R$ is the radius.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Newton's second law for linear motion ($\sum F = Ma$).
 2. Newton's second law for rotational motion ($\sum \tau = I \alpha$).
 3. Rolling without slipping constraint ($a = R \alpha$).
 4. Kinematics of constant angular acceleration ($\theta = \frac{1}{2} \alpha t^2$ for $\omega_0 = 0$).
 5. Moment of inertia of symmetric bodies.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 Connects linear acceleration to angular acceleration via the rolling constraint, integrates force/torque relationships, and applies rotational kinematics—demonstrating how linear and rotational dynamics unify under mechanical constraints.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Relevant to mechanical engineering (vehicle drivetrain design), robotics (wheeled locomotion), and physics (energy methods in rigid-body dynamics).
 
-#### Real-World Applications
+##### Real-World Applications
 - Automotive traction systems where forces applied to wheels induce rotation without skidding.
 - Industrial conveyor systems using driven rollers to transport materials efficiently.
 - Analysis of planetary rovers navigating terrain via controlled wheel torques.
 
-#### Problem Statement
+##### Problem Statement
 A solid cylindrical wheel of mass $M$ and radius $R$ starts from rest on a horizontal surface. A constant horizontal force $F$ is applied at its center, causing it to roll without slipping. Derive an expression for the angular displacement $\theta$ of the wheel after time $t$.  
 Express $\theta$ symbolically in terms of $M$, $R$, $F$, $t$, and fundamental constants. Simplify the expression fully.  
 *Reminder: The moment of inertia is $I = \frac{1}{2} M R^2$.*
@@ -180,32 +180,32 @@ $$\boxed{\dfrac{F t^{2}}{3 M R}}$$
 
 ------
 ### Problem 11
-#### Background
+##### Background
 Ferris wheels are iconic amusement park rides that operate on principles of rotational motion. As the wheel rotates, each point on its rim experiences two accelerations: centripetal (radial) acceleration towards the center and tangential acceleration along the path. Tangential acceleration arises from changes in angular speed and directly affects how quickly riders' linear speed changes. This problem explores the physics of a Ferris wheel undergoing angular acceleration.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. **Angular kinematics**: Relationship between angular displacement, velocity, and acceleration.
 2. **Tangential acceleration**: Derivation from angular acceleration and radius.
 3. **Uniform angular acceleration**: Application of kinematic equations for rotational motion.
 4. **Unit conversion**: Revolutions to radians for angular displacement.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Circular motion**: Tangential acceleration complements centripetal acceleration in analyzing rotational dynamics.
 - **Kinematics**: Parallels between linear motion (displacement, velocity, acceleration) and rotational analogs.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Motor torque requirements for Ferris wheels depend on angular acceleration.
 - **Transportation**: Similar acceleration principles apply to wheel dynamics in vehicles.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Amusement ride design**: Engineers calculate tangential acceleration to ensure smooth starts/stops and passenger comfort.
 - **Industrial machinery**: Conveyor belts and rotating drums use these principles for speed control.
 
-#### Problem Statement
+##### Problem Statement
 A Ferris wheel of radius $R$ starts from rest and undergoes constant angular acceleration. It completes $N$ full revolutions in time $T$. Derive an expression for the tangential acceleration $a_t$ at the rim at any instant during this motion. Express your answer solely in terms of $R$, $N$, and $T$.
 
 ### Solution
-#### Step 1: Relate angular displacement to given parameters
+##### Step 1: Relate angular displacement to given parameters
 The angular displacement $\theta$ for $N$ revolutions is:
 
 $$
@@ -213,7 +213,7 @@ $$
 $$
 
 
-#### Step 2: Apply angular kinematics equation
+##### Step 2: Apply angular kinematics equation
 For constant angular acceleration starting from rest ($\omega_0 = 0$):
 
 $$
@@ -227,7 +227,7 @@ $$
 $$
 
 
-#### Step 3: Solve for angular acceleration $\alpha$
+##### Step 3: Solve for angular acceleration $\alpha$
 Rearrange the equation:
 
 $$
@@ -235,7 +235,7 @@ $$
 $$
 
 
-#### Step 4: Relate tangential and angular acceleration
+##### Step 4: Relate tangential and angular acceleration
 Tangential acceleration $a_t$ is given by:
 
 $$
@@ -249,7 +249,7 @@ a_t = R \left( \frac{4\pi N}{T^2} \right) = \frac{4\pi N R}{T^2}
 $$
 
 
-#### Conclusion
+##### Conclusion
 The tangential acceleration at the rim is constant (due to uniform angular acceleration) and derived as $\frac{4\pi N R}{T^2}$.
 
 ### Answer
@@ -257,26 +257,26 @@ $$\boxed{\dfrac{4\pi N R}{T^{2}}}$$
 
 ------
 ### Problem 12
-#### Background
+##### Background
 Flywheels are mechanical energy storage devices used in applications ranging from industrial machinery to electric vehicles. The motor driving a flywheel often has complex torque-speed characteristics. In this scenario, the motor's torque control system causes the angular acceleration to depend nonlinearly on the angular velocity.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of angular acceleration as the time derivative of angular velocity: $\alpha = \frac{d\omega}{dt}$.
 2. Solving separable first-order differential equations.
 3. Applying initial conditions to determine constants of integration.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects angular kinematics to calculus by requiring the integration of a time-dependent angular acceleration. It also demonstrates how rotational dynamics extends linear motion concepts to circular paths.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The differential equation solved here appears in control systems engineering (motor dynamics), fluid dynamics (viscous drag), and population biology (growth models), illustrating how similar mathematical structures arise across disciplines.
 
-#### Real-World Applications
+##### Real-World Applications
 - Regenerative braking systems in electric vehicles, where motor torque is controlled based on wheel speed.
 - Industrial centrifuges with acceleration profiles designed to minimize mechanical stress during startup.
 - Energy storage flywheels in grid stabilization systems, where rotational speed governs power output.
 
-#### Problem Statement
+##### Problem Statement
 A flywheel is driven by a specialized motor that produces an angular acceleration $\alpha$ proportional to the square root of its instantaneous angular velocity $\omega$, such that $\alpha = \gamma \sqrt{\omega}$, where $\gamma$ is a positive constant. At time $t = 0$, the flywheel has an initial angular velocity $\omega_0$. Derive an expression for the angular velocity $\omega$ at time $t$. Express your answer in terms of $\gamma$, $\omega_0$, and $t$.
 
 ### Solution
@@ -319,31 +319,31 @@ $$\boxed{\left( \sqrt{\omega_0} + \frac{\gamma t}{2} \right)^2}$$
 
 ------
 ### Problem 13
-#### Background
+##### Background
 Ceiling fans are common household appliances that rotate to circulate air. When turned off, they gradually slow down due to friction and air resistance. This deceleration is uniform if the retarding torque is constant. Understanding angular motion parameters like deceleration is essential for designing efficient motor systems and predicting stopping times in rotating machinery.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Unit conversion: revolutions per minute (rpm) to radians per second (rad/s).
 2. Kinematic equations for uniformly decelerated rotational motion.
 3. Magnitude calculation of angular deceleration.
 4. Symbolic manipulation of rotational dynamics equations.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to linear kinematics through analogous equations (e.g., $v = u + at$ vs. $\omega_f = \omega_i + \alpha t$).
 - Relates to torque and moment of inertia in rotational dynamics, where $\tau = I\alpha$.
 - Extends to energy methods (rotational kinetic energy $\frac{1}{2}I\omega^2$) for power dissipation analysis.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering:** Motor design and braking systems in appliances/electric vehicles require precise deceleration control.
 - **Aerodynamics:** Air resistance on fan blades involves fluid dynamics principles.
 - **Control Systems:** Feedback mechanisms for maintaining constant speed or soft-stop features.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Industrial Safety:** Calculating stopping distances for rapidly rotating equipment (e.g., lathes, turbines).
 - **Automotive:** Anti-lock braking systems (ABS) and regenerative braking in electric vehicles.
 - **Consumer Electronics:** Optimizing battery life in cordless tools by modeling deceleration profiles.
 
-#### Problem Statement
+##### Problem Statement
 A ceiling fan initially rotating at 120 revolutions per minute (rpm) decelerates uniformly and comes to rest after 15 seconds. Derive an expression for the magnitude of the angular deceleration ($\alpha$) in rad/s². Use the following symbols:  
 - $\omega_i$ for initial angular velocity in rpm,  
 - $t$ for time in seconds.  
@@ -354,7 +354,7 @@ Express $\alpha$ symbolically in terms of $\omega_i$ and $t$. Simplify the expre
 - Do not include units or numerical substitutions.
 
 ### Solution
-#### Step 1: Convert initial angular velocity to rad/s
+##### Step 1: Convert initial angular velocity to rad/s
 The initial angular velocity is given in rpm. Convert to rad/s:  
 - 1 revolution = $2\pi$ radians,  
 - 1 minute = 60 seconds.  
@@ -365,7 +365,7 @@ $$
 $$
 
 
-#### Step 2: Apply the kinematic equation for uniform deceleration
+##### Step 2: Apply the kinematic equation for uniform deceleration
 The final angular velocity ($\omega_f$) is 0 rad/s (rest). For uniform deceleration:  
 
 $$
@@ -379,7 +379,7 @@ $$
 $$
 
 
-#### Step 3: Solve for angular acceleration
+##### Step 3: Solve for angular acceleration
 Rearrange to isolate $\alpha$:  
 
 $$
@@ -393,7 +393,7 @@ $$
 $$
 
 
-#### Step 4: Simplify the expression
+##### Step 4: Simplify the expression
 The expression $\frac{\omega_i \pi}{30t}$ is already simplified. This is the symbolic form of the angular deceleration magnitude.
 
 ### Answer
@@ -401,27 +401,27 @@ $$\boxed{\dfrac{\omega_i \pi}{30t}}$$
 
 ------
 ### Problem 14
-#### Background
+##### Background
 A bicycle wheel rotates about its central axis. The wheel has a diameter $d$, meaning its radius $r = d/2$. Centripetal acceleration $a_c$ is experienced by points on the wheel's edge due to rotational motion. Centripetal acceleration arises from the change in direction of velocity and depends on the angular velocity of rotation.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Relationship between centripetal acceleration and angular velocity: $a_c = r \omega^2$.
 - Connection between diameter and radius: $r = d/2$.
 - Algebraic manipulation to solve for angular velocity $\omega$.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Rotational kinematics: Relates angular displacement, angular velocity, and angular acceleration.
 - Circular motion: Centripetal acceleration is perpendicular to tangential velocity and directed toward the center.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering:** Wheel design in vehicles requires understanding rotational dynamics to ensure structural integrity.
 - **Sports science:** Analysis of cycling performance involves angular velocity and centripetal forces on wheels.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Bicycle safety:** Excessive centripetal acceleration at high speeds can cause wheel deformation or failure.
 - **Amusement rides:** Ferris wheels and carousels rely on controlled angular velocity to maintain safe centripetal acceleration for riders.
 
-#### Problem Statement
+##### Problem Statement
 A bicycle wheel of diameter $d$ rotates about its axis. The centripetal acceleration at the edge of the wheel is $a_c$. Derive an expression for the angular velocity $\omega$ of the wheel in terms of $d$ and $a_c$.  
 Express your answer symbolically using the variables $d$ and $a_c$.
 
@@ -449,31 +449,31 @@ $$\boxed{\sqrt{\frac{2a_c}{d}}}$$
 
 ------
 ### Problem 15
-#### Background
+##### Background
 Flywheels are mechanical energy storage devices that rotate about a fixed axis, commonly used in engines, industrial machinery, and power grid stabilization systems. Their ability to maintain rotational inertia makes them ideal for smoothing out torque fluctuations. This problem explores the kinematics of a uniformly accelerating flywheel, requiring you to derive its angular acceleration from fundamental principles of rotational motion.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conversion between angular units (revolutions to radians)
 2. Rotational kinematics equations for constant angular acceleration
 3. Algebraic manipulation to solve for angular acceleration without time dependence
 4. Simplification of exact symbolic expressions
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to rotational dynamics (torque and moment of inertia), conservation of angular momentum, and the relationship between linear and rotational motion (tangential acceleration, centripetal force).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Mechanical Engineering**: Flywheel design in kinetic energy recovery systems (KERS)
 - **Physics**: Analogies between linear and rotational kinematics
 - **Energy Technology**: Calculating rotational energy storage $E = \frac{1}{2}I\omega^2$
 
-#### Real-World Applications
+##### Real-World Applications
 Flywheels buffer energy in:
 1. Diesel-electric locomotives during acceleration/deceleration
 2. Satellite attitude control systems
 3. Uninterruptible power supplies (UPS) for data centers
 4. Formula 1 hybrid powertrains (energy recovery under braking)
 
-#### Problem Statement
+##### Problem Statement
 A flywheel undergoes uniform angular acceleration while completing exactly 50 revolutions. Its angular velocity increases from $5  \text{rad/s}$ to $20  \text{rad/s}$ during this motion. Derive an exact expression for the angular acceleration $\alpha$ in terms of $\pi$, simplified to lowest terms. Use the following steps:  
 1. Convert angular displacement to SI units.  
 2. Apply the appropriate rotational kinematics equation that relates initial angular velocity $\omega_i$, final angular velocity $\omega_f$, angular displacement $\theta$, and angular acceleration $\alpha$ without time dependence.  
@@ -558,28 +558,28 @@ This is the exact expression simplified to lowest terms.
 
 ------
 ### Problem 16
-#### Background
+##### Background
 In automotive engineering, the motion of a wheel is analyzed using rotational kinematics. When a vehicle moves at a constant speed, its wheels roll without slipping. This means the distance traveled by the vehicle equals the arc length unrolled by the tire. The relationship between the vehicle's linear speed and the tire's rotational motion is fundamental to designing speedometers, traction control systems, and anti-lock braking systems (ABS).
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of angular velocity and its relationship to linear speed.
 2. Rolling without slipping condition.
 3. Derivation of physical models from fundamental principles.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to circular motion, rigid body dynamics, and the kinematics of rotational systems. It also reinforces concepts like arc length, period of rotation, and centripetal acceleration.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Mechanical Engineering**: Wheel dynamics in vehicle design.
 - **Robotics**: Motion planning for wheeled robots.
 - **Physics**: Conservation of energy in rotational and translational systems.
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibrating wheel speed sensors in ABS to prevent skidding.
 - Designing gear ratios in transmissions for electric vehicles.
 - Calculating centripetal forces on tires during high-speed turns in race cars.
 
-#### Problem Statement
+##### Problem Statement
 A car moves in a straight line at a constant linear speed $v$. Its tires have radius $R$ and roll without slipping on the road. Derive an expression for the angular velocity $\omega$ of the tires in terms of $v$ and $R$. Justify each step using the rolling-without-slipping condition and fundamental kinematic equations.
 
 ### Solution
@@ -653,26 +653,26 @@ The angular velocity $\omega$ is derived as $\frac{v}{R}$ by enforcing the rolli
 
 ------
 ### Problem 17
-#### Background
+##### Background
 Rotational motion is a fundamental concept in physics, describing the movement of objects around a fixed axis. In many mechanical systems, such as braking disks in vehicles or spinning components in machinery, controlled deceleration is essential for safety and functionality. This problem involves analyzing the angular kinematics of a disk undergoing constant deceleration.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Equations for rotational motion with constant angular acceleration.
 2. Relationship between angular displacement, angular velocity, and time.
 3. Derivation of time from initial and final angular velocities and angular displacement.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to torque and moment of inertia (which cause angular acceleration) and to the broader study of rigid body dynamics. It also reinforces analogies between rotational and linear kinematics (e.g., angular displacement vs. linear displacement).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Rotational motion principles are applied in mechanical engineering (e.g., designing braking systems), aerospace (e.g., satellite attitude control), and robotics (e.g., controlling joint rotations). Understanding deceleration times is critical for optimizing performance and safety in these fields.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Automotive Engineering**: Calculating stopping times for brake disks to prevent overheating.
 - **Industrial Machinery**: Determining slowdown periods for rotating saw blades or turbines to avoid damage.
 - **Consumer Electronics**: Modeling spin-down times for hard disk drives during power loss.
 
-#### Problem Statement
+##### Problem Statement
 A disk rotates with an initial angular velocity of 8 rad/s. It experiences a constant angular deceleration and slows to a final angular velocity of 2 rad/s while rotating through an angular displacement of 30 radians. Derive an expression for the time elapsed during this deceleration, then compute its exact numerical value in seconds. Express your final answer as an exact number, providing only the numerical value without units.
 
 *Note: Ensure all steps in your derivation use symbolic reasoning before substituting numerical values.*
@@ -751,33 +751,33 @@ $$\boxed{6}$$
 
 ------
 ### Problem 18
-#### Background
+##### Background
 In a washing machine, the drum rotates at high speeds during the spin cycle to remove water from clothes through centrifugal force. The centripetal acceleration at the rim of the drum is a critical factor in the design, as it determines the force exerted on the clothes. Understanding this acceleration in terms of Earth's gravitational acceleration $g$ provides insight into the relative strength of the forces involved.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conversion of rotational speed from revolutions per minute (rpm) to angular velocity in radians per second.
 2. Calculation of centripetal acceleration using angular velocity and radius.
 3. Expression of physical quantities in terms of fundamental constants and given parameters.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Rotational Kinematics**: Relates angular displacement, velocity, and acceleration.
 - **Circular Motion**: Centripetal acceleration arises from the change in direction of velocity in circular paths.
 - **Units and Dimensions**: Ensures consistency in unit conversions and dimensional analysis.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Applies to the design of rotating machinery, such as washing machines and centrifuges, where forces must be calculated to prevent structural failure.
 - **Physics**: Demonstrates the principles of rotational dynamics and their application to everyday technology.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Washing Machine Design**: Engineers must ensure the drum can withstand the centripetal forces to avoid excessive wear or failure.
 - **Centrifuges**: Used in medical and scientific laboratories to separate substances by density, relying on high centripetal accelerations.
 - **Amusement Park Rides**: Rides like spinning platforms or roller coasters with circular sections require precise force calculations for safety.
 
-#### Problem Statement
+##### Problem Statement
 A washing machine drum rotates at a constant rotational speed of $N$ revolutions per minute (rpm). The inner radius of the drum is $R$. Derive an expression for the centripetal acceleration, $a$, at the rim of the drum. Express $a$ as a multiple of Earth's gravitational acceleration $g$, i.e., in the form $a = (\text{expression}) \cdot g$. Use the symbols $N$, $R$, and $g$ in your expression. Ensure your final answer is simplified and explicitly includes $g$.
 
 ### Solution
-#### Step 1: Convert Rotational Speed to Angular Velocity
+##### Step 1: Convert Rotational Speed to Angular Velocity
 The rotational speed is given as $N$ revolutions per minute (rpm). To find the angular velocity $\omega$ in radians per second:
 - There are $2\pi$ radians in one revolution.
 - There are 60 seconds in one minute.
@@ -786,7 +786,7 @@ $$
 \omega = \frac{2\pi N}{60} = \frac{\pi N}{30}  \text{rad/s}.
 $$
 
-#### Step 2: Derive Centripetal Acceleration
+##### Step 2: Derive Centripetal Acceleration
 The centripetal acceleration $a$ for a point at radius $R$ moving with angular velocity $\omega$ is given by:
 $$
 a = \omega^2 R.
@@ -796,7 +796,7 @@ $$
 a = \left( \frac{\pi N}{30} \right)^2 R = \frac{\pi^2 N^2}{900} R.
 $$
 
-#### Step 3: Express in Terms of $g$
+##### Step 3: Express in Terms of $g$
 To express $a$ as a multiple of $g$, write:
 $$
 a = \left( \frac{\pi^2 N^2 R}{900 g} \right) \cdot g.
@@ -808,31 +808,31 @@ $$\boxed{\dfrac{\pi^{2} N^{2} R}{900 g} \cdot g}$$
 
 ------
 ### Problem 19
-#### Background
+##### Background
 A conical pendulum consists of a mass (like a stone) attached to a string that moves in a horizontal circular path. The string traces out a cone, maintaining a constant angle with the vertical. This setup is commonly observed in physics demonstrations and has applications in centrifuges and amusement park rides, where rotational motion must be analyzed.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Relationship between tangential speed, angular velocity, and radius in circular motion.
 2. Geometric derivation of the radius of the circular path in a conical pendulum.
 3. Conversion of rotational kinematics (revolutions and time) to angular velocity.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to centripetal force (though not directly used here), as tangential speed and radius determine centripetal acceleration ($a_c = v^2 / r$).
 - Extends to angular acceleration when motion is non-uniform.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Used in designing rotating machinery and stability analysis of spinning objects.
 - **Sports Science**: Models the motion of athletes or equipment in rotational sports (e.g., hammer throw).
 
-#### Real-World Applications
+##### Real-World Applications
 - **Centrifuges**: In medical labs, conical pendulum principles help separate substances by density using high tangential speeds.
 - **Amusement Rides**: Swinging pendulum rides (e.g., "Pirate Ship") use similar dynamics for pendulum-based motion.
 
-#### Problem Statement
+##### Problem Statement
 A stone tied to a string of length $L$ is whirled as a conical pendulum. The string makes a constant angle $\theta$ (in radians) with the vertical. The stone completes $N$ revolutions in time $T$. Derive an expression for the tangential speed $v$ of the stone in terms of $L$, $\theta$, $N$, and $T$. Ensure all trigonometric functions are left unevaluated (e.g., $\sin(\theta)$).
 
 ### Solution
-#### Step-by-Step Derivation
+##### Step-by-Step Derivation
 
 **Step 1: Find the angular velocity $\omega$**  
 The stone completes $N$ revolutions in time $T$. Each revolution corresponds to $2\pi$ radians. Thus, the total angular displacement is $2\pi N$ radians. The angular velocity $\omega$ is the rate of change of angular displacement:  
@@ -855,32 +855,32 @@ $$\boxed{\dfrac{2\pi L N \sin(\theta)}{T}}$$
 
 ------
 ### Problem 2
-#### Background
+##### Background
 Amusement park engineers are testing a new rotating ride designed to simulate gravitational forces. The ride starts from rest and undergoes a controlled angular acceleration. To ensure passenger safety and comfort, the engineers model the ride's motion profile carefully. The angular acceleration is engineered to increase linearly with time, providing a smooth transition from rest to the desired angular velocity.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Fundamental relationships between angular acceleration, angular velocity, and time
 - Integration techniques for time-dependent acceleration
 - Application of initial conditions in rotational kinematics
 - Deriving physical quantities from first principles
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to linear kinematics with constant jerk (third derivative of position)
 - Extends concepts of constant acceleration to time-varying acceleration
 - Reinforces calculus foundations in physics contexts
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Calculus**: Integration of polynomial functions and application of definite integrals
 - **Engineering**: Motion profile design in mechanical systems
 - **Biomechanics**: Simulated gravity effects on human physiology
 
-#### Real-World Applications
+##### Real-World Applications
 - Design of centrifugal trainers for astronaut preparation
 - Amusement ride safety certification
 - Industrial centrifuges for material separation
 - Artificial gravity systems in space habitat prototypes
 
-#### Problem Statement
+##### Problem Statement
 A rotating space habitat simulator starts from rest at $ t = 0 $. Its angular acceleration increases linearly with time according to $ \alpha(t) = kt $, where $ k $ is a constant. At time $ t = T $, the angular velocity is measured to be $ \omega_f $.  
 
 Determine the constant $ k $ in terms of measurable quantities. Then derive an expression for the angular displacement $ \theta $ of the simulator during the time interval $ [0, T] $. Express your final answer for $ \theta $ exclusively in terms of $ \omega_f $ and $ T $.
@@ -916,27 +916,27 @@ $$\boxed{\dfrac{\omega_f T}{3}}$$
 
 ------
 ### Problem 20
-#### Background
+##### Background
 In the quality control testing of an electric bicycle's braking system, engineers analyze the rotational motion of the wheels. When brakes are applied, friction generates torque that causes angular deceleration. Understanding this deceleration is critical for evaluating stopping performance and safety compliance. In a controlled test, the rear wheel's angular velocity decreases uniformly from an initial value to a final value over a specific angular displacement.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Application of rotational kinematics equations for constant angular acceleration.
 - Derivation of angular acceleration using the relationship between angular velocity and displacement.
 - Interpretation of deceleration as the magnitude of negative angular acceleration.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to linear kinematics ($v_f^2 = v_i^2 + 2 a d$) through analogous rotational equations.
 - Relates to torque and moment of inertia in dynamics, which govern angular acceleration.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Essential for designing braking systems in vehicles and industrial machinery.
 - **Robotics**: Used in control algorithms for precise rotational motion of joints and wheels.
 
-#### Real-World Applications
+##### Real-World Applications
 - Automotive safety testing: Calculating deceleration rates ensures brakes meet regulatory standards.
 - Manufacturing: Optimizing stopping distances in conveyor systems or rotating equipment enhances efficiency and safety.
 
-#### Problem Statement
+##### Problem Statement
 During a braking test, a bicycle wheel decelerates uniformly from an initial angular velocity of $\omega_i = 7$ rad/s to a final angular velocity of $\omega_f = 2$ rad/s. This occurs over an angular displacement of $\theta = 15$ radians. Derive an expression for the angular deceleration (defined as the magnitude of the angular acceleration) in terms of $\omega_i$, $\omega_f$, and $\theta$. Then, compute its numerical value.
 
 **Final Answer Requirements:**
@@ -1003,29 +1003,29 @@ $$\boxed{\dfrac{3}{2}}$$
 
 ------
 ### Problem 21
-#### Background
+##### Background
 In vintage record players, turntables rotate at precise speeds to play vinyl records correctly. When switching between speeds, the turntable accelerates uniformly to avoid damaging the record. This problem explores the angular acceleration during such a speed change.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conversion of angular velocity between revolutions per minute (rpm) and radians per second (rad/s).  
 2. Definition of constant angular acceleration.  
 3. Application of kinematic equations for rotational motion under uniform acceleration.  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects rotational kinematics to linear kinematics through analogous equations (e.g., $\alpha = \Delta\omega / \Delta t$ mirrors $a = \Delta v / \Delta t$). It reinforces the concept of uniform acceleration across motion types.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Angular acceleration calculations are vital in engineering disciplines:  
 - **Mechanical Engineering**: Designing motor control systems for turntables, drones, or electric vehicles.  
 - **Robotics**: Ensuring precise joint rotations in robotic arms.  
 - **Aerospace**: Controlling the spin stabilization of satellites.  
 
-#### Real-World Applications
+##### Real-World Applications
 - **Audio Technology**: Turntables require specific angular accelerations to transition between standard speeds (e.g., 33⅓ rpm to 45 rpm) without causing audible distortion or record wear.  
 - **Industrial Systems**: Conveyor belts, centrifuges, and wind turbines rely on controlled angular acceleration for efficient operation.  
 - **Everyday Devices**: Washing machine spin cycles and computer hard drives use similar principles for speed changes.  
 
-#### Problem Statement
+##### Problem Statement
 A turntable accelerates uniformly from an initial angular speed of $\omega_i$ revolutions per minute (rpm) to a final angular speed of $\omega_f$ rpm over a time interval of $t$ seconds. Derive an expression for the angular acceleration $\alpha$ in radians per second squared (rad/s²). Express your answer symbolically in terms of $\omega_i$, $\omega_f$, $t$, and the constant $\pi$.  
 
 **Answer Format Instructions**:  
@@ -1081,24 +1081,24 @@ $$\boxed{\dfrac{\pi \left( \omega_f - \omega_i \right)}{30 t}}$$
 
 ------
 ### Problem 22
-#### Background
+##### Background
 In rotational mechanics, the motion of a rigid body can be described using angular quantities. Consider a disk rotating about a fixed axis through its center. A point on the rim of the disk moves in a circular path with a radius equal to the disk's radius. Tangential acceleration describes the rate of change of the tangential speed, while angular acceleration quantifies how rapidly the angular velocity changes.  
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Relationship between tangential acceleration $a_t$ and angular acceleration $\alpha$  
 - Definition of angular acceleration  
 - Circular motion kinematics  
 
-#### Intradisciplinary Connections  
+##### Intradisciplinary Connections  
 This problem connects to torque and moment of inertia (dynamics of rotation), centripetal acceleration (uniform circular motion), and angular velocity (kinematics).  
 
-#### Interdisciplinary Connections  
+##### Interdisciplinary Connections  
 Rotational motion principles apply to engineering (e.g., designing flywheels in engines), astronomy (celestial body rotation), and biomechanics (joint movements).  
 
-#### Real-World Applications  
+##### Real-World Applications  
 Understanding angular acceleration is essential in devices like hard drives (disk rotation speed control), amusement park rides (e.g., spinning platforms), and industrial machinery (conveyor belt systems).  
 
-#### Problem Statement  
+##### Problem Statement  
 A disk of radius $R$ rotates about its central axis. At a specific instant, a point on the rim experiences a tangential acceleration $a_t$. Derive an expression for the angular acceleration $\alpha$ of the disk in terms of $R$ and $a_t$.
 
 ### Solution
@@ -1136,28 +1136,28 @@ $$\boxed{\dfrac{a_t}{R}}$$
 
 ------
 ### Problem 23
-#### Background
+##### Background
 Centrifuges are essential in laboratories for separating substances of different densities. They operate by spinning samples at high angular velocities. Understanding the rotational kinematics of a centrifuge rotor is crucial for designing safe and efficient protocols. This problem explores the acceleration phase of a centrifuge rotor starting from rest.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conversion between revolutions and radians for angular displacement.  
 2. Application of rotational kinematics equations, specifically $\omega^2 = \omega_0^2 + 2\alpha\theta$.  
 3. Algebraic manipulation to solve for angular acceleration $\alpha$.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to linear kinematics ($v^2 = u^2 + 2as$) through rotational analogs.  
 - Reinforces unit consistency (radians vs. revolutions) in rotational dynamics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering:** Centrifuge design requires precise acceleration profiles to prevent mechanical failure.  
 - **Biology/Chemistry:** Centrifugation protocols depend on controlled angular acceleration to isolate cellular components.
 
-#### Real-World Applications
+##### Real-World Applications
 - Medical diagnostics: Separating blood plasma from cells in centrifuges.  
 - Industrial processes: Purifying chemicals or materials through density-based separation.  
 - Aerospace: Testing components under high-g conditions using centrifugal force.
 
-#### Problem Statement
+##### Problem Statement
 A laboratory centrifuge rotor starts from rest ($\omega_0 = 0$) and accelerates uniformly. It completes exactly 200 revolutions while reaching a final angular velocity of $\omega = 100  \text{rad/s}$. Derive an expression for the angular acceleration $\alpha$ of the rotor. Express your answer as an exact analytic expression in simplest form. Do not substitute numerical values for constants.  
 
 **Answer format requirements:**  
@@ -1217,30 +1217,30 @@ $$\boxed{\dfrac{25}{2\pi}}$$
 
 ------
 ### Problem 24
-#### Background
+##### Background
 In mechanical energy storage systems, flywheels store rotational kinetic energy and are vital for applications requiring energy stabilization. When disconnected from power, friction causes constant angular deceleration. Consider a prototype flywheel in a laboratory experiment designed to test energy recovery efficiency during controlled deceleration.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Kinematic equations for rotational motion with constant angular acceleration
 2. Relationship between angular velocity, angular acceleration, and angular displacement
 3. Algebraic manipulation to derive expressions from fundamental equations
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to torque and moment of inertia in rotational dynamics
 - Extends linear motion concepts (velocity, acceleration, displacement) to rotational analogs
 - Relates to energy conservation principles in rotational systems
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Mechanical Engineering: Flywheel design for energy storage in regenerative braking systems
 - Aerospace Engineering: Attitude control systems using reaction wheels
 - Energy Science: Kinetic energy recovery systems (KERS) in sustainable technology
 
-#### Real-World Applications
+##### Real-World Applications
 - Flywheel energy storage in electric grid stabilization
 - Regenerative braking in electric vehicles and trains
 - Inertial navigation systems in spacecraft and aircraft
 
-#### Problem Statement
+##### Problem Statement
 A laboratory flywheel decelerates uniformly from an initial angular velocity $\omega_i$ to a final angular velocity $\omega_f$ over a time interval $t$. Derive a closed-form expression for the total angular displacement $\theta$ undergone by the flywheel during this deceleration. Express your answer solely in terms of $\omega_i$, $\omega_f$, and $t$.
 
 ### Solution
@@ -1274,26 +1274,26 @@ $$\boxed{\dfrac{1}{2} \left( \omega_i + \omega_f \right) t}$$
 
 ------
 ### Problem 25
-#### Background
+##### Background
 In circular motion, the total acceleration of a particle arises from two perpendicular components: tangential acceleration (due to changing speed) and centripetal acceleration (due to changing direction). This concept is essential in analyzing systems ranging from rotating machinery to planetary orbits.  
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Vector composition of tangential and centripetal accelerations  
 - Relationship between angular/linear kinematics: $a_t = r \alpha$, $a_c = r \omega^2$  
 - Magnitude calculation for perpendicular vectors: $a = \sqrt{a_t^2 + a_c^2}$  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 Connects to rotational dynamics (torque, moment of inertia) and harmonic motion, where angular acceleration and velocity govern oscillatory behavior.  
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering:** Critical in designing centrifuges, turbines, and vehicle stability systems.  
 - **Astronomy:** Models non-uniform circular motion in celestial mechanics (e.g., elliptical orbits).  
 
-#### Real-World Applications  
+##### Real-World Applications  
 - **Automotive Safety:** Calculating total acceleration during banked turns with varying speed informs road design and anti-skid systems.  
 - **Industrial Machinery:** Determines stress limits on rotating components like flywheels or robotic arms under angular acceleration.  
 
-#### Problem Statement  
+##### Problem Statement  
 A particle undergoes circular motion with radius $r$, angular velocity $\omega$, and angular acceleration $\alpha$. Derive an expression for the magnitude of its total acceleration $a$. Express your answer symbolically in terms of $r$, $\omega$, and $\alpha$.
 
 ### Solution
@@ -1341,24 +1341,24 @@ $$\boxed{r \sqrt{\alpha^{2} + \omega^{4}}}$$
 
 ------
 ### Problem 26
-#### Background
+##### Background
 Spinning tops are fascinating toys that exhibit rotational motion. When set spinning, they gradually slow down due to friction and air resistance, providing a practical example of angular deceleration. In this problem, we analyze the motion of a top that starts with a given angular velocity and decelerates at a constant rate. The goal is to determine how long it takes to complete a specific angular displacement—two full revolutions—before coming to a complete stop.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Kinematic equations for rotational motion with constant angular acceleration.
 2. Solving quadratic equations arising from displacement-time relationships.
 3. Physical interpretation of mathematical solutions in rotational contexts.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects rotational kinematics to linear kinematics through analogous equations of motion (e.g., displacement, velocity, and acceleration relationships). It also reinforces the concept of angular displacement in circular motion and its relation to revolutions.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Rotational deceleration models appear in mechanical engineering (e.g., braking systems in rotating machinery) and aerospace engineering (e.g., spin stabilization of satellites). The mathematics involved (quadratic equations) overlaps with algebra and calculus.
 
-#### Real-World Applications
+##### Real-World Applications
 Understanding the deceleration of rotating objects is crucial for designing mechanical systems like flywheels, centrifuges, and gyroscopes. It also applies to everyday objects such as merry-go-rounds, ceiling fans, and sports equipment (e.g., discus throw).
 
-#### Problem Statement
+##### Problem Statement
 A spinning top has an initial angular velocity $\omega_0$ and experiences a constant angular deceleration of magnitude $\alpha$. Determine the time $t$ it takes for the top to complete exactly two full revolutions (an angular displacement of $4\pi$ radians) before it stops. Express your answer symbolically in terms of $\omega_0$, $\alpha$, and $\pi$.
 
 **Answer Format Requirements:**
@@ -1422,29 +1422,29 @@ $$\boxed{\dfrac{\omega_0 - \sqrt{\omega_0^{2} - 8\pi\alpha}}{\alpha}}$$
 
 ------
 ### Problem 27
-#### Background
+##### Background
 In mechanical engineering, the analysis of rotating systems is critical for designing components like flywheels in energy storage systems or turbochargers in automotive engines. A flywheel starting from rest and undergoing constant angular acceleration is a fundamental scenario for understanding how rotational kinetic energy builds up during angular displacement. This problem explores the kinematic relationship between angular acceleration, displacement, and final velocity without involving time as an explicit variable.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Kinematic equations for rotational motion with constant angular acceleration  
 - Derivation of angular velocity from angular displacement and acceleration  
 - Interpretation of squared angular velocity as proportional to rotational kinetic energy  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to torque ($\tau = I\alpha$) and moment of inertia ($I$) in rotational dynamics  
 - Relates to work-energy theorem ($W = \Delta K_{\text{rot}} = \frac{1}{2}I\omega^2$)  
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Physics**: Conservation of energy principles in rotational systems  
 - **Automotive Engineering**: Calculating wheel speeds during vehicle acceleration  
 - **Robotics**: Precision control of robotic arm joints  
 
-#### Real-World Applications
+##### Real-World Applications
 - **Regenerative Braking Systems**: Flywheels store kinetic energy during angular acceleration. Knowing $\omega$ after a given $\theta$ helps engineers design optimal energy recovery.  
 - **Centrifuges**: Medical labs use this to determine final rotational speed after a specific rotation angle for blood sample separation.  
 - **Wind Turbines**: Blade rotation dynamics during startup sequences under constant torque.  
 
-#### Problem Statement
+##### Problem Statement
 A flywheel for an energy storage system starts from rest ($\omega_0 = 0$) and undergoes constant angular acceleration $\alpha$. Derive an expression for its angular velocity $\omega$ after it has rotated through an angular displacement $\theta$. Use only the symbols $\alpha$ and $\theta$ in your final expression.
 
 ### Solution
@@ -1484,24 +1484,24 @@ $$\boxed{\sqrt{2\alpha\theta}}$$
 
 ------
 ### Problem 28
-#### Background
+##### Background
 Bicycles use a chain drive system to transfer rotational motion from the pedals (front sprocket) to the rear wheel (rear sprocket). The chain engages with both sprockets without slipping, enforcing a direct relationship between their angular velocities based on their radii. This principle is fundamental to gear ratio calculations in rotational kinematics.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Conversion between angular velocity units (rpm to rad/s).
 - Relationship between linear velocity and angular velocity: $ v = r \omega $.
 - Conservation of linear velocity across connected rotating components (chain constraint).
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 Connects to concepts of rotational kinematics (angular displacement, velocity, acceleration) and rigid-body dynamics. Extends to gear train analysis and mechanical advantage in torque transmission.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Mechanical engineering (design of transmission systems), sports science (bicycle efficiency), and physics (conservation principles in rotational systems).
 
-#### Real-World Applications
+##### Real-World Applications
 Bicycle gear systems optimize pedaling efficiency across terrains. Similar chain-and-sprocket mechanisms appear in motorcycles, conveyor belts, and industrial machinery for power transmission.
 
-#### Problem Statement
+##### Problem Statement
 The front sprocket of a bicycle has radius $ R_f $ and rotates at $ N $ revolutions per minute (rpm). It is connected via a taut, non-slipping chain to a rear sprocket of radius $ R_r $. Derive an expression for the angular velocity of the rear sprocket in radians per second (rad/s). Express your answer symbolically in terms of $ R_f $, $ R_r $, $ N $, and fundamental constants as needed.
 
 ### Solution
@@ -1531,24 +1531,24 @@ $$\boxed{\dfrac{\pi N R_f}{30 R_r}}$$
 
 ------
 ### Problem 29
-#### Background
+##### Background
 A car tire rolls without slipping on a flat road. The tire has a radius $R$. The car accelerates linearly, causing its linear speed to change from $v_i$ to $v_f$ over a time interval $t$. Since the tire rolls without slipping, its linear motion is directly related to its rotational motion.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Relationship between linear velocity and angular velocity: $v = R\omega$
 - Definition of angular acceleration: $\alpha = \frac{d\omega}{dt}$
 - Kinematic equations for constant angular acceleration
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects linear kinematics (acceleration, velocity) to rotational kinematics (angular acceleration, angular velocity) through the condition of rolling without slipping.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The principles apply to automotive engineering (tire dynamics), robotics (wheel control systems), and physics (conservation of energy in rotational systems).
 
-#### Real-World Applications
+##### Real-World Applications
 Calculating angular acceleration is essential for designing anti-lock braking systems (ABS), optimizing tire traction, and analyzing vehicle stability during acceleration or deceleration.
 
-#### Problem Statement
+##### Problem Statement
 A car tire of radius $R$ rolls without slipping. The car's linear speed changes from $v_i$ to $v_f$ over a time interval $t$. Derive an expression for the angular acceleration $\alpha$ of the tire. Express $\alpha$ symbolically in terms of $R$, $v_i$, $v_f$, and $t$.
 
 ### Solution
@@ -1579,25 +1579,25 @@ $$\boxed{\dfrac{v_f - v_i}{R t}}$$
 
 ------
 ### Problem 3
-#### Background
+##### Background
 A cyclist is testing a new bicycle on a straight track. The cyclist starts from rest and accelerates uniformly with a linear acceleration of magnitude $a$. The bicycle wheels have a radius of $R$ and roll without slipping. Rolling without slipping means the distance traveled by the center of the wheel equals the arc length rotated by the wheel.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Relationship between linear and angular kinematics for rolling without slipping.
 - Uniformly accelerated motion in linear and rotational contexts.
 - Vector addition of velocities (relative velocity concept).
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - This problem connects the linear motion of the bicycle (translational kinematics) and the rotational motion of the wheels (rotational kinematics), reinforcing how angular displacement, velocity, and acceleration arise from linear analogs.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: The design of wheeled vehicles requires understanding the relationship between linear and rotational motion to optimize performance and safety.
 - **Sports Science**: Analyzing the performance of cyclists and their equipment involves calculating forces and velocities at different points on moving components.
 
-#### Real-World Applications
+##### Real-World Applications
 - Calculating the speed of a point on a rotating wheel is essential for designing tires that can withstand stresses during acceleration. This applies to automotive engineering (e.g., calculating centrifugal forces on car wheels) and sports equipment design (e.g., stress analysis in bicycle rims).
 
-#### Problem Statement
+##### Problem Statement
 At a time $t$ after starting from rest, what is the linear speed (i.e., the tangential speed) of a point on the rim of the wheel relative to the center of the wheel? Express your answer symbolically in terms of the given quantities $a$ and $t$.
 
 ### Solution
@@ -1625,27 +1625,27 @@ $$\boxed{at}$$
 
 ------
 ### Problem 30
-#### Background
+##### Background
 In automotive engineering, the dynamics of wheel motion are critical for vehicle performance. When a car accelerates, its wheels roll without slipping on the road surface. This condition ensures that the linear motion of the car and the rotational motion of the wheels are directly linked. Engineers must understand this relationship to design efficient braking and acceleration systems.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - The kinematic condition for rolling without slipping.
 - Relationship between linear acceleration and angular acceleration.
 - Differentiation of velocity equations to derive acceleration relationships.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to rotational kinematics, rigid body dynamics, and the application of derivatives in motion analysis. It extends to torque and moment of inertia in rotational dynamics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Mechanical engineering (vehicle dynamics), robotics (wheeled mobile robots), and physics education technology (sensor-based motion tracking). The principles are used in anti-lock braking systems (ABS) to prevent skidding.
 
-#### Real-World Applications
+##### Real-World Applications
 Calculating angular acceleration is essential for:
 1. Determining the required engine torque for a target vehicle acceleration.
 2. Designing traction control systems that maintain wheel-road adhesion.
 3. Analyzing wear patterns in tires under different acceleration profiles.
 
-#### Problem Statement
+##### Problem Statement
 A car accelerates in a straight line with its wheels rolling without slipping on a horizontal road. The linear acceleration of the car (equivalent to the linear acceleration of the center of any wheel) is denoted as $a$. The wheels each have radius $R$.  
 Derive an expression for the angular acceleration $\alpha$ of the wheels. Begin with the fundamental no-slip condition and show all steps. Express $\alpha$ solely in terms of $a$ and $R$.
 
@@ -1678,24 +1678,24 @@ $$\boxed{\dfrac{a}{R}}$$
 
 ------
 ### Problem 31
-#### Background
+##### Background
 A ceiling fan, commonly found in households, rotates with blades that sweep out a circular path. When the fan is turned off, it experiences a uniform angular deceleration due to friction and air resistance. Understanding the deceleration profile is essential for designing efficient motors and braking systems in rotating machinery.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Conversion of angular velocity between revolutions per minute (rpm) and radians per second (rad/s).
 - Application of kinematic equations for rotational motion under constant angular acceleration: $\omega_f^2 = \omega_i^2 + 2\alpha\theta$.
 - Calculation of angular acceleration magnitude from initial and final angular velocities and angular displacement.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to linear kinematics (where $v_f^2 = v_i^2 + 2as$) and torque dynamics (since angular acceleration relates to net torque via $\tau = I\alpha$). It also reinforces the concept of rotational inertia in mechanical systems.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Rotational motion principles apply to automotive engineering (wheel deceleration during braking), aerospace (control surfaces), and biomechanics (joint movements). The unit conversion aspect bridges physics and applied mathematics.
 
-#### Real-World Applications
+##### Real-World Applications
 Calculating deceleration is vital for optimizing the shutdown time of industrial fans, turbines, and hard drives. It also informs safety features in amusement park rides where controlled rotational stopping is critical.
 
-#### Problem Statement
+##### Problem Statement
 A ceiling fan decelerates uniformly from 90 revolutions per minute (rpm) to 30 rpm while rotating through an angular displacement of 24 radians. Calculate the magnitude of the angular deceleration in rad/s². Express your answer as an exact analytic expression. Provide only the numerical coefficient without units, using $\pi$ where needed.  
 **Note**: Angular deceleration is defined as the magnitude of the negative angular acceleration.
 
@@ -1758,28 +1758,28 @@ $$\boxed{\frac{\pi^{2}}{6}}$$
 
 ------
 ### Problem 32
-#### Background
+##### Background
 Circular motion is a fundamental concept in kinematics, where an object moves along a circular path. When the motion is uniform (constant angular velocity), the object experiences a centripetal acceleration directed toward the center of the circle. This acceleration arises from the continuous change in the direction of the velocity vector, even if the speed is constant. Centripetal acceleration is crucial in systems ranging from planetary orbits to mechanical rotating devices.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Definition of centripetal acceleration in uniform circular motion.
 - Relationship between angular speed, radius, and centripetal acceleration.
 - Algebraic manipulation to derive an expression for angular speed.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to rotational kinematics (angular displacement, velocity, and acceleration), dynamics (forces causing centripetal acceleration), and energy considerations in rotational systems. It also reinforces vector decomposition, as centripetal acceleration is perpendicular to tangential velocity.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering:** Design of centrifuges, turbines, and flywheels where rotational stability depends on angular speed.
 - **Astronomy:** Calculation of orbital speeds for satellites or planets under gravitational centripetal force.
 - **Sports Science:** Analysis of athlete motion in circular tracks or during rotational maneuvers (e.g., discus throw).
 
-#### Real-World Applications
+##### Real-World Applications
 - **Automotive Engineering:** Determining the safe angular speed for a vehicle rounding a curved track to avoid skidding, where friction provides centripetal force.
 - **Particle Physics:** Controlling the angular velocity of particles in cyclotrons to maintain trajectory under magnetic fields.
 - **Amusement Park Rides:** Designing roller coaster loops with radii and speeds that ensure rider safety via adequate centripetal acceleration.
 
-#### Problem Statement
+##### Problem Statement
 A particle moves uniformly along a circular path of radius $R$. The magnitude of its centripetal acceleration is $a_c$. Derive an expression for the angular speed $\omega$ of the particle.  
 Express your answer symbolically in terms of $a_c$ and $R$.
 
@@ -1801,30 +1801,30 @@ $$\boxed{\sqrt{\dfrac{a_c}{R}}}$$
 
 ------
 ### Problem 33
-#### Background
+##### Background
 A Ferris wheel at an amusement park has a radius $R$. During its startup phase, the wheel begins at rest and accelerates uniformly (constant angular acceleration). An engineer observes that the first full revolution (a complete 360° turn) occurs in a specific time interval after motion begins. This scenario models real-world systems where controlled acceleration is critical, such as in ride safety design or industrial rotating machinery.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Definition of angular displacement and its relationship to revolutions.
 - Kinematic equations for rotational motion under constant angular acceleration.
 - Derivation of angular velocity from angular displacement and time.
 - Independence of angular quantities from radial distance in pure rotation.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to linear kinematics (displacement-velocity-acceleration relationships) through analogous rotational equations.
 - Reinforces vector/torque concepts by highlighting that angular acceleration remains constant when net torque is constant.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering:** Startup torque control in electric motors driving Ferris wheels.
 - **Biology/Medicine:** Analysis of centrifuge acceleration profiles in laboratory equipment.
 - **Space Science:** Modeling spin-up maneuvers of satellites or spacecraft.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Amusement Ride Safety:** Regulating initial acceleration prevents sudden jolts, ensuring passenger comfort and structural integrity.
 - **Wind Turbines:** Controlled angular acceleration during startup minimizes mechanical stress on blades and gearboxes.
 - **Robotics:** Precise control of joint rotation in robotic arms for manufacturing or surgery.
 
-#### Problem Statement
+##### Problem Statement
 A Ferris wheel of radius $R$ starts from rest ($\omega_0 = 0$) and experiences constant angular acceleration $\alpha$. The time taken to complete the first full revolution (angular displacement $\theta = 2\pi$ radians) is $T$. Derive an expression for the angular velocity $\omega$ (in rad/s) at the exact moment the wheel completes this first revolution. Express your answer solely in terms of $T$ and fundamental constants. Do not include $R$ or $\alpha$ in your final expression.  
 
 **Answer Format Instructions:**  
@@ -1874,29 +1874,29 @@ $$\boxed{\dfrac{4\pi}{T}}$$
 
 ------
 ### Problem 34
-#### Background
+##### Background
 A rotating space station uses centrifugal force to simulate gravity for its crew. During a maintenance procedure, the station's rotation must be increased uniformly. Initially spinning at 4 rad/s, it accelerates to 12 rad/s while completing exactly 4 full revolutions. Engineers need to determine the angular acceleration to verify stress limits on structural components.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Kinematic equations for uniformly accelerated rotational motion.
 - Algebraic manipulation of angular displacement, velocity, and acceleration relationships.
 - Interpretation of angular quantities in physical systems.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Links to tangential/centripetal acceleration in circular motion.
 - Extends linear kinematics concepts to rotational analogs (displacement → θ, velocity → ω, acceleration → α).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Stress analysis of rotating structures under angular acceleration.
 - **Aerospace Science**: Artificial gravity generation in orbital habitats.
 - **Mathematics**: Solving quadratic equations arising from kinematic constraints.
 
-#### Real-World Applications
+##### Real-World Applications
 - Adjusting rotation rates of centrifuges in laboratories and space stations.
 - Calibrating industrial rotating machinery (e.g., turbines, flywheels) for controlled acceleration profiles.
 - Designing amusement park rides with rotational motion elements.
 
-#### Problem Statement
+##### Problem Statement
 A cylindrical space station initially rotates at 4 rad/s. It undergoes uniform angular acceleration until reaching 12 rad/s, during which it completes an angular displacement of 8π radians. Derive an expression for the angular acceleration α. Express your final answer as an exact simplified expression without units.
 
 ### Solution
@@ -1926,32 +1926,32 @@ $$\boxed{\dfrac{8}{\pi}}$$
 
 ------
 ### Problem 35
-#### Background
+##### Background
 Centrifuges are essential devices in laboratories, medical facilities, and industrial settings for separating mixtures based on density differences. These devices rotate samples at high speeds, subjecting them to centrifugal forces. During startup, a centrifuge rotor accelerates from rest to its operating speed. Understanding this acceleration phase is critical for optimizing performance and ensuring mechanical stability.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Relationship between angular displacement, velocity, and acceleration under uniform acceleration.
 2. Application of kinematic equations in rotational dynamics.
 3. Derivation of expressions from fundamental principles (calculus-based approach).
 4. Interpretation of angular quantities in real-world systems.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Classical Mechanics**: Direct extension of linear kinematics to rotational motion using analogous variables (displacement → angular displacement, velocity → angular velocity).
 - **Calculus**: Integration of angular acceleration to derive velocity and displacement relationships.
 - **Energy Methods**: Connects to work-energy theorem through torque and rotational kinetic energy.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Centrifuge design requires precise acceleration control to prevent material failure or sample damage.
 - **Biomedical Science**: Used in blood separation protocols where acceleration profiles affect cell integrity.
 - **Aerospace Engineering**: Models spin-up dynamics of satellites and gyroscopic systems.
 
-#### Real-World Applications
+##### Real-World Applications
 1. **Medical Diagnostics**: Centrifuges separate blood components (plasma, red blood cells) for analysis.
 2. **Wastewater Treatment**: Separates solids from liquids in processing plants.
 3. **Spacecraft Systems**: Flywheel accelerators in attitude control mechanisms.
 4. **Industrial Mixing**: Uniform acceleration ensures homogeneous blending in chemical reactors.
 
-#### Problem Statement
+##### Problem Statement
 A laboratory centrifuge rotor starts from rest and accelerates uniformly. When it has rotated through an angular displacement of $\theta$ radians, it reaches an angular velocity of $\omega$ radians per second. Derive an expression for the angular acceleration $\alpha$ during this interval. Express $\alpha$ solely in terms of $\omega$ and $\theta$.
 
 ### Solution
@@ -1990,27 +1990,27 @@ $$\boxed{\dfrac{\omega^{2}}{2\theta}}$$
 
 ------
 ### Problem 36
-#### Background
+##### Background
 In automotive engineering, the motion of a rotating car tire can be analyzed using rotational kinematics. When a car accelerates, each point on the tire's outer edge experiences both tangential and radial (centripetal) acceleration components. The tangential acceleration results from changes in the tire's angular speed, while the centripetal acceleration arises from its rotational motion. This problem explores the relationship between linear (tangential) acceleration at the tire's edge and its angular acceleration.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Definition of tangential acceleration ($a_t$) and angular acceleration ($\alpha$).
 - Fundamental kinematic relationship between linear and rotational motion.
 - Application of differentiation to derive connections between linear and angular quantities.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to rotational dynamics, where torque and moment of inertia govern angular acceleration.
 - Extends concepts of linear kinematics (velocity, acceleration) to rotational analogs (angular velocity, angular acceleration).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Mechanical engineering: Tire dynamics influence vehicle stability, traction control, and anti-lock braking systems (ABS).
 - Physics: Demonstrates vector decomposition of acceleration in rotating reference frames.
 
-#### Real-World Applications
+##### Real-World Applications
 - Automotive safety systems: Sensors measure tangential acceleration to detect wheel slip or skidding, enabling real-time adjustments in traction control systems.
 - Performance testing: Engineers use angular acceleration metrics to optimize tire grip and vehicle acceleration profiles.
 
-#### Problem Statement
+##### Problem Statement
 A car tire of radius $R$ rotates about its central axis. At a specific instant, a point on the outer edge of the tire experiences a tangential acceleration $a_t$. Derive an expression for the angular acceleration $\alpha$ of the tire in terms of $R$ and $a_t$. Begin from the definition of angular acceleration and the relationship between linear tangential velocity and angular velocity.  
 **Express $\alpha$ symbolically using only $a_t$ and $R$.**
 
@@ -2037,45 +2037,45 @@ $$\boxed{\dfrac{a_t}{R}}$$
 
 ------
 ### Problem 37
-#### Background
+##### Background
 Flywheels are mechanical energy storage devices used in applications like power grids, automotive systems, and industrial machinery. They store kinetic energy through rotational motion and require precise control of angular acceleration during spin-up. This problem examines a flywheel undergoing uniform angular acceleration.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conversion between angular units (revolutions to radians).  
 2. Kinematic equations for rotational motion with constant angular acceleration.  
 3. Algebraic manipulation of angular displacement, velocity, and acceleration relationships.  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 Connects to linear kinematics (analogous $v^2 = u^2 + 2as$ equation) and torque dynamics ($\tau = I\alpha$). Reinforces unit consistency across rotational parameters.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Flywheel design for energy storage in renewable systems.  
 - **Physics**: Conservation of energy during rotational acceleration.  
 - **Mathematics**: Solving quadratic equations and handling transcendental constants ($\pi$).  
 
-#### Real-World Applications
+##### Real-World Applications
 Flywheels buffer energy in electric vehicles (regenerative braking), stabilize power in data centers, and enable pulsed power in fusion reactors. Precise acceleration control prevents material stress failures.
 
-#### Problem Statement
+##### Problem Statement
 A flywheel starts from rest and accelerates uniformly until it reaches an angular velocity of $8\pi$ radians per second. During this acceleration, it completes exactly 40 revolutions. Determine the angular acceleration of the flywheel. Express your answer symbolically in terms of $\pi$, simplified to the lowest terms. Do not include units in your final expression.
 
 ### Solution
-#### Step 1: Convert angular displacement to radians  
+##### Step 1: Convert angular displacement to radians  
 The flywheel completes 40 revolutions. Since 1 revolution = $2\pi$ radians, the total angular displacement $\theta$ is:  
 $$\theta = 40 \times 2\pi = 80\pi \ \text{radians}.$$  
 
-#### Step 2: Identify known quantities  
+##### Step 2: Identify known quantities  
 - Initial angular velocity $\omega_0 = 0 \ \text{rad/s}$ (starts from rest).  
 - Final angular velocity $\omega = 8\pi \ \text{rad/s}$.  
 - Angular displacement $\theta = 80\pi \ \text{rad}$.  
 
-#### Step 3: Apply the rotational kinematics equation  
+##### Step 3: Apply the rotational kinematics equation  
 For constant angular acceleration $\alpha$, the relationship is:  
 $$\omega^2 = \omega_0^2 + 2\alpha\theta.$$  
 Substitute $\omega_0 = 0$:  
 $$(8\pi)^2 = 0 + 2\alpha(80\pi).$$  
 
-#### Step 4: Solve for $\alpha$  
+##### Step 4: Solve for $\alpha$  
 Simplify the equation:  
 $$64\pi^2 = 160\pi \alpha.$$  
 Divide both sides by $\pi$ (since $\pi \neq 0$):  
@@ -2083,7 +2083,7 @@ $$64\pi = 160\alpha.$$
 Solve for $\alpha$:  
 $$\alpha = \frac{64\pi}{160}.$$  
 
-#### Step 5: Simplify the expression  
+##### Step 5: Simplify the expression  
 Reduce the fraction by dividing numerator and denominator by 32:  
 $$\alpha = \frac{64 \div 32}{160 \div 32} \pi = \frac{2}{5}\pi.$$  
 The angular acceleration is $\frac{2\pi}{5}$.
@@ -2093,26 +2093,26 @@ $$\boxed{\dfrac{2\pi}{5}}$$
 
 ------
 ### Problem 38
-#### Background
+##### Background
 In rotational kinematics, the angular displacement of a rotating object is described by a function of time. For a playground merry-go-round, engineers observe that its angular displacement follows a cubic relationship with time due to a specialized motor that applies torque proportional to the square of time. This model helps analyze rotational dynamics in amusement rides and mechanical systems.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of angular acceleration as the second derivative of angular displacement: $\alpha(t) = \frac{d^2\theta}{dt^2}$.  
 2. Differentiation of polynomial functions.  
 3. Interpretation of kinematic quantities in rotational motion.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to linear motion kinematics, where acceleration is the second derivative of position with respect to time. It reinforces calculus foundations and highlights analogies between linear and rotational dynamics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The cubic displacement model applies to robotics (joint angle control), aerospace engineering (satellite orientation), and biomechanics (limb rotation during motion). The mathematical principles extend to optimization problems in economics and growth models in biology.
 
-#### Real-World Applications
+##### Real-World Applications
 - Designing variable-torque motors for conveyor belts.  
 - Analyzing centrifuge acceleration profiles in medical laboratories.  
 - Simulating roller coaster rotations during launch sequences.  
 
-#### Problem Statement
+##### Problem Statement
 A merry-go-round's angular displacement is given by $\theta(t) = A t^3$, where $A$ is a constant (in rad/s³), and $t$ is time in seconds. Derive an expression for the angular acceleration $\alpha(t)$ at any time $t$. Then, express the angular acceleration at time $t = T$ in terms of $A$ and $T$.  
 Provide your final answer as an analytic expression using the variables $A$ and $T$.
 
@@ -2145,27 +2145,27 @@ $$\boxed{6AT}$$
 
 ------
 ### Problem 39
-#### Background
+##### Background
 Artificial satellites in circular orbits around Earth are crucial for communication, weather monitoring, and navigation. These satellites move with constant angular velocity due to the balance between gravitational force and centripetal force. Understanding the kinematics of such motion requires deriving relationships between angular quantities and linear acceleration.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of centripetal acceleration in circular motion.
 2. Relationship between angular velocity and linear velocity.
 3. Algebraic derivation of acceleration magnitude from fundamental parameters.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to rotational dynamics, including torque, angular momentum, and moment of inertia, which extend the principles of circular motion to rigid bodies.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Satellite motion involves principles from aerospace engineering (orbital mechanics) and geophysics (gravitational field interactions). The derived acceleration is essential for calculating gravitational forces in celestial mechanics.
 
-#### Real-World Applications
+##### Real-World Applications
 Centripetal acceleration calculations are vital for:
 - Determining orbital parameters of satellites (e.g., GPS satellites).
 - Designing centrifugal systems in engineering (e.g., centrifuges, amusement park rides).
 - Analyzing particle motion in accelerators for high-energy physics experiments.
 
-#### Problem Statement
+##### Problem Statement
 A satellite orbits Earth in a circular path with angular velocity $\omega$ and orbital radius $r$. Derive an expression for the magnitude of its centripetal acceleration $a_c$ exclusively in terms of $\omega$ and $r$. Ensure your derivation starts from the definition of centripetal acceleration and explicitly relates linear and angular quantities.
 
 ### Solution
@@ -2196,29 +2196,29 @@ $$\boxed{\omega^{2} r}$$
 
 ------
 ### Problem 4
-#### Background
+##### Background
 Centrifuges are essential in medical and research laboratories for separating components of mixtures by density. In DNA sequencing protocols, precise control of rotational motion is critical to prevent sample degradation. A centrifuge rotor must accelerate uniformly from an initial angular velocity to a higher target velocity within a strict time limit to maintain process integrity. Understanding angular acceleration is vital for designing control systems that prevent mechanical stress.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Definition of constant angular acceleration as the rate of change of angular velocity.
 - Kinematic equation for rotational motion under uniform angular acceleration: $\omega_f = \omega_i + \alpha t$.
 - Algebraic derivation of physical quantities from fundamental relationships.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to torque ($\tau = I\alpha$) and moment of inertia in rotational dynamics.
 - Relates to centripetal acceleration ($a_c = \omega^2 r$) in circular motion analysis.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Biomedical Engineering**: Centrifugal force calculations for cell separation.
 - **Control Systems**: Feedback mechanisms for maintaining constant acceleration in industrial rotors.
 - **Materials Science**: Stress analysis on rotor components under angular acceleration.
 
-#### Real-World Applications
+##### Real-World Applications
 - Medical labs: Blood component separation in plasma donation centers.
 - Aerospace: Testing materials in high-g environments using centrifuges.
 - Industrial processes: Uranium enrichment via gas centrifuge cascades.
 
-#### Problem Statement
+##### Problem Statement
 A centrifuge rotor accelerates uniformly from an initial angular velocity $\omega_i = 100  \text{rad/s}$ to a final angular velocity $\omega_f = 250  \text{rad/s}$ in $t = 5  \text{s}$. Derive the expression for angular acceleration $\alpha$ starting from the definition of constant angular acceleration. Then, compute its numerical value.  
 **Express your final answer as a numerical value in $\text{rad/s}^2$ without units.**
 
@@ -2248,27 +2248,27 @@ $$\boxed{30}$$
 
 ------
 ### Problem 5
-#### Background
+##### Background
 Flywheels store rotational energy and are used in applications like energy storage systems and engine timing. When a flywheel decelerates due to friction or applied torque, its angular velocity decreases at a constant rate under constant angular acceleration. The relationship between angular displacement, velocity, and acceleration follows rotational kinematics principles derived from Newton's laws.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conversion between revolutions and radians.
 2. Rotational kinematics equations for constant angular acceleration.
 3. Algebraic manipulation to solve for initial angular velocity using the relationship $\omega^2 = \omega_0^2 + 2\alpha\theta$.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to torque and moment of inertia ($\tau = I\alpha$), where constant torque produces constant angular acceleration.
 - Extends linear kinematics ($v^2 = v_0^2 + 2a\Delta x$) to rotational analogs, highlighting parallels between translational and rotational motion.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering:** Flywheel design in kinetic energy recovery systems (KERS) for vehicles requires precise modeling of deceleration profiles.
 - **Energy Science:** Angular displacement and velocity determine the rotational kinetic energy ($K = \frac{1}{2}I\omega^2$) stored or dissipated.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Regenerative Braking:** Electric vehicles use flywheels to convert kinetic energy to stored energy during deceleration, reducing battery drain.
 - **Grid Stability:** Industrial flywheels maintain frequency stability in power grids by absorbing/supplying energy during demand fluctuations.
 
-#### Problem Statement
+##### Problem Statement
 A flywheel decelerates at a constant rate with magnitude $\alpha$ rad/s². It completes $N$ revolutions while slowing down from an unknown initial angular velocity $\omega_0$ to a final angular velocity $\omega$ rad/s. Derive an expression for $\omega_0$ in terms of $\alpha$, $N$, and $\omega$.  
 
 **Answer Requirements:**  
@@ -2333,32 +2333,32 @@ This is the expression for the initial angular velocity.
 
 ------
 ### Problem 6
-#### Background
+##### Background
 In mechanical engineering, gear systems are fundamental for transmitting motion and torque between rotating shafts. When two gears mesh, their teeth interlock, ensuring that the linear velocities at the point of contact are equal. This principle allows engineers to control rotational speeds in devices like transmissions, clocks, and industrial machinery. 
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Relationship between angular velocity ($\omega$) and linear velocity ($v$): $v = r \omega$.
 2. Kinematic condition for meshed gears: equality of linear velocities at the contact point.
 3. Algebraic manipulation to derive angular velocities.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem bridges rotational kinematics and dynamics, emphasizing how gear geometry influences motion transmission. It also reinforces the concept of mechanical advantage in rotational systems.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Physics**: Conservation of energy (work done by gears) and torque transmission.
 - **Mathematics**: Proportional reasoning and inverse relationships (radius vs. angular velocity).
 - **Engineering**: Design of gear trains in automotive and robotics applications.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Automotive Transmissions**: Adjusting wheel speed relative to engine RPM.
 - **Wind Turbines**: Converting low-speed rotor motion to high-speed generator rotation.
 - **Robotics**: Precision control of joint movements via gear reducers.
 
-#### Problem Statement
+##### Problem Statement
 Two gears, $\text{Gear A}$ (radius $r_A$) and $\text{Gear B}$ (radius $r_B$), are meshed directly. $\text{Gear A}$ rotates with a constant angular velocity $\omega_A$. Derive an expression for the angular velocity $\omega_B$ of $\text{Gear B}$ in terms of $r_A$, $r_B$, and $\omega_A$. Ensure your derivation starts from fundamental principles.
 
 ### Solution
-#### Step-by-Step Derivation:
+##### Step-by-Step Derivation:
 
 1. **Fundamental Principle (Linear Velocity Equality)**  
    At the point of contact between meshed gears, the linear velocities must be equal to prevent slipping. For $\text{Gear A}$ and $\text{Gear B}$:  
@@ -2377,7 +2377,7 @@ Two gears, $\text{Gear A}$ (radius $r_A$) and $\text{Gear B}$ (radius $r_B$), ar
    Rearrange the equation to isolate $\omega_B$:  
    $$ \omega_B = \left( \frac{r_A}{r_B} \right) \omega_A $$
 
-#### Conclusion
+##### Conclusion
 The angular velocity of $\text{Gear B}$ is inversely proportional to its radius relative to $\text{Gear A}$. The derived expression is:  
 $$ \omega_B = \frac{r_A}{r_B} \omega_A $$
 
@@ -2386,32 +2386,32 @@ $$\boxed{\dfrac{ r_A \omega_A }{ r_B }}$$
 
 ------
 ### Problem 7
-#### Background
+##### Background
 Centripetal acceleration is a fundamental concept in rotational kinematics, describing the acceleration that keeps an object moving in a circular path. This phenomenon occurs in numerous real-world systems, from planetary orbits to industrial centrifuges. In this problem, we explore the mathematical derivation of centripetal acceleration for a particle in uniform circular motion, starting from first principles of angular kinematics and vector geometry.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of angular velocity ($\omega$) and its constancy in uniform circular motion.
 2. Relationship between linear velocity ($v$), angular velocity ($\omega$), and radius ($R$).
 3. Vector decomposition of velocity and acceleration in polar coordinates.
 4. Geometric derivation of centripetal acceleration using infinitesimal displacement analysis.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to:
 - Kinematics of rotational motion (angular displacement, velocity, acceleration).
 - Dynamics of circular motion (centripetal force, Newton's second law).
 - Vector calculus applications in physics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering:** Design of rotating machinery (e.g., turbines, centrifuges) where centripetal forces must be calculated for structural integrity.
 - **Astronomy:** Calculation of orbital velocities and accelerations in celestial mechanics.
 - **Transportation:** Banking of roads and tracks to provide centripetal force for vehicles.
 
-#### Real-World Applications
+##### Real-World Applications
 1. **Particle Accelerators:** Charged particles moving in circular paths under magnetic fields experience centripetal acceleration.
 2. **Amusement Rides:** Roller coasters and rotating platforms rely on centripetal acceleration for loop-the-loop maneuvers.
 3. **Satellite Technology:** Geostationary satellites maintain orbit through balanced centripetal acceleration and gravity.
 
-#### Problem Statement
+##### Problem Statement
 A particle moves uniformly in a circular path of radius $R$ with constant angular velocity $\omega$.  
 1. Starting from the fundamental definition of linear velocity in terms of angular velocity, derive the instantaneous linear velocity vector $\vec{v}$ as a function of time $t$, assuming initial angular position $\theta_0 = 0$.  
 2. Using the time derivative of $\vec{v}$, derive the expression for centripetal acceleration $a_c$.  
@@ -2425,31 +2425,31 @@ Express your final answer in meters per second squared ($\text{m/s}^2$), providi
 - Velocity and acceleration vectors must be expressed in component form.
 
 ### Solution
-#### Step 1: Express position vector in Cartesian coordinates
+##### Step 1: Express position vector in Cartesian coordinates
 The position vector of a particle in circular motion is:  
 $$\vec{r}(t) = R \cos(\omega t)  \hat{\imath} + R \sin(\omega t)  \hat{\jmath}$$  
 where $\hat{\imath}$ and $\hat{\jmath}$ are unit vectors along the $x$- and $y$-axes.
 
-#### Step 2: Derive linear velocity vector
+##### Step 2: Derive linear velocity vector
 Linear velocity $\vec{v}$ is the time derivative of position:  
 $$\vec{v}(t) = \frac{d\vec{r}}{dt} = -R \omega \sin(\omega t)  \hat{\imath} + R \omega \cos(\omega t)  \hat{\jmath}.$$  
 The magnitude of $\vec{v}$ is $v = \omega R$ (constant).
 
-#### Step 3: Derive acceleration vector
+##### Step 3: Derive acceleration vector
 Acceleration $\vec{a}$ is the time derivative of velocity:  
 $$\vec{a}(t) = \frac{d\vec{v}}{dt} = -R \omega^2 \cos(\omega t)  \hat{\imath} - R \omega^2 \sin(\omega t)  \hat{\jmath}.$$  
 
-#### Step 4: Express acceleration in terms of position vector
+##### Step 4: Express acceleration in terms of position vector
 Notice that:  
 $$\vec{a}(t) = -\omega^2 \left[ R \cos(\omega t)  \hat{\imath} + R \sin(\omega t)  \hat{\jmath} \right] = -\omega^2 \vec{r}(t).$$  
 The magnitude of $\vec{r}$ is $R$, so:  
 $$|\vec{a}| = \omega^2 R.$$  
 
-#### Step 5: Compute centripetal acceleration magnitude
+##### Step 5: Compute centripetal acceleration magnitude
 The centripetal acceleration $a_c$ is the magnitude of $\vec{a}$:  
 $$a_c = \omega^2 R.$$  
 
-#### Step 6: Numerical evaluation
+##### Step 6: Numerical evaluation
 Substitute $R = 2  \text{m}$ and $\omega = 3  \text{rad/s}$:  
 $$a_c = (3)^2 \times 2 = 9 \times 2 = 18.$$  
 The numerical value is $18  \text{m/s}^2$, so the answer is $18$ (without units).
@@ -2459,30 +2459,30 @@ $$\boxed{18}$$
 
 ------
 ### Problem 8
-#### Background
+##### Background
 Rotational motion describes how objects spin around an axis. Angular quantities such as displacement (θ), velocity (ω), and acceleration (α) follow kinematic principles analogous to linear motion. When a rotating object slows down, it experiences angular deceleration, which is the magnitude of its negative angular acceleration. This problem explores a real-world scenario of a disk undergoing constant angular deceleration.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Application of rotational kinematics equations.
 - Derivation of angular acceleration from initial and final angular velocities and angular displacement.
 - Interpretation of deceleration as the magnitude of negative acceleration.
 - Algebraic manipulation to solve for an unknown quantity.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to linear kinematics via the equation $v_f^2 = v_i^2 + 2 a s$, which parallels $\omega_f^2 = \omega_i^2 + 2 \alpha \theta$.
 - Relates to torque and moment of inertia, as angular acceleration arises from net torque ($\tau = I \alpha$).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Essential in designing braking systems for rotating machinery (e.g., flywheels, engines) to control stopping distance and prevent damage.
 - **Astronomy**: Models the spin-down of pulsars (rotating neutron stars) due to energy loss.
 - **Robotics**: Used to calibrate precise angular movements in robotic arms for manufacturing.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Automotive Braking Systems**: Calculating the angular deceleration required to stop a vehicle's wheel within a specific rotation distance, improving safety.
 - **Industrial Machinery**: Determining braking torque for rotating saw blades or turbines to ensure controlled stopping.
 - **Sports Equipment**: Analyzing the deceleration of spinning objects like discuses or gymnastic bars during motion.
 
-#### Problem Statement
+##### Problem Statement
 A disk initially rotates at 12 rad/s and slows down uniformly to 3 rad/s while rotating through an angular displacement of 9 radians. Determine the angular deceleration of the disk. Express your answer as an exact number in rad/s² and provide only the numerical value.
 
 ### Solution
@@ -2519,29 +2519,29 @@ $$\boxed{\dfrac{15}{2}}$$
 
 ------
 ### Problem 9
-#### Background
+##### Background
 In automotive engineering, testing braking systems involves spinning a wheel to a specific angular velocity and measuring how it decelerates. The angular deceleration depends on the initial rotational speed and the angular distance covered during braking. Understanding the relationship between these quantities is essential for designing effective braking systems that can stop a vehicle safely.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conversion between units of angular velocity (revolutions per minute to radians per second).
 2. Conversion between units of angular displacement (revolutions to radians).
 3. Application of the rotational kinematics equation $\omega_f^2 = \omega_i^2 + 2\alpha\theta$ for constant angular acceleration.
 4. Magnitude calculations for vector quantities like angular deceleration.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem integrates angular displacement, angular velocity, and angular acceleration within rotational kinematics. It reinforces how these quantities interrelate through fundamental kinematic equations, extending concepts from linear motion to rotational dynamics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The principles apply to mechanical engineering (brake design), transportation safety (stopping distances), and physics education (unit conversions and kinematics). The methodology is also used in robotics for controlling wheel motion and in aerospace engineering for gyroscopic systems.
 
-#### Real-World Applications
+##### Real-World Applications
 Calculating angular deceleration is critical for:
 - Designing automotive braking systems that meet safety standards.
 - Determining the stopping distance of rotating components in industrial machinery.
 - Optimizing the performance of electric vehicles by analyzing regenerative braking efficiency.
 - Modeling the behavior of flywheels in energy storage systems.
 
-#### Problem Statement
+##### Problem Statement
 A test wheel rotates at an initial angular velocity of $n$ revolutions per minute (rpm). When brakes are applied, the wheel experiences constant angular deceleration and comes to rest after rotating through an angular displacement of $m$ revolutions. Derive an expression for the magnitude of the angular deceleration $\alpha$ in terms of $n$, $m$, and any necessary mathematical constants. Express your answer in units of rad/s².
 
 **Answer Format Requirements:**  
@@ -2624,35 +2624,35 @@ $$\boxed{\dfrac{n^{2} \pi}{3600 m}}$$
 ## rotational kinetic energy and dynamics
 
 ### Problem 0
-#### Background
+##### Background
 In many engineering applications, such as designing conveyor systems or roller coasters, understanding the motion of rolling objects is crucial. A common scenario involves a sphere rolling down an incline, which combines translational and rotational motion. This problem explores a variation where the sphere starts with an initial velocity, simulating real-world situations like a ball being launched onto a ramp.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conservation of mechanical energy.
 2. Rotational kinetic energy for a solid sphere.
 3. Rolling without slipping condition.
 4. Relationship between linear and angular velocity.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects rotational dynamics with energy conservation, illustrating how rotational inertia (moment of inertia) affects translational motion. It also reinforces concepts from linear kinematics and dynamics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Essential for designing mechanical systems involving rolling elements (e.g., bearings, gears).
 - **Sports Science**: Models the behavior of balls in sports like bowling or billiards on inclined surfaces.
 - **Robotics**: Informs the control of spherical robots navigating uneven terrain.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Regenerative Braking Systems**: In electric vehicles, kinetic energy recovery during downhill motion relies on similar principles.
 - **Material Handling**: Conveyor belts use rolling mechanisms to transport goods efficiently.
 - **Geophysics**: Understanding how boulders roll down slopes aids in landslide prediction.
 
-#### Problem Statement
+##### Problem Statement
 A solid sphere of mass $M$ and radius $R$ is placed at the top of a straight incline with vertical height $h$. The sphere is given an initial linear speed $v_0$ directed *up* the incline and then released. The incline is sufficiently rough to ensure rolling without slipping throughout the motion. Derive an expression for the linear speed of the sphere when it reaches the bottom of the incline. Express your answer in terms of $v_0$, $g$ (acceleration due to gravity), and $h$.
 
 ### Solution
-#### Step-by-Step Derivation
+##### Step-by-Step Derivation
 
-#### Step 1: Initial Energy Calculation
+##### Step 1: Initial Energy Calculation
 The total mechanical energy at the top of the incline is conserved since friction does no work (rolling without slipping). The initial energy comprises:
 - **Gravitational potential energy**: $Mgh$.
 - **Translational kinetic energy**: $\frac{1}{2}Mv_0^2$.
@@ -2671,7 +2671,7 @@ E_i = Mgh + \frac{1}{2}Mv_0^2 + \frac{1}{5}Mv_0^2 = Mgh + \frac{7}{10}Mv_0^2.
 $$
 
 
-#### Step 2: Final Energy at the Bottom
+##### Step 2: Final Energy at the Bottom
 At the bottom:
 - Gravitational potential energy is $0$ (reference point).
 - Translational kinetic energy is $\frac{1}{2}Mv^2$, where $v$ is the final linear speed.
@@ -2688,7 +2688,7 @@ E_f = \frac{1}{2}Mv^2 + \frac{1}{5}Mv^2 = \frac{7}{10}Mv^2.
 $$
 
 
-#### Step 3: Apply Conservation of Energy
+##### Step 3: Apply Conservation of Energy
 Since mechanical energy is conserved ($E_i = E_f$):
 
 $$
@@ -2702,7 +2702,7 @@ gh + \frac{7}{10}v_0^2 = \frac{7}{10}v^2.
 $$
 
 
-#### Step 4: Solve for Final Speed $v$
+##### Step 4: Solve for Final Speed $v$
 Rearrange the equation:
 
 $$
@@ -2726,31 +2726,31 @@ $$\boxed{\sqrt{v_0^{2} + \frac{10}{7} g h}}$$
 
 ------
 ### Problem 1
-#### Background
+##### Background
 A uniform rod of length $L$ and mass $M$ is pivoted at one end, forming a physical pendulum. When released from a horizontal position, it swings downward under gravity. This scenario models real-world systems like falling crane booms, swinging baseball bats, or collapsing structures, where rotational kinetic energy and conservation laws determine motion dynamics.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conservation of mechanical energy (kinetic + potential).  
 2. Rotational kinetic energy: $\frac{1}{2} I \omega^2$, with $I$ as moment of inertia.  
 3. Moment of inertia for a uniform rod about one end: $I = \frac{1}{3} M L^2$.  
 4. Gravitational potential energy for extended objects, referenced to the center of mass.  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Extends simple pendulum concepts to extended objects (physical pendulums).  
 - Connects to torque and angular acceleration in rotational dynamics.  
 - Relates to harmonic motion for small-angle oscillations (though not used here).  
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Predicts angular velocity in collapsing structures or rotating crane arms.  
 - **Biomechanics**: Models limb motion (e.g., a falling arm pivoting at the shoulder).  
 - **Meteorology**: Analogous to the dynamics of falling icicles or tree branches.  
 
-#### Real-World Applications
+##### Real-World Applications
 - **Safety analysis**: Calculating impact speed of falling construction beams.  
 - **Sports science**: Optimizing swing speed in golf clubs or baseball bats.  
 - **Robotics**: Designing energy-efficient rotational motion for robotic arms.  
 
-#### Problem Statement
+##### Problem Statement
 A uniform rod of length $L$ and mass $M$ is pivoted frictionlessly at one end. Initially held horizontally at rest, it is released and swings downward. Derive an expression for its angular speed $\omega$ when it reaches the vertical position. Use conservation of mechanical energy and express $\omega$ solely in terms of $L$ and gravitational acceleration $g$.  
 
 **Note**: The moment of inertia of a uniform rod about one end is $\frac{1}{3} M L^2$.
@@ -2795,29 +2795,29 @@ $$\boxed{\sqrt{\frac{3g}{L}}}$$
 
 ------
 ### Problem 10
-#### Background
+##### Background
 In many sports and engineering applications, objects roll without slipping to conserve energy. Consider a thin hula hoop—a common toy—with uniform mass distribution. When rolled on a flat surface, it exhibits both translational and rotational motion. The hoop has mass $M$ and radius $R$, and at a specific moment, its center of mass moves with linear speed $v$ while rolling without slipping.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Moment of inertia for symmetric rigid bodies.
 2. Relationship between linear and angular velocity in rolling without slipping.
 3. Rotational kinetic energy formula.
 4. Algebraic substitution and simplification.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to torque (which maintains rolling motion), angular momentum conservation, and the work-energy theorem in rotational dynamics. It also reinforces the parallel between translational and rotational kinetic energy in mechanical systems.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Wheel design in vehicles minimizes energy loss by optimizing rotational inertia.
 - **Sports Science**: Understanding energy distribution in rolling objects (e.g., bicycle wheels, bowling balls) improves performance analysis.
 - **Physics Education**: Demonstrates how macroscopic motion emerges from microscopic interactions via rigidity constraints.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Energy-Efficient Transport**: Flywheels in kinetic energy recovery systems (KERS) store rotational energy.
 - **Entertainment**: Circus performers manipulate rolling hoops; understanding energy splits ensures safety.
 - **Manufacturing**: Cylindrical rollers in conveyor belts rely on controlled rotational inertia for smooth operation.
 
-#### Problem Statement
+##### Problem Statement
 A thin hoop of mass $M$ and radius $R$ rolls horizontally without slipping. At a given instant, its center of mass has linear speed $v$. Derive an expression for the rotational kinetic energy of the hoop. Express your answer symbolically using only $M$, $R$, and $v$.
 
 ### Solution
@@ -2854,31 +2854,31 @@ $$\boxed{\dfrac{1}{2} M v^{2}}$$
 
 ------
 ### Problem 11
-#### Background
+##### Background
 A uniform disk of mass $M$ and radius $R$ rotates about its central symmetry axis with initial angular velocity $\omega$. While rotating, a point mass $m$ is rigidly attached to the disk's edge. The attachment occurs instantaneously, with no external torque applied during the process. This scenario explores how adding mass affects rotational dynamics.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Moment of inertia for continuous bodies (disk) and point masses.
 2. Conservation of angular momentum in isolated systems.
 3. Rotational kinetic energy formulation.
 4. Algebraic manipulation of rotational dynamics equations.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to torque and angular acceleration via Newton's second law for rotation.
 - Relates to energy conservation principles when external work is absent.
 - Extends to systems with variable moment of inertia (e.g., collapsing stars, figure skaters).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Flywheel energy storage systems where added mass alters performance.
 - **Astronomy**: Accretion disks in astrophysics where incoming matter changes rotational properties.
 - **Biomechanics**: Analysis of limb movements with added weights (e.g., sports science).
 
-#### Real-World Applications
+##### Real-World Applications
 - Calculating energy changes when debris adheres to rotating machinery (e.g., wind turbines, centrifuges).
 - Designing inertial dampers in vehicles or spacecraft to manage rotational energy during mass shifts.
 - Modeling industrial processes like spin coating or rotational molding with material deposition.
 
-#### Problem Statement
+##### Problem Statement
 A uniform disk of mass $M$ and radius $R$ rotates about its central axis with initial angular velocity $\omega$. A point mass $m$ is instantaneously attached to the disk's edge, with no external torque acting during attachment. Derive an expression for the new rotational kinetic energy of the combined system (disk + point mass) after attachment. Express your answer in terms of $M$, $R$, $m$, and $\omega$.  
 **Format Requirements**:  
 - Use only the given symbols.  
@@ -2887,22 +2887,22 @@ A uniform disk of mass $M$ and radius $R$ rotates about its central axis with in
 - Enclose the entire expression in a single boxed answer.
 
 ### Solution
-#### Step 1: Initial Angular Momentum  
+##### Step 1: Initial Angular Momentum  
 The system is isolated (no external torque), so angular momentum $L$ is conserved. Initial angular momentum $L_i$ comes solely from the disk. The moment of inertia of a disk about its central axis is $\frac{1}{2}MR^2$. Thus:  
 $$ L_i = I_{\text{disk}} \omega = \left( \frac{1}{2}MR^2 \right) \omega = \frac{1}{2}MR^2\omega $$
 
-#### Step 2: Final Moment of Inertia  
+##### Step 2: Final Moment of Inertia  
 After attaching the point mass $m$ at the edge (distance $R$ from the axis), the total moment of inertia $I_f$ is the sum of the disk's inertia and the point mass's inertia:  
 $$ I_f = I_{\text{disk}} + I_{\text{point}} = \frac{1}{2}MR^2 + mR^2 = R^2 \left( \frac{1}{2}M + m \right) $$
 
-#### Step 3: Conservation of Angular Momentum  
+##### Step 3: Conservation of Angular Momentum  
 Let $\omega_f$ be the final angular velocity. Conservation of angular momentum gives:  
 $$ L_i = L_f $$  
 $$ \frac{1}{2}MR^2\omega = I_f \omega_f = R^2 \left( \frac{1}{2}M + m \right) \omega_f $$  
 Solve for $\omega_f$:  
 $$ \omega_f = \frac{\frac{1}{2}MR^2\omega}{R^2 \left( \frac{1}{2}M + m \right)} = \frac{\frac{1}{2}M\omega}{\frac{1}{2}M + m} = \frac{M\omega}{M + 2m} $$
 
-#### Step 4: New Rotational Kinetic Energy  
+##### Step 4: New Rotational Kinetic Energy  
 The rotational kinetic energy $K_f$ after attachment is:  
 $$ K_f = \frac{1}{2} I_f \omega_f^2 $$  
 Substitute $I_f$ and $\omega_f$:  
@@ -2919,26 +2919,26 @@ $$\boxed{ \dfrac{ M^{2} R^{2} \omega^{2} }{ 4 \left( M + 2 m \right) } }$$
 
 ------
 ### Problem 12
-#### Background
+##### Background
 In mechanical engineering and physics, flywheels are used to store rotational energy. They are crucial in applications like energy recovery systems in hybrid vehicles and industrial machinery. A constant torque is applied to a flywheel to accelerate it from rest. Understanding the resulting angular displacement involves fundamental principles of rotational dynamics.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Newton's second law for rotation: $\tau = I\alpha$
 - Kinematic equations for rotational motion under constant angular acceleration
 - Relationship between angular displacement and revolutions: $N = \frac{\theta}{2\pi}$
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to linear motion analogs: torque ($\tau$) parallels force ($F$), moment of inertia ($I$) parallels mass ($m$), and angular acceleration ($\alpha$) parallels linear acceleration ($a$). The kinematic equation $\theta = \frac{1}{2}\alpha t^2$ mirrors $s = \frac{1}{2}at^2$.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Calculating revolutions is essential for designing flywheel energy storage systems.
 - **Applied Mathematics**: Solving differential equations of motion arises in control systems for rotational mechanisms.
 
-#### Real-World Applications
+##### Real-World Applications
 - Regenerative braking in electric vehicles, where torque recovers kinetic energy as rotational energy in a flywheel.
 - Industrial presses and punch machines, where flywheels deliver high torque pulses.
 
-#### Problem Statement
+##### Problem Statement
 A flywheel with moment of inertia $I$ about its central axis is initially at rest. Starting at $t=0$, a constant torque $\tau$ is applied. Derive an expression for the number of revolutions $N$ completed by time $t$.  
 **Express $N$ symbolically in terms of $\tau$, $I$, and $t$.**  
 *Follow these instructions precisely:*  
@@ -2986,29 +2986,29 @@ $$\boxed{\dfrac{\tau t^{2}}{4\pi I}}$$
 
 ------
 ### Problem 13
-#### Background
+##### Background
 Rolling without slipping is a fundamental motion observed in many real-world systems, such as ball bearings in machinery, wheels of vehicles, and sports balls like basketballs or bowling balls. This motion combines translation and rotation, and the distribution of kinetic energy between these two forms is crucial for understanding energy efficiency and dynamics. For instance, in designing efficient conveyor systems or analyzing the motion of celestial bodies, knowing how energy partitions between rotation and translation helps optimize performance and predict behavior.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Rotational kinetic energy: $ K_{\text{rot}} = \frac{1}{2} I \omega^2 $
 - Translational kinetic energy: $ K_{\text{trans}} = \frac{1}{2} M v^2 $
 - Moment of inertia for a solid sphere: $ I = \frac{2}{5} M R^2 $
 - Rolling without slipping condition: $ v = R \omega $
 - Fractional energy calculations: ratio of rotational to total kinetic energy
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to conservation of energy in mechanical systems, rigid body dynamics, and the relationship between linear and angular motion. It extends concepts from linear kinematics to rotational analogs, reinforcing the parallel between force/torque and linear/angular momentum.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 In engineering, this analysis applies to gear design and vehicle dynamics. In geology, it relates to the motion of boulders or debris flows. Biomechanics uses similar principles to study joint movements, and aerospace engineering applies it to gyroscopic stability in satellites.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Transportation**: Optimizing wheel designs in cars and trains to minimize energy loss.
 - **Manufacturing**: Designing spherical rollers in conveyor belts for efficient material handling.
 - **Sports**: Analyzing the spin of a cricket ball or baseball to predict trajectory and bounce.
 - **Renewable Energy**: Improving the efficiency of flywheel energy storage systems by understanding rotational inertia.
 
-#### Problem Statement
+##### Problem Statement
 A solid sphere of mass $ M $ and radius $ R $ rolls without slipping on a horizontal surface. At a specific instant, its center of mass has speed $ v $. Derive an expression for the fraction of the sphere's total kinetic energy that is rotational. Express your answer as a simplified fraction. Ensure all steps are justified from first principles, and use the following notation:  
 - $ M $ for mass,  
 - $ R $ for radius,  
@@ -3055,31 +3055,31 @@ $$\boxed{\dfrac{2}{7}}$$
 
 ------
 ### Problem 14
-#### Background
+##### Background
 A playground merry-go-round is rotating freely with negligible friction about a fixed central axis. It has a moment of inertia $I_m$ about this axis and an initial angular velocity $\omega_i$. A child of mass $m$, initially standing at the edge of the merry-go-round at a radial distance $R$ from the center, moves inward to the exact center. This movement changes the system's rotational characteristics due to conservation laws.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Conservation of angular momentum in isolated systems.
 - Calculation of moment of inertia for point masses.
 - Relationship between angular velocity and moment of inertia.
 - Application of rotational dynamics principles.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to torque and rotational work-energy theorems.
 - Relates to center of mass motion and rigid body dynamics.
 - Extends concepts of linear momentum conservation to rotational analogs.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Physics and engineering: Stability analysis in rotating machinery.
 - Biomechanics: Human motion affecting rotational systems (e.g., divers, figure skaters).
 - Astronomy: Angular momentum conservation in celestial bodies (e.g., star contraction).
 
-#### Real-World Applications
+##### Real-World Applications
 - Design of amusement park rides requiring precise rotational control.
 - Satellite attitude adjustment using internal mass redistribution.
 - Sports science: Optimizing rotational speed in gymnastics and ice skating.
 
-#### Problem Statement
+##### Problem Statement
 A merry-go-round with moment of inertia $I_m$ rotates initially at angular velocity $\omega_i$. A child of mass $m$, modeled as a point mass, starts at the edge (radius $R$) and moves to the center. Derive an expression for the new angular velocity $\omega_f$ of the merry-go-round after the child reaches the center. Assume no external torques act on the system. Express $\omega_f$ symbolically in terms of $I_m$, $\omega_i$, $m$, and $R$.
 
 ### Solution
@@ -3110,31 +3110,31 @@ $$\boxed{\omega_i \left(1 + \frac{m R^{2}}{I_m}\right)}$$
 
 ------
 ### Problem 15
-#### Background
+##### Background
 In mechanical systems, pulleys are often used to change the direction of applied forces or transmit rotational motion. When a force is applied tangentially to a pulley, it creates a torque that causes angular acceleration. Understanding this relationship is essential for designing systems like cranes, elevators, and industrial winches where rotational dynamics govern performance.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Definition of torque: $\tau = F_{\text{tangential}} \cdot R$
 - Relationship between torque and angular acceleration: $\tau = I\alpha$
 - Newton's second law for rotational motion
 - Rigid body dynamics with fixed axis rotation
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to linear motion concepts: tangential acceleration $a_t = R\alpha$
 - Relates to energy methods: work done by torque $W = \int \tau  d\theta$, rotational kinetic energy $K = \frac{1}{2}I\omega^2$
 - Extends to systems with combined translation and rotation
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Torque calculations in gear systems and drive trains
 - **Robotics**: Precise motor control for robotic arms and joints
 - **Aerospace**: Inertial properties of control surfaces and gyroscopic systems
 
-#### Real-World Applications
+##### Real-World Applications
 - **Construction cranes**: Calculating required motor torque to lift loads at specific accelerations
 - **Automotive systems**: Determining clutch engagement forces in manual transmissions
 - **Wind turbines**: Analyzing startup torque needed to overcome rotor inertia
 
-#### Problem Statement
+##### Problem Statement
 A solid pulley with moment of inertia $I$ and radius $R$ is mounted on a frictionless axle. A constant tangential force $F$ is applied to the rim of the pulley as shown in the diagram. Derive an expression for the angular acceleration $\alpha$ of the pulley. Express your answer exclusively in terms of $I$, $R$, and $F$.  
 *(Assume no slipping or energy losses. The pulley starts from rest.)*
 
@@ -3167,28 +3167,28 @@ $$\boxed{\dfrac{FR}{I}}$$
 
 ------
 ### Problem 16
-#### Background
+##### Background
 A uniform rod of mass $M$ and length $L$ is pivoted at one end. The rod is initially held horizontally at rest and then released. Gravity acts downward with acceleration $g$. As the rod swings downward, its rotational motion can be analyzed using energy principles.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Conservation of mechanical energy
 - Rotational kinetic energy ($K_{\text{rot}} = \frac{1}{2} I \omega^2$)
 - Moment of inertia for a rod about one end ($I = \frac{1}{3}ML^2$)
 - Gravitational potential energy relative to a reference point
 - Angular velocity in rigid body dynamics
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects rotational dynamics to linear mechanics through energy conservation. It also reinforces the relationship between torque and angular acceleration (though not directly used here), and illustrates how potential energy transforms into rotational kinetic energy.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The principles apply to engineering (e.g., pendulum cranes in construction), biomechanics (limb movement during motion), and astronomy (dynamics of rotating celestial bodies). Energy conservation is fundamental across physics subfields, including thermodynamics and electromagnetism.
 
-#### Real-World Applications
+##### Real-World Applications
 - Swing bridges or drawbridges rotating about a pivot
 - Diving boards releasing potential energy into rotational motion
 - Robotic arms in manufacturing where controlled rotation is critical
 
-#### Problem Statement
+##### Problem Statement
 The rod is released from rest in a horizontal position. Derive an expression for the angular speed $\omega$ of the rod when it reaches a position 30° below the horizontal. Use conservation of energy and express $\omega$ symbolically in terms of $g$ and $L$.  
 **Note:** The moment of inertia of a uniform rod about one end is $\frac{1}{3}ML^2$. Set the pivot height as the reference point for gravitational potential energy.  
 **Answer format:** Provide the expression for $\omega$ only. Use $\omega = \sqrt{\text{expression}}$.
@@ -3253,31 +3253,31 @@ $$\boxed{\sqrt{\dfrac{3g}{2L}}}$$
 
 ------
 ### Problem 17
-#### Background
+##### Background
 Consider a solid disk wheel used in a mechanical system, such as a heavy flywheel in an industrial machine. The wheel has mass $M$ and radius $R$, and it rolls without slipping along a stationary horizontal rail. The center of mass of the wheel experiences a constant linear acceleration $a$ due to an external driving mechanism (e.g., a motor connected to the axle). Understanding the torque required to achieve this acceleration is essential for designing efficient drive systems and ensuring mechanical integrity.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. **Rotational dynamics**: Application of Newton's second law for rotation ($\tau = I \alpha$).
 2. **Moment of inertia**: Calculation for a solid disk about its central axis ($I = \frac{1}{2} M R^2$).
 3. **Rolling without slipping**: Relationship between linear acceleration $a$ and angular acceleration $\alpha$ ($a = R \alpha$).
 4. **Torque analysis**: Identification of forces contributing to torque about the center of mass.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to linear kinematics (acceleration) and rotational kinematics (angular acceleration).
 - Integrates concepts of force, mass, and inertia from Newtonian mechanics.
 - Relates to energy methods (e.g., work done by torque and rotational kinetic energy).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Torque calculations are vital in mechanical design (e.g., drivetrain systems in vehicles).
 - **Robotics**: Precise torque control is needed for wheeled robots to accelerate without slipping.
 - **Physics**: Demonstrates fundamental principles of rigid body dynamics applicable in astrophysics (e.g., rotating celestial bodies) and materials science.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Automotive industry**: Determining torque on drive wheels during acceleration informs transmission design.
 - **Industrial machinery**: Flywheels in presses or energy-storage systems require torque analysis for safe operation.
 - **Sports equipment**: Torque optimization in racing bicycle wheels or discus throw equipment.
 
-#### Problem Statement
+##### Problem Statement
 A solid disk wheel of mass $M$ and radius $R$ rolls without slipping on a stationary horizontal rail. The center of mass of the wheel accelerates horizontally with constant magnitude $a$. Determine the net torque acting on the wheel about its center of mass. Express your answer symbolically in terms of $M$, $R$, and $a$.
 
 ### Solution
@@ -3312,26 +3312,26 @@ $$\boxed{\dfrac{1}{2} M R a}$$
 
 ------
 ### Problem 18
-#### Background
+##### Background
 A figure skater performs a spin on the ice. Her body (excluding any held weights) has a constant moment of inertia $I_0$ about her axis of rotation. She holds two weights, each of mass $m$, at specific distances from this axis. When she pulls her arms inward, the distances of the weights from the axis change, altering her total moment of inertia. This scenario models how rotational speed changes due to conservation of angular momentum, a principle observed in sports like figure skating, gymnastics, and diving, as well as in engineering systems such as satellite attitude control.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Conservation of angular momentum
 - Moment of inertia for point masses and composite systems
 - Unit conversion for angular velocity (revolutions per second to radians per second)
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem integrates rotational kinematics (angular velocity) with rotational dynamics (moment of inertia and torque-free motion). It also reinforces the relationship between linear and rotational quantities, such as the contribution of point masses to moment of inertia.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Biomechanics**: Illustrates how athletes manipulate body configuration to control rotational motion.
 - **Aerospace Engineering**: Similar principles apply to spacecraft that adjust orientation by retracting/extending components (e.g., solar panels).
 
-#### Real-World Applications
+##### Real-World Applications
 - **Sports Science**: Figure skaters and divers change their moment of inertia to control spin rates during performances.
 - **Space Technology**: Satellites use inertia adjustments for stabilization without thrusters, conserving fuel.
 
-#### Problem Statement
+##### Problem Statement
 A figure skater has a moment of inertia $I_0$ (excluding held weights) and spins at an initial angular velocity of $\omega_i$ revolutions per second. She holds two weights, each of mass $m$. Initially, each weight is at a distance $r_i$ from her axis of rotation. She then pulls the weights inward to a distance $r_f$ from the axis. Derive an expression for her final angular velocity in radians per second. Express your answer in terms of $I_0$, $m$, $r_i$, $r_f$, $\omega_i$, and $\pi$.
 
 ### Solution
@@ -3373,30 +3373,30 @@ $$\boxed{\frac{2\pi\omega_i\left(I_0 + 2mr_i^{2}\right)}{I_0 + 2mr_f^{2}}}$$
 
 ------
 ### Problem 19
-#### Background
+##### Background
 In many mechanical systems, such as industrial rollers or vehicle wheels, objects transition from sliding to rolling motion due to friction. Consider a solid cylinder initially sliding on a horizontal surface without rotation. Frictional forces act on the cylinder until it achieves pure rolling motion (rolling without slipping). This problem explores the energy and momentum principles governing this transition.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conservation of angular momentum  
 2. Moment of inertia for solid cylinders  
 3. Condition for rolling without slipping ($v = R\omega$)  
 4. Torque and angular impulse  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects linear kinematics (velocity, acceleration) to rotational dynamics (angular velocity, torque).  
 - Integrates work-energy concepts with impulse-momentum theorems.  
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Mechanical Engineering:** Analyzes energy dissipation in braking systems.  
 - **Robotics:** Models wheel-ground interactions for mobile robots.  
 - **Sports Science:** Explains ball-surface interactions in bowling or curling.  
 
-#### Real-World Applications
+##### Real-World Applications
 - Design of conveyor belt rollers that minimize slippage.  
 - Optimization of regenerative braking in electric vehicles.  
 - Safety analysis of cargo securing systems during transportation.  
 
-#### Problem Statement
+##### Problem Statement
 A solid cylinder of mass $M$ and radius $R$ slides on a horizontal surface with initial linear velocity $v_0$ without any rotation. Due to kinetic friction with the surface, it transitions to pure rolling motion. Using conservation of angular momentum about the point of contact between the cylinder and the surface, derive an expression for the final linear velocity $v$ of the cylinder. Express $v$ solely in terms of $v_0$.  
 
 The moment of inertia of a solid cylinder about its central axis is $\frac{1}{2}MR^2$.
@@ -3443,30 +3443,30 @@ $$\boxed{\dfrac{2}{3}v_0}$$
 
 ------
 ### Problem 2
-#### Background
+##### Background
 Flywheels are mechanical energy storage devices that harness rotational kinetic energy. They are used in applications like regenerative braking systems in electric vehicles and grid stabilization. In this scenario, a flywheel is accelerated from rest by a constant torque source.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Rotational analog of Newton's second law: $\tau = I\alpha$
 - Kinematic equations for constant angular acceleration
 - Rotational kinetic energy: $K = \frac{1}{2}I\omega^2$
 - Relationship between torque, moment of inertia, and angular acceleration
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to linear motion analogs: torque ($\tau$) parallels force ($F$), moment of inertia ($I$) parallels mass ($m$), and angular acceleration ($\alpha$) parallels linear acceleration ($a$)
 - Extends work-energy concepts to rotational systems
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Mechanical Engineering: Flywheel design for energy storage density
 - Energy Science: Conversion between electrical energy (torque source) and rotational kinetic energy
 - Sustainability Technology: Applications in kinetic energy recovery systems
 
-#### Real-World Applications
+##### Real-World Applications
 - Uninterruptible Power Supplies (UPS): Flywheels provide backup power during outages
 - Formula 1 racing: Kinetic Energy Recovery Systems (KERS) store braking energy
 - Industrial punch presses: Smooth energy delivery during high-power operations
 
-#### Problem Statement
+##### Problem Statement
 A flywheel with moment of inertia $I$ starts from rest ($\omega_0 = 0$). A constant torque $\tau$ is applied for time $t$. Derive an expression for the final rotational kinetic energy $K$ in terms of $I$, $\tau$, and $t$ only.  
 *Follow these instructions precisely:*  
 - Express your answer as a single simplified fraction  
@@ -3502,28 +3502,28 @@ $$\boxed{\dfrac{\tau^{2} t^{2}}{2I}}$$
 
 ------
 ### Problem 20
-#### Background
+##### Background
 A solid cylinder of mass $M$ and radius $R$ is launched up a $30^\circ$ incline with an initial center-of-mass speed $v$. The cylinder rolls without slipping, meaning the point of contact with the incline has zero instantaneous velocity. As the cylinder ascends, gravitational potential energy increases while its kinetic energy decreases. The maximum height corresponds to the point where all initial kinetic energy is converted to potential energy.  
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conservation of mechanical energy with rotational kinetic energy  
 2. Moment of inertia for solid cylinders ($I = \frac{1}{2}MR^2$)  
 3. Rolling-without-slipping condition ($v = R\omega$)  
 4. Gravitational potential energy ($U_g = Mgh$)  
 
-#### Intradisciplinary Connections  
+##### Intradisciplinary Connections  
 - Connects to linear kinematics (incline motion) and rotational dynamics (torque, angular acceleration)  
 - Extends energy conservation principles to rigid-body rotation  
 
-#### Interdisciplinary Connections  
+##### Interdisciplinary Connections  
 - **Engineering**: Efficiency calculations for ramps in material transport  
 - **Sports Science**: Analyzing the motion of curling stones or bowling balls on inclined surfaces  
 
-#### Real-World Applications  
+##### Real-World Applications  
 - Designing braking systems for runaway wheeled vehicles on mountain roads  
 - Optimizing the launch angle and speed for cylindrical projectiles in physics demonstrations  
 
-#### Problem Statement  
+##### Problem Statement  
 A solid cylinder (mass $M$, radius $R$) rolls without slipping up a $30^\circ$ incline with initial center-of-mass speed $v$. Derive an expression for the maximum vertical height $h$ reached by the cylinder's center of mass. Express $h$ symbolically in terms of $v$, $g$ (acceleration due to gravity), and necessary numerical constants.
 
 ### Solution
@@ -3564,30 +3564,30 @@ $$\boxed{\dfrac{3v^{2}}{4g}}$$
 
 ------
 ### Problem 21
-#### Background
+##### Background
 Flywheels are mechanical energy storage devices used in applications like regenerative braking systems and industrial machinery. A flywheel with moment of inertia $I$ is mounted on a frictionless axle. A constant torque $\tau$ is applied to the flywheel, starting from rest. Understanding the work-energy relationship in rotational systems is crucial for designing such energy storage devices.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of rotational work: $W = \int \tau  d\theta$
 2. Torque-angular acceleration relationship: $\tau = I \alpha$
 3. Rotational kinematics under constant torque: $\omega^2 = \omega_0^2 + 2\alpha \Delta\theta$
 4. Work-energy theorem for rotation: $W = \Delta K_{\text{rot}} = \frac{1}{2} I \omega^2 - \frac{1}{2} I \omega_0^2$
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to linear dynamics through analogous relationships: torque (τ) ↔ force (F), angular displacement (θ) ↔ linear displacement (s), moment of inertia (I) ↔ mass (m).
 - Extends energy conservation principles to rotational systems.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Mechanical engineering: Flywheel energy storage calculations for sustainable technology.
 - Aerospace engineering: Attitude control systems using reaction wheels.
 - Physics: Fundamental connection between torque, energy, and angular motion.
 
-#### Real-World Applications
+##### Real-World Applications
 - Energy recovery in electric vehicles during braking.
 - Stabilizing power grid frequency fluctuations.
 - Emergency power backup systems for data centers.
 
-#### Problem Statement
+##### Problem Statement
 A flywheel with moment of inertia $I$ starts from rest. A constant torque $\tau$ is applied about its central axis. Derive an expression for the total work $W$ done by the torque after the flywheel completes exactly $N$ full revolutions. Use the work-energy theorem for rotational motion and express your answer solely in terms of $\tau$ and $N$.
 
 ### Solution
@@ -3623,30 +3623,30 @@ $$\boxed{2\pi N \tau}$$
 
 ------
 ### Problem 22
-#### Background
+##### Background
 In many real-world applications, such as designing braking systems for vehicles or analyzing the motion of sports balls on inclined surfaces, understanding the acceleration of rolling objects is crucial. Consider a hollow spherical shell, which is a common model for objects like soccer balls or thin-walled containers. The shell has a mass $M$ and a radius $R$. It is released from rest on an inclined plane that makes an angle $\theta$ with the horizontal. The shell rolls down the incline without slipping due to static friction between the shell and the incline.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Newton's second law for linear and rotational motion
 - Moment of inertia for symmetric objects
 - Rolling without slipping condition
 - Torque and angular acceleration
 - Vector decomposition of forces
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem integrates concepts from linear kinematics (acceleration), dynamics (force analysis), and rotational motion (torque and moment of inertia). It also reinforces the relationship between linear and angular quantities.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Designing inclines for material transport systems.
 - **Sports Science**: Analyzing the motion of balls on turf or slopes.
 - **Geophysics**: Modeling rock or debris movement on hillsides.
 
-#### Real-World Applications
+##### Real-World Applications
 - Calculating the acceleration of a bowling ball on a lane with an oil gradient.
 - Predicting the speed of a cylindrical water tank rolling down a ramp during emergency drainage.
 - Optimizing the angle of conveyor belts in mining operations to control material flow speed.
 
-#### Problem Statement
+##### Problem Statement
 A hollow spherical shell of mass $M$ and radius $R$ rolls without slipping down an incline at an angle $\theta$ to the horizontal. The acceleration due to gravity is $g$. Derive an expression for the linear acceleration $a$ of the center of mass of the shell along the incline. Express your answer symbolically in terms of $g$ and $\theta$.
 
 ### Solution
@@ -3715,28 +3715,28 @@ $$\boxed{\dfrac{3}{5}g\sin\theta}$$
 
 ------
 ### Problem 23
-#### Background  
+##### Background  
 In a physics laboratory, a uniform disk of mass $M_d$ and radius $R$ is mounted on a frictionless horizontal axle. A light, inextensible string is wrapped tightly around the disk's rim, and a block of mass $m$ is attached to the free end of the string. The system is released from rest, allowing the block to descend under gravity, which causes the disk to rotate. This setup models real-world devices like winches or elevators, where rotational and translational motion are coupled.
 
-#### Knowledge Points Tested  
+##### Knowledge Points Tested  
 1. Newton's second law for linear motion.  
 2. Newton's second law for rotational motion ($\tau = I\alpha$).  
 3. Moment of inertia for a uniform disk about its central axis.  
 4. Kinematic constraint between linear and angular acceleration ($a = R\alpha$).  
 
-#### Intradisciplinary Connections  
+##### Intradisciplinary Connections  
 This problem integrates concepts from rotational dynamics (torque, moment of inertia, angular acceleration) and linear dynamics (forces, acceleration). It extends the application of Newton's laws to systems with combined translation and rotation, emphasizing energy conservation principles implicitly through the work done by tension.
 
-#### Interdisciplinary Connections  
+##### Interdisciplinary Connections  
 - **Engineering**: Models the mechanics of pulley systems in cranes or elevators.  
 - **Technology**: Illustrates principles behind regenerative braking in electric vehicles, where rotational energy is converted to electrical energy.  
 
-#### Real-World Applications  
+##### Real-World Applications  
 - **Construction Winches**: Used to lift materials vertically via a rotating drum.  
 - **Yoyo Dynamics**: Demonstrates how string unwinding from a central axis induces rotation.  
 - **Fitness Equipment**: Cable machines use similar mechanisms to provide resistance.  
 
-#### Problem Statement  
+##### Problem Statement  
 The disk (mass $M_d$, radius $R$) rotates freely about a frictionless axle. A block of mass $m$ hangs vertically from the string wrapped around the disk's rim. When released, the block descends, unwinding the string and causing the disk to rotate. Derive an expression for the angular acceleration $\alpha$ of the disk. Express $\alpha$ symbolically in terms of $m$, $M_d$, $R$, and the acceleration due to gravity $g$.
 
 ### Solution
@@ -3782,31 +3782,31 @@ $$\boxed{\dfrac{2mg}{R\left(2m + M_d\right)}}$$
 
 ------
 ### Problem 24
-#### Background
+##### Background
 A playground merry-go-round is rotating freely about a fixed frictionless vertical axis at its center. It has a moment of inertia $I_0$ about this axis and is initially rotating with angular velocity $\omega_0$. A sandbag is dropped vertically onto the merry-go-round from rest (with respect to the ground) at a point located a distance $d$ from the center. The sandbag adheres to the surface upon impact. This scenario explores how the rotation changes when mass is added abruptly to a rotating system.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conservation of angular momentum in isolated systems.  
 2. Definition of angular momentum for rigid bodies and point masses.  
 3. Additivity of moment of inertia when masses are added.  
 4. Analysis of impulsive forces during inelastic collisions.  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Rotational Kinematics:** Relates angular velocity to rotational kinetic energy.  
 - **Dynamics:** Examines torque-free systems and conditions for angular momentum conservation.  
 - **Rigid Body Physics:** Extends moment of inertia concepts to composite systems.  
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Aerospace Engineering:** Simulates mass addition in spinning spacecraft or satellites.  
 - **Biomechanics:** Models sudden weight shifts in rotating systems (e.g., figure skaters pulling in arms).  
 - **Meteorology:** Analogous to angular momentum conservation in atmospheric vortices when mass accumulates.  
 
-#### Real-World Applications
+##### Real-World Applications
 - **Amusement Rides:** Safety analysis for rotating platforms when passengers step on/off.  
 - **Industrial Machinery:** Predicting speed changes in flywheels or turbines when material deposits adhere.  
 - **Astrophysics:** Understanding star formation dynamics where collapsing clouds conserve angular momentum.  
 
-#### Problem Statement
+##### Problem Statement
 A merry-go-round with moment of inertia $I_0$ rotates freely at angular velocity $\omega_0$ about a fixed vertical axis through its center. A sandbag of mass $m$ is dropped vertically from rest (relative to the ground) at a distance $d$ from the center and sticks to the merry-go-round. Derive an expression for the new angular velocity $\omega_f$ of the system immediately after the sandbag adheres. Express $\omega_f$ symbolically in terms of $I_0$, $\omega_0$, $m$, and $d$.
 
 ### Solution
@@ -3846,25 +3846,25 @@ $$\boxed{\frac{I_0 \omega_0}{I_0 + m d^2}}$$
 
 ------
 ### Problem 25
-#### Background  
+##### Background  
 A uniform ladder of mass $M$ and length $L$ is initially leaning against a smooth (frictionless) vertical wall at an angle $\theta$ to the vertical. The bottom of the ladder rests on a horizontal floor that provides sufficient static friction to prevent slipping. The ladder is released from rest. This scenario explores the rotational dynamics of a rigid body under the influence of gravity and constraint forces.
 
-#### Knowledge Points Tested  
+##### Knowledge Points Tested  
 - Torque and angular acceleration in rotational dynamics.  
 - Moment of inertia of a rigid body.  
 - Newton's second law for translational and rotational motion.  
 - Kinematics of rigid body rotation about a fixed axis.  
 
-#### Intradisciplinary Connections  
+##### Intradisciplinary Connections  
 This problem connects to static equilibrium (initial unstable equilibrium), conservation of energy (though not used here), and rotational kinematics (relation between angular acceleration and linear acceleration of the center of mass).  
 
-#### Interdisciplinary Connections  
+##### Interdisciplinary Connections  
 The dynamics of a falling ladder models real-world scenarios in engineering (e.g., stability of structures, robotics) and physics (e.g., rotational motion in constrained systems).  
 
-#### Real-World Applications  
+##### Real-World Applications  
 Understanding this system is crucial for safety in construction (e.g., ladder stability), mechanical design (e.g., deployable structures), and analyzing the motion of articulated systems in biomechanics.  
 
-#### Problem Statement  
+##### Problem Statement  
 The ladder is released from rest. Derive the initial angular acceleration $\alpha$ of the ladder. Express your answer analytically in terms of $g$ (acceleration due to gravity), $L$ (length of the ladder), and $\theta$ (angle between the ladder and the vertical).
 
 ### Solution
@@ -3895,27 +3895,27 @@ $$\boxed{\dfrac{3g\sin\theta}{2L}}$$
 
 ------
 ### Problem 26
-#### Background
+##### Background
 In a physics demonstration, a solid cylinder and a solid sphere, each with identical mass $M$ and radius $R$, roll without slipping on parallel horizontal tracks. Both achieve the same constant linear speed $v$ after being propelled by identical mechanisms. The moment of inertia for a solid cylinder about its central axis is $I_{\text{cyl}} = \frac{1}{2}MR^2$, and for a solid sphere about its diameter is $I_{\text{sph}} = \frac{2}{5}MR^2$.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Rotational kinetic energy: $K_{\text{rot}} = \frac{1}{2} I \omega^2$.
 2. Rolling without slipping: $v = R\omega$.
 3. Moment of inertia for symmetric rigid bodies.
 4. Ratio derivation using symbolic parameters.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects rotational dynamics to energy conservation principles, as the total kinetic energy of a rolling object combines translational ($\frac{1}{2}Mv^2$) and rotational components. It also reinforces torque and angular momentum concepts.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Rotational energy distribution is critical in mechanical engineering (e.g., flywheel energy storage) and biomechanics (e.g., analyzing gait cycles where limbs rotate). In sports science, it explains why different balls (spheres vs. cylinders) behave uniquely when rolling.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Transportation Design**: Engineers optimize wheel moments of inertia to balance rotational energy for fuel efficiency.
 - **Manufacturing**: Conveyor systems use cylindrical rollers, while robotic joints often employ spherical components; energy efficiency depends on rotational inertia.
 - **Everyday Example**: A can (cylinder) and a marble (sphere) rolled with the same speed exhibit different rotational energies, affecting how they interact with surfaces.
 
-#### Problem Statement
+##### Problem Statement
 Derive the ratio of the rotational kinetic energy of the cylinder to the rotational kinetic energy of the sphere. Express your answer as a simplified fraction in terms of the given parameters $M$, $R$, and $v$.  
 **Answer Format Requirements**:  
 - Use $\omega_{\text{cyl}}$ and $\omega_{\text{sph}}$ for angular speeds.  
@@ -3951,28 +3951,28 @@ $$\boxed{\dfrac{5}{4}}$$
 
 ------
 ### Problem 27
-#### Background
+##### Background
 In sports like bowling or billiards, a ball often starts by sliding across a surface before friction causes it to transition to pure rolling. Consider a solid spherical ball of mass $M$ and radius $R$ launched horizontally with an initial translational velocity $v_0$ but with no initial rotation. The surface has a coefficient of kinetic friction $\mu$. The ball experiences constant kinetic friction opposing its motion, which simultaneously slows its linear motion and induces rotation.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Newton's second law for linear and rotational motion
 - Moment of inertia for solid spheres
 - Torque and angular acceleration
 - Condition for pure rolling (no-slip condition)
 - Kinematics with constant acceleration
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem integrates linear dynamics (friction, center-of-mass acceleration) with rotational dynamics (torque, angular acceleration) and connects to energy conservation principles, as the work done by friction converts translational kinetic energy to rotational kinetic energy.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The sliding-to-rolling transition is crucial in mechanical engineering (e.g., vehicle traction control), robotics (wheel-ground interaction), and materials science (studying frictional wear in bearings).
 
-#### Real-World Applications
+##### Real-World Applications
 - **Automotive safety**: Anti-lock braking systems (ABS) prevent wheels from sliding by modulating friction to maintain rolling.
 - **Sports equipment design**: Optimizing surface friction in bowling lanes or golf greens to control ball behavior.
 - **Space exploration**: Rover wheels on planetary surfaces must transition smoothly from sliding to rolling on loose terrain.
 
-#### Problem Statement
+##### Problem Statement
 The ball begins sliding at $t=0$ with initial linear velocity $v_0$ and zero angular velocity. Derive an expression for the time $t$ at which the ball starts rolling without slipping. Express your answer symbolically using only $v_0$, $\mu$, and $g$ (acceleration due to gravity). Do not include $M$ or $R$ in your final expression.
 
 **Answer format requirements**:  
@@ -4019,33 +4019,33 @@ $$\boxed{\dfrac{2v_0}{7\mu g}}$$
 
 ------
 ### Problem 28
-#### Background
+##### Background
 A yo-yo is a common toy that demonstrates rotational motion principles. When dropped, the string unwinds from the central axle, causing both translational and rotational motion. This problem models a yo-yo as a solid cylinder of mass $M$ and radius $R$, with a lightweight string wound tightly around its circumference. The free end of the string is fixed to a high ceiling, and the yo-yo is released from rest at height $h$ above the floor. The string unwinds without slipping under gravitational acceleration $g$.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Newton's second law for translational motion  
 2. Rotational analog of Newton's second law (torque and angular acceleration)  
 3. Moment of inertia for solid cylinders  
 4. Constraint equations for rolling/unwinding without slipping  
 5. Relationship between linear and angular acceleration  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to linear kinematics through center-of-mass motion  
 - Extends work-energy theorem to rotational kinetic energy  
 - Relates to angular momentum conservation in isolated systems  
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering:** Cable unwinding dynamics in construction cranes  
 - **Sports Science:** Analysis of throwing mechanics (e.g., hammer throw)  
 - **Biomechanics:** Tendon unwinding in joint movements  
 
-#### Real-World Applications
+##### Real-World Applications
 1. Industrial cable spooling systems  
 2. Emergency descent devices using friction-controlled unwinding  
 3. Space tether deployment mechanisms  
 4. Yo-yo despin devices for satellite stabilization  
 
-#### Problem Statement
+##### Problem Statement
 Derive the vertical acceleration $a_{\text{cm}}$ of the center of mass of the yo-yo immediately after release. Express your answer symbolically in terms of gravitational acceleration $g$ and fundamental constants. Use the following notation:  
 - $M$: Mass of cylinder  
 - $R$: Radius of cylinder  
@@ -4100,30 +4100,30 @@ $$\boxed{\dfrac{2g}{3}}$$
 
 ------
 ### Problem 29
-#### Background
+##### Background
 In sports such as bowling or billiards, spherical objects often roll without slipping due to friction with the surface. This motion combines translation and rotation, leading to a total kinetic energy that depends on both linear and angular motion. Understanding how energy relates to momentum in such systems is crucial for predicting object behavior in real-world applications like vehicle dynamics or planetary motion.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Rotational kinetic energy and its relationship to linear kinetic energy.
 2. Moment of inertia for symmetric rigid bodies.
 3. Rolling without slipping condition (relating linear velocity to angular velocity).
 4. Conservation of energy principles.
 5. Definition of linear momentum and its dependence on mass and velocity.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem integrates concepts from rotational dynamics (moment of inertia, angular velocity) and translational motion (linear momentum, kinetic energy). It reinforces the principle that total kinetic energy for rolling objects has distinct translational and rotational components, which must be combined using fundamental physics laws.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Designing braking systems for vehicles requires understanding how kinetic energy converts to other forms during deceleration.
 - **Sports Science**: Analyzing the motion of balls in games like baseball or cricket involves similar energy-momentum relationships to predict trajectories and impacts.
 - **Astronomy**: Simplified models of celestial bodies (e.g., asteroids) rolling or tumbling in space use analogous dynamics.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Automotive Safety**: Crash simulations use momentum-energy relations to design crumple zones that absorb kinetic energy.
 - **Robotics**: Wheeled robots rolling without slipping on surfaces must manage energy distribution between motors and wheels.
 - **Manufacturing**: Quality control for spherical bearings involves verifying rolling motion properties under specified energy conditions.
 
-#### Problem Statement
+##### Problem Statement
 A uniform solid sphere of mass $M$ and radius $R$ rolls without slipping on a horizontal surface. The sphere has a total kinetic energy $K$, which includes both translational and rotational components. The moment of inertia for a solid sphere about its center is $\frac{2}{5} M R^2$. Derive an expression for the magnitude of the linear momentum of the sphere in terms of $K$, $M$, and $R$.  
 *Express your final answer as a single simplified analytic expression.*  
 *Note: Use $\omega$ for angular velocity and $v$ for linear velocity where needed.*
@@ -4162,29 +4162,29 @@ $$\boxed{\sqrt{\frac{10KM}{7}}}$$
 
 ------
 ### Problem 3
-#### Background
+##### Background
 Consider a pulley system used in engineering applications, such as elevators or cranes, where rotational inertia significantly affects motion. A pulley with a given moment of inertia and radius is mounted on a frictionless axle. Two masses are suspended by a massless, inextensible rope that passes over the pulley without slipping. When released, the system accelerates due to the net force and torque.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Newton's second law for linear motion
 - Rotational dynamics (torque and angular acceleration)
 - Moment of inertia and its role in rotational motion
 - Constraint equations linking linear and angular kinematics (no-slip condition)
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to energy conservation (rotational kinetic energy $\frac{1}{2}I\omega^2$ and gravitational potential energy) and rigid body dynamics. It also reinforces vector analysis of forces and torques.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Design of pulley systems in mechanical lifts, where moment of inertia impacts acceleration and safety margins.
 - **Biomechanics**: Modeling joint movements with rotational inertia in limbs during motion.
 - **Aerospace**: Deployment mechanisms for payloads using cable systems with inertial components.
 
-#### Real-World Applications
+##### Real-World Applications
 - Elevator counterweights: Pulley inertia affects acceleration profiles and motor sizing.
 - Construction cranes: Rotational inertia influences load acceleration during lifting operations.
 - Automotive systems: Inertia in belt-driven components (e.g., alternators) affects engine response.
 
-#### Problem Statement
+##### Problem Statement
 Two masses $m_1$ and $m_2$ (with $m_2 > m_1$) are suspended vertically by a massless, inextensible rope that passes over a pulley of radius $R$. The pulley has a moment of inertia $I$ about its rotation axis. The rope does not slip. Derive an expression for the magnitude of the acceleration $a$ of the masses when the system is released from rest. Express your answer symbolically in terms of $m_1$, $m_2$, $I$, $R$, and the gravitational acceleration $g$.
 
 ### Solution
@@ -4226,29 +4226,29 @@ $$\boxed{\dfrac{(m_2 - m_1) g}{m_1 + m_2 + \dfrac{I}{R^2}}}$$
 
 ------
 ### Problem 30
-#### Background
+##### Background
 In a new experimental transportation system, cylindrical rollers made of solid steel are used to carry loads. These rollers are designed to roll without slipping on horizontal surfaces and can ascend ramps to reach elevated platforms. Consider a solid cylindrical roller of mass $M$ and radius $R$ initially rolling without slipping on a horizontal surface with a center-of-mass speed $v$. It encounters a ramp inclined at an angle $\theta$ ($0^\circ < \theta < 90^\circ$) to the horizontal. The ramp surface provides sufficient friction to ensure the cylinder continues to roll without slipping as it ascends. The goal is to determine the maximum vertical height the center of mass of the cylinder reaches above its initial level.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conservation of mechanical energy in rotational systems.
 2. Rotational kinetic energy and moment of inertia for solid cylinders.
 3. Rolling without slipping condition and its implications for energy conservation.
 4. Conversion between kinetic and potential energy.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects rotational dynamics to translational motion by requiring the combination of rotational and translational kinetic energy. It also reinforces the concept that static friction in rolling without slipping does no work, enabling energy conservation. Additionally, it relates to torque and angular acceleration, though energy methods provide the most efficient solution.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Designing ramps and rollers in material handling systems, such as conveyor belts or roller coasters, requires predicting motion under constraints like rolling without slipping.
 - **Mathematics**: Solving the problem involves algebraic manipulation and understanding the independence of the result from certain parameters (like $\theta$) highlights the role of symmetry and invariance in modeling.
 - **Sports Science**: Similar principles apply to analyzing the motion of balls or wheels in sports like bowling or cycling on inclined surfaces.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Transportation Logistics**: Calculating the maximum height achieved by cylindrical cargo rollers on loading ramps ensures efficient warehouse design.
 - **Renewable Energy**: Flywheel energy storage systems use rotational kinetic energy; understanding energy conversion during elevation changes aids in optimizing such systems.
 - **Manufacturing**: Predicting the behavior of rolling components in assembly lines under incline transitions prevents jams and improves safety.
 
-#### Problem Statement
+##### Problem Statement
 A uniform solid cylinder of mass $M$ and radius $R$ is rolling without slipping on a horizontal surface with a center-of-mass speed $v$. It encounters a ramp inclined at an angle $\theta$ to the horizontal. The ramp surface ensures the cylinder continues to roll without slipping. Derive an expression for the maximum vertical height $h$ above the initial horizontal surface that the center of mass of the cylinder reaches. Express $h$ in terms of $v$, $g$ (acceleration due to gravity), and any necessary constants. 
 
 **Answer Format Requirements**:  
@@ -4309,31 +4309,31 @@ $$\boxed{\dfrac{3v^{2}}{4g}}$$
 
 ------
 ### Problem 31
-#### Background
+##### Background
 A physical pendulum is a rigid body that pivots around a fixed point and oscillates under gravity. Unlike a simple pendulum, its motion depends on the distribution of mass. Consider a uniform disk pivoted at a point on its rim, which creates a unique rotational system. When displaced and released, the disk swings back toward equilibrium, converting gravitational potential energy into rotational kinetic energy.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conservation of mechanical energy (potential to kinetic energy conversion).  
 2. Moment of inertia calculations for rigid bodies (using the parallel axis theorem).  
 3. Rotational kinetic energy and angular velocity relationships.  
 4. Geometry of circular motion for center-of-mass height changes.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to torque and angular acceleration in rotational dynamics.  
 - Extends the concept of a simple pendulum to rigid bodies with distributed mass.  
 - Relates to small-angle oscillations but remains valid for arbitrary displacements.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Design of pendulum-based instruments (e.g., seismometers or clock escapements).  
 - **Astronomy**: Modeling the rotation of celestial bodies under gravitational torques.  
 - **Materials Science**: Stress analysis in rotating disk components (e.g., flywheels).
 
-#### Real-World Applications
+##### Real-World Applications
 - **Flywheel Energy Storage**: Disks pivoted at the rim mimic the energy transfer in mechanical flywheels used for regenerative braking.  
 - **Exercise Equipment**: Rotary inertia systems in spin bikes or rowing machines utilize similar rotational principles.  
 - **Geophysics**: Tilted geological strata undergoing gravitational realignment.
 
-#### Problem Statement
+##### Problem Statement
 A uniform disk of mass $M$ and radius $R$ is pivoted at a point on its rim. The disk is displaced from its equilibrium (vertical) position by an initial angle $\theta_0$ and released from rest. Derive an expression for the angular speed $\omega$ of the disk when it reaches its lowest point (equilibrium position).  
 
 Express $\omega$ symbolically in terms of $g$ (acceleration due to gravity), $R$, and $\theta_0$. Use exact analytic form, simplified with rational coefficients.  
@@ -4373,32 +4373,32 @@ $$\boxed{\sqrt{\frac{4g(1 - \cos\theta_0)}{3R}}}$$
 
 ------
 ### Problem 32
-#### Background
+##### Background
 In many mechanical systems, such as vehicles on inclined roads or balls on ramps, objects roll without slipping. This motion involves both translation and rotation, requiring a combined analysis of forces and energy. Understanding how far a rolling object travels before stopping is crucial for applications like designing safety ramps for trucks or analyzing sports equipment.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conservation of mechanical energy (accounting for rotational and translational kinetic energy).  
 2. Moment of inertia for solid spheres.  
 3. Kinematic relationship for rolling without slipping.  
 4. Trigonometry relating incline distance to height.  
 5. Work-energy principles for non-conservative forces (friction does no work here due to no slipping).
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to linear kinematics (deceleration on inclines).  
 - Extends energy conservation to rotational systems.  
 - Relies on torque and angular acceleration concepts from rotational dynamics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering:** Braking system design for vehicles on slopes.  
 - **Sports Science:** Analyzing the motion of balls in sports like bowling or billiards.  
 - **Geology:** Modeling rock displacement on inclined terrains.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Runaway Truck Ramps:** Calculating stopping distances for vehicles with rotating wheels.  
 - **Manufacturing:** Predicting the behavior of spherical components on conveyor ramps.  
 - **Amusement Park Rides:** Designing roller coaster braking zones with inclined tracks.
 
-#### Problem Statement
+##### Problem Statement
 A solid sphere of mass $M$ and radius $R$ rolls without slipping up an incline angled at $\theta$ to the horizontal. The sphere's center of mass has an initial linear velocity $v$ directed up the incline. The acceleration due to gravity is $g$. Derive an expression for the distance $d$ the sphere travels along the incline before coming to rest. Use the following parameters where necessary: $M$, $R$, $v$, $\theta$, and $g$.  
 
 **Answer Format Requirements:**  
@@ -4436,31 +4436,31 @@ $$\boxed{\dfrac{7 v^{2}}{10 g \sin \theta}}$$
 
 ------
 ### Problem 33
-#### Background
+##### Background
 Physical pendulums are rigid bodies that oscillate about a pivot point under gravity. The period of oscillation depends on the mass distribution, characterized by the moment of inertia. In this problem, we examine a thin uniform rod of mass $M$ and length $L$ suspended from a frictionless pivot at one end. When displaced from equilibrium and released, the rod undergoes small oscillations due to gravitational torque.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Moment of inertia and the parallel axis theorem
 - Torque and angular acceleration in rotational dynamics
 - Small angle approximation for simple harmonic motion
 - Relationship between angular frequency and period
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to center of mass calculations (gravity acts at midpoint)
 - Extends linear oscillation concepts (e.g., spring-mass systems) to rotational systems
 - Relates to energy methods (kinetic energy = $\frac{1}{2}I\omega^2$, potential energy = $Mgh$)
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering:** Models crane booms, robotic arms, or swaying structures
 - **Timekeeping:** Historical pendulum clocks used rod-like components
 - **Biomechanics:** Approximates limb motion during walking or running
 
-#### Real-World Applications
+##### Real-World Applications
 - **Seismometers:** Torsional pendulums detect ground oscillations
 - **Construction:** Calculating natural frequencies of suspended beams
 - **Sports Science:** Analyzing golf club/gymnast bar oscillations
 
-#### Problem Statement
+##### Problem Statement
 A thin uniform rod of mass $M$ and length $L$ is suspended from a frictionless pivot at one end. The moment of inertia about its center of mass is $I_{\text{cm}} = \frac{1}{12}ML^2$.  
 a) Use the parallel axis theorem to derive the moment of inertia $I$ about the pivot.  
 b) When displaced by angle $\theta$ (radians) from vertical, show that gravity exerts a restoring torque proportional to $\sin\theta$.  
@@ -4469,9 +4469,9 @@ d) Hence, find the period $T$ of small oscillations.
 Express $T$ solely in terms of $L$ and $g$ (acceleration due to gravity).
 
 ### Solution
-#### Step-by-Step Derivation
+##### Step-by-Step Derivation
 
-#### a) Moment of Inertia about Pivot
+##### a) Moment of Inertia about Pivot
 The parallel axis theorem states:  
 $$ I = I_{\text{cm}} + M d^2 $$  
 where $d$ is the distance from the center of mass to the pivot. The center of mass is at $L/2$:  
@@ -4481,12 +4481,12 @@ $$ I = \frac{1}{12}ML^2 + M \left( \frac{L}{2} \right)^2 = \frac{1}{12}ML^2 + \f
 Combine terms:  
 $$ I = \left( \frac{1}{12} + \frac{3}{12} \right)ML^2 = \frac{4}{12}ML^2 = \frac{1}{3}ML^2 $$  
 
-#### b) Restoring Torque
+##### b) Restoring Torque
 Gravitational force $Mg$ acts downward at the center of mass. The perpendicular distance from the pivot to the line of force is $\frac{L}{2} \sin\theta$:  
 $$ \tau = - \left( Mg \cdot \frac{L}{2} \sin\theta \right) $$  
 The negative sign indicates restoration toward $\theta = 0$. Thus, $\tau \propto \sin\theta$.  
 
-#### c) Equation of Motion and Angular Frequency
+##### c) Equation of Motion and Angular Frequency
 Newton's second law for rotation:  
 $$ \tau = I \alpha = I \frac{d^2\theta}{dt^2} $$  
 Substitute $\tau$ and $I$:  
@@ -4498,7 +4498,7 @@ $$ \frac{d^2\theta}{dt^2} = -\left( \frac{3g}{2L} \right) \theta $$
 This is simple harmonic motion with $\frac{d^2\theta}{dt^2} = -\omega^2 \theta$, so:  
 $$ \omega^2 = \frac{3g}{2L} \implies \omega = \sqrt{\frac{3g}{2L}} $$  
 
-#### d) Period of Oscillation
+##### d) Period of Oscillation
 Period $T$ relates to angular frequency by $T = \frac{2\pi}{\omega}$:  
 $$ T = 2\pi \sqrt{\frac{2L}{3g}} $$
 
@@ -4507,32 +4507,32 @@ $$\boxed{2\pi \sqrt{\frac{2L}{3g}}}$$
 
 ------
 ### Problem 34
-#### Background
+##### Background
 Rolling without slipping is a common phenomenon in mechanical systems, from vehicle wheels to industrial rollers. A solid cylinder executing this motion combines translational movement of its center of mass with rotation about its axis. The total kinetic energy arises from both components, governed by fundamental physical laws.  
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Moment of inertia for a solid cylinder about its central axis  
 2. Rotational kinetic energy  
 3. Translational kinetic energy  
 4. Kinematic constraint for rolling without slipping  
 5. Energy conservation principles  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to rigid body dynamics and torque  
 - Extends concepts of linear motion to rotational analogs (e.g., $F = ma$ vs. $\tau = I\alpha$)  
 - Reinforces energy partitioning in compound motions  
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Efficiency calculations in drivetrain systems  
 - **Robotics**: Motion planning for wheeled robots  
 - **Sports Science**: Analysis of bowling balls or curling stones  
 
-#### Real-World Applications
+##### Real-World Applications
 - Flywheel energy storage systems  
 - Conveyor belt rollers in manufacturing  
 - Train wheels optimizing traction-to-energy-loss ratios  
 
-#### Problem Statement  
+##### Problem Statement  
 A solid cylinder of mass $M$ and radius $R$ rolls without slipping on a horizontal surface. Its total kinetic energy is $K$. Derive an expression for the linear speed $v$ of the cylinder's center of mass. Express your answer symbolically in terms of $K$ and $M$ only.
 
 ### Solution
@@ -4565,32 +4565,32 @@ $$\boxed{\sqrt{\dfrac{4K}{3M}}}$$
 
 ------
 ### Problem 35
-#### Background
+##### Background
 A block of mass $m_1$ rests on a horizontal surface with coefficient of kinetic friction $\mu$. A massless, inextensible string connects $m_1$ to a hanging mass $m_2$ by passing over a pulley of radius $R$ and moment of inertia $I$ about its central axis. The pulley rotates without friction, and the string does not slip. The system is released from rest, and we analyze the motion immediately after release. The acceleration due to gravity is $g$.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Newton's second law for linear motion
 - Newton's second law for rotational motion ($\tau = I \alpha$)
 - Relationship between linear and angular acceleration ($a = R \alpha$)
 - Kinetic friction on horizontal surfaces ($f_k = \mu N$)
 - System constraints for connected masses
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects translational dynamics (forces on blocks) and rotational dynamics (torque on pulley)
 - Illustrates how moment of inertia affects acceleration in multi-body systems
 - Reinforces constraint relationships in pulley systems
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Mechanical engineering: Design of pulley systems in cranes/elevators where friction and inertia impact performance
 - Robotics: Dynamics of cable-driven mechanisms with rotational components
 - Physics education: Demonstrates experimental verification of $a = R\alpha$ via motion sensors
 
-#### Real-World Applications
+##### Real-World Applications
 - Elevator systems: Pulley inertia and friction reduce effective acceleration of cabins
 - Conveyor belts: Friction and drum inertia affect startup acceleration
 - Weightlifting machines: Pulley inertia modifies perceived resistance during acceleration
 
-#### Problem Statement
+##### Problem Statement
 Derive the angular acceleration $\alpha$ of the pulley immediately after release. Express $\alpha$ symbolically in terms of $m_1$, $m_2$, $\mu$, $I$, $R$, and $g$.  
 
 **Final Answer Format Requirements**  
@@ -4655,26 +4655,26 @@ $$\boxed{ \frac{ g R (m_2 - \mu m_1) }{ I + R^2 (m_1 + m_2) } }$$
 
 ------
 ### Problem 36
-#### Background
+##### Background
 A solid ball of mass $M$ and radius $R$ is released from rest at the top of a frictionless quarter-circular track with radius $R_{\text{track}}$, where $R_{\text{track}} \gg R$. The ball rolls without slipping along the track. This scenario models systems like ball bearings in curved ramps or marbles in track designs, where rotational and translational energy conversion is essential.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Conservation of mechanical energy  
 - Rotational kinetic energy of solid spheres  
 - Rolling-without-slipping kinematics ($v = R\omega$)  
 - Moment of inertia about center of mass ($I_{\text{cm}} = \frac{2}{5}MR^2$)  
 - Approximation methods for center-of-mass path geometry  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 Connects to circular motion (center-of-mass trajectory), work-energy theorem for rigid bodies, and torque-free rolling dynamics. Extends linear conservation of energy problems to rotational systems.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Relevant to mechanical engineering (efficient energy transfer in rotating machinery), robotics (wheeled locomotion on curved paths), and sports science (ball dynamics on banked surfaces).
 
-#### Real-World Applications
+##### Real-World Applications
 Used in designing inertial dampers for earthquake-resistant structures, roller coaster energy dissipation systems, and industrial conveyor mechanisms with curved sections.
 
-#### Problem Statement
+##### Problem Statement
 Derive the speed $v$ of the ball's center of mass when it reaches the bottom of the track. Express $v$ symbolically in terms of $g$ (gravitational acceleration) and $R_{\text{track}}$, using the condition $R_{\text{track}} \gg R$ to simplify your expression. Justify all approximations.
 
 ### Solution
@@ -4719,29 +4719,29 @@ $$\boxed{\sqrt{\dfrac{10gR_{\text{track}}}{7}}}$$
 
 ------
 ### Problem 37
-#### Background
+##### Background
 A merry-go-round in a playground rotates freely with negligible friction about a fixed vertical axis. The merry-go-round itself has a moment of inertia $I_0$ about its rotation axis when no additional masses are present at the edge. Initially, a child of mass $m$ sits at the exact center of the merry-go-round, and the system rotates with an initial angular velocity $\omega_0$. As the child moves slowly outward to a distance $r$ from the center, the rotational dynamics change due to conservation principles.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conservation of angular momentum in isolated systems.  
 2. Moment of inertia calculations, including contributions from point masses.  
 3. Relationship between angular velocity and moment of inertia under torque-free conditions.  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to rotational kinetic energy $\left(\frac{1}{2}I\omega^2\right)$ and the parallel axis theorem, which generalizes moment of inertia for shifted positions. It also reinforces core principles of rotational dynamics, such as $\tau = I\alpha$.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The conservation of angular momentum applies to diverse fields:  
 - **Astronomy**: Explains phenomena like neutron star formation, where radial collapse increases rotation speed.  
 - **Engineering**: Critical in designing flywheels and gyroscopes for energy storage and stabilization.  
 - **Sports**: Models figure skaters pulling in their arms to spin faster during jumps.  
 
-#### Real-World Applications
+##### Real-World Applications
 - **Amusement park rides**: Rotating platforms where rider movement affects rotational speed.  
 - **Spacecraft attitude control**: Astronauts moving radially in rotating habitats alter spin rates without thrusters.  
 - **Industrial mixers**: Changes in ingredient distribution impact rotational inertia and mixing efficiency.  
 
-#### Problem Statement
+##### Problem Statement
 The child moves radially outward from the center to a fixed distance $r$ from the rotation axis. During this movement, no external torques act on the system. Derive an expression for the new angular velocity $\omega_f$ after the child reaches $r$. Express $\omega_f$ solely in terms of the given quantities: $m$, $r$, $I_0$, and $\omega_0$.  
 **Note**: $I_0$ represents the moment of inertia of the merry-go-round alone (without the child at the edge). The child's initial position at the center contributes negligibly to the moment of inertia.
 
@@ -4770,27 +4770,27 @@ $$\boxed{\frac{I_{0} \omega_{0}}{I_{0} + m r^{2}}}$$
 
 ------
 ### Problem 4
-#### Background
+##### Background
 A solid cylinder is a common object in rotational dynamics, often used in real-world applications such as wheels, rollers, and mechanical components. When a cylinder rolls without slipping, its motion involves both translation (movement of the center of mass) and rotation about its central axis. The total kinetic energy of such an object combines these two aspects, providing insight into energy distribution in rolling systems.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Rotational kinetic energy: $ KE_{\text{rot}} = \frac{1}{2} I \omega^2 $, where $ I $ is the moment of inertia and $ \omega $ is the angular velocity.
 2. Translational kinetic energy: $ KE_{\text{trans}} = \frac{1}{2} M v^2 $, where $ M $ is mass and $ v $ is linear velocity.
 3. Rolling without slipping condition: $ v = R \omega $, linking linear and angular motion.
 4. Moment of inertia for a solid cylinder about its central axis: $ I = \frac{1}{2} M R^2 $.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to torque, angular acceleration, and conservation of mechanical energy in systems involving rotational motion. It also reinforces the relationship between linear and angular variables in rigid body dynamics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The principles apply to mechanical engineering (e.g., designing efficient rolling mechanisms), automotive engineering (wheel dynamics), and physics (analyzing celestial bodies with rotational motion).
 
-#### Real-World Applications
+##### Real-World Applications
 - **Transportation**: Calculating the kinetic energy of rolling wheels in vehicles helps optimize fuel efficiency and braking systems.
 - **Industrial machinery**: Understanding energy distribution in rotating drums or rollers aids in designing conveyor systems.
 - **Sports science**: Analyzing the motion of cylindrical objects like bowling balls or curling stones.
 
-#### Problem Statement
+##### Problem Statement
 A solid cylinder of mass $ M $ and radius $ R $ rolls without slipping on a horizontal surface with a linear speed $ v $. Derive an expression for the total kinetic energy of the cylinder in terms of $ M $ and $ v $ only. Show that the radius $ R $ does not appear in the final expression.
 
 ### Solution
@@ -4821,29 +4821,29 @@ $$\boxed{\dfrac{3}{4} M v^{2}}$$
 
 ------
 ### Problem 5
-#### Background
+##### Background
 Flywheels are mechanical devices used to store rotational energy in applications ranging from industrial machinery to energy storage systems. In this scenario, a solid disk flywheel is spinning at a high angular velocity. To ensure safe operation, a braking system must be designed to stop the flywheel within a specified time by applying constant torque. The braking torque opposes the rotation, causing angular deceleration. Understanding the relationship between the flywheel's physical properties, initial motion, stopping time, and required torque is essential for engineering such systems.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Moment of inertia for a solid disk rotating about its central axis.
 2. Newton's second law for rotation: torque as the product of moment of inertia and angular acceleration.
 3. Kinematics of rotational motion under constant angular acceleration.
 4. Derivation of physical quantities through symbolic manipulation.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Rotational Kinetic Energy**: The work done by the braking torque equals the change in rotational kinetic energy, providing an alternative solution path via energy methods.
 - **Frictional Dynamics**: Although not explicitly used here, the braking torque originates from friction in real systems, connecting to friction models and heat dissipation.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Mechanical Engineering**: Design of braking systems for vehicles, machinery, and energy-storage flywheels requires precise torque calculations to ensure safety and efficiency.
 - **Energy Management**: Flywheels store kinetic energy; controlled deceleration is crucial in applications like regenerative braking and grid-stabilization systems.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Automotive Brakes**: Disk brakes in cars and motorcycles use similar principles, where hydraulic pressure applies friction pads to a rotor (disk) to generate stopping torque.
 - **Industrial Equipment**: Conveyor belts, centrifuges, and turbines use flywheel braking for emergency stops or speed regulation.
 - **Renewable Energy**: Flywheel energy storage systems in wind/solar installations require controlled braking to manage power output during grid fluctuations.
 
-#### Problem Statement
+##### Problem Statement
 A solid disk flywheel of mass $ M $ and radius $ R $ is rotating about its central axis with an initial angular velocity $ \omega_i $. A constant braking torque $ \tau $ is applied to bring the flywheel to a complete stop in time $ t $. Derive an expression for the required braking torque $ \tau $ in terms of $ M $, $ R $, $ \omega_i $, and $ t $. Ensure your derivation starts from fundamental principles and clearly justifies each step.
 
 ### Solution
@@ -4882,27 +4882,27 @@ $$\boxed{\frac{M R^{2} \omega_i}{2 t}}$$
 
 ------
 ### Problem 6
-#### Background
+##### Background
 A merry-go-round is a common playground ride that rotates about a central axis. When a person jumps onto it, the system's rotation changes due to conservation of angular momentum. This principle is vital in designing rotating systems like centrifuges, flywheels, and spacecraft attitude control mechanisms. In this scenario, a child jumps onto a stationary merry-go-round while running tangent to its edge.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Conservation of angular momentum.
 - Moment of inertia for composite systems.
 - Relationship between linear and angular quantities.
 - Vector cross products for angular momentum calculation.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects rotational dynamics with translational motion through the child's linear velocity. It also reinforces energy concepts, as kinetic energy is not conserved (inelastic interaction), highlighting differences between conserved quantities in isolated systems.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 In aerospace engineering, angular momentum conservation governs satellite docking and reaction wheel operation. Biomechanically, it relates to how gymnasts control spins by altering their moment of inertia. Geophysics applications include tidal locking between celestial bodies.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Amusement Park Rides**: Engineers design roller coasters and spinning rides using these principles to ensure safety and dynamic behavior.
 - **Robotics**: Robotic arms and rotating joints require precise angular momentum control.
 - **Sports Physics**: Figure skaters and divers adjust rotational speed by changing body configuration mid-spin.
 
-#### Problem Statement
+##### Problem Statement
 A child of mass $ m $ runs with a tangential speed $ v $ and jumps onto the edge of a stationary merry-go-round. The merry-go-round has a moment of inertia $ I_0 $ about its central axis and a radius $ r $. Assume the child is a point mass, the merry-go-round rotates without friction, and the child adheres instantly to the edge. Derive an expression for the final angular velocity $ \omega $ of the system (merry-go-round with child) in terms of the given symbols: $ m $, $ v $, $ I_0 $, and $ r $.
 
 ### Solution
@@ -4936,31 +4936,31 @@ $$\boxed{\dfrac{m v r}{I_0 + m r^2}}$$
 
 ------
 ### Problem 7
-#### Background
+##### Background
 In the study of rotational motion, objects rolling down inclines demonstrate how mass distribution affects motion. A common comparison involves a thin-walled hollow cylinder (hoop) and a solid sphere of identical mass and radius, released from rest on identical inclines. Understanding the descent times reveals fundamental principles of rotational inertia and energy conservation.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. **Rotational kinetic energy**: $ K_{\text{rot}} = \frac{1}{2} I \omega^2 $
 2. **Conservation of mechanical energy**: Total energy $ E = mgh + \frac{1}{2}mv^2 + \frac{1}{2}I\omega^2 $ is conserved.
 3. **Rolling without slipping**: Constraint $ v = r\omega $.
 4. **Moment of inertia**: For a hoop $ I_h = mr^2 $; for a solid sphere $ I_s = \frac{2}{5}mr^2 $.
 5. **Kinematics of linear motion**: $ s = \frac{1}{2}at^2 $ for constant acceleration from rest.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to linear kinematics (acceleration, displacement-time relations).
 - Relates to torque and angular acceleration $ \tau = I\alpha $.
 - Integrates work-energy theorem with rotational dynamics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Design of wheels and rolling mechanisms (e.g., choosing between solid vs. hollow tires for specific terrain).
 - **Sports Science**: Analysis of ball dynamics (e.g., comparing bowling balls vs. basketballs on slopes).
 
-#### Real-World Applications
+##### Real-World Applications
 - **Transportation**: Optimizing wheel designs for vehicles to minimize descent time on inclines.
 - **Manufacturing**: Selecting materials and shapes for rollers in conveyor systems to improve efficiency.
 - **Safety Systems**: Designing escape ramps with optimal rolling objects for emergency scenarios.
 
-#### Problem Statement
+##### Problem Statement
 A thin-walled hollow cylinder (hoop) and a solid sphere, each of mass $ m $ and radius $ r $, are released simultaneously from rest at the top of two identical inclines of height $ h $ and angle $ \theta $ to the horizontal. Both objects roll without slipping. The moment of inertia of the hoop about its central axis is $ I_h = m r^2 $, and that of the solid sphere is $ I_s = \frac{2}{5} m r^2 $.  
 
 Derive the ratio of the time taken by the hoop to reach the bottom of the incline to the time taken by the solid sphere. Express your answer as a simplified analytic expression in the form $ \sqrt{\frac{a}{b}} $, where $ a $ and $ b $ are coprime integers.
@@ -5001,30 +5001,30 @@ $$\boxed{\sqrt{\dfrac{10}{7}}}$$
 
 ------
 ### Problem 8
-#### Background
+##### Background
 Rotating systems often encounter sudden changes due to impacts or added masses, such as debris colliding with a satellite or an object sticking to a rotating fan blade. These events can alter the rotational motion significantly. Consider a uniform rod of length $L$ and mass $M$ that rotates freely about a frictionless axle through its center with an initial angular velocity $\omega_i$. A small clay blob of mass $m$, initially stationary relative to the laboratory frame, is positioned such that one end of the rotating rod collides with and adheres to it. This inelastic collision occurs in a horizontal plane, eliminating gravitational effects. 
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Conservation of angular momentum in isolated systems.
 - Moment of inertia calculations for continuous bodies (rod) and point masses.
 - Inelastic collisions in rotational dynamics.
 - Dependence of angular velocity on mass distribution.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to torque, rotational work, and energy (though energy is not conserved here due to inelasticity).
 - Relates to linear momentum conservation by analogy, highlighting differences in rotational systems.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Aerospace Engineering**: Simulates space debris altering satellite rotation.
 - **Mechanical Engineering**: Models impacts on rotating machinery components.
 - **Sports Science**: Analogous to a gymnast adjusting body configuration during a spin.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Satellite Attitude Control**: Unplanned mass additions (e.g., micrometeoroid impacts) can destabilize orientation, requiring corrective thrusters.
 - **Industrial Safety**: Foreign objects striking rotating equipment (e.g., turbines) change dynamics, potentially causing failures.
 - **Physics Demonstrations**: Common classroom experiments with rotating platforms and added weights.
 
-#### Problem Statement
+##### Problem Statement
 Using conservation of angular momentum, derive an expression for the final angular velocity $\omega_f$ of the rod-clay system immediately after the clay adheres to the rod's end. Express $\omega_f$ in terms of the given symbolic parameters: $M$, $m$, $L$, and $\omega_i$.  
 
 **Answer Format Requirements**:  
@@ -5097,25 +5097,25 @@ $$\boxed{\frac{M \omega_i}{M + 3m}}$$
 
 ------
 ### Problem 9
-#### Background
+##### Background
 In a traditional well system, a bucket is lowered by unwinding a rope from a cylindrical drum mounted on a frictionless axle. This setup is used to study the interplay between linear and rotational motion. The drum is a solid, uniform cylinder that rotates freely, and the rope unwinds without slipping. Understanding the forces involved is essential for designing safe lifting mechanisms, as excessive tension can cause rope failure.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Newton's second law for linear acceleration
 - Rotational dynamics (torque, moment of inertia, angular acceleration)
 - Non-slipping condition between linear and rotational motion
 - Conservation of energy principles in mechanical systems
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem integrates translational kinetics (bucket motion) with rotational dynamics (drum rotation). It demonstrates how tension couples linear and angular acceleration, reinforcing the concept that net force and net torque must be analyzed simultaneously in constrained systems.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The scenario models engineering applications like elevator pulleys, crane winches, and fishing reels. Material science principles are relevant for determining rope strength limits, while kinematics links acceleration profiles to safety margins in mechanical design.
 
-#### Real-World Applications
+##### Real-World Applications
 Calculating tension is critical in designing hoisting systems for construction cranes, mine elevators, and sailboat rigging. Excessive tension causes wear or catastrophic failure; this analysis helps select appropriate rope materials and drum dimensions to maintain safety factors.
 
-#### Problem Statement
+##### Problem Statement
 A bucket of mass $m$ is attached to a rope wound around a solid cylindrical drum of mass $M$ and radius $R$. The drum rotates about a fixed frictionless axle. When released from rest, the bucket accelerates vertically downward with constant magnitude $a$. Derive an expression for the tension $T$ in the rope during this acceleration. Use the parameters $m$, $M$, $R$, $a$, and gravitational acceleration $g$ as needed. Note that some parameters may not appear in the final expression.  
 
 *Express your answer as a simplified analytic expression. Use only the symbols provided in the problem statement.*
@@ -5184,27 +5184,27 @@ $$\boxed{\dfrac{1}{2} M a}$$
 ## superposition of electrostatic forces
 
 ### Problem 0
-#### Background
+##### Background
 In atomic physics and material science, the arrangement of charged particles in linear configurations is observed in systems like ionic crystals or molecular chains. Understanding the net electrostatic force on a central particle is crucial for predicting stability and interactions. Consider three charged particles constrained to a straight line in a vacuum.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Coulomb's law for electrostatic force between point charges
 - Principle of superposition for forces
 - Vector addition in one dimension
 - Directional dependence of electrostatic forces
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to electric field calculations (since $\vec{F} = q\vec{E}$) and equilibrium analysis in electrostatics. It also reinforces inverse-square laws seen in gravitation.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Chemistry**: Ion-ion interactions in linear molecules
 - **Engineering**: Stability analysis of charged particles in particle accelerators
 - **Materials Science**: Forces in ionic crystal lattices with linear defects
 
-#### Real-World Applications
+##### Real-World Applications
 Determining forces on ions in mass spectrometry filters, analyzing stress points in piezoelectric materials, and designing linear ion traps for quantum computing.
 
-#### Problem Statement
+##### Problem Statement
 Three point charges lie on a straight line in vacuum. Charge $A$ ($q_A$) is positioned at the origin. Charge $B$ ($q_B$) is located at a distance $d$ to the right of $A$. Charge $C$ ($q_C$) is located at a distance $2d$ to the right of $B$. All charges are fixed in position. Derive the net electrostatic force acting on charge $B$.  
 
 Express your answer symbolically in terms of $q_A$, $q_B$, $q_C$, $d$, and the electrostatic constant $k$ (where $k = \frac{1}{4\pi\epsilon_0}$). Adhere to the following conventions:  
@@ -5253,26 +5253,26 @@ $$\boxed{k \cdot q_B \cdot \frac{4q_A - q_C}{4d^2}}$$
 
 ------
 ### Problem 1
-#### Background
+##### Background
 In an experimental setup to study electrostatic forces, four point charges are fixed at the vertices of a square with side length $a$. The charges are arranged such that two adjacent vertices carry positive charge $+q$, while the other two adjacent vertices carry negative charge $-q$. A fifth point charge $Q$ is positioned at the geometric center of the square. This configuration models simplified electrostatic quadrupoles used in particle beam focusing systems and mass spectrometry.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Application of Coulomb's law for point charges.
 2. Vector superposition of electrostatic forces.
 3. Distance calculations in symmetric geometries.
 4. Component-wise vector addition in Cartesian coordinates.
 5. Magnitude calculation of resultant force vectors.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem extends to electric field calculations, as the force on $Q$ equals $Q \vec{E}$, where $\vec{E}$ is the net electric field at the center due to the four charges. It also reinforces the principle of superposition, fundamental to electrostatics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The charge arrangement resembles molecular quadrupoles in chemistry and electrostatic lenses in accelerator physics. The solution technique (vector decomposition) applies to gravitational force calculations in celestial mechanics.
 
-#### Real-World Applications
+##### Real-World Applications
 Electrostatic quadrupoles focus charged particle beams in cathode ray tubes, electron microscopes, and linear accelerators. Similar principles are used in quadrupole ion traps for precise mass measurements in analytical chemistry.
 
-#### Problem Statement
+##### Problem Statement
 Consider a square with side length $a$. Charges are fixed at its vertices: $+q$ at $(0,0)$, $+q$ at $(a,0)$, $-q$ at $(a,a)$, and $-q$ at $(0,a)$. A point charge $Q$ is placed at the center $\left( \frac{a}{2}, \frac{a}{2} \right)$.
 
 Determine the magnitude of the net electrostatic force acting on $Q$. Express your answer symbolically using Coulomb's constant $k$, the charges $q$ and $Q$, and the side length $a$.
@@ -5319,29 +5319,29 @@ $$\boxed{\dfrac{4 \sqrt{2} k q Q}{a^{2}}}$$
 
 ------
 ### Problem 10
-#### Background
+##### Background
 In experimental physics, the superposition principle for electrostatic forces is fundamental for analyzing systems with multiple charges. This principle is crucial in designing devices such as electrostatic particle traps and sensors. Consider a lab setup where charged particles are fixed at the vertices of an equilateral triangle to study force interactions at the center.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Coulomb's law for electrostatic force between point charges.
 2. Vector superposition of forces in two dimensions.
 3. Trigonometric resolution of vectors in Cartesian coordinates.
 4. Geometric properties of equilateral triangles and centroid.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Geometry**: Calculating distances and angles in an equilateral triangle.
 - **Vector Algebra**: Resolving forces into components and summing vectors.
 - **Electrostatics**: Applying Coulomb's law with varying charge signs and magnitudes.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Electrostatic force modeling is used in designing microelectromechanical systems (MEMS) and particle accelerators.
 - **Chemistry**: Understanding intermolecular forces in symmetric molecular structures (e.g., boron trifluoride analogs).
 
-#### Real-World Applications
+##### Real-World Applications
 - **Atomic Force Microscopy (AFM)**: Precise force measurements at nanoscale positions.
 - **Electrostatic Levitators**: Devices that suspend objects using balanced electrostatic forces, applied in material science research.
 
-#### Problem Statement
+##### Problem Statement
 Three point charges are fixed at the vertices of an equilateral triangle. The distance from the geometric center of the triangle to any vertex is $R$. The charges are:
 - Vertex A: $+Q$
 - Vertex B: $-Q$
@@ -5444,31 +5444,31 @@ $$\boxed{\dfrac{k q Q}{R^{2}} \left( -\sqrt{3}\ \hat{\mathbf{i}} + \hat{\mathbf{
 
 ------
 ### Problem 11
-#### Background
+##### Background
 In electrostatics, multipole arrangements of charges are crucial for understanding complex electric fields beyond simple monopoles or dipoles. A linear quadrupole is formed by two dipoles arranged antiparallel, creating a configuration with no net charge or dipole moment. Such arrangements are found in devices like quadrupole ion traps used in mass spectrometry and particle accelerators, where precise control of charged particles is essential.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. **Coulomb's law**: Force between two point charges.
 2. **Superposition principle**: Net force on a charge as the vector sum of individual forces.
 3. **Vector addition in one dimension**: Handling direction via algebraic signs.
 4. **Quadrupole fields**: Characteristic $1/r^4$ force dependence at large distances.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to electric field calculations and multipole expansions in electrostatics.
 - Reinforces vector addition skills and symmetry arguments used in dipole and higher-order multipole analyses.
 - Provides foundation for understanding electrostatic potential and field gradients.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Chemistry**: Quadrupole mass spectrometers separate ions based on mass-to-charge ratios.
 - **Engineering**: Quadrupole fields stabilize particle beams in accelerators (e.g., linear particle colliders).
 - **Materials science**: Analyzes charge distributions in molecules and crystals.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Mass spectrometry**: Quadrupole filters selectively allow ions with specific $m/q$ to pass by balancing electrostatic forces.
 - **Particle traps**: Confine ions using oscillating quadrupole fields (Paul traps).
 - **Molecular physics**: Models interactions in linear symmetric molecules like CO₂.
 
-#### Problem Statement
+##### Problem Statement
 Consider a linear electric quadrupole composed of three collinear point charges on the $x$-axis:  
 - $+Q$ at $x = -d$,  
 - $-2Q$ at $x = 0$,  
@@ -5517,29 +5517,29 @@ $$ \boxed{ k q Q \left( \frac{1}{(a + d)^2} - \frac{2}{a^2} + \frac{1}{(a - d)^2
 
 ------
 ### Problem 12
-#### Background
+##### Background
 In electrostatic systems, the net force on a charged particle is the vector sum of forces exerted by all other charges. This principle, known as superposition, is fundamental in understanding interactions in atomic physics, molecular bonding, and semiconductor devices. Consider a scenario inspired by charge configurations in quantum dot arrays, where engineered charge distributions create specific force fields.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Coulomb's law for electrostatic force between point charges.
 2. Vector superposition of forces.
 3. Trigonometric resolution of vector components.
 4. Pythagorean theorem for right triangles.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to vector addition in mechanics, coordinate geometry, and inverse-square laws in gravitational fields. The mathematical framework parallels Newtonian gravitation but with electrostatic forces.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Charge distribution models are used in designing capacitive sensors and microelectromechanical systems (MEMS).
 - **Chemistry**: Understanding net forces on ions in crystal lattices or during molecular formation.
 - **Mathematics**: Vector algebra and properties of right triangles.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Atomic force microscopy**: Measures forces between charged tips and surfaces.
 - **Ion trapping in quantum computing**: Precisely controlled electrostatic forces confine particles.
 - **Electrostatic precipitators**: Remove particles from gas streams using charged plates.
 
-#### Problem Statement
+##### Problem Statement
 Three point charges are fixed at the vertices of a right triangle. At the vertex corresponding to the right angle (point O), there is a charge of $-Q$. At the other two vertices (points A and B), there are charges of $+3Q$ and $+4Q$, respectively. The leg adjacent to charge $+3Q$ has length $d$, and the leg adjacent to charge $+4Q$ has length $2d$. The hypotenuse is the line segment connecting $+3Q$ and $+4Q$.  
 Determine the **magnitude** of the net electrostatic force acting on the charge $-Q$ at point O. Express your answer symbolically in terms of Coulomb's constant $k$, the fundamental charge magnitude $Q$, and the length $d$. Use exact fractions and radicals where applicable.  
 *Instructions for final answer format*:  
@@ -5548,28 +5548,28 @@ Determine the **magnitude** of the net electrostatic force acting on the charge 
 - For the net force magnitude, combine terms into a single simplified radical expression.
 
 ### Solution
-#### Step 1: Define the geometry and force directions
+##### Step 1: Define the geometry and force directions
 Place point O at the origin (0,0). Let charge $+3Q$ be at point A $(d, 0)$ and charge $+4Q$ at point B $(0, 2d)$. The distance from O to A is $d$, and from O to B is $2d$. The hypotenuse AB has length $\sqrt{d^2 + (2d)^2} = \sqrt{5}d$.
 
-#### Step 2: Calculate individual force magnitudes
+##### Step 2: Calculate individual force magnitudes
 The electrostatic force on $-Q$ at O due to $+3Q$ at A is attractive and directed along OA. Its magnitude is:  
 $$ F_{OA} = k \frac{|(-Q)(3Q)|}{d^2} = k \frac{3Q^2}{d^2} $$  
 
 The force on $-Q$ at O due to $+4Q$ at B is attractive and directed along OB. Its magnitude is:  
 $$ F_{OB} = k \frac{|(-Q)(4Q)|}{(2d)^2} = k \frac{4Q^2}{4d^2} = k \frac{Q^2}{d^2} $$  
 
-#### Step 3: Resolve forces into components
+##### Step 3: Resolve forces into components
 - **Force due to A ($F_{OA}$)**: Along the positive x-axis (from O to A). Thus:  
   $$ F_{OA,x} = F_{OA} = k \frac{3Q^2}{d^2}, \quad F_{OA,y} = 0 $$  
 - **Force due to B ($F_{OB}$)**: Along the positive y-axis (from O to B). Thus:  
   $$ F_{OB,x} = 0, \quad F_{OB,y} = F_{OB} = k \frac{Q^2}{d^2} $$  
 
-#### Step 4: Superpose the force components
+##### Step 4: Superpose the force components
 Net force components on $-Q$:  
 $$ F_{\text{net},x} = F_{OA,x} + F_{OB,x} = k \frac{3Q^2}{d^2} + 0 = k \frac{3Q^2}{d^2} $$  
 $$ F_{\text{net},y} = F_{OA,y} + F_{OB,y} = 0 + k \frac{Q^2}{d^2} = k \frac{Q^2}{d^2} $$  
 
-#### Step 5: Compute the magnitude of the net force
+##### Step 5: Compute the magnitude of the net force
 The magnitude is:  
 $$ F_{\text{net}} = \sqrt{ F_{\text{net},x}^2 + F_{\text{net},y}^2 } = \sqrt{ \left( k \frac{3Q^2}{d^2} \right)^2 + \left( k \frac{Q^2}{d^2} \right)^2 } $$  
 Factor out common terms:  
@@ -5580,25 +5580,25 @@ $$ \boxed{k \frac{Q^{2}}{d^{2}} \sqrt{10} $$
 
 ------
 ### Problem 13
-#### Background
+##### Background
 In an experimental setup, two point charges with unequal magnitudes are fixed along a straight line. A third charge is positioned exactly midway between them. This scenario models real-world systems like electrostatic filters in air purifiers, where charged particles experience forces from multiple electrodes. The Coulomb constant is denoted by $k$.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Coulomb's law for electrostatic force
 - Principle of superposition of forces
 - Vector addition in one dimension
 - Coordinate system application
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 Connects to electric field concepts (force derivation from field strength) and equilibrium analysis (why the midpoint isn't an equilibrium point for asymmetric charges).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Relates to ionic crystal lattices in chemistry (forces on interstitial ions) and electrostatic precipitation in environmental engineering (particle trajectory control).
 
-#### Real-World Applications
+##### Real-World Applications
 Used in designing mass spectrometer ion traps, electrostatic dust removal systems, and scanning probe microscopy where localized charge interactions occur.
 
-#### Problem Statement
+##### Problem Statement
 Two point charges are fixed on the x-axis: $Q_1 = Q$ at $x = 0$ and $Q_2 = -2Q$ at $x = d$, where $Q > 0$. A third point charge $q > 0$ is placed at the midpoint $(x = d/2)$. Derive the analytic expression for the net electrostatic force's x-component acting on $q$. Use only the parameters $Q$, $q$, $d$, and $k$ in your solution.
 
 ### Solution
@@ -5632,32 +5632,32 @@ $$\boxed{\dfrac{12 k q Q}{d^{2}}}$$
 
 ------
 ### Problem 14
-#### Background
+##### Background
 In electrostatics, Coulomb's law describes the force between two point charges. When multiple charges are present, the net force on any charge is the vector sum of the forces due to each of the other charges. This problem explores the superposition of forces in a symmetric geometric arrangement. A rhombus is a quadrilateral with all sides of equal length, and its diagonals have unique properties that can simplify force calculations.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Coulomb's law for electrostatic force between point charges.
 2. Vector addition and superposition of forces.
 3. Symmetry arguments in force resolution.
 4. Trigonometric identities and geometric properties of a rhombus.
 5. Magnitude calculation of a vector from its components.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - The problem connects to vector algebra in physics, as forces are resolved into components.
 - It reinforces the concept of inverse-square laws, central to electrostatics.
 - The geometric properties of the rhombus (e.g., diagonals, angles) are applied to simplify the vector sum.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Geometry**: Properties of rhombi, such as diagonals bisecting vertex angles and side-length relations, are used.
 - **Trigonometry**: Half-angle identities and dot products are employed to resolve force components.
 - **Algebra**: Symbolic manipulation and simplification of expressions are required.
 
-#### Real-World Applications
+##### Real-World Applications
 - Understanding force superposition is crucial in designing electrostatic devices, such as capacitors and sensors.
 - Symmetry-based simplifications are used in molecular physics to compute forces in crystal lattices or symmetric molecules.
 - The rhombus configuration models real systems like certain crystal structures or engineered materials with periodic symmetry.
 
-#### Problem Statement
+##### Problem Statement
 Four point charges are fixed at the vertices of a rhombus labeled $A$, $B$, $C$, and $D$. The rhombus has side length $a$ and an acute angle $\theta$ at vertex $A$. The charges are:
 - $ +Q $ at vertices $A$ and $C$,
 - $ -Q $ at vertices $B$ and $D$.
@@ -5710,10 +5710,10 @@ $$\boxed{\frac{k Q^{2}}{a^{2}} \left(2 \cos\left(\frac{\theta}{2}\right) - \frac
 
 ------
 ### Problem 15
-#### Background
+##### Background
 In electrostatics, the force between point charges is governed by Coulomb's law, which states that the force between two point charges is directly proportional to the product of their magnitudes and inversely proportional to the square of the distance between them. The net force on any charge is the vector sum of the individual forces exerted by all other charges, known as the superposition principle. The centroid of a triangle is the point where its three medians intersect and coincides with the center of mass for a uniform triangular lamina. For an isosceles triangle, the centroid lies along the axis of symmetry.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Application of Coulomb's law to calculate electrostatic forces.
 2. Superposition principle for vector addition of forces.
 3. Coordinate geometry for determining positions and distances.
@@ -5721,20 +5721,20 @@ In electrostatics, the force between point charges is governed by Coulomb's law,
 5. Symmetry arguments to simplify force components.
 6. Algebraic manipulation of vector expressions.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects electrostatic force calculations with vector algebra and geometric properties of triangles. It reinforces the concept that symmetry can reduce computational complexity in physics problems, particularly when combining forces from multiple sources.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Mathematics**: Coordinate geometry for centroid location and distance formulas; vector decomposition and trigonometry for force components.
 - **Engineering**: Practical applications in electrostatic device design, where symmetric charge arrangements are used to control electric fields.
 
-#### Real-World Applications
+##### Real-World Applications
 Understanding forces in symmetric charge configurations is essential for designing:
 1. **Electrostatic precipitators** (used in air pollution control), where charged particles are manipulated by electric fields.
 2. **Capacitive sensors** in touchscreens, which rely on symmetric electrode arrangements.
 3. **Particle traps** in atomic physics, where ions are confined using precisely arranged charges.
 
-#### Problem Statement
+##### Problem Statement
 Three point charges are fixed at the vertices of an isosceles triangle with base length $b$ and height $h$. Charges of magnitude $q$ are located at the base vertices, $(-b/2, 0)$ and $(b/2, 0)$. A charge of magnitude $Q$ is located at the apex vertex, $(0, h)$. A fourth point charge $q_0$ is placed at the centroid of the triangle.
 
 Determine the magnitude of the net electrostatic force acting on $q_0$ due to the other three charges. Express your answer as an analytic expression in terms of Coulomb's constant $k$, $q$, $Q$, $q_0$, $b$, and $h$.
@@ -5837,25 +5837,25 @@ $$
 
 ------
 ### Problem 16
-#### Background
+##### Background
 Electric dipoles are fundamental systems in electrostatics, consisting of two equal and opposite charges separated by a fixed distance. When multiple dipoles interact, the net force on a charge is found using the superposition principle. This problem explores the force on a test charge at the intersection point of two perpendicular dipoles, a configuration relevant to molecular physics and materials science where dipole orientations affect intermolecular forces.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Coulomb's law for electrostatic force between point charges.
 2. Vector superposition of forces in two dimensions.
 3. Coordinate-based calculation of force components.
 4. Electric dipole structure and charge distribution.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to dipole moment calculations, electric field theory, and the superposition principle in electrostatics. It extends to the analysis of dipole-dipole interactions in dielectric materials.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The configuration models cross-oriented molecular dipoles in chemistry and biochemistry, such as in hydrogen bonding networks. It also relates to antenna design in telecommunications where perpendicular dipoles create specific radiation patterns.
 
-#### Real-World Applications
+##### Real-World Applications
 Perpendicular dipole systems appear in liquid crystal displays (LCDs) where molecular orientation affects optical properties, and in scanning probe microscopy techniques that measure nanoscale electrostatic forces between crossed tips.
 
-#### Problem Statement
+##### Problem Statement
 Two electric dipoles are perpendicular to each other and share a common center at the origin. The first dipole has charges $+q_1$ and $-q_1$ separated by distance $d_1$ along the x-axis, with $+q_1$ at $\left(\frac{d_1}{2}, 0, 0\right)$ and $-q_1$ at $\left(-\frac{d_1}{2}, 0, 0\right)$. The second dipole has charges $+q_2$ and $-q_2$ separated by distance $d_2$ along the y-axis, with $+q_2$ at $\left(0, \frac{d_2}{2}, 0\right)$ and $-q_2$ at $\left(0, -\frac{d_2}{2}, 0\right)$. A test charge $Q$ is placed at the origin $(0,0,0)$.  
 
 Derive the net electrostatic force vector $\vec{F}$ acting on $Q$ due to all four dipole charges. Express $\vec{F}$ in terms of $q_1$, $q_2$, $d_1$, $d_2$, $Q$, and $\frac{1}{4\pi\varepsilon_0}$, using Cartesian unit vectors $\hat{i}$ and $\hat{j}$.
@@ -5901,26 +5901,26 @@ $$\boxed{ -\dfrac{8Q}{4\pi\varepsilon_0} \left( \dfrac{q_1}{d_1^2} \hat{i} + \df
 
 ------
 ### Problem 17
-#### Background
+##### Background
 In electrostatic systems with symmetric charge distributions, the net force on a charge can be determined using Coulomb's law and the superposition principle. A regular pentagon provides a symmetric arrangement where charges are equidistant from a central point, allowing for the application of geometric and trigonometric properties to simplify force calculations.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Coulomb's law for electrostatic force between point charges.
 2. Vector addition of forces using the superposition principle.
 3. Symmetry properties of regular polygons.
 4. Trigonometric resolution of force components.
 5. Exact values of trigonometric functions for specific angles (e.g., 18° and 54°).
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to vector decomposition in physics, rotational symmetry in geometry, and the algebraic simplification of expressions involving radicals and constants. It reinforces the understanding of how symmetric configurations reduce computational complexity.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The solution employs geometric properties of regular pentagons (e.g., internal angles, diagonal lengths) and trigonometric identities from mathematics. It also illustrates how symmetry arguments used in crystallography and molecular physics can be applied to electrostatic systems.
 
-#### Real-World Applications
+##### Real-World Applications
 Understanding force superposition in symmetric charge distributions is crucial in designing electrostatic filters, analyzing crystal lattice stability, and modeling molecular forces in chemistry. The pentagonal symmetry appears in viral capsids, nanoparticle assemblies, and architectural structures.
 
-#### Problem Statement
+##### Problem Statement
 Five identical point charges, each of magnitude $ q $, are fixed at the vertices of a regular pentagon with side length $ a $. Find the magnitude of the net electrostatic force on any one charge due to the other four charges. Express your answer symbolically in terms of $ q $, $ a $, and Coulomb's constant $ k $. Use exact values and simplify the expression.
 
 **Answer Format Requirements:**
@@ -6017,25 +6017,25 @@ $$\boxed{\frac{k q^{2} \sqrt{10 + 2 \sqrt{5}}}{2 a^{2}}}$$
 
 ------
 ### Problem 18
-#### Background
+##### Background
 In atomic force microscopy, a charged probe scans surfaces to detect electrostatic forces. Consider a simplified model where four identical ions are fixed at the corners of a square platform with side length $a$, lying in the $xy$-plane centered at the origin. The ions each carry charge $Q$. A probe modeled as a point charge $q$ is positioned at a height $d$ directly above the center of the square along the $z$-axis.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Coulomb's law for electrostatic force between point charges.
 2. Principle of superposition for vector forces.
 3. Vector decomposition in three dimensions.
 4. Symmetry analysis in charge configurations.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to electric field theory, as the force on the probe relates to the field generated by the fixed charges. It also reinforces vector mathematics, essential for electromagnetism and dynamics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The configuration resembles ion traps in quantum computing, where charged particles are confined by electrostatic fields. Understanding force profiles is critical for designing such devices and modeling molecular interactions in physical chemistry.
 
-#### Real-World Applications
+##### Real-World Applications
 Electrostatic force microscopy (EFM) uses a charged probe to map surface charge distributions. This problem models EFM calibration, where the force on the probe quantifies charge density or sample properties in nanotechnology and materials science.
 
-#### Problem Statement
+##### Problem Statement
 The four ions are fixed at $(\frac{a}{2}, \frac{a}{2}, 0)$, $(\frac{a}{2}, -\frac{a}{2}, 0)$, $(-\frac{a}{2}, \frac{a}{2}, 0)$, and $(-\frac{a}{2}, -\frac{a}{2}, 0)$. The probe charge $q$ is at $(0, 0, d)$. Determine the net electrostatic force $\vec{F}$ on $q$ due to the four ions. Express $\vec{F}$ in component form using $k$ (electrostatic constant), $Q$, $q$, $a$, and $d$. Justify any components that vanish by symmetry.
 
 ### Solution
@@ -6067,27 +6067,27 @@ $$\boxed{ \left( 0,\ 0,\ \dfrac{4 k q Q d}{\left( \dfrac{a^{2}}{2} + d^{2} \righ
 
 ------
 ### Problem 19
-#### Background
+##### Background
 In microelectromechanical systems (MEMS) used in sensors and actuators, charged components are often arranged in specific geometric patterns to control electrostatic forces. Consider an L-shaped configuration of three point charges, inspired by MEMS design principles. The corner charge is positioned at the origin, with two other charges fixed along the positive x- and y-axes. This arrangement models how forces can be engineered in miniaturized devices.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Coulomb's law for electrostatic force between point charges.
 2. Vector superposition of forces in two dimensions.
 3. Magnitude calculation of a resultant force vector.
 4. Coordinate geometry for charge positions.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to electric field calculations (since force relates to field via $ \vec{F} = q\vec{E} $) and potential energy concepts. It extends to continuous charge distributions by demonstrating discrete superposition principles.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The L-shape geometry appears in circuit board layouts (electrical engineering) and crystallography (materials science). The vector addition technique is fundamental to statics in mechanical engineering and kinematics in robotics.
 
-#### Real-World Applications
+##### Real-World Applications
 - MEMS accelerometers use similar charge configurations to detect directional forces.
 - Atomic force microscopy employs electrostatic forces between charged tips and samples, requiring precise force calculations.
 - Particle trapping in biophysics often involves asymmetric charge arrangements for controlled manipulation.
 
-#### Problem Statement
+##### Problem Statement
 Three point charges are fixed in an L-shaped configuration:
 - Charge $ q_0 $ at the origin $ (0, 0) $.
 - Charge $ q_1 $ at $ (a, 0) $, where $ a > 0 $.
@@ -6156,25 +6156,25 @@ $$\boxed{ k \left| q_0 \right| \sqrt{ \dfrac{q_1^{2}}{a^{4}} + \dfrac{q_2^{2}}{b
 
 ------
 ### Problem 2
-#### Background
+##### Background
 In an experimental setup, two fixed positive point charges, $ Q_1 $ and $ Q_2 $, are placed along the x-axis at positions $ x = 0 $ and $ x = d $, respectively. A small bead with a negative charge $ -q $ (where $ q > 0 $) is free to move along the x-axis. The goal is to determine the point where this bead experiences zero net electrostatic force. This scenario models systems like electrostatic levitation devices or particle traps, where equilibrium positions are critical for stability.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Coulomb's law for electrostatic force between point charges.
 2. Principle of superposition for vector forces.
 3. Equilibrium condition (net force equals zero).
 4. Solving quadratic equations derived from physical constraints.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to electric field concepts: the equilibrium point coincides with the location where the electric field due to $ Q_1 $ and $ Q_2 $ is zero. It also relates to potential energy minimization, as stable equilibrium occurs at a local minimum of the system's potential energy.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The mathematical framework applies to gravitational systems, such as finding the point between two celestial bodies where gravitational forces balance (e.g., Lagrange points). The quadratic equilibrium equation also arises in spring-mass systems and fluid dynamics.
 
-#### Real-World Applications
+##### Real-World Applications
 Determining equilibrium positions of charged particles is essential in mass spectrometry, ion trapping for quantum computing, and electrostatic sorting of colloidal particles. It also aids in designing electrostatic precipitators for air pollution control.
 
-#### Problem Statement
+##### Problem Statement
 Two positive point charges, $ Q_1 $ and $ Q_2 $, are fixed on the x-axis at positions $ x = 0 $ and $ x = d $, respectively. A negatively charged bead of charge $ -q $ (with $ q > 0 $) is constrained to move along the x-axis. Find the position $ x $ (where $ 0 < x < d $) at which the net electrostatic force on the bead is zero. Express your answer symbolically in terms of $ d $, $ Q_1 $, and $ Q_2 $.  
 **Note**: The constant from Coulomb's law ($ k $) will cancel in your derivation and should not appear in the final expression.
 
@@ -6301,27 +6301,27 @@ $$\boxed{\dfrac{d\sqrt{Q_{1}}}{\sqrt{Q_{1}} + \sqrt{Q_{2}}}}$$
 
 ------
 ### Problem 20
-#### Background
+##### Background
 In the design of microelectromechanical systems (MEMS) sensors, precise control of electrostatic forces is essential. Consider a simplified model where four point charges are fixed at the vertices of a parallelogram-shaped sensor element. The parallelogram has adjacent sides of length $a$ and $b$, with an included angle $\theta$. Understanding the net force on a specific charge helps engineers predict mechanical stress and stability in such devices.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Coulomb's law for electrostatic force
 - Vector superposition of forces
 - Trigonometry in vector decomposition
 - Coordinate geometry for spatial configurations
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem extends the concept of force superposition to two-dimensional charge distributions, reinforcing vector addition principles from mechanics. It also connects to electric field calculations in continuous charge distributions.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The parallelogram geometry links to crystallography (atomic lattice arrangements) and mechanical engineering (structural analysis of trusses). The trigonometric resolution of vectors is fundamental in robotics and computer graphics.
 
-#### Real-World Applications
+##### Real-World Applications
 - MEMS accelerometers that detect forces via charge displacement
 - Electrostatic levitation systems for material processing
 - Modeling ionic bonds in crystal structures like sodium chloride
 
-#### Problem Statement
+##### Problem Statement
 A parallelogram has vertices $A$, $B$, $C$, and $D$ with adjacent sides $AB = a$, $AD = b$, and included angle $\angle BAD = \theta$. Charges are placed as follows:  
 - $+q$ at vertex $A$  
 - $+q$ at vertex $B$  
@@ -6405,25 +6405,25 @@ $$\boxed{k q^{2} \sqrt{\left(\frac{1}{a^{2}} + \frac{\cos \theta}{b^{2}} + \frac
 
 ------
 ### Problem 21
-#### Background
+##### Background
 In electrostatics, Coulomb's law describes the force between two point charges. When multiple charges are present, the net force on any charge is the vector sum of the forces exerted by each of the other charges, a principle known as superposition. Consider a configuration of three positive point charges fixed at the vertices of a scalene triangle, where all sides have different lengths. The side opposite a given charge is the side connecting the other two charges. This problem focuses on the net force magnitude on the charge located opposite the smallest side of the triangle.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Coulomb's law for electrostatic force between point charges.
 2. Vector superposition of forces.
 3. Magnitude of the resultant force using the law of cosines.
 4. Application of the law of cosines to relate triangle side lengths and angles.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem integrates vector addition and trigonometry with electrostatic principles, illustrating how geometric properties influence physical forces. It also reinforces the concept of inverse-square dependence in Coulomb's law.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The solution requires trigonometry (law of cosines) from mathematics to determine the angle between force vectors, demonstrating the interdependence of physics and geometry in problem-solving.
 
-#### Real-World Applications
+##### Real-World Applications
 Understanding force superposition is crucial in designing electrostatic systems, such as particle traps in atomic physics, MEMS (Micro-Electro-Mechanical Systems) sensors, and analyzing molecular structures in chemistry where charged particles form non-symmetric arrangements.
 
-#### Problem Statement
+##### Problem Statement
 Three positive point charges, $q_A$, $q_B$, and $q_C$, are fixed at the vertices of a scalene triangle. The side lengths are $BC = a$, $AC = b$, and $AB = c$, where $c$ is the smallest side. The charge opposite side $c$ (i.e., the charge not at vertices $A$ or $B$) is $q_C$. Derive an expression for the magnitude of the net electrostatic force on $q_C$. Express your answer in terms of the Coulomb constant $k$, the charges $q_A$, $q_B$, $q_C$, and the side lengths $a$, $b$, $c$.
 
 ### Solution
@@ -6503,36 +6503,36 @@ $$\boxed{ k  q_{C}  \sqrt{ \frac{q_{A}^{2}}{b^{4}} + \frac{q_{B}^{2}}{a^{4}} + \
 
 ------
 ### Problem 22
-#### Background
+##### Background
 In a physics experiment, four identical positive point charges, each of magnitude $Q$, are fixed in the xy-plane at specific positions:  
 - Two charges on the x-axis at $(d, 0)$ and $(-d, 0)$.  
 - Two charges on the y-axis at $(0, d)$ and $(0, 2d)$.  
 The charge at $(0, 2d)$ is the subject of interest. Due to the asymmetric positions (specifically, the unequal y-coordinates of the charges on the y-axis), the net electrostatic force on this charge must be computed from first principles. Coulomb's law and the superposition principle govern the interactions.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. **Coulomb's law**: The force between two point charges is $F = \frac{k q_1 q_2}{r^2}$, where $r$ is the distance between them.  
 2. **Superposition principle**: The net force on a charge is the vector sum of forces exerted by all other charges.  
 3. **Vector resolution**: Forces must be decomposed into Cartesian components for summation.  
 4. **Symmetry analysis**: Identifying cancellations or reinforcements in force components due to geometric arrangements.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - This problem extends the concept of electrostatic forces to 2D configurations, bridging to electric field theory, where vector sums of fields replace forces.  
 - It reinforces vector algebra skills critical for analyzing continuous charge distributions and dipole systems.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Vector decomposition and magnitude calculations are fundamental in mechanics (e.g., net force in statics) and electromagnetics (e.g., magnetic fields).  
 - Coordinate geometry is essential for spatial problem-solving in engineering and computer graphics.
 
-#### Real-World Applications
+##### Real-World Applications
 - Calculating electrostatic forces is vital for designing particle traps in mass spectrometers, electrostatic precipitators for pollution control, and capacitive touchscreens.  
 - Understanding asymmetric charge arrangements helps model molecular interactions in chemistry and material science.
 
-#### Problem Statement
+##### Problem Statement
 Calculate the magnitude of the net electrostatic force acting on the charge at $(0, 2d)$ due to the other three charges. Express your answer symbolically in terms of $k$ (Coulomb's constant), $Q$, and $d$.  
 **Answer format requirement**: Provide a single closed-form analytic expression. Use $\sqrt{\cdot}$ for square roots and rationalize where necessary. Do not evaluate numerically.
 
 ### Solution
-#### Step 1: Define the setup and forces
+##### Step 1: Define the setup and forces
 - Charges:  
   - Charge A: $+Q$ at $(d, 0)$.  
   - Charge B: $+Q$ at $(-d, 0)$.  
@@ -6540,7 +6540,7 @@ Calculate the magnitude of the net electrostatic force acting on the charge at $
   - Charge D (test charge): $+Q$ at $(0, 2d)$.  
 - Net force on D: $\vec{F}_{\text{net}} = \vec{F}_{AD} + \vec{F}_{BD} + \vec{F}_{CD}$, where $\vec{F}_{AD}$ is the force on D due to A, etc.
 
-#### Step 2: Force due to charge at $(d, 0)$
+##### Step 2: Force due to charge at $(d, 0)$
 - Distance $r_{AD} = \sqrt{(d - 0)^2 + (0 - 2d)^2} = \sqrt{5d^2} = d\sqrt{5}$.  
 - Unit vector from A to D:  
   
@@ -6561,7 +6561,7 @@ $$
   $$
 
 
-#### Step 3: Force due to charge at $(-d, 0)$
+##### Step 3: Force due to charge at $(-d, 0)$
 - Distance $r_{BD} = \sqrt{(-d - 0)^2 + (0 - 2d)^2} = d\sqrt{5}$ (same as $r_{AD}$).  
 - Unit vector from B to D:  
   
@@ -6582,7 +6582,7 @@ $$
   $$
 
 
-#### Step 4: Force due to charge at $(0, d)$
+##### Step 4: Force due to charge at $(0, d)$
 - Distance $r_{CD} = |2d - d| = d$.  
 - Unit vector from C to D: $(0, 1)$.  
 - Force $\vec{F}_{CD}$ (repulsive along y-axis):  
@@ -6598,7 +6598,7 @@ $$
   $$
 
 
-#### Step 5: Sum force components
+##### Step 5: Sum force components
 - x-components (cancel due to symmetry):  
   
 $$
@@ -6618,7 +6618,7 @@ $$
   $$
 
 
-#### Step 6: Compute magnitude of net force
+##### Step 6: Compute magnitude of net force
 - Since $F_x = 0$, $|\vec{F}_{\text{net}}| = |F_y|$ (positive as all forces repel upward).  
 - Rationalize the expression:  
   
@@ -6643,25 +6643,25 @@ $$\boxed{\dfrac{kQ^{2}\left(25 + 4\sqrt{5}\right)}{25d^{2}}}$$
 
 ------
 ### Problem 23
-#### Background
+##### Background
 In a physics laboratory experiment, three charged particles are fixed in place on a semicircular frame. The frame has a radius $R$ and lies in the $xy$-plane with its diameter aligned along the $x$-axis. The center of the semicircle is at the origin $(0, 0)$. Charges $q_A$ and $q_B$ are fixed at the endpoints of the semicircle, which are $(-R, 0)$ and $(R, 0)$, respectively. A third charge $q_0$ is fixed at the center $(0, 0)$. The goal is to determine the net electrostatic force on $q_0$ due to the other two charges.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Coulomb's law for the electrostatic force between point charges.
 2. Principle of superposition for vector forces.
 3. Vector decomposition and addition in Cartesian coordinates.
 4. Symmetry considerations in force calculations.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to electric field theory, as the force on a charge can also be interpreted via the electric field produced by other charges. It also reinforces fundamental concepts in electrostatics, such as the inverse-square nature of Coulomb's law and vector addition of forces.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The superposition principle is crucial in wave optics (interference of light waves) and quantum mechanics (wave function superposition). The vector addition of forces is fundamental in classical mechanics, engineering statics, and astrophysics (e.g., gravitational forces in multi-body systems).
 
-#### Real-World Applications
+##### Real-World Applications
 Understanding electrostatic forces is essential in designing particle accelerators, inkjet printers (droplet deflection), and microelectromechanical systems (MEMS). It also applies to sensor technologies, such as charge-coupled devices (CCDs), and electrostatic precipitation in air purification systems.
 
-#### Problem Statement
+##### Problem Statement
 Using the coordinate system described, find the $x$-component of the net electrostatic force on the charge $q_0$ due to $q_A$ and $q_B$. Express your answer symbolically in terms of the Coulomb's constant $k$, the charges $q_A$, $q_B$, $q_0$, and the radius $R$.
 
 ### Solution
@@ -6688,25 +6688,25 @@ $$\boxed{\dfrac{k q_0 (q_A - q_B)}{R^2}}$$
 
 ------
 ### Problem 3
-#### Background
+##### Background
 In electrostatics, Coulomb's law governs the force between charged particles. Consider a system where three point charges $q_1$, $q_2$, and $q_3$ are fixed at the vertices of an equilateral triangle with side length $a$. The charges are unequal, leading to asymmetric forces that require vector superposition for analysis.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Application of Coulomb's law for electrostatic force between point charges.
 2. Vector addition of forces in two dimensions.
 3. Coordinate geometry of equilateral triangles.
 4. Principle of superposition for electrostatic forces.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to electric field calculations and stability analysis of charge configurations. It also reinforces vector mathematics within electromagnetism and extends to continuous charge distributions via discretization.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The vector decomposition technique is fundamental in classical mechanics (e.g., net force calculations). Trigonometric principles used here are essential in structural engineering for analyzing symmetric frameworks under multiple loads.
 
-#### Real-World Applications
+##### Real-World Applications
 Understanding asymmetric force distributions is critical in designing electrostatic precipitators (air pollution control devices), analyzing molecular structures in crystallography, and optimizing charged-particle beam steering in particle accelerators.
 
-#### Problem Statement
+##### Problem Statement
 Three point charges $q_1$, $q_2$, and $q_3$ are fixed at the vertices of an equilateral triangle with side length $a$. Using a coordinate system where $q_1$ is at the origin $(0, 0)$, $q_2$ is at $(a, 0)$, and $q_3$ is at $\left( \frac{a}{2}, \frac{a \sqrt{3}}{2} \right)$, derive the net electrostatic force vector $\vec{F}$ acting on $q_1$. Express $\vec{F}$ in component form $(F_x, F_y)$ using Coulomb's constant $k$, the charges $q_1$, $q_2$, $q_3$, and side length $a$.  
 
 Ensure all trigonometric functions are evaluated symbolically.  
@@ -6760,29 +6760,29 @@ $$
 
 ------
 ### Problem 4
-#### Background
+##### Background
 In electrostatic systems, charged objects experience forces due to other charges, governed by Coulomb's law. When suspended by insulating threads, these objects can reach equilibrium under the combined effects of gravitational, electrostatic, and tension forces. This problem explores a symmetric configuration where a charged sphere hangs between two identical fixed charges, requiring derivation of the tension in the supporting thread.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Coulomb's law for electrostatic forces between point charges.
 2. Vector decomposition of forces into components.
 3. Conditions for static equilibrium (net force balance in vertical and horizontal directions).
 4. Symmetry principles in physical systems.
 5. Coordinate geometry for distance calculations.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to electrostatics (force superposition, electric fields) and mechanics (equilibrium, vector addition).
 - Reinforces the concept of inverse-square laws and their applications in force calculations.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Engineering: Design of electrostatic suspension systems and stability analysis.
 - Materials science: Use of insulating materials to prevent charge leakage in suspensions.
 
-#### Real-World Applications
+##### Real-World Applications
 - Electroscopes and electrostatic sensors that measure charge magnitudes.
 - Industrial applications in electrostatic separation processes and particle levitation.
 
-#### Problem Statement
+##### Problem Statement
 Two identical positive point charges $Q$ are fixed at positions $(-d, 0)$ and $(d, 0)$ in the $xy$-plane, where the $y$-axis is vertical (positive upward). A small sphere of mass $m$ and positive charge $q$ is suspended by a massless, insulating thread of length $L$ from a fixed point $P$ at $(0, H)$. Due to symmetry, the sphere hangs vertically below $P$ at position $C = (0, y)$, where $y = H - L$. The gravitational acceleration is $g$, and the electrostatic constant is $k$. Assume $H > L > 0$ and that the charges are point charges. Derive an expression for the tension $T$ in the thread at equilibrium. Express $T$ symbolically in terms of $m$, $g$, $k$, $q$, $Q$, $d$, $H$, and $L$.
 
 **Answer format requirements**:
@@ -6833,7 +6833,7 @@ $$\boxed{mg - 2 \cdot k \cdot q \cdot Q \cdot \frac{H - L}{\left(d^{2} + \left(H
 
 ------
 ### Problem 5
-#### Background
+##### Background
 In electrostatic systems, the net force on a point charge results from the vector sum of forces exerted by all other charges, governed by Coulomb's law. Consider a rectangular arrangement of four point charges. The rectangle has width $a$ and height $b$. The charges are positioned as follows:  
 - Charge $Q_1$ at the top-left corner $(0, b)$,  
 - Charge $Q_2$ at the top-right corner $(a, b)$,  
@@ -6842,22 +6842,22 @@ In electrostatic systems, the net force on a point charge results from the vecto
 
 The charges have asymmetric values, meaning $Q_1$, $Q_2$, $Q_3$, and $Q_4$ are distinct and may have different signs. The electrostatic force magnitude follows an inverse-square law, with Coulomb's constant denoted as $k = \frac{1}{4\pi\epsilon_0}$.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Coulomb's law for the electrostatic force between two point charges.  
 2. Principle of superposition for vector forces.  
 3. Vector resolution and magnitude calculation in two dimensions.  
 4. Application of the Pythagorean theorem for resultant forces.  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to electric field calculations, as the force on a charge is related to the electric field at its location. It also reinforces vector algebra skills used in mechanics and electromagnetism, such as resolving forces into components and computing magnitudes.  
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 The superposition principle and inverse-square law appear in gravitational force calculations (e.g., celestial mechanics). Vector addition techniques are fundamental in physics and engineering disciplines, including statics and dynamics.  
 
-#### Real-World Applications
+##### Real-World Applications
 Such charge configurations model electrostatic interactions in molecules, ionic crystals, and electronic components like capacitors. Understanding net forces is crucial in designing electrostatic levitators, particle traps, and sensors in nanotechnology.  
 
-#### Problem Statement
+##### Problem Statement
 Calculate the magnitude of the net electrostatic force acting on the charge $Q_4$ at the bottom-left corner $(0, 0)$ due to the other three charges. Express your answer symbolically in terms of the parameters $a$, $b$, $Q_1$, $Q_2$, $Q_3$, $Q_4$, and $k$. Ensure the expression is non-negative and accounts for charge signs.  
 
 **Answer Format Requirements**:  
@@ -6950,27 +6950,27 @@ $$
 
 ------
 ### Problem 6
-#### Background
+##### Background
 In electrostatic systems, the net force on a charge arises from the vector sum of individual Coulomb forces. This principle is essential in technologies like electrostatic precipitators and mass spectrometry, where precise force direction determines particle trajectories. Understanding these interactions also aids in modeling molecular structures and material properties.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Coulomb's law for electrostatic forces.
 2. Vector superposition in two dimensions.
 3. Trigonometric functions for direction determination.
 4. Coordinate geometry for charge positioning.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to electric field concepts, where forces are derived from field vectors, and to potential energy, as force direction influences work done in charge movement.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Vector superposition applies to gravitational forces in astrophysics (e.g., net force on celestial bodies) and fluid dynamics (e.g., resultant velocity fields). The trigonometric approach is used in engineering for statics and force resolution.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Electrostatic Precipitators:** Force direction on charged particles affects collection efficiency in smokestacks.
 - **Mass Spectrometry:** Deflection angles depend on force direction to separate ions by mass-to-charge ratio.
 - **Atomic Physics:** Force angles influence bond orientations in molecules like water ($\text{H}_2\text{O}$).
 
-#### Problem Statement
+##### Problem Statement
 Two identical positive point charges, each of magnitude $Q$, are fixed at points $A$ and $B$, separated by a distance $d$. A third positive point charge $q$ is placed at point $P$ on the perpendicular bisector of segment $AB$, at a distance $y$ from the midpoint $O$ of $AB$. Define $R = \sqrt{(d/2)^2 + y^2}$ as the distance from $A$ to $P$. Using a coordinate system with $O$ at $(0,0)$, $A$ at $(-d/2, 0)$, $B$ at $(d/2, 0)$, and $P$ at $(0, y)$, find the angle $\beta$ that the net force on the charge at $A$ makes with the negative x-axis (the line extending leftward from $A$). Express $\beta$ as $\beta = \arctan(\text{expression})$ using $Q$, $q$, $d$, and $y$.
 
 ### Solution
@@ -7007,27 +7007,27 @@ $$\boxed{\arctan\left(\dfrac{2qyd^{2}}{2QR^{3} + qd^{3}}\right)}$$
 
 ------
 ### Problem 7
-#### Background
+##### Background
 In molecular physics and electrostatics, linear arrangements of alternating charges are found in certain ionic crystals and polar molecules. These configurations create complex electric fields. Consider a simplified model where three point charges are fixed along the x-axis: a positive charge $+Q$ at $x = -d$, a negative charge $-Q$ at $x = 0$, and a positive charge $+Q$ at $x = d$. A small positive test charge $+q$ is placed on the x-axis at a position $x > d$. The net electrostatic force on the test charge results from the superposition of forces from all three fixed charges.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. **Coulomb's Law**: The magnitude and direction of the electrostatic force between two point charges.
 2. **Superposition Principle**: The net force on a charge is the vector sum of forces from all other charges.
 3. **Symmetry and Vector Addition**: Analysis of force directions based on charge signs and positions.
 4. **Algebraic Solution**: Solving equations involving inverse-square relationships to find equilibrium points.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Electrostatics**: This problem extends to electric field calculations and potential energy in multi-charge systems.
 - **Classical Mechanics**: The equilibrium position relates to force balancing, applicable to stable points in conservative fields.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Materials Science**: Charge arrangements model ionic lattices or dipole moments in linear molecules.
 - **Engineering**: Applications in electrostatic levitation and ion trap designs for particle confinement.
 
-#### Real-World Applications
+##### Real-World Applications
 Electrostatic traps use alternating charge patterns to confine particles in precision instruments, such as mass spectrometers. Similar principles appear in molecular dynamics simulations of crystal structures.
 
-#### Problem Statement
+##### Problem Statement
 Three point charges are fixed along the x-axis: $+Q$ at $x = -d$, $-Q$ at $x = 0$, and $+Q$ at $x = d$. A positive test charge $+q$ is placed on the x-axis at $x > d$. Derive the exact position $x$ (in terms of $d$) where the net electrostatic force on the test charge vanishes. Use the Coulomb constant $k$ in your derivation. Express the final answer symbolically as $x = f(d)$, where $f$ is a function of $d$.
 
 ### Solution
@@ -7164,29 +7164,29 @@ $$\boxed{d \sqrt{-2 + \sqrt{5}}}$$
 
 ------
 ### Problem 8
-#### Background
+##### Background
 In an experimental setup for studying electrostatic interactions, two point charges, $Q_1$ and $Q_2$, are rigidly fixed at positions $(-d, 0)$ and $(d, 0)$ along the $x$-axis in a vacuum. A third point charge $q$ is placed at $(0, h)$, where $h$ is the perpendicular displacement from the midpoint of the line segment joining $Q_1$ and $Q_2$. The electrostatic force between charges follows Coulomb's law with constant $k$.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Coulomb's law for electrostatic force between point charges.
 2. Vector superposition of forces in two dimensions.
 3. Resolution of force components using Cartesian coordinates.
 4. Distance calculation in coordinate geometry.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Relates to electric field concepts and dipole moments in electrostatics.
 - Extends to equilibrium and stability analysis of charge configurations.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Mathematics: Vector algebra, coordinate geometry, and the Pythagorean theorem.
 - Engineering: Applications in electrostatic force sensors and particle trapping systems.
 
-#### Real-World Applications
+##### Real-World Applications
 - Modeling forces on ions in mass spectrometry or electrophoresis.
 - Designing electrostatic levitation systems for material science experiments.
 - Analyzing molecular interactions in simplified dipole models.
 
-#### Problem Statement
+##### Problem Statement
 Derive an expression for the magnitude of the net electrostatic force acting on the charge $q$. Express your answer symbolically using $k$, $Q_1$, $Q_2$, $q$, $d$, and $h$.  
 **Important**:  
 - Use exact symbolic forms; do not substitute numerical values.  
@@ -7230,30 +7230,30 @@ $$\boxed{ \dfrac{ k q \sqrt{ d^{2} \left( Q_{1} - Q_{2} \right)^{2} + h^{2} \lef
 
 ------
 ### Problem 9
-#### Background
+##### Background
 In electrostatic systems, the net force on a point charge arises from the vector sum of forces exerted by other charges, governed by Coulomb's law. This problem examines a symmetric charge configuration in an isosceles triangle, a setup encountered in molecular physics and materials science, where symmetric arrangements of ions or charged particles lead to predictable force patterns. The goal is to derive the magnitude of the resultant force on the apex charge by modeling the superposition of forces from the base charges.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Coulomb's law for electrostatic force magnitude between point charges.
 2. Vector superposition principles for forces.
 3. Resolution of vectors into components using trigonometry.
 4. Symmetry arguments to simplify vector addition.
 5. Geometric relationships in isosceles triangles.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to electric field theory, as the force on a charge is foundational for defining electric fields. It also reinforces concepts in vector algebra and Newtonian mechanics, particularly the addition of force vectors and equilibrium conditions.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Mathematics**: Requires vector decomposition, trigonometry (angle determination), and algebraic manipulation of radical expressions.
 - **Chemistry**: Models symmetric molecular structures (e.g., water molecule analogs) where electrostatic forces influence geometry.
 - **Engineering**: Relevant to electrostatic levitation systems and sensor designs using symmetric charge configurations.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Mass spectrometry**: Symmetric ion traps use similar principles to confine charged particles.
 - **Electrostatic precipitation**: Forces on particles in symmetric electrode arrays remove pollutants from gases.
 - **Material science**: Predicts stability of crystal lattices with ionic bonding.
 
-#### Problem Statement
+##### Problem Statement
 Three point charges are fixed at the vertices of an isosceles triangle. The apex charge has magnitude $ q_0 $, and the two base charges each have magnitude $ q $. The base of the triangle has length $ b $, and the height from the apex to the base is $ h $. Derive the magnitude of the net electrostatic force on the apex charge. Express your answer symbolically in terms of the Coulomb constant $ k $, $ q_0 $, $ q $, $ b $, and $ h $.
 
 ### Solution
@@ -7293,27 +7293,27 @@ $$ \boxed{\dfrac{2 k q_{0} q h}{\left( h^{2} + \dfrac{b^{2}}{4} \right)^{\frac{3
 ## temperature scale conversions (Celsius, Kelvin, Fahrenheit)
 
 ### Problem 0
-#### Background
+##### Background
 In thermometry, the Celsius and Fahrenheit scales are defined using two reference points: the freezing point of water (0°C or 32°F) and the boiling point of water (100°C or 212°F). A linear relationship exists between these scales because equal temperature intervals produce proportional changes. While standard conversion formulas are often memorized, understanding their derivation from fundamental principles is essential for scientific literacy.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Linear interpolation between reference points  
 2. Algebraic derivation of conversion formulas  
 3. Unit transformation principles  
 4. Solving linear equations  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to linear functions in algebra (slope-intercept form) and calibration methods in experimental physics, where instruments are scaled using fixed physical phenomena.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Meteorology**: Weather reports require unit conversions for international data sharing.  
 - **Materials Science**: Thermal expansion coefficients often need cross-scale calculations.  
 - **Culinary Arts**: Oven temperature settings vary globally (e.g., 180°C vs. 356°F).
 
-#### Real-World Applications
+##### Real-World Applications
 Medical devices like fever thermometers must switch between scales; a hypothermia warning at 35°C (95°F) illustrates critical conversions. Sensor networks in smart homes also process multi-scale temperature data.
 
-#### Problem Statement
+##### Problem Statement
 Derive the general formula to convert a temperature $T_C$ in degrees Celsius to degrees Fahrenheit using the freezing and boiling points of water as reference. Then, apply this formula to find the Fahrenheit equivalent of 25°C. Express your final answer as an exact numerical value without units.
 
 ### Solution
@@ -7341,26 +7341,26 @@ $$\boxed{77}$$
 
 ------
 ### Problem 1
-#### Background
+##### Background
 Temperature scales are defined by fixed reference points. The Kelvin (K) scale is an absolute thermodynamic scale where 0 K represents absolute zero. The Celsius (°C) and Fahrenheit (°F) scales are defined using the freezing and boiling points of water. Specifically:  
 - Freezing point of water: 0 °C = 273.15 K = 32 °F  
 - Boiling point of water: 100 °C = 373.15 K = 212 °F  
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Deriving linear conversion formulas between temperature scales using reference points.  
 - Applying algebraic reasoning to relate Kelvin, Celsius, and Fahrenheit scales.  
 - Calculating specific temperature values using derived relationships.  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to linear functions in algebra, thermodynamic principles in physics, and the concept of absolute zero. It also reinforces unit conversions in measurement systems.  
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Temperature conversions are essential in meteorology (weather reporting), engineering (material science), culinary arts (international recipes), and environmental science (climate data analysis).  
 
-#### Real-World Applications
+##### Real-World Applications
 Accurate temperature conversion is critical for international scientific collaboration, manufacturing processes requiring precise thermal control, medical equipment calibration, and interpreting weather forecasts across regions using different scales.  
 
-#### Problem Statement
+##### Problem Statement
 Using the fixed points of water provided in the background, derive a general formula to convert a temperature $T_K$ in Kelvin to degrees Fahrenheit. Then, apply your formula to express absolute zero (0 K) in degrees Fahrenheit. Express your final answer as a numerical value rounded to two decimal places.  
 
 *Note: Your derivation must start from the linear relationships between the scales and use only the given reference points. Do not use pre-memorized conversion formulas.*
@@ -7406,30 +7406,30 @@ $$\boxed{-459.67}$$
 
 ------
 ### Problem 10
-#### Background
+##### Background
 Temperature scales are defined using fixed reference points. The Celsius scale sets the freezing point of water at standard atmospheric pressure as 0°C and the boiling point as 100°C. The Fahrenheit scale uses the freezing point of water as 32°F and the boiling point as 212°F. The Kelvin scale is an absolute thermodynamic scale where 0 K represents absolute zero (the theoretical absence of thermal energy), and the triple point of water—the unique state where solid, liquid, and vapor phases coexist—is defined as exactly 273.16 K. This triple point occurs at 0.01°C on the Celsius scale.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Derivation of linear conversion formulas between temperature scales using reference points.
 - Application of linear equations to convert specific temperatures.
 - Understanding the relationship between absolute and relative temperature scales.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Thermodynamics: Absolute zero and the behavior of ideal gases.
 - Measurement Science: Calibration of temperature instruments using fixed points.
 - Phase Transitions: Triple point as a fundamental state in phase diagrams.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Chemistry: Phase equilibria and the role of temperature in chemical reactions.
 - Engineering: Temperature control in systems like refrigeration and climate control.
 - Environmental Science: Global temperature data reporting across different scales.
 
-#### Real-World Applications
+##### Real-World Applications
 - Scientific Research: Kelvin is used in cryogenics and quantum computing where absolute temperatures are critical.
 - Meteorology: Fahrenheit is used in U.S. weather forecasts, while Celsius is standard internationally.
 - Manufacturing: Precision temperature conversions are essential in semiconductor fabrication and food processing.
 
-#### Problem Statement
+##### Problem Statement
 a) Derive the linear conversion formula from Celsius ($C$) to Kelvin ($K$) using the following information:  
    - Absolute zero (0 K) corresponds to -273.15°C.  
    - A change of 1°C equals a change of 1 K.  
@@ -7444,7 +7444,7 @@ c) Using the formulas from (a) and (b), convert the triple point of water (0.01�
 Express the final temperatures as an ordered pair $(K, F)$, providing exact numerical values without units.
 
 ### Solution
-#### Solution to Part (a)  
+##### Solution to Part (a)  
 The conversion from Celsius to Kelvin is linear:  
 $$ K = aC + b $$  
 Given that a change of 1°C equals a change of 1 K, the slope $a = 1$. Thus:  
@@ -7456,7 +7456,7 @@ $$ b = 273.15 $$
 The conversion formula is:  
 $$ K = C + 273.15 $$  
 
-#### Solution to Part (b)  
+##### Solution to Part (b)  
 The conversion from Celsius to Fahrenheit is linear:  
 $$ F = mC + n $$  
 Using the freezing point ($C = 0$, $F = 32$):  
@@ -7468,7 +7468,7 @@ $$ m = 1.8 $$
 The conversion formula is:  
 $$ F = 1.8C + 32 $$  
 
-#### Solution to Part (c)  
+##### Solution to Part (c)  
 For the triple point of water, $C = 0.01$:  
 - **Kelvin conversion**:  
   $$ K = 0.01 + 273.15 = 273.16 $$  
@@ -7481,28 +7481,28 @@ $$\boxed{\left(273.16,\ 32.018\right)}$$
 
 ------
 ### Problem 11
-#### Background
+##### Background
 Temperature scales are human-defined systems to quantify thermal energy. The Celsius scale (°C), based on water's freezing and boiling points at standard pressure, sets 0°C for freezing and 100°C for boiling. The Kelvin scale (K) is an absolute thermodynamic scale where 0 K represents absolute zero—the point of minimal thermal motion. The Fahrenheit scale (°F), used primarily in the United States, sets water's freezing point at 32°F and boiling point at 212°F. Astronomical observations reveal that the Sun's photosphere (visible surface) emits radiation consistent with a thermal equilibrium temperature of 5500°C. Understanding scale conversions is essential for international scientific collaboration and instrumentation calibration.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Derivation of linear conversion formulas between temperature scales using fundamental fixed points.
 - Application of linear relationships to convert specific numerical values.
 - Interpretation of absolute zero and its role in thermodynamic scales.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to thermodynamics (absolute zero concept), blackbody radiation (stellar temperature measurement), and calorimetry (scale calibration). It also reinforces algebraic modeling of linear relationships in physics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Material science uses multiple scales (e.g., thermal expansion coefficients in Fahrenheit for US infrastructure, Kelvin for superconductors).
 - **Meteorology**: Weather data comparison across regions using Celsius (global) and Fahrenheit (US).
 - **Astrophysics**: Stellar classification via surface temperature in Kelvin (e.g., Sun: ~5500°C, Sirius: 9940°C).
 
-#### Real-World Applications
+##### Real-World Applications
 - Spacecraft thermal shielding design (e.g., Parker Solar Probe withstands 1377°C using Kelvin-based simulations).
 - Global climate models converting between datasets (e.g., NOAA uses Celsius, historical records in Fahrenheit).
 - Medical equipment sterilization standards (e.g., autoclaves at 121°C or 250°F).
 
-#### Problem Statement
+##### Problem Statement
 The Sun’s surface temperature is measured as 5500°C. Derive the conversion formulas from Celsius to Kelvin and from Celsius to Fahrenheit using the following fundamental definitions:  
 - Absolute zero is at -273.15°C (0 K).  
 - Water freezes at 0°C (32°F) and boils at 100°C (212°F).  
@@ -7510,7 +7510,7 @@ Apply your derived formulas to express the Sun’s surface temperature in Kelvin
 *Note: All steps must use symbolic algebra until the final numerical substitution. Express temperatures as exact values where possible.*
 
 ### Solution
-#### Step 1: Derive Celsius to Kelvin conversion  
+##### Step 1: Derive Celsius to Kelvin conversion  
 The Kelvin scale shares the same unit size as Celsius but starts at absolute zero. Given:  
 - $ 0  \text{K} = -273.15^\circ \text{C} $  
 - A temperature difference of 1 K equals 1°C.  
@@ -7518,7 +7518,7 @@ The linear relationship is:
 $$ T_K = T_C + 273.15 $$  
 where $ T_C $ is temperature in Celsius.  
 
-#### Step 2: Derive Celsius to Fahrenheit conversion  
+##### Step 2: Derive Celsius to Fahrenheit conversion  
 The Fahrenheit scale has a different zero point and unit size. Using the freezing and boiling points of water:  
 - At $ T_C = 0 $, $ T_F = 32 $  
 - At $ T_C = 100 $, $ T_F = 212 $  
@@ -7532,14 +7532,14 @@ $$ 180 = 100a \implies a = \frac{180}{100} = \frac{9}{5} $$
 Thus:  
 $$ T_F = \frac{9}{5} T_C + 32 $$  
 
-#### Step 3: Apply conversions to Sun’s temperature  
+##### Step 3: Apply conversions to Sun’s temperature  
 Given $ T_C = 5500 $:  
 - **Kelvin:**  
   $$ T_K = 5500 + 273.15 = 5773.15  \text{K} $$  
 - **Fahrenheit:**  
   $$ T_F = \frac{9}{5}(5500) + 32 = 9 \cdot 1100 + 32 = 9900 + 32 = 9932  ^\circ \text{F} $$  
 
-#### Step 4: Compute $ T_K - T_F $  
+##### Step 4: Compute $ T_K - T_F $  
 $$ T_K - T_F = 5773.15 - 9932 = -4158.85 $$  
 Rounded to five significant figures:  
 $$ -4158.85 \approx -4158.9 $$
@@ -7549,24 +7549,24 @@ $$\boxed{-4158.9}$$
 
 ------
 ### Problem 12
-#### Background
+##### Background
 Temperature scales are defined by specific fixed points. The Fahrenheit scale sets the freezing point of water at 32°F and the boiling point at 212°F. The Celsius scale sets the freezing point at 0°C and the boiling point at 100°C. The Kelvin scale is an absolute temperature scale where 0 K represents absolute zero and the size of one Kelvin degree is identical to one Celsius degree. The Kelvin scale is defined such that 0°C corresponds to 273.15 K. These relationships are crucial for scientific applications, such as analyzing extreme conditions on planetary surfaces.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Derivation of linear conversion formulas between temperature scales using defining fixed points.
 2. Application of derived formulas to convert a specific temperature value.
 3. Understanding the additive offset between Celsius and Kelvin scales.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to linear algebra (solving systems of equations to derive conversion formulas) and thermodynamics (absolute temperature implications for physical systems).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Planetary science: Accurate temperature conversions are essential for interpreting data from space missions, such as those studying Martian climate conditions where surface temperatures can reach extremes.
 
-#### Real-World Applications
+##### Real-World Applications
 Engineering: Temperature conversions are critical in designing spacecraft thermal protection systems. Climate science: Converting between scales allows global comparison of temperature data from different measurement systems.
 
-#### Problem Statement
+##### Problem Statement
 Using only the defining fixed points of the Fahrenheit, Celsius, and Kelvin scales, derive the general conversion formula from Fahrenheit to Kelvin. Express the Kelvin temperature $T_K$ as a function of Fahrenheit temperature $T_F$.  
 Then, apply this formula to convert Mars' lowest recorded surface temperature of -125°F to Kelvin.  
 Round your final answer to two decimal places.  
@@ -7614,64 +7614,64 @@ $$\boxed{185.93}$$
 
 ------
 ### Problem 13
-#### Background
+##### Background
 Temperature scales are essential tools in science and everyday life, with Celsius (°C), Kelvin (K), and Fahrenheit (°F) being the most common. While specific temperature conversions use offset formulas (e.g., °F = (9/5)°C + 32), temperature *differences* behave differently because additive constants cancel out. This distinction is critical in fields like thermodynamics and engineering, where differences drive processes like heat transfer.  
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Deriving the conversion factor for temperature differences between Celsius and Fahrenheit.  
 - Applying proportionality to unit conversions.  
 - Recognizing that additive constants vanish in difference calculations.  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Thermodynamics: Temperature differences quantify heat flow in calorimetry (Q = mcΔT).  
 - Chemistry: Boiling point differences relate to vapor pressure and intermolecular forces.  
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Engineering: HVAC systems design relies on accurate ΔT conversions for international standards.  
 - Meteorology: Climate models compare temperature anomalies across regions using different scales.  
 
-#### Real-World Applications
+##### Real-World Applications
 - Industrial process control: Maintaining precise ΔT in reactors when switching between metric and imperial units.  
 - Medical devices: Calibrating fever thresholds in thermometers sold globally.  
 
-#### Problem Statement
+##### Problem Statement
 The difference between the boiling points of water and ethanol is exactly 21.1°C. Derive a general expression to convert any temperature difference from Celsius to Fahrenheit. Using this expression, compute the equivalent temperature difference in degrees Fahrenheit. Round your final answer to one decimal place.
 
 ### Solution
-#### Step 1: Establish the Fahrenheit conversion formula  
+##### Step 1: Establish the Fahrenheit conversion formula  
 The standard conversion for a specific temperature is:  
 $$ F = \frac{9}{5}C + 32 $$  
 where $F$ is the temperature in Fahrenheit and $C$ is the temperature in Celsius.  
 
-#### Step 2: Define the temperature difference  
+##### Step 2: Define the temperature difference  
 Let $C_1$ and $C_2$ be two temperatures in Celsius. The difference in Celsius is:  
 $$ \Delta C = C_1 - C_2 $$  
 
-#### Step 3: Express the corresponding Fahrenheit difference  
+##### Step 3: Express the corresponding Fahrenheit difference  
 Convert $C_1$ and $C_2$ to Fahrenheit:  
 $$ F_1 = \frac{9}{5}C_1 + 32 $$  
 $$ F_2 = \frac{9}{5}C_2 + 32 $$  
 The difference in Fahrenheit is:  
 $$ \Delta F = F_1 - F_2 = \left( \frac{9}{5}C_1 + 32 \right) - \left( \frac{9}{5}C_2 + 32 \right) $$  
 
-#### Step 4: Simplify the expression  
+##### Step 4: Simplify the expression  
 The additive constant (32) cancels out:  
 $$ \Delta F = \frac{9}{5}C_1 - \frac{9}{5}C_2 = \frac{9}{5}(C_1 - C_2) $$  
 Substitute $\Delta C = C_1 - C_2$:  
 $$ \Delta F = \frac{9}{5} \Delta C $$  
 This is the general conversion factor for temperature differences.  
 
-#### Step 5: Apply to the given difference  
+##### Step 5: Apply to the given difference  
 Given $\Delta C = 21.1$:  
 $$ \Delta F = \frac{9}{5} \times 21.1 $$  
 
-#### Step 6: Compute numerically  
+##### Step 6: Compute numerically  
 First, simplify $\frac{9}{5}$:  
 $$ \frac{9}{5} = 1.8 $$  
 Now multiply:  
 $$ 1.8 \times 21.1 = 37.98 $$  
 
-#### Step 7: Round to one decimal place  
+##### Step 7: Round to one decimal place  
 37.98 rounded to one decimal place is 38.0 (since the digit in the hundredths place, 8, is ≥5).
 
 ### Answer
@@ -7679,24 +7679,24 @@ $$\boxed{38.0}$$
 
 ------
 ### Problem 14
-#### Background
+##### Background
 Temperature scales are essential in science and daily life. The Celsius (°C) scale is used globally, the Fahrenheit (°F) scale is common in the United States, and the Kelvin (K) scale is the SI base unit for thermodynamic temperature. The conversions between these scales are defined by linear equations. This problem explores a unique condition where the Fahrenheit reading equals half the Celsius reading, requiring a derivation to find the corresponding Kelvin temperature.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conversion formulas between Celsius, Fahrenheit, and Kelvin temperature scales.
 2. Solving linear equations with fractional coefficients.
 3. Manipulating exact fractions and constants in algebraic expressions.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to linear algebra (solving equations) and thermodynamics (understanding absolute zero and scale relationships). It reinforces the concept that temperature scales are linear transformations of each other.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Temperature conversions are critical in meteorology (weather reporting across regions), engineering (calibrating instruments), and chemistry (reaction kinetics). For example, a chemical engineer might need to convert experimental data from Fahrenheit to Kelvin for thermodynamic modeling.
 
-#### Real-World Applications
+##### Real-World Applications
 Accurate temperature conversion is vital in international collaborations. For instance, a U.S. aerospace engineer working with European colleagues must convert Fahrenheit measurements to Kelvin for spacecraft thermal analysis. Similarly, medical researchers converting body temperature data between scales for global studies rely on precise conversions.
 
-#### Problem Statement
+##### Problem Statement
 The conversion from Celsius to Fahrenheit is given by:
 $$ F = \frac{9}{5}C + 32 $$
 and the conversion from Celsius to Kelvin is given by:
@@ -7741,35 +7741,35 @@ $$\boxed{\dfrac{64619}{260}}$$
 
 ------
 ### Problem 15
-#### Background
+##### Background
 Temperature scales are essential tools in science, engineering, and daily life. The Kelvin (K) scale is an absolute thermodynamic scale where 0 K represents absolute zero—the point at which all molecular motion ceases. The Celsius (°C) scale, used worldwide, sets water's freezing point at 0°C and boiling point at 100°C. The Fahrenheit (°F) scale, primarily used in the United States, sets water's freezing point at 32°F and boiling point at 212°F. Understanding the relationships between these scales requires deriving conversion formulas from fundamental principles.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Deriving linear conversion formulas between Kelvin, Celsius, and Fahrenheit scales using fixed reference points.
 - Applying algebraic manipulation to express temperature conversions.
 - Understanding the physical significance of absolute zero.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to thermodynamics (absolute zero), algebra (linear equations), and measurement systems. It reinforces the concept that temperature scales are linear transformations of one another.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Physics**: Absolute zero and kinetic theory of gases.
 - **Meteorology**: Standard temperature reporting across regions using different scales.
 - **Engineering**: Cryogenic systems (e.g., superconductors, MRI machines) operating near 4 K.
 
-#### Real-World Applications
+##### Real-World Applications
 Accurate temperature conversion is critical when:
 1. Interpreting data from scientific instruments (e.g., space telescopes reporting in Kelvin).
 2. Calibrating medical equipment (e.g., cryopreservation at cryogenic temperatures).
 3. Manufacturing materials requiring precise thermal control (e.g., semiconductor fabrication).
 
-#### Problem Statement
+##### Problem Statement
 A) Derive the formula to convert a temperature $K$ in Kelvin to degrees Celsius ($C$) using the known relationship between absolute zero and the Celsius scale.  
 B) Derive the formula to convert $C$ in Celsius to degrees Fahrenheit ($F$) using the freezing and boiling points of water.  
 C) Liquid helium, used to cool superconducting magnets, has a temperature of 4 K. Apply your derived formulas to compute its temperature in Fahrenheit. Express your answer as a decimal number.
 
 ### Solution
-#### Solution
+##### Solution
 
 **Part A: Derive Kelvin to Celsius formula**  
 Absolute zero (0 K) corresponds to $-273.15^\circ \text{C}$. The Celsius and Kelvin scales share identical unit sizes (a 1 K change equals a 1°C change). Thus, the conversion is linear:  
@@ -7803,26 +7803,26 @@ $$\boxed{-452.47}$$
 
 ------
 ### Problem 16
-#### Background
+##### Background
 Temperature scales are defined using specific fixed points. The Fahrenheit scale sets water's freezing point at 32°F and boiling point at 212°F. The Celsius scale sets freezing at 0°C and boiling at 100°C. The Kelvin scale is absolute, with 0 K at absolute zero and water's freezing point at 273.15 K. The size of one degree is identical in the Kelvin and Celsius scales. These relationships enable systematic conversions between scales through linear derivations.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Linear interpolation using fixed reference points  
 2. Derivation of conversion formulas through algebraic reasoning  
 3. Combining linear transformations across multiple scales  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 Connects to proportional relationships in algebra, linear functions, and unit analysis in physics. Reinforces the concept that temperature scales are affine transformations (linear + constant offset).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Essential in thermodynamics (physics), chemical reactions (chemistry), climate science (meteorology), and materials engineering. Accurate conversions are critical for international scientific data reporting.
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibrating medical equipment (e.g., vaccine storage at -70°C = -94°F = 203 K)  
 - Aerospace engineering (e.g., re-entry temperatures in Kelvin)  
 - Cooking (converting oven temperatures between Fahrenheit and Celsius)  
 
-#### Problem Statement
+##### Problem Statement
 Using water's freezing and boiling points as references, derive a direct conversion formula from degrees Fahrenheit to Kelvin. Apply this formula to convert 100°F to Kelvin. Express your final answer as a numerical value (without units) rounded to three significant figures.
 
 ### Solution
@@ -7879,28 +7879,28 @@ $$\boxed{311}$$
 
 ------
 ### Problem 17
-#### Background
+##### Background
 In meteorology, the diurnal temperature range (DTR) measures the difference between the daily maximum and minimum temperatures. This range is a critical indicator of climate patterns, especially in desert regions where large temperature swings occur due to low humidity and minimal cloud cover. The Celsius (°C), Fahrenheit (°F), and Kelvin (K) scales are used to measure temperature, but converting a temperature *range* requires understanding how differences scale across these systems. While absolute temperature conversions involve additive constants, range conversions depend solely on the proportional relationship between units.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conversion of temperature differences (ranges) between Celsius, Fahrenheit, and Kelvin scales.
 2. Derivation of scaling factors for unit conversions from fundamental principles.
 3. Algebraic manipulation to isolate variables in linear equations.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Physics: Thermal expansion and material stress analysis depend on temperature changes.
 - Mathematics: Linear functions and proportional reasoning applied to unit conversions.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Environmental Science: DTR affects ecosystem resilience and species adaptation.
 - Engineering: Temperature fluctuations influence structural integrity in materials and electronics.
 
-#### Real-World Applications
+##### Real-World Applications
 - Climate Modeling: DTR data helps predict desertification and extreme weather events.
 - Agriculture: Frost warnings rely on nighttime temperature drops (e.g., a 40°C range may damage crops).
 - Energy Systems: Solar panel efficiency varies with daily temperature cycles.
 
-#### Problem Statement
+##### Problem Statement
 A desert weather station records a diurnal temperature range of $ \Delta T_{\text{C}} = 40^\circ \text{C} $. Derive general expressions for the equivalent range in Fahrenheit ($ \Delta T_{\text{F}} $) and Kelvin ($ \Delta T_{\text{K}} $) using only the proportional relationships between the scales. Begin with the absolute temperature conversion formulas:  
 
 $$ T_{\text{F}} = \frac{9}{5} T_{\text{C}} + 32, \quad T_{\text{K}} = T_{\text{C}} + 273.15 $$
@@ -7914,7 +7914,7 @@ Present your final answer as two numbers: first the Fahrenheit value, then the K
 **Note**: Temperature ranges (differences) eliminate additive constants in conversions. Use this to simplify your derivations.
 
 ### Solution
-#### Step 1: Derive the general expression for $ \Delta T_{\text{F}} $  
+##### Step 1: Derive the general expression for $ \Delta T_{\text{F}} $  
 Let $ T_{\text{C1}} $ and $ T_{\text{C2}} $ be two temperatures in Celsius, with the range $ \Delta T_{\text{C}} = T_{\text{C1}} - T_{\text{C2}} $.  
 Convert to Fahrenheit:  
 
@@ -7925,7 +7925,7 @@ The range in Fahrenheit is:
 $$ \Delta T_{\text{F}} = T_{\text{F1}} - T_{\text{F2}} = \left( \frac{9}{5} T_{\text{C1}} + 32 \right) - \left( \frac{9}{5} T_{\text{C2}} + 32 \right) = \frac{9}{5} (T_{\text{C1}} - T_{\text{C2}}) = \frac{9}{5} \Delta T_{\text{C}} $$
   
 
-#### Step 2: Derive the general expression for $ \Delta T_{\text{K}} $  
+##### Step 2: Derive the general expression for $ \Delta T_{\text{K}} $  
 Convert $ T_{\text{C1}} $ and $ T_{\text{C2}} $ to Kelvin:  
 
 $$ T_{\text{K1}} = T_{\text{C1}} + 273.15, \quad T_{\text{K2}} = T_{\text{C2}} + 273.15 $$
@@ -7935,7 +7935,7 @@ The range in Kelvin is:
 $$ \Delta T_{\text{K}} = T_{\text{K1}} - T_{\text{K2}} = (T_{\text{C1}} + 273.15) - (T_{\text{C2}} + 273.15) = T_{\text{C1}} - T_{\text{C2}} = \Delta T_{\text{C}} $$
   
 
-#### Step 3: Compute numerical values for $ \Delta T_{\text{C}} = 40 $  
+##### Step 3: Compute numerical values for $ \Delta T_{\text{C}} = 40 $  
 - Fahrenheit range:  
 
 $$ \Delta T_{\text{F}} = \frac{9}{5} \times 40 = 72 $$
@@ -7945,7 +7945,7 @@ $$ \Delta T_{\text{F}} = \frac{9}{5} \times 40 = 72 $$
 $$ \Delta T_{\text{K}} = 40 $$
   
 
-#### Key Insight  
+##### Key Insight  
 Additive constants (e.g., 32 in Fahrenheit, 273.15 in Kelvin) cancel out when calculating temperature differences. Thus, only the scaling factor $ \frac{9}{5} $ applies for Fahrenheit, while Kelvin ranges match Celsius ranges identically.
 
 ### Answer
@@ -7953,28 +7953,28 @@ Additive constants (e.g., 32 in Fahrenheit, 273.15 in Kelvin) cancel out when ca
 
 ------
 ### Problem 18
-#### Background  
+##### Background  
 Temperature scales are essential tools in science, engineering, and daily life. The Celsius scale (°C) is based on water's freezing (0°C) and boiling (100°C) points at standard atmospheric pressure. The Fahrenheit scale (°F) uses 32°F for freezing and 212°F for boiling. The Kelvin scale (K) is an absolute thermodynamic scale where 0 K represents absolute zero, and its degree increment matches Celsius. Gold, a critical material in electronics and jewelry, melts at 1064°C.  
 
-#### Knowledge Points Tested  
+##### Knowledge Points Tested  
 1. Derivation of linear conversion formulas between temperature scales using reference points.  
 2. Application of algebraic reasoning to relate Celsius, Fahrenheit, and Kelvin scales.  
 3. Understanding the physical significance of absolute zero and scaling factors.  
 
-#### Intradisciplinary Connections  
+##### Intradisciplinary Connections  
 This problem connects to thermodynamics (absolute zero), algebra (linear equations), and materials science (melting points of elements).  
 
-#### Interdisciplinary Connections  
+##### Interdisciplinary Connections  
 - **Physics**: Thermodynamic principles defining absolute temperature.  
 - **Chemistry**: Phase transitions and material properties.  
 - **Engineering**: Calibration of temperature-sensitive instruments across scales.  
 
-#### Real-World Applications  
+##### Real-World Applications  
 - Global scientific communication (e.g., reporting melting points in research).  
 - Industrial processes (e.g., metallurgy, where precise temperature control is vital).  
 - Aerospace engineering (e.g., thermal protection systems using gold alloys).  
 
-#### Problem Statement  
+##### Problem Statement  
 (a) Derive the general linear equation to convert temperature from degrees Celsius ($T_C$) to degrees Fahrenheit ($T_F$) using water's freezing and boiling points.  
 (b) Derive the general linear equation to convert $T_C$ to Kelvin ($T_K$) using absolute zero and the Celsius scale's properties.  
 (c) Apply your derived equations to express the melting point of gold (1064°C) in Fahrenheit and Kelvin.  
@@ -8014,30 +8014,30 @@ $$\boxed{1337.2}$$
 
 ------
 ### Problem 19
-#### Background
+##### Background
 Temperature scales are defined using fixed reference points. The Celsius (°C) scale uses the freezing point of water (0°C) and boiling point (100°C) at standard atmospheric pressure. The Kelvin (K) scale is an absolute thermodynamic scale where 0 K represents absolute zero (the theoretical minimum temperature), and the size of one kelvin is identical to one degree Celsius. The Fahrenheit (°F) scale defines the freezing point of water as 32°F and the boiling point as 212°F. 
 
 The Delta scale is a hypothetical absolute temperature scale proposed for scientific use. It shares the same zero point as Kelvin (absolute zero) but uses a degree size identical to the Fahrenheit scale. This means a temperature interval of 1 Delta degree equals 1 Fahrenheit degree, but the scale starts from absolute zero.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Understanding linear relationships between temperature scales.
 - Deriving conversion formulas using fixed reference points.
 - Applying conversion formulas to compute specific values.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects temperature measurement concepts in thermodynamics, including absolute zero, scale calibration, and energy equivalence.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Temperature conversions are essential in chemistry (reaction kinetics), engineering (material science), and meteorology (climate modeling).
 
-#### Real-World Applications
+##### Real-World Applications
 The Rankine scale (used in some engineering systems) is analogous to the Delta scale—an absolute scale with Fahrenheit-sized degrees. Precise temperature conversions are critical in aerospace engineering (e.g., spacecraft thermal management) and cryogenics.
 
-#### Problem Statement
+##### Problem Statement
 Derive the general conversion formula from degrees Celsius (°C) to the Delta scale. Using this formula, compute the Delta scale temperature equivalent of -50°C. Express your final answer as a decimal number rounded to two decimal places.
 
 ### Solution
-#### Step-by-Step Derivation
+##### Step-by-Step Derivation
 
 1. **Convert Celsius to Kelvin**  
    The Kelvin scale is an absolute scale where 0 K = absolute zero. The freezing point of water is 273.15 K. The relationship between Celsius and Kelvin is linear:  
@@ -8070,39 +8070,39 @@ $$\boxed{401.67}$$
 
 ------
 ### Problem 2
-#### Background
+##### Background
 Temperature scales are essential in science, engineering, and daily life. The Celsius (°C) and Fahrenheit (°F) scales relate through a linear transformation:  
 $$ F = \frac{9}{5}C + 32 $$  
 where $F$ is the temperature in Fahrenheit and $C$ is the temperature in Celsius. This equation converts specific temperatures, but **temperature changes** (Δ) behave differently because the constant offset (32) cancels out when calculating differences. Understanding how to convert temperature changes is crucial for applications like material expansion calculations and climate science.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Derivation of temperature change conversion formulas  
 - Algebraic manipulation of linear equations  
 - Interpretation of additive constants in scale transformations  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Thermodynamics: Temperature changes drive heat transfer and phase transitions.  
 - Material Science: Thermal expansion coefficients depend on ΔT, requiring consistent units.  
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Meteorology: Comparing temperature trends across regions using different scales.  
 - Engineering: Designing systems with components rated in different temperature units.  
 
-#### Real-World Applications
+##### Real-World Applications
 - Aerospace: Converting thermal stress tolerances between Celsius (common in Europe) and Fahrenheit (common in the US).  
 - Medicine: Ensuring consistent interpretation of temperature changes in clinical studies across countries.  
 
-#### Problem Statement
+##### Problem Statement
 Starting from the fundamental Celsius-to-Fahrenheit conversion formula, derive a general equation for converting a temperature change in degrees Celsius (ΔC) to the corresponding change in degrees Fahrenheit (ΔF). Express ΔF solely in terms of ΔC. Then, using your derived equation, calculate the Fahrenheit equivalent of a temperature change of 15°C.  
 
 Provide your final answer as a numerical value without units.
 
 ### Solution
-#### Step 1: Establish the conversion formula for specific temperatures  
+##### Step 1: Establish the conversion formula for specific temperatures  
 The Celsius-Fahrenheit relationship is:  
 $$ F = \frac{9}{5}C + 32 \quad (1) $$  
 
-#### Step 2: Define initial and final states  
+##### Step 2: Define initial and final states  
 Let:  
 - $C_1$ = initial temperature in Celsius  
 - $C_2$ = final temperature in Celsius  
@@ -8113,13 +8113,13 @@ From Equation (1):
 $$ F_1 = \frac{9}{5}C_1 + 32 \quad (2) $$  
 $$ F_2 = \frac{9}{5}C_2 + 32 \quad (3) $$  
 
-#### Step 3: Express temperature changes  
+##### Step 3: Express temperature changes  
 The change in Celsius is:  
 $$ \Delta C = C_2 - C_1 \quad (4) $$  
 The change in Fahrenheit is:  
 $$ \Delta F = F_2 - F_1 \quad (5) $$  
 
-#### Step 4: Derive ΔF in terms of ΔC  
+##### Step 4: Derive ΔF in terms of ΔC  
 Subtract Equation (2) from Equation (3):  
 $$ F_2 - F_1 = \left( \frac{9}{5}C_2 + 32 \right) - \left( \frac{9}{5}C_1 + 32 \right) $$  
 Simplify:  
@@ -8128,7 +8128,7 @@ $$ \Delta F = \frac{9}{5} (C_2 - C_1) $$
 Substitute Equation (4):  
 $$ \Delta F = \frac{9}{5} \Delta C \quad (6) $$  
 
-#### Step 5: Calculate for ΔC = 15  
+##### Step 5: Calculate for ΔC = 15  
 Substitute ΔC = 15 into Equation (6):  
 $$ \Delta F = \frac{9}{5} \times 15 = 27 $$
 
@@ -8137,30 +8137,30 @@ $$\boxed{27}$$
 
 ------
 ### Problem 20
-#### Background
+##### Background
 Temperature scales are essential tools in science, each defined by specific reference points. The Celsius scale (°C) uses the freezing point of water (0°C) and boiling point of water (100°C) at standard atmospheric pressure. The Fahrenheit scale (°F) defines the freezing point of water as 32°F and the boiling point as 212°F. The Kelvin scale (K) is an absolute temperature scale where 0 K represents absolute zero and the freezing point of water is 273.15 K. 
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Derivation of linear conversion formulas between temperature scales using reference points
 - Application of derived formulas to convert specific temperatures
 - Understanding the relationship between relative and absolute temperature scales
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Physics: Thermodynamic principles underlying temperature scales
 - Chemistry: Phase transitions (e.g., boiling points) as reference markers
 - Mathematics: Linear interpolation and algebraic manipulation
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Meteorology: Standardization of temperature reporting across regions using different scales
 - Engineering: Calibration of instruments requiring unit conversions
 - Culinary Science: Precision in temperature-sensitive processes (e.g., candy-making)
 
-#### Real-World Applications
+##### Real-World Applications
 - Laboratory settings: Reporting experimental data in publications requiring Kelvin for thermodynamic calculations
 - Industrial processes: Monitoring distillation temperatures in biofuel production (e.g., ethanol purification)
 - Global collaboration: Converting meteorological data between Fahrenheit (US) and Celsius (international)
 
-#### Problem Statement
+##### Problem Statement
 A chemist calibrates a thermometer using the freezing and boiling points of water. Derive the general conversion formulas from Celsius to Fahrenheit and from Celsius to Kelvin using these reference points. Apply your formulas to express the boiling point of ethanol (78.4°C) in degrees Fahrenheit and Kelvin.  
 - Express Fahrenheit as a numerical value rounded to one decimal place  
 - Express Kelvin as a numerical value rounded to two decimal places  
@@ -8207,29 +8207,29 @@ $$\boxed{351.55}$$
 
 ------
 ### Problem 21
-#### Background
+##### Background
 Liquid nitrogen is a cryogenic fluid widely used in scientific research, medical applications, and industrial cooling due to its extremely low temperature. Its boiling point is a critical parameter for handling and storage. The Celsius (°C), Kelvin (K), and Fahrenheit (°F) scales are interrelated through linear transformations based on fundamental thermodynamic fixed points: absolute zero (0 K), the freezing point of water (0°C or 32°F), and the boiling point of water (100°C or 212°F). 
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Derivation of linear conversion formulas between temperature scales using fixed points.
 2. Algebraic manipulation to solve for constants in affine transformations.
 3. Application of derived formulas to convert a given temperature.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Thermodynamics: Absolute temperature scales and phase transitions.
 - Algebra: Solving systems of linear equations and fractional arithmetic.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Chemistry: Properties of cryogenic fluids and phase behavior.
 - Engineering: Calibration of temperature sensors in extreme environments.
 - History of Science: Development of temperature scales (Celsius, Fahrenheit, Kelvin).
 
-#### Real-World Applications
+##### Real-World Applications
 - Cryopreservation of biological samples requires precise temperature control.
 - Superconducting magnets in MRI machines operate at cryogenic temperatures.
 - Aerospace engineering uses liquid nitrogen for rocket propulsion testing.
 
-#### Problem Statement
+##### Problem Statement
 The Celsius-to-Kelvin conversion is defined by $ T_K = T_C + a $, and the Celsius-to-Fahrenheit conversion by $ T_F = b \cdot T_C + c $, where $ a $, $ b $, and $ c $ are constants. Using the fixed points:  
 - Absolute zero: $ 0  \text{K} = -273.15  \text{°C} $  
 - Freezing point of water: $ 0  \text{°C} = 32  \text{°F} $  
@@ -8238,7 +8238,7 @@ The Celsius-to-Kelvin conversion is defined by $ T_K = T_C + a $, and the Celsiu
 Derive the values of $ a $, $ b $, and $ c $. Then, using these formulas, compute the boiling point of liquid nitrogen ($ -196  \text{°C} $) in Kelvin ($ T_K $) and Fahrenheit ($ T_F $). Finally, evaluate the difference $ T_K - T_F $. Express all results as exact fractions in simplest form.
 
 ### Solution
-#### Step 1: Derive Constant $ a $ for Celsius-to-Kelvin Conversion
+##### Step 1: Derive Constant $ a $ for Celsius-to-Kelvin Conversion
 From absolute zero:  
 
 $$
@@ -8252,7 +8252,7 @@ a = 273.15 = \frac{27315}{100} = \frac{5463}{20}
 $$
 
 
-#### Step 2: Derive Constants $ b $ and $ c $ for Celsius-to-Fahrenheit Conversion
+##### Step 2: Derive Constants $ b $ and $ c $ for Celsius-to-Fahrenheit Conversion
 From the freezing point of water ($ T_C = 0 $, $ T_F = 32 $):  
 
 $$
@@ -8273,7 +8273,7 @@ $$
 $$
 
 
-#### Step 3: Convert $-196  \text{°C}$ to Kelvin
+##### Step 3: Convert $-196  \text{°C}$ to Kelvin
 Using $ T_K = T_C + a $:  
 
 $$
@@ -8293,7 +8293,7 @@ T_K = -\frac{3920}{20} + \frac{5463}{20} = \frac{-3920 + 5463}{20} = \frac{1543}
 $$
 
 
-#### Step 4: Convert $-196  \text{°C}$ to Fahrenheit
+##### Step 4: Convert $-196  \text{°C}$ to Fahrenheit
 Using $ T_F = b \cdot T_C + c = \frac{9}{5} \cdot (-196) + 32 $:  
 First, compute $\frac{9}{5} \cdot (-196)$:  
 
@@ -8314,7 +8314,7 @@ T_F = -\frac{1764}{5} + \frac{160}{5} = \frac{-1764 + 160}{5} = -\frac{1604}{5}
 $$
 
 
-#### Step 5: Compute $ T_K - T_F $
+##### Step 5: Compute $ T_K - T_F $
 
 $$
 T_K - T_F = \frac{1543}{20} - \left( -\frac{1604}{5} \right) = \frac{1543}{20} + \frac{1604}{5}
@@ -8340,38 +8340,38 @@ $$\boxed{\dfrac{7959}{20}}$$
 
 ------
 ### Problem 22
-#### Background
+##### Background
 Temperature scales are essential tools in science and engineering for quantifying thermal energy. The Fahrenheit (°F), Celsius (°C), and Kelvin (K) scales are linearly related but use different reference points and unit sizes. The Fahrenheit scale sets water's freezing point at 32°F and boiling point at 212°F under standard atmospheric pressure. The Celsius scale aligns water's freezing point at 0°C and boiling point at 100°C. The Kelvin scale, used in scientific contexts, shares the same unit size as Celsius but sets absolute zero at 0 K, where molecular motion theoretically ceases. The conversion between Kelvin and Celsius is defined as $T_K = T_C + 273.15$, establishing that temperature **differences** in Kelvin and Celsius are identical ($\Delta T_K = \Delta T_C$). 
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Derivation of temperature difference conversion factors from fundamental scale definitions.
 - Linear interpolation using fixed reference points (freezing/boiling of water).
 - Algebraic manipulation to isolate variables and simplify expressions.
 - Application of scale relationships to compute specific temperature changes.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Thermodynamics: Temperature differences govern heat transfer rates (conduction, convection, radiation).
 - Material Science: Thermal expansion coefficients depend on temperature changes.
 - Climate Science: Temperature anomalies (deviations from baseline) require consistent difference conversions.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Chemistry: Reaction kinetics (Arrhenius equation) uses Kelvin for activation energy calculations.
 - Engineering: HVAC systems convert temperature deltas for control systems across international standards.
 - Meteorology: Weather models integrate data from instruments calibrated in different scales.
 
-#### Real-World Applications
+##### Real-World Applications
 - Cryopreservation: Cooling biological samples by 45°F requires precise Kelvin control to avoid ice crystallization.
 - Aerospace: Re-entry vehicle heat shields experience extreme temperature drops; material testing uses Kelvin for accuracy.
 - Manufacturing: Quenching metals involves rapid cooling; process specifications often use Kelvin for reproducibility.
 
-#### Problem Statement
+##### Problem Statement
 Using the freezing point (32°F = 0°C) and boiling point (212°F = 100°C) of water as references:  
 (a) Derive the general relationship between a temperature change in Fahrenheit ($\Delta T_F$) and the corresponding temperature change in Kelvin ($\Delta T_K$).  
 (b) Apply this relationship to calculate the Kelvin decrease equivalent to a temperature drop of 45°F.  
 Express all answers symbolically before numerical evaluation. For part (b), provide the magnitude of the decrease as an exact number.
 
 ### Solution
-#### Step 1: Establish the linear Fahrenheit-Celsius relationship
+##### Step 1: Establish the linear Fahrenheit-Celsius relationship
 The Fahrenheit ($T_F$) and Celsius ($T_C$) scales are linearly related:  
 $$ T_C = aT_F + b $$  
 Using the reference points:  
@@ -8380,7 +8380,7 @@ $$ 0 = a(32) + b \quad \Rightarrow \quad b = -32a \quad \text{(Equation 1)} $$
 2. Boiling point: $T_F = 212$, $T_C = 100$  
 $$ 100 = a(212) + b \quad \text{(Equation 2)} $$  
 
-#### Step 2: Solve for coefficients $a$ and $b$
+##### Step 2: Solve for coefficients $a$ and $b$
 Substitute Equation 1 into Equation 2:  
 $$ 100 = 212a - 32a = 180a $$  
 $$ a = \frac{100}{180} = \frac{5}{9} $$  
@@ -8389,7 +8389,7 @@ $$ b = -32 \left(\frac{5}{9}\right) = -\frac{160}{9} $$
 Thus, the conversion equation is:  
 $$ T_C = \frac{5}{9}T_F - \frac{160}{9} $$  
 
-#### Step 3: Derive the temperature difference relationship
+##### Step 3: Derive the temperature difference relationship
 For two temperatures $T_{F1}$ and $T_{F2}$, the Celsius difference is:  
 $$ \Delta T_C = T_{C2} - T_{C1} = \left[ \frac{5}{9}T_{F2} - \frac{160}{9} \right] - \left[ \frac{5}{9}T_{F1} - \frac{160}{9} \right] $$  
 The constant terms cancel:  
@@ -8397,7 +8397,7 @@ $$ \Delta T_C = \frac{5}{9}(T_{F2} - T_{F1}) = \frac{5}{9} \Delta T_F $$
 Since $\Delta T_K = \Delta T_C$ (from $T_K = T_C + 273.15$):  
 $$ \Delta T_K = \frac{5}{9} \Delta T_F \quad \text{(General relationship)} $$  
 
-#### Step 4: Compute the Kelvin decrease for $\Delta T_F = -45$
+##### Step 4: Compute the Kelvin decrease for $\Delta T_F = -45$
 A temperature drop of 45°F implies $\Delta T_F = -45$:  
 $$ \Delta T_K = \frac{5}{9} \times (-45) = -\frac{225}{9} = -25 $$  
 The magnitude of the decrease is $|\Delta T_K| = 25$ K.
@@ -8407,39 +8407,39 @@ $$\boxed{25}$$
 
 ------
 ### Problem 23
-#### Background
+##### Background
 In materials science, the melting point of tungsten is a critical parameter for high-temperature applications, such as in incandescent light bulb filaments and rocket engine nozzles. Temperature scales like Celsius (°C), Kelvin (K), and Fahrenheit (°F) are defined using specific reference points and linear relationships. The Celsius scale sets 0°C at the freezing point of water and 100°C at its boiling point (at standard atmospheric pressure). The Kelvin scale uses absolute zero as 0 K and the same degree size as Celsius, while the Fahrenheit scale uses 32°F for water's freezing point and 212°F for its boiling point. 
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Derivation of temperature scale conversion formulas from fundamental principles.
 - Linear interpolation between reference points to establish scale relationships.
 - Application of conversion formulas to real-world physical constants.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Thermodynamics: Linking temperature scales to the concept of absolute zero.
 - Algebra: Solving systems of linear equations to derive conversion coefficients.
 - Materials Science: Contextualizing tungsten's properties in industrial applications.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Physics: Understanding kinetic theory and the molecular interpretation of temperature.
 - Engineering: Applying temperature conversions in aerospace and materials design.
 - History of Science: Relating scale definitions to historical experiments (e.g., Fahrenheit and Celsius scale origins).
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibrating scientific instruments that operate at extreme temperatures (e.g., tungsten melting point measurements in pyrometry).
 - Standardizing temperature readings across international research, where different scales may be used.
 - Designing thermal protection systems for spacecraft re-entry, where material melting points must be precisely converted.
 
-#### Problem Statement
+##### Problem Statement
 A new temperature scale, the "Tungsten Scale" (TS), is defined such that absolute zero corresponds to 0 TS and the melting point of tungsten corresponds to 1000 TS. It is known that absolute zero is -273.15°C and the melting point of tungsten is 3422°C. Using only these reference points and fundamental scale relationships, derive a formula to convert TS to Kelvin. Then, compute the melting point of tungsten in Kelvin using this formula. Express your final answer as a numerical value rounded to one decimal place. Provide only the numerical value.
 
 ### Solution
-#### Step 1: Establish the linear relationship between TS and Celsius  
+##### Step 1: Establish the linear relationship between TS and Celsius  
 The Tungsten Scale (TS) and Celsius (°C) share a linear relationship of the form:  
 $$ T_C = a \cdot T_{\text{TS}} + b $$  
 where $ T_C $ is the temperature in Celsius, $ T_{\text{TS}} $ is the temperature in TS, and $ a $ and $ b $ are constants.  
 
-#### Step 2: Use reference points to solve for constants  
+##### Step 2: Use reference points to solve for constants  
 **Reference Point 1: Absolute zero**  
 At absolute zero:  
 $$ T_{\text{TS}} = 0, \quad T_C = -273.15 $$  
@@ -8458,7 +8458,7 @@ $$ a = \frac{3695.15}{1000} = 3.69515 $$
 The conversion formula from TS to Celsius is:  
 $$ T_C = 3.69515 \cdot T_{\text{TS}} - 273.15 $$  
 
-#### Step 3: Derive the conversion from TS to Kelvin  
+##### Step 3: Derive the conversion from TS to Kelvin  
 The Kelvin (K) and Celsius scales are related by:  
 $$ T_K = T_C + 273.15 $$  
 Substitute the expression for $ T_C $:  
@@ -8466,7 +8466,7 @@ $$ T_K = (3.69515 \cdot T_{\text{TS}} - 273.15) + 273.15 $$
 Simplify:  
 $$ T_K = 3.69515 \cdot T_{\text{TS}} $$  
 
-#### Step 4: Compute the melting point of tungsten in Kelvin  
+##### Step 4: Compute the melting point of tungsten in Kelvin  
 At the melting point, $ T_{\text{TS}} = 1000 $:  
 $$ T_K = 3.69515 \cdot 1000 = 3695.15 $$  
 Rounded to one decimal place:  
@@ -8477,31 +8477,31 @@ $$\boxed{3695.2}$$
 
 ------
 ### Problem 24
-#### Background
+##### Background
 In medical diagnostics, body temperature is a critical vital sign. Different regions use different temperature scales: Fahrenheit (°F) is common in the United States, Celsius (°C) in most other countries, and Kelvin (K) in scientific contexts for absolute thermodynamic measurements. Understanding the relationships between these scales is essential for accurate communication and interpretation of data. Hypothermia, a life-threatening condition, occurs when core body temperature drops below 35°C (95°F). Extreme cases, such as 89.6°F, require precise conversion to assess severity.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Derivation of temperature conversion formulas from fundamental principles.
 2. Linear relationships between temperature scales based on fixed reference points.
 3. Algebraic manipulation and equation solving.
 4. Application of derived formulas to real-world data.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Algebra**: Linear equations and slope-intercept forms.
 - **Physics**: Thermodynamic temperature scales and absolute zero.
 - **Chemistry**: Phase transitions of water as calibration standards.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Medicine**: Diagnostic criteria for hypothermia and thermal regulation in the human body.
 - **Meteorology**: Standardized temperature reporting across global weather systems.
 - **Engineering**: Calibration of temperature-sensitive instruments.
 
-#### Real-World Applications
+##### Real-World Applications
 1. **Medical Emergencies**: Rapid conversion of body temperature readings between scales during international patient transfers.
 2. **Scientific Research**: Consistent use of Kelvin in gas law calculations and cryogenics.
 3. **Consumer Products**: Dual-scale thermometers and smart devices with automatic unit conversion.
 
-#### Problem Statement
+##### Problem Statement
 The freezing point of water is defined as 32°F (0°C), and the boiling point is 212°F (100°C). The Kelvin scale sets absolute zero at 0 K and uses the same degree size as Celsius.  
 1. Derive the general conversion formula from Fahrenheit (°F) to Celsius (°C), expressing $ T_C $ in terms of $ T_F $.  
 2. Derive the general conversion formula from Celsius (°C) to Kelvin (K), expressing $ T_K $ in terms of $ T_C $.  
@@ -8515,7 +8515,7 @@ Present the final Kelvin temperature rounded to three significant figures.
 - Follow notation rules: Use $ \ln $, $ \exp $, and $ \frac{a}{b} $.
 
 ### Solution
-#### Step 1: Derive $ T_C $ in terms of $ T_F $  
+##### Step 1: Derive $ T_C $ in terms of $ T_F $  
 The Fahrenheit-to-Celsius relationship is linear. Using the reference points:  
 - Freezing point: ($ T_C = 0 $, $ T_F = 32 $)  
 - Boiling point: ($ T_C = 100 $, $ T_F = 212 $)  
@@ -8530,18 +8530,18 @@ $$ T_F = \frac{9}{5} T_C + 32 $$
 Solve for $ T_C $:  
 $$ T_C = \frac{5}{9} (T_F - 32) $$  
 
-#### Step 2: Derive $ T_K $ in terms of $ T_C $  
+##### Step 2: Derive $ T_K $ in terms of $ T_C $  
 Kelvin and Celsius share the same unit size, with:  
 $$ T_K = T_C + 273.15 $$  
 
-#### Step 3: Derive $ T_K $ in terms of $ T_F $  
+##### Step 3: Derive $ T_K $ in terms of $ T_F $  
 Substitute Step 1 into Step 2:  
 $$ T_K = \left[ \frac{5}{9} (T_F - 32) \right] + 273.15 $$  
 Simplify:  
 $$ T_K = \frac{5}{9} T_F - \frac{5}{9} \cdot 32 + 273.15 $$  
 $$ T_K = \frac{5}{9} T_F - \frac{160}{9} + 273.15 $$  
 
-#### Step 4: Compute $ T_K $ for $ T_F = 89.6 $  
+##### Step 4: Compute $ T_K $ for $ T_F = 89.6 $  
 Substitute $ T_F = 89.6 $ into the derived formula:  
 $$ T_K = \frac{5}{9} (89.6) - \frac{160}{9} + 273.15 $$  
 Calculate each term:  
@@ -8557,31 +8557,31 @@ $$\boxed{305}$$
 
 ------
 ### Problem 25
-#### Background
+##### Background
 Venus, known for its extreme greenhouse effect, has a surface temperature of 737 Kelvin (K). While Kelvin is the scientific standard, temperature data is often reported in Celsius (°C) and Fahrenheit (°F) for broader accessibility. The Celsius scale defines 0°C as water's freezing point and 100°C as its boiling point at standard atmospheric pressure. The Fahrenheit scale sets water's freezing point at 32°F and boiling point at 212°F. Both scales derive from linear transformations of the Kelvin scale, which uses absolute zero (0 K) as its null point.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Derivation of temperature conversion formulas from fundamental physical reference points.  
 2. Application of linear transformations between thermodynamic scales.  
 3. Algebraic manipulation of equations involving offsets and scaling factors.  
 4. Propagation of units through mathematical operations.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Thermodynamics: Relates to the kinetic interpretation of temperature.  
 - Algebra: Requires solving linear equations with defined intercepts and slopes.  
 - Measurement science: Involves calibration and scale standardization principles.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Planetary science: Contextualizes extreme planetary conditions in our solar system.  
 - Environmental engineering: Highlights the role of temperature conversions in climate modeling.  
 - Data science: Demonstrates unit conversion as a preprocessing step in data analysis.
 
-#### Real-World Applications
+##### Real-World Applications
 - Space mission planning: Accurate temperature conversions are critical for designing heat-resistant spacecraft components (e.g., the Parker Solar Probe's thermal protection system).  
 - Climate studies: Converting historical temperature records between scales enables unified analysis of global warming trends.  
 - Material science: Determines phase transitions of substances under non-Earth conditions.
 
-#### Problem Statement
+##### Problem Statement
 A scientific probe measures Venus' surface temperature as $T_K = 737  \text{K}$. Derive general expressions for this temperature in degrees Celsius ($T_C$) and degrees Fahrenheit ($T_F$) using only the fundamental reference points:  
 - Absolute zero: $0  \text{K}$  
 - Water's freezing point: $273.15  \text{K} = 0^\circ \text{C} = 32^\circ \text{F}$  
@@ -8596,7 +8596,7 @@ First, establish $T_C$ as a function of $T_K$ by modeling the linear relationshi
 4. Units are specified in the problem; provide only numerical values in your final answer.
 
 ### Solution
-#### Step 1: Derive Kelvin-to-Celsius conversion  
+##### Step 1: Derive Kelvin-to-Celsius conversion  
 The Celsius scale has a linear relationship with Kelvin:  
 $$ T_C = a T_K + b $$  
 Using reference points:  
@@ -8609,7 +8609,7 @@ $$ T_C = T_K - 273.15 $$
 For Venus ($T_K = 737$):  
 $$ T_C = 737 - 273.15 = 463.85 \approx 464 \ ^\circ\text{C} \quad \text{(rounded to two significant figures)} $$  
 
-#### Step 2: Derive Celsius-to-Fahrenheit conversion  
+##### Step 2: Derive Celsius-to-Fahrenheit conversion  
 The Fahrenheit scale relates linearly to Celsius:  
 $$ T_F = c T_C + d $$  
 Using reference points:  
@@ -8622,7 +8622,7 @@ $$ T_F = \frac{9}{5} T_C + 32 $$
 For Venus ($T_C = 463.85$):  
 $$ T_F = \frac{9}{5} \cdot 463.85 + 32 = 834.93 + 32 = 866.93 \approx 870 \ ^\circ\text{F} \quad \text{(rounded to two significant figures)} $$  
 
-#### Step 3: Derive Kelvin-to-Fahrenheit conversion  
+##### Step 3: Derive Kelvin-to-Fahrenheit conversion  
 Substitute $T_C = T_K - 273.15$ into the Fahrenheit formula:  
 $$ T_F = \frac{9}{5} (T_K - 273.15) + 32 $$  
 Simplify:  
@@ -8632,7 +8632,7 @@ $$ T_F = \frac{9}{5} T_K - 459.67 $$
 For Venus ($T_K = 737$):  
 $$ T_F = \frac{9}{5} \cdot 737 - 459.67 = 1326.6 - 459.67 = 866.93 \approx 870 \ ^\circ\text{F} $$  
 
-#### Final numerical values for Venus:  
+##### Final numerical values for Venus:  
 - Celsius: $464$  
 - Fahrenheit: $870$
 
@@ -8642,31 +8642,31 @@ $$\boxed{870}$$
 
 ------
 ### Problem 26
-#### Background  
+##### Background  
 In astrophysics, temperature differences between celestial bodies provide crucial insights into stellar evolution and energy transfer. While Kelvin is the standard unit for absolute temperature in scientific contexts, some historical astronomical datasets and specialized instruments still report temperature differences in Fahrenheit degrees. Understanding how to convert between these scales requires careful consideration of their mathematical relationships.
 
-#### Knowledge Points Tested  
+##### Knowledge Points Tested  
 1. Fundamental relationships between Kelvin (K), Celsius (°C), and Fahrenheit (°F) temperature scales.  
 2. Conversion of temperature *differences* (as opposed to absolute temperatures).  
 3. Algebraic manipulation of linear equations.  
 4. Dimensional analysis and unit consistency.  
 
-#### Intradisciplinary Connections  
+##### Intradisciplinary Connections  
 - Thermodynamics: Temperature scales define thermal energy measurements.  
 - Astronomy: Stellar temperature differences indicate fusion rates and spectral classes.  
 - Measurement Science: Calibration across different instrument standards.  
 
-#### Interdisciplinary Connections  
+##### Interdisciplinary Connections  
 - Materials Science: Thermal expansion coefficients may be specified in different units.  
 - Climate Science: Comparing historical temperature records that use different scales.  
 - Engineering: Designing sensors that output in non-standard units.  
 
-#### Real-World Applications  
+##### Real-World Applications  
 - Interpreting 19th-century astronomical logs that used Fahrenheit.  
 - Calibrating infrared telescopes with components designed using imperial units.  
 - Standardizing data from international space missions where instruments use different units.  
 
-#### Problem Statement  
+##### Problem Statement  
 Two stars in the Cygnus constellation have surface temperatures differing by $\Delta T_K = 500$ Kelvin. Astronomical archives require this temperature difference to be expressed in Fahrenheit degrees ($\Delta T_F$).  
 
 Derive a general expression for $\Delta T_F$ in terms of $\Delta T_K$ by analyzing how temperature differences transform between scales. Start from first principles using the absolute temperature conversion formulas:  
@@ -8677,7 +8677,7 @@ where $T_C$ is Celsius temperature.
 After deriving the general relationship, compute the numerical value of $\Delta T_F$ for $\Delta T_K = 500$ K. Express your final answer as an exact integer.
 
 ### Solution
-#### Step 1: Analyze temperature difference conversion  
+##### Step 1: Analyze temperature difference conversion  
 Consider two temperatures $T_1$ and $T_2$ in Kelvin, with difference $\Delta T_K = T_2 - T_1$. Convert both to Celsius:  
 $$ T_{C1} = T_{K1} - 273.15 $$  
 $$ T_{C2} = T_{K2} - 273.15 $$  
@@ -8685,19 +8685,19 @@ The Celsius difference is:
 $$ \Delta T_C = T_{C2} - T_{C1} = (T_{K2} - 273.15) - (T_{K1} - 273.15) = T_{K2} - T_{K1} = \Delta T_K $$  
 **Conclusion**: Temperature differences are identical in Kelvin and Celsius ($\Delta T_C = \Delta T_K$).  
 
-#### Step 2: Relate Celsius and Fahrenheit differences  
+##### Step 2: Relate Celsius and Fahrenheit differences  
 Convert $T_{C1}$ and $T_{C2}$ to Fahrenheit:  
 $$ T_{F1} = \frac{9}{5}T_{C1} + 32 $$  
 $$ T_{F2} = \frac{9}{5}T_{C2} + 32 $$  
 The Fahrenheit difference is:  
 $$ \Delta T_F = T_{F2} - T_{F1} = \left( \frac{9}{5}T_{C2} + 32 \right) - \left( \frac{9}{5}T_{C1} + 32 \right) = \frac{9}{5}(T_{C2} - T_{C1}) = \frac{9}{5} \Delta T_C $$  
 
-#### Step 3: Combine results  
+##### Step 3: Combine results  
 Since $\Delta T_C = \Delta T_K$:  
 $$ \Delta T_F = \frac{9}{5} \Delta T_K $$  
 This is the general expression for converting temperature differences from Kelvin to Fahrenheit.  
 
-#### Step 4: Compute numerical value  
+##### Step 4: Compute numerical value  
 For $\Delta T_K = 500$ K:  
 $$ \Delta T_F = \frac{9}{5} \times 500 = 9 \times 100 = 900 $$  
 The temperature difference is exactly 900 Fahrenheit degrees.
@@ -8707,24 +8707,24 @@ $$\boxed{900}$$
 
 ------
 ### Problem 27
-#### Background
+##### Background
 Temperature scales are defined using fixed reference points. The Fahrenheit (°F) scale sets water's freezing point at 32°F and boiling point at 212°F. The Celsius (°C) scale uses 0°C for freezing and 100°C for boiling. The Kelvin (K) scale is absolute, with 0 K at absolute zero and degrees matching Celsius, where K = °C + 273.15. Scientists in Antarctica recorded a winter temperature of -80°F. To analyze this data, they must convert it to Kelvin, requiring derivation of the conversion formula from first principles.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Linear relationship derivation between temperature scales using fixed points.
 2. Algebraic manipulation of conversion formulas.
 3. Composition of functions for multi-step conversions.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 Connects to thermodynamics (absolute zero concept) and algebra (linear equations and function composition).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Relevant to climatology (polar temperature analysis) and materials science (behavior of substances at low temperatures).
 
-#### Real-World Applications
+##### Real-World Applications
 Accurate temperature conversion is essential for international scientific collaboration, cryogenic engineering, and climate modeling in extreme environments like Antarctica.
 
-#### Problem Statement
+##### Problem Statement
 Derive the general conversion formula from degrees Fahrenheit (°F) to Kelvin (K) using the fixed points of water and the absolute zero offset. Then, compute the Kelvin temperature for the recorded Antarctic winter temperature of -80°F. Express your final answer as an exact fraction in simplest form, providing only the numerical value without units.
 
 ### Solution
@@ -8766,30 +8766,30 @@ $$\boxed{\dfrac{37967}{180}}$$
 
 ------
 ### Problem 28
-#### Background
+##### Background
 The Curie temperature is the critical temperature above which a ferromagnetic material loses its permanent magnetic properties. For iron, this temperature is a fixed value denoted as $T_{\text{Curie}}$ kelvin (K). Temperature scales are defined using specific reference points: the Kelvin scale uses absolute zero and the triple point of water, while the Celsius and Fahrenheit scales use the freezing and boiling points of water. The freezing point of water is defined as 0°C (273.15 K) and 32°F, and the boiling point is 100°C (373.15 K) and 212°F. The relationship between these scales is linear.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Derivation of linear conversion formulas between temperature scales (Kelvin, Celsius, Fahrenheit).
 - Application of algebraic methods to solve for coefficients in linear equations.
 - Understanding of reference points in temperature scale definitions.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Thermodynamics: Absolute temperature and phase transitions.
 - Algebra: Linear equations and slope-intercept forms.
 - Materials Science: Magnetic properties of materials at critical temperatures.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Engineering: Calibration of temperature sensors in different units.
 - Meteorology: Reporting temperatures in regional scales (e.g., Fahrenheit in the US).
 - Chemistry: Phase changes and standard reference points.
 
-#### Real-World Applications
+##### Real-World Applications
 - Industrial processes involving heat treatment of magnetic materials (e.g., electric motors, transformers).
 - International scientific collaboration requiring temperature conversions.
 - Climate science and environmental monitoring with multi-scale instrumentation.
 
-#### Problem Statement
+##### Problem Statement
 Derive the general formula to convert a temperature $T$ in kelvin to degrees Fahrenheit, $F$, using the following reference points:  
 - Freezing point of water: $T = 273.15  \text{K}$, $F = 32$  
 - Boiling point of water: $T = 373.15  \text{K}$, $F = 212$  
@@ -8840,30 +8840,30 @@ $$\boxed{\frac{9}{5} T_{\text{Curie}} - 459.67}$$
 
 ------
 ### Problem 29
-#### Background
+##### Background
 Temperature scales are essential tools in meteorology, engineering, and daily life. The Celsius (°C) and Fahrenheit (°F) scales relate through a linear transformation. While absolute temperature conversions require an offset, temperature *changes* (fluctuations) follow a simpler relationship because the offset cancels out. This problem explores how a temperature fluctuation in Celsius converts to Fahrenheit.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Linear relationship between Celsius and Fahrenheit scales  
 2. Derivation of conversion formulas for temperature *changes*  
 3. Algebraic manipulation of linear equations  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to linear functions in algebra (slope interpretation) and thermodynamics (understanding that temperature differences are scale-invariant except for a multiplicative constant).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Meteorology**: Daily temperature fluctuations impact weather forecasting and climate modeling.  
 - **Materials Science**: Thermal expansion coefficients often require consistent temperature-change units across scales.  
 - **Energy Efficiency**: HVAC systems must account for temperature swings in different measurement systems.
 
-#### Real-World Applications
+##### Real-World Applications
 A 15°C daily temperature fluctuation is common in continental climates (e.g., deserts or mountainous regions). Such swings affect:  
 - Agricultural frost protection systems  
 - Building insulation requirements  
 - Battery performance in electric vehicles  
 - Thermal stress on infrastructure  
 
-#### Problem Statement
+##### Problem Statement
 The Celsius-to-Fahrenheit conversion for an absolute temperature $T_C$ is given by:  
 $$ T_F = \frac{9}{5}T_C + 32 $$  
 where $T_F$ is the temperature in Fahrenheit.  
@@ -8899,53 +8899,53 @@ $$\boxed{27}$$
 
 ------
 ### Problem 3
-#### Background  
+##### Background  
 Temperature scales are essential tools in science and daily life. The Fahrenheit (°F) scale is commonly used in the United States for weather reports and medical measurements, while the Kelvin (K) scale is the SI base unit for thermodynamic temperature, crucial in physics and engineering due to its absolute zero reference. The relationship between these scales is linear but requires deriving from fundamental fixed points: the freezing and boiling points of water.  
 
-#### Knowledge Points Tested  
+##### Knowledge Points Tested  
 1. Derivation of linear conversion formulas between temperature scales.  
 2. Application of the two-point slope formula to establish scale relationships.  
 3. Algebraic manipulation to express one variable in terms of another.  
 4. Precision in handling decimal values and unit conversions.  
 
-#### Intradisciplinary Connections  
+##### Intradisciplinary Connections  
 This problem connects to thermodynamics (absolute zero), calorimetry (phase transitions of water), and measurement uncertainty (precision in medical diagnostics).  
 
-#### Interdisciplinary Connections  
+##### Interdisciplinary Connections  
 - **Physics**: Thermodynamic laws and gas behavior rely on absolute temperature.  
 - **Meteorology**: Cross-scale temperature analysis for climate modeling.  
 - **Medicine**: Body temperature monitoring in clinical settings.  
 
-#### Real-World Applications  
+##### Real-World Applications  
 - Calibrating scientific instruments (e.g., cryogenics at 0 K).  
 - Converting medical data (e.g., body temperature) for international research.  
 - Engineering systems (e.g., thermal sensors in aerospace).  
 
-#### Problem Statement  
+##### Problem Statement  
 A biomedical device measures human body temperature as $T_{\text{F}} = 98.6$°F. To integrate this data into a thermodynamics model, convert $T_{\text{F}}$ to Kelvin (K) using the defining fixed points of the Fahrenheit and Kelvin scales:  
 - Freezing point of water: $32$°F ≡ $273.15$ K  
 - Boiling point of water: $212$°F ≡ $373.15$ K  
 Both scales exhibit a linear relationship. Derive a general conversion formula from Fahrenheit to Kelvin, then compute the Kelvin equivalent of $98.6$°F. Express the final answer as a decimal number with two decimal places.
 
 ### Solution
-#### Step 1: Establish the linear relationship  
+##### Step 1: Establish the linear relationship  
 Let $T_{\text{K}}$ be temperature in Kelvin and $T_{\text{F}}$ in Fahrenheit. The linear equation is:  
 $$ T_{\text{K}} = m \cdot T_{\text{F}} + b $$  
 where $m$ is the slope and $b$ is the $T_{\text{K}}$-intercept.  
 
-#### Step 2: Apply fixed points to form equations  
+##### Step 2: Apply fixed points to form equations  
 Using the freezing point $(T_{\text{F}}, T_{\text{K}}) = (32, 273.15)$:  
 $$ 273.15 = m \cdot 32 + b \quad \text{(Equation 1)} $$  
 Using the boiling point $(T_{\text{F}}, T_{\text{K}}) = (212, 373.15)$:  
 $$ 373.15 = m \cdot 212 + b \quad \text{(Equation 2)} $$  
 
-#### Step 3: Solve for the slope $m$  
+##### Step 3: Solve for the slope $m$  
 Subtract Equation 1 from Equation 2:  
 $$ (373.15 - 273.15) = m \cdot (212 - 32) $$  
 $$ 100 = m \cdot 180 $$  
 $$ m = \frac{100}{180} = \frac{5}{9} $$  
 
-#### Step 4: Solve for the intercept $b$  
+##### Step 4: Solve for the intercept $b$  
 Substitute $m = \frac{5}{9}$ into Equation 1:  
 $$ 273.15 = \frac{5}{9} \cdot 32 + b $$  
 $$ b = 273.15 - \frac{5}{9} \cdot 32 $$  
@@ -8953,11 +8953,11 @@ Compute $\frac{5}{9} \cdot 32$:
 $$ \frac{5}{9} \cdot 32 = \frac{160}{9} \approx 17.7778 $$  
 $$ b = 273.15 - 17.7778 = 255.3722 $$  
 
-#### Step 5: Derive the general conversion formula  
+##### Step 5: Derive the general conversion formula  
 $$ T_{\text{K}} = \frac{5}{9} \cdot T_{\text{F}} + 255.3722 $$  
 *Note: $255.3722$ is exact; retain full precision for computation.*  
 
-#### Step 6: Apply to $T_{\text{F}} = 98.6$°F  
+##### Step 6: Apply to $T_{\text{F}} = 98.6$°F  
 $$ T_{\text{K}} = \frac{5}{9} \cdot 98.6 + 255.3722 $$  
 First, compute $\frac{5}{9} \cdot 98.6$:  
 $$ \frac{5}{9} \cdot 98.6 = \frac{493}{9} = 54.\overline{777}... \approx 54.7778 $$  
@@ -8970,24 +8970,24 @@ $$\boxed{310.15}$$
 
 ------
 ### Problem 30
-#### Background
+##### Background
 Temperature scales are essential tools in science and daily life, each defined by specific reference points. The Celsius scale (°C) is based on the freezing point (0°C) and boiling point (100°C) of water. The Fahrenheit scale (°F) uses the freezing point (32°F) and boiling point (212°F) of water. The Kelvin scale (K) is an absolute thermodynamic scale where 0 K represents absolute zero, and its degree size matches the Celsius degree. 
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Derivation of the linear relationship between Celsius and Fahrenheit scales using two reference points.
 2. Conversion between Celsius and Kelvin scales.
 3. Application of derived formulas to compute specific values.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem integrates the definitions of temperature scales with algebraic modeling (linear equations) and connects to thermodynamics through the concept of absolute zero in the Kelvin scale.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Temperature conversions are vital in meteorology (weather reporting), engineering (material properties), and chemistry (reaction conditions), where data from international sources may use different scales.
 
-#### Real-World Applications
+##### Real-World Applications
 Accurate temperature conversion is crucial for cryogenic storage (e.g., preserving biological samples at alcohol's freezing point) and industrial processes (e.g., calibrating sensors in petroleum refining).
 
-#### Problem Statement
+##### Problem Statement
 (a) Derive the general formula to convert temperature from degrees Celsius (°C) to degrees Fahrenheit (°F) by establishing a linear relationship $ T_F = a \cdot T_C + b $. Use the reference points:  
 - Freezing point of water: $ T_C = 0 $, $ T_F = 32 $  
 - Boiling point of water: $ T_C = 100 $, $ T_F = 212 $.  
@@ -9002,9 +9002,9 @@ Solve for constants $ a $ and $ b $, and express $ T_F $ explicitly in terms of 
 - For °F, round to one decimal place. For K, provide the exact value.
 
 ### Solution
-#### Solution
+##### Solution
 
-#### (a) Derivation of $ T_F $ in terms of $ T_C $
+##### (a) Derivation of $ T_F $ in terms of $ T_C $
 Assume a linear relationship:  
 $$ T_F = a \cdot T_C + b $$  
 
@@ -9020,11 +9020,11 @@ $$ a = \frac{180}{100} = \frac{9}{5} $$
 Thus, the conversion formula is:  
 $$ T_F = \frac{9}{5} T_C + 32 $$  
 
-#### (b) Derivation of $ T_K $ in terms of $ T_C $
+##### (b) Derivation of $ T_K $ in terms of $ T_C $
 The Kelvin scale is defined such that $ 0 \, \text{K} = -273.15^\circ \text{C} $, and the size of one Kelvin degree equals one Celsius degree. Therefore:  
 $$ T_K = T_C + 273.15 $$  
 
-#### (c) Computation for $ T_C = -114 $
+##### (c) Computation for $ T_C = -114 $
 - **Fahrenheit ($ T_F $)**:  
   $$ T_F = \frac{9}{5} \cdot (-114) + 32 $$  
   $$ T_F = \frac{9 \cdot (-114)}{5} + 32 = \frac{-1026}{5} + 32 = -205.2 + 32 = -173.2 $$  
@@ -9042,28 +9042,28 @@ $$\boxed{159.15}$$
 
 ------
 ### Problem 31
-#### Background
+##### Background
 In thermodynamics and various scientific fields, temperature changes are often analyzed using different scales. The Fahrenheit scale is commonly used in the United States for everyday temperatures, while the Kelvin scale is an absolute temperature scale used extensively in physics and chemistry. Understanding how temperature differences convert between these scales is crucial for experiments involving heat transfer, chemical reactions, and climate studies. This problem explores the relationship between temperature changes in Fahrenheit and Kelvin.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Conversion between Fahrenheit and Kelvin scales.
 2. Derivation of temperature difference relationships.
 3. Linear transformation properties of temperature scales.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to thermodynamics (heat transfer calculations), chemistry (reaction kinetics dependent on temperature changes), and instrumentation (calibration of temperature sensors across scales).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Thermal stress analysis in materials requires consistent temperature difference units.
 - **Meteorology**: Climate models compare temperature anomalies across regions using different scales.
 - **Medicine**: Hyperthermia treatments monitor temperature rises in different unit systems.
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibrating laboratory ovens where recipes specify temperature rises in Fahrenheit but safety limits use Kelvin.
 - Interpreting data from international spacecraft that report thermal fluctuations in Kelvin while ground systems use Fahrenheit.
 - Analyzing thermal expansion in bridge joints where construction specs use Fahrenheit but material science models use Kelvin.
 
-#### Problem Statement
+##### Problem Statement
 The relationship between Fahrenheit (°F) and Kelvin (K) for a specific temperature $T$ is given by:
 $$ K = \frac{5}{9}(T_F - 32) + 273.15 $$
 where $T_F$ is the temperature in degrees Fahrenheit.  
@@ -9073,31 +9073,31 @@ A chemical reaction requires a temperature increase of $\Delta T_F$°F. Derive a
 Express $\Delta T_K$ as an exact fraction first, then as a decimal rounded to three significant figures. Provide only the numerical value (without units) for the decimal result in your final answer.
 
 ### Solution
-#### Step 1: Analyze temperature differences
+##### Step 1: Analyze temperature differences
 Consider two temperatures in Fahrenheit: $T_{F1}$ and $T_{F2} = T_{F1} + \Delta T_F$.  
 Their corresponding Kelvin values are:  
 $$ K_1 = \frac{5}{9}(T_{F1} - 32) + 273.15 $$  
 $$ K_2 = \frac{5}{9}(T_{F2} - 32) + 273.15 = \frac{5}{9}((T_{F1} + \Delta T_F) - 32) + 273.15 $$  
 
-#### Step 2: Compute $\Delta T_K$
+##### Step 2: Compute $\Delta T_K$
 The temperature difference in Kelvin is:  
 $$ \Delta T_K = K_2 - K_1 $$  
 Substitute the expressions:  
 $$ \Delta T_K = \left[ \frac{5}{9}(T_{F1} + \Delta T_F - 32) + 273.15 \right] - \left[ \frac{5}{9}(T_{F1} - 32) + 273.15 \right] $$  
 
-#### Step 3: Simplify the expression
+##### Step 3: Simplify the expression
 Expand and cancel terms:  
 $$ \Delta T_K = \frac{5}{9}(T_{F1} + \Delta T_F - 32) + 273.15 - \frac{5}{9}(T_{F1} - 32) - 273.15 $$  
 $$ \Delta T_K = \frac{5}{9}T_{F1} + \frac{5}{9}\Delta T_F - \frac{5}{9} \cdot 32 + 273.15 - \frac{5}{9}T_{F1} + \frac{5}{9} \cdot 32 - 273.15 $$  
 The terms $\frac{5}{9}T_{F1}$, $-\frac{5}{9} \cdot 32$, $+\frac{5}{9} \cdot 32$, $+273.15$, and $-273.15$ cancel out, leaving:  
 $$ \Delta T_K = \frac{5}{9}\Delta T_F $$  
 
-#### Step 4: Apply to given value
+##### Step 4: Apply to given value
 For $\Delta T_F = 25$°F:  
 $$ \Delta T_K = \frac{5}{9} \times 25 = \frac{125}{9} $$  
 As a decimal: $\frac{125}{9} \approx 13.888...$  
 
-#### Step 5: Rounding
+##### Step 5: Rounding
 Rounded to three significant figures: $13.9$ (since $13.888...$ rounded to the nearest $0.1$ is $13.9$).
 
 ### Answer
@@ -9105,24 +9105,24 @@ $$\boxed{13.9}$$
 
 ------
 ### Problem 32
-#### Background
+##### Background
 The New Horizons spacecraft, during its 2015 flyby, measured Pluto's surface temperature. To analyze this data, scientists must convert between temperature scales. The Celsius scale is defined by water's freezing point (0°C) and boiling point (100°C) at standard atmospheric pressure. The Kelvin scale uses the same degree size as Celsius but sets absolute zero at 0 K, with water freezing at 273.15 K. The Fahrenheit scale sets water's freezing point at 32°F and boiling point at 212°F. Temperature conversions rely on linear relationships between these scales.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Derivation of linear conversion formulas between temperature scales using reference points.
 2. Application of derived formulas to convert a specific temperature value.
 3. Understanding the physical basis for temperature scale definitions.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to linear functions in algebra (slope-intercept form), thermodynamics (absolute zero), and measurement uncertainty in experimental physics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Temperature conversions are essential in astronomy (planetary science), engineering (material properties at cryogenic temperatures), and environmental science (climate data standardization).
 
-#### Real-World Applications
+##### Real-World Applications
 Accurate temperature conversion is critical for spacecraft thermal management (e.g., ensuring instruments operate within safe limits), cryogenics (studying materials at extremely low temperatures), and global scientific collaboration (comparing data from international sources).
 
-#### Problem Statement
+##### Problem Statement
 Pluto's surface temperature is measured at -229°C.  
 a) Derive the general formula to convert temperature from degrees Celsius ($T_C$) to Kelvin ($T_K$).  
 b) Derive the general formula to convert temperature from degrees Celsius ($T_C$) to degrees Fahrenheit ($T_F$).  
@@ -9137,7 +9137,7 @@ Report only $T_F$ (in Fahrenheit) as your final answer, rounded to one decimal p
 - Rounding instructions: Final answer must be rounded to one decimal place.
 
 ### Solution
-#### Part (a): Derivation of $T_K$ as a function of $T_C$
+##### Part (a): Derivation of $T_K$ as a function of $T_C$
 The Celsius and Kelvin scales share the same unit size but have different zero points. Absolute zero (0 K) corresponds to $-273.15$°C, and the freezing point of water is $273.15$ K (0°C). This implies a linear relationship:  
 $$T_K = T_C + \Delta$$  
 where $\Delta$ is the offset. Using the freezing point of water as a reference:  
@@ -9146,7 +9146,7 @@ $$273.15 = 0 + \Delta \implies \Delta = 273.15$$
 Thus, the conversion formula is:  
 $$T_K = T_C + 273.15$$  
 
-#### Part (b): Derivation of $T_F$ as a function of $T_C$
+##### Part (b): Derivation of $T_F$ as a function of $T_C$
 The Fahrenheit and Celsius scales have different unit sizes and zero points. A linear relationship is assumed:  
 $$T_F = \alpha T_C + \beta$$  
 where $\alpha$ is the slope and $\beta$ is the intercept. Use the two reference points:  
@@ -9163,7 +9163,7 @@ $$212 - 32 = 100\alpha \implies 180 = 100\alpha \implies \alpha = \frac{180}{100
 Thus, the conversion formula is:  
 $$T_F = \frac{9}{5} T_C + 32$$  
 
-#### Part (c): Conversion of $-229^\circ\text{C}$ to Fahrenheit
+##### Part (c): Conversion of $-229^\circ\text{C}$ to Fahrenheit
 Using the formula from part (b):  
 $$T_F = \frac{9}{5}(-229) + 32$$  
 Calculate step by step:  
@@ -9180,24 +9180,24 @@ $$\boxed{-380.2}$$
 
 ------
 ### Problem 33
-#### Background
+##### Background
 Temperature scales are defined by fixed reference points. The Celsius scale (°C) uses the freezing point of water (0°C) and boiling point of water (100°C) at standard atmospheric pressure. The Fahrenheit scale (°F) uses the freezing point of water (32°F) and boiling point of water (212°F). The Kelvin scale (K) is an absolute thermodynamic scale where 0 K is absolute zero and the triple point of water is defined as 273.16 K. For practical conversions, the freezing point of water is 273.15 K.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Linear relationships between temperature scales  
 2. Deriving conversion formulas using reference points  
 3. Algebraic manipulation of linear equations  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to linear functions in algebra and the concept of measurement scales in physics. It also reinforces understanding of absolute zero and thermodynamic temperature.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 In meteorology, temperature conversions are essential for international weather reporting. In materials science, properties like thermal expansion require consistent temperature scales. Medical fields use conversions for body temperature assessments across regions.
 
-#### Real-World Applications
+##### Real-World Applications
 Body temperature monitoring requires conversions between scales: medical devices in the US often use Fahrenheit, while scientific research uses Kelvin or Celsius. Industrial processes (e.g., chemical reactors, semiconductor manufacturing) require precise temperature control across different scale-based instruments.
 
-#### Problem Statement
+##### Problem Statement
 The normal human body temperature is 310 K.  
 1. Derive the general conversion formula from Kelvin to Celsius.  
 2. Derive the general conversion formula from Celsius to Fahrenheit.  
@@ -9253,28 +9253,28 @@ $$\boxed{61.48}$$
 
 ------
 ### Problem 34
-#### Background
+##### Background
 Temperature scales are defined using fixed reference points. The Celsius scale sets the freezing point of water at 0°C and the boiling point at 100°C. The Fahrenheit scale uses 32°F for freezing and 212°F for boiling. The Kelvin scale is absolute, with 0 K at absolute zero and 273.15 K at the freezing point of water. Absolute zero corresponds to -273.15°C. A linear relationship exists between these scales. The ignition temperature of paper is 233°C, a critical value in fire safety and material science.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Deriving linear conversion formulas between temperature scales using fixed points.  
 2. Applying algebraic techniques to solve systems of equations.  
 3. Understanding thermodynamic principles underlying absolute temperature scales.  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects thermodynamics (absolute zero) with algebra (linear equations) and measurement science (scale calibration). It reinforces the concept that temperature scales are linear transformations of each other.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Chemistry**: Ignition temperatures determine combustion reactions.  
 - **Engineering**: Material safety limits rely on accurate temperature conversions.  
 - **Data Science**: Unit conversion algorithms are foundational in sensor data processing.  
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibrating laboratory equipment across international standards.  
 - Setting safety thresholds in industrial processes (e.g., paper manufacturing).  
 - Interpreting thermal data from scientific instruments using different scales.  
 
-#### Problem Statement
+##### Problem Statement
 Derive general conversion formulas:  
 a) From Celsius (°C) to Fahrenheit (°F) using freezing point $T_{C,f} = 0^\circ \text{C}$, boiling point $T_{C,b} = 100^\circ \text{C}$, $T_{F,f} = 32^\circ \text{F}$, and $T_{F,b} = 212^\circ \text{F}$.  
 b) From Celsius to Kelvin (K) using absolute zero $T_{C,\text{abs}} = -273.15^\circ \text{C}$.  
@@ -9282,9 +9282,9 @@ c) Apply these formulas to convert the ignition temperature of paper, $T_{\text{
 Express all final numerical values rounded to one decimal place.
 
 ### Solution
-#### Step-by-Step Derivation
+##### Step-by-Step Derivation
 
-#### Part (a): Celsius to Fahrenheit Conversion
+##### Part (a): Celsius to Fahrenheit Conversion
 Assume a linear relationship:  
 $$ T_F = m T_C + b $$  
 Using the freezing and boiling points:  
@@ -9297,14 +9297,14 @@ Using the freezing and boiling points:
 Thus, the conversion formula is:  
 $$ T_F = 1.8 T_C + 32 $$  
 
-#### Part (b): Celsius to Kelvin Conversion
+##### Part (b): Celsius to Kelvin Conversion
 The Kelvin scale starts at absolute zero:  
 - Absolute zero: $ T_C = -273.15 $ corresponds to $ T_K = 0 $.  
 - The size of 1 K equals 1°C.  
 Thus, the conversion is a vertical shift:  
 $$ T_K = T_C - (-273.15) = T_C + 273.15 $$  
 
-#### Part (c): Convert Ignition Temperature
+##### Part (c): Convert Ignition Temperature
 Given $ T_{\text{ign}} = 233^\circ \text{C} $:  
 - **Fahrenheit**:  
   $$ T_F = 1.8 \cdot 233 + 32 = 419.4 + 32 = 451.4^\circ \text{F} $$  
@@ -9316,31 +9316,31 @@ $$\boxed{451.4,\ 506.2}$$
 
 ------
 ### Problem 4
-#### Background
+##### Background
 In the early 18th century, Daniel Gabriel Fahrenheit and Anders Celsius developed temperature scales based on the properties of water. Fahrenheit defined water's freezing point as 32°F and boiling point as 212°F, while Celsius defined freezing as 0°C and boiling as 100°C. Both scales are linear, but use different zero points and unit sizes. During a calibration check, a lab technician observes that at a specific temperature, a Celsius thermometer and a Fahrenheit thermometer display identical numerical readings.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Derivation of linear conversion equations between temperature scales
 - Solving systems of linear equations
 - Algebraic manipulation of fractional expressions
 - Interpretation of real-world measurement principles
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Algebra: Linear functions, slope-intercept form, equation solving
 - Measurement science: Calibration, instrument error analysis
 - Physics: Thermodynamic properties of water
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Meteorology: Cross-border temperature reporting (e.g., US forecasts in °F vs. global °C)
 - Engineering: Sensor calibration in HVAC systems
 - History: Evolution of measurement systems
 
-#### Real-World Applications
+##### Real-World Applications
 - Verifying thermometer accuracy in medical devices
 - Interpreting historical scientific data with mixed units
 - Troubleshooting industrial control systems with conflicting sensor readings
 
-#### Problem Statement
+##### Problem Statement
 Using only the fundamental reference points of water's freezing and boiling points:  
 - Derive the general linear equation converting Celsius temperature $T_C$ to Fahrenheit temperature $T_F$  
 - Determine the specific Celsius temperature where $T_C = T_F$  
@@ -9395,24 +9395,24 @@ $$\boxed{-40}$$
 
 ------
 ### Problem 5
-#### Background
+##### Background
 Temperature scales are defined by fixed reference points. The Kelvin (K) scale is an absolute thermodynamic scale where 0 K represents absolute zero. The Fahrenheit (°F) scale uses the freezing point of a brine solution at 0 °F and the average human body temperature at 96 °F in its original definition, but modern standards define the freezing point of water at 32 °F and the boiling point at 212 °F. Absolute zero is experimentally determined to be -459.67 °F. 
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Linear relationship between temperature scales.  
 2. Derivation of conversion formulas using reference points.  
 3. Algebraic manipulation of linear equations.  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to the concept of linear functions in algebra and the physical interpretation of temperature as a measurable quantity in thermodynamics.  
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Temperature conversions are essential in meteorology (weather reporting), engineering (material properties), and culinary science (international recipes).  
 
-#### Real-World Applications
+##### Real-World Applications
 Accurate temperature conversion is critical when handling cryogenic substances like liquid nitrogen, which boils at 77 K. This is used in medical preservation, superconductivity research, and aerospace engineering.  
 
-#### Problem Statement
+##### Problem Statement
 Using the following reference points:  
 - Absolute zero: $ (T_K, T_F) = (0 \, \text{K}, -459.67 \, \text{°F}) $  
 - Freezing point of water: $ (T_K, T_F) = (273.15 \, \text{K}, 32 \, \text{°F}) $  
@@ -9422,31 +9422,31 @@ Derive the general linear equation to convert a temperature $ T_K $ in Kelvin to
 Express your final answer as an exact decimal number. Provide only the numerical value (without units).
 
 ### Solution
-#### Step 1: Model the linear relationship  
+##### Step 1: Model the linear relationship  
 The conversion between Kelvin and Fahrenheit is linear:  
 $$ T_F = m \cdot T_K + b $$  
 where $ m $ is the slope and $ b $ is the y-intercept.  
 
-#### Step 2: Determine the slope $ m $ using reference points  
+##### Step 2: Determine the slope $ m $ using reference points  
 The slope $ m $ is calculated as:  
 $$ m = \frac{\Delta T_F}{\Delta T_K} = \frac{T_{F_2} - T_{F_1}}{T_{K_2} - T_{K_1}} $$  
 Substitute the freezing point $(T_{K_2}, T_{F_2}) = (273.15, 32)$ and absolute zero $(T_{K_1}, T_{F_1}) = (0, -459.67)$:  
 $$ m = \frac{32 - (-459.67)}{273.15 - 0} = \frac{491.67}{273.15} $$  
 
-#### Step 3: Simplify the slope  
+##### Step 3: Simplify the slope  
 Notice that:  
 $$ 491.67 = \frac{9}{5} \times 273.15 \quad \text{(since } \frac{9}{5} \times 273.15 = 491.67\text{)} $$  
 Thus:  
 $$ m = \frac{9/5 \times 273.15}{273.15} = \frac{9}{5} $$  
 
-#### Step 4: Determine the y-intercept $ b $  
+##### Step 4: Determine the y-intercept $ b $  
 Use absolute zero point $(T_K, T_F) = (0, -459.67)$:  
 $$ -459.67 = \frac{9}{5} \cdot 0 + b \implies b = -459.67 $$  
 
-#### Step 5: Write the general conversion equation  
+##### Step 5: Write the general conversion equation  
 $$ T_F = \frac{9}{5} \cdot T_K - 459.67 $$  
 
-#### Step 6: Apply to boiling point of nitrogen  
+##### Step 6: Apply to boiling point of nitrogen  
 Substitute $ T_K = 77 $:  
 $$ T_F = \frac{9}{5} \cdot 77 - 459.67 $$  
 First, compute $ \frac{9}{5} \times 77 $:  
@@ -9461,25 +9461,25 @@ $$\boxed{-321.07}$$
 
 ------
 ### Problem 6
-#### Background
+##### Background
 Temperature scales are essential tools in science, engineering, and daily life for quantifying thermal energy. The Celsius (°C) and Fahrenheit (°F) scales are two commonly used systems, defined by specific fixed points: the freezing point of water is 0°C or 32°F, and the boiling point is 100°C or 212°F. Both scales are linear, meaning equal temperature intervals correspond to proportional changes in scale readings. Understanding how to convert differences between these scales requires analyzing their linear relationship.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Derivation of linear relationships between temperature scales.
 - Conversion of temperature differences (independent of reference points).
 - Algebraic manipulation of linear equations.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to linear functions in algebra (slope-intercept form) and calibration of measurement instruments in experimental physics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 **Meteorology**: Temperature differences drive weather patterns, wind formation, and heat transfer. **Materials Science**: Thermal expansion coefficients rely on precise temperature differences. **Culinary Science**: Recipe adjustments require consistent temperature conversions.
 
-#### Real-World Applications
+##### Real-World Applications
 - Climate researchers compare temperature anomalies (e.g., 30°F Arctic warming) across international datasets using Celsius.
 - Aerospace engineers convert thermal stress differences in aircraft components between imperial and metric systems.
 
-#### Problem Statement
+##### Problem Statement
 The Celsius (°C) and Fahrenheit (°F) temperature scales are linearly related. Using the fundamental definitions:  
 - Freezing point of water: 0°C = 32°F  
 - Boiling point of water: 100°C = 212°F  
@@ -9550,32 +9550,32 @@ $$\boxed{\dfrac{50}{3}}$$
 
 ------
 ### Problem 7
-#### Background
+##### Background
 Temperature scales are defined by fixed reference points. The Celsius scale sets 0°C as the freezing point of water and 100°C as the boiling point at standard atmospheric pressure. The Fahrenheit scale sets 32°F as the freezing point and 212°F as the boiling point. The Kelvin scale is an absolute thermodynamic scale where 0 K represents absolute zero, and the triple point of water is defined as 273.16 K (equivalent to 0.01°C). A unique temperature exists where the numerical values on the Celsius and Fahrenheit scales coincide, which is relevant for instrument calibration and scientific applications.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Derivation of temperature scale conversion formulas from fundamental reference points
 - Solving linear equations to determine scale equivalence
 - Conversion between temperature scales using derived relationships
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Algebra: Solving linear equations and analyzing linear functions
 - Physics: Thermal properties of matter, absolute zero concept, and thermodynamic temperature
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Engineering: Calibration of temperature sensors in HVAC systems
 - Meteorology: Cross-validation of temperature data between regions using different scales
 
-#### Real-World Applications
+##### Real-World Applications
 - Cryogenic storage: Ultra-low temperature preservation of biological samples requires precise scale conversions
 - Aerospace engineering: Sensor calibration for spacecraft operating in extreme thermal environments
 - Climate science: Standardizing temperature records from international monitoring stations
 
-#### Problem Statement
+##### Problem Statement
 Derive the unique temperature where the numerical reading on a Celsius thermometer equals the reading on a Fahrenheit thermometer. Using this Celsius temperature, determine the corresponding Kelvin temperature through scale conversion. Express the final Kelvin temperature as an exact number.
 
 ### Solution
-#### Step 1: Establish the Celsius-Fahrenheit conversion formula
+##### Step 1: Establish the Celsius-Fahrenheit conversion formula
 The linear relationship between Celsius ($C$) and Fahrenheit ($F$) is derived from the reference points:
 - Freezing point: $C=0$, $F=32$
 - Boiling point: $C=100$, $F=212$
@@ -9583,11 +9583,11 @@ The linear relationship between Celsius ($C$) and Fahrenheit ($F$) is derived fr
 The conversion formula is:
 $$ F = \frac{9}{5}C + 32 $$
 
-#### Step 2: Set up the equivalence condition
+##### Step 2: Set up the equivalence condition
 At the unique temperature where $C = F$, substitute $F$ with $C$:
 $$ C = \frac{9}{5}C + 32 $$
 
-#### Step 3: Solve for the Celsius temperature
+##### Step 3: Solve for the Celsius temperature
 Rearrange the equation:
 $$ C - \frac{9}{5}C = 32 $$
 $$ \frac{5C - 9C}{5} = 32 $$
@@ -9596,14 +9596,14 @@ Multiply both sides by $-\frac{5}{4}$:
 $$ C = 32 \times \left(-\frac{5}{4}\right) = -40 $$
 Thus, the temperature is $-40$°C (which is equivalently $-40$°F).
 
-#### Step 4: Convert to Kelvin
+##### Step 4: Convert to Kelvin
 The Kelvin ($K$) scale relates to Celsius by:
 $$ K = C + 273.15 $$
 Substitute $C = -40$:
 $$ K = -40 + 273.15 = 233.15 $$
 The value $273.15$ is defined as the exact offset between the Celsius and Kelvin scales at standard conditions.
 
-#### Conclusion
+##### Conclusion
 The Kelvin temperature corresponding to $-40$°C is exactly $233.15$ K.
 
 ### Answer
@@ -9611,26 +9611,26 @@ $$\boxed{233.15}$$
 
 ------
 ### Problem 8
-#### Background
+##### Background
 In materials science, understanding the melting points of metals in different temperature scales is crucial for applications like alloy design and industrial processing. The Fahrenheit (°F), Celsius (°C), and Kelvin (K) scales are defined using fixed reference points, primarily the freezing and boiling points of water. The Celsius scale sets water's freezing point at 0°C and boiling point at 100°C. The Fahrenheit scale sets these points at 32°F and 212°F. The Kelvin scale uses the same unit size as Celsius but starts at absolute zero, with the conversion $K = °C + 273.15$. A new high-strength alloy melts at 1760°F. 
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Derivation of linear temperature conversion formulas from fundamental fixed points.
 2. Application of algebraic relationships to convert between Fahrenheit, Celsius, and Kelvin scales.
 3. Handling exact constants and arithmetic expressions in unit conversions.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to thermodynamics (absolute temperature), algebra (linear equations), and materials science (melting point analysis).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Physics**: Thermodynamic principles and absolute zero.
 - **Engineering**: Temperature calibration in materials processing.
 - **Chemistry**: Phase transitions and energy requirements for melting.
 
-#### Real-World Applications
+##### Real-World Applications
 Accurate temperature conversion is vital in international scientific collaboration, aerospace engineering (e.g., heat shield design), and metallurgy (e.g., smelting processes where temperatures exceed 1000°C).
 
-#### Problem Statement
+##### Problem Statement
 Using the definitions of the Fahrenheit and Celsius scales based on the freezing and boiling points of water, derive the general conversion formula from degrees Fahrenheit to degrees Celsius. Apply this formula to find the Celsius equivalent of the alloy's melting point at 1760°F. Then, convert this result to Kelvin using the standard offset. Express the melting point in Kelvin as your final answer.  
 **Format Requirements**:  
 - Derive all formulas symbolically using the fixed points.  
@@ -9638,7 +9638,7 @@ Using the definitions of the Fahrenheit and Celsius scales based on the freezing
 - Use decimals if needed; constants like 273.15 are exact.
 
 ### Solution
-#### Step 1: Derive the Fahrenheit-to-Celsius conversion formula  
+##### Step 1: Derive the Fahrenheit-to-Celsius conversion formula  
 The relationship between Fahrenheit (°F) and Celsius (°C) is linear. Define two known points:  
 - Freezing point of water: ($F_1$, $C_1$) = (32, 0)  
 - Boiling point of water: ($F_2$, $C_2$) = (212, 100)  
@@ -9652,7 +9652,7 @@ $$ C - 0 = \frac{5}{9} (F - 32) $$
 Thus, the conversion formula is:  
 $$ C = \frac{5}{9} (F - 32) $$  
 
-#### Step 2: Convert 1760°F to Celsius  
+##### Step 2: Convert 1760°F to Celsius  
 Substitute $F = 1760$ into the derived formula:  
 $$ C = \frac{5}{9} (1760 - 32) = \frac{5}{9} \times 1728 $$  
 Simplify:  
@@ -9660,7 +9660,7 @@ $$ 1728 \div 9 = 192 \quad \text{(exact division)} $$
 $$ C = 5 \times 192 = 960 $$  
 So, $C = 960$°C.  
 
-#### Step 3: Convert Celsius to Kelvin  
+##### Step 3: Convert Celsius to Kelvin  
 The Kelvin scale relates to Celsius by:  
 $$ K = C + 273.15 $$  
 Substitute $C = 960$:  
@@ -9674,27 +9674,27 @@ $$\boxed{1233.15}$$
 
 ------
 ### Problem 9
-#### Background
+##### Background
 The Celsius and Kelvin temperature scales are fundamental in scientific measurements. The Celsius scale sets the freezing point of water at 0°C and the boiling point at 100°C at standard atmospheric pressure. The Kelvin scale, an absolute temperature scale, starts at absolute zero (the theoretical minimum temperature where molecular motion ceases). Absolute zero is experimentally determined to be -273.15°C, and the size of one Kelvin unit is identical to one Celsius degree. 
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Linear relationship between Celsius and Kelvin scales.
 - Algebraic derivation of temperature conversions.
 - Concept of absolute zero and its role in defining the Kelvin scale.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Thermodynamics: Absolute temperature underpins gas laws (e.g., Charles's Law: $ V \propto T_K $).
 - Physical Chemistry: Phase transitions (e.g., boiling) depend on absolute temperature.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Meteorology: Atmospheric models use Kelvin for stability calculations.
 - Engineering: Thermodynamic cycles (e.g., Carnot engines) require absolute temperature inputs.
 
-#### Real-World Applications
+##### Real-World Applications
 - Cryogenics: Storage of biological samples at ultra-low temperatures (e.g., -196°C for liquid nitrogen, or 77 K).
 - Climate Science: Global temperature anomalies are tracked in Kelvin for precision.
 
-#### Problem Statement
+##### Problem Statement
 Let $ A $ denote the Celsius value of absolute zero (a negative constant). The Kelvin scale is defined such that:  
 - Absolute zero corresponds to $ 0  \text{K} $.  
 - A temperature interval of 1 K equals 1°C.  
@@ -9727,30 +9727,30 @@ $$\boxed{T_c - A}$$
 ## uncertainty analysis and error propagation
 
 ### Problem 0
-#### Background
+##### Background
 In experimental physics and engineering, accurately determining material properties such as density requires careful measurement of mass and volume, each with inherent uncertainties. Density, defined as mass per unit volume, is a derived quantity whose uncertainty depends on the uncertainties of the measured mass and volume. Understanding how to propagate these uncertainties is essential for reliable scientific conclusions.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of relative uncertainty.
 2. Error propagation for a quotient of two independent variables.
 3. Application of partial derivatives in uncertainty analysis.
 4. Construction of the relative uncertainty formula from first principles.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to measurement techniques in mechanics (e.g., Archimedes' principle for volume determination).
 - Extends to uncertainty analysis in other derived quantities (e.g., pressure, stress, concentration).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Chemistry: Calculating concentration uncertainties in solutions.
 - Materials Science: Determining porosity or purity of composites.
 - Environmental Science: Estimating pollutant density in soil/water samples.
 
-#### Real-World Applications
+##### Real-World Applications
 - Quality control in manufacturing: Verifying material density in aerospace components.
 - Geology: Measuring rock density to infer mineral composition.
 - Medical imaging: Calibrating density standards in computed tomography (CT) scans.
 
-#### Problem Statement
+##### Problem Statement
 A laboratory measures the mass of a sample as $m \pm \Delta m$ and its volume as $V \pm \Delta V$. The density $\rho$ is calculated using $\rho = m / V$.  
 Derive the expression for the **relative uncertainty** in density, $\frac{\Delta \rho}{\rho}$, in terms of $m$, $\Delta m$, $V$, and $\Delta V$.  
 Express your answer as a single analytic expression using the symbols $\Delta m$, $m$, $\Delta V$, and $V$.
@@ -9795,29 +9795,29 @@ $$\boxed{ \sqrt{ \left( \frac{\Delta m}{m} \right)^2 + \left( \frac{\Delta V}{V}
 
 ------
 ### Problem 1
-#### Background
+##### Background
 In experimental physics and engineering, measuring physical dimensions with precision is crucial. Consider a rectangular plate whose length and width are measured using instruments with finite precision. The length is recorded as $l \pm \Delta l$, and the width as $w \pm \Delta w$, where $\Delta l$ and $\Delta w$ represent the absolute uncertainties in these measurements. The area $A$ of the rectangle is calculated as $A = lw$, but due to measurement uncertainties, the computed area also carries an uncertainty. 
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Propagation of uncertainty for multiplicative quantities
 2. Partial derivatives in error analysis
 3. Root-sum-square (RSS) method for independent uncertainties
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Calculus**: Application of partial derivatives to quantify sensitivity of a function to input variables
 - **Probability**: RSS method relies on the assumption of independent, normally distributed errors
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Tolerance analysis in manufacturing and design
 - **Meteorology**: Uncertainty in calculating surface areas for climate modeling
 - **Economics**: Error propagation in revenue calculations ($\text{revenue} = \text{price} \times \text{quantity}$)
 
-#### Real-World Applications
+##### Real-World Applications
 - Semiconductor fabrication: Calculating chip area uncertainties affects yield predictions
 - Cartography: Determining land area errors from satellite measurements
 - Material science: Estimating surface area of nanomaterials for catalytic activity
 
-#### Problem Statement
+##### Problem Statement
 A rectangular plate has length $l$ with absolute uncertainty $\Delta l$ and width $w$ with absolute uncertainty $\Delta w$. The uncertainties $\Delta l$ and $\Delta w$ are independent and random. Derive an expression for the absolute uncertainty $\Delta A$ in the area $A = lw$. Express $\Delta A$ symbolically in terms of $l$, $w$, $\Delta l$, and $\Delta w$. Box your final answer as a single simplified expression.
 
 ### Solution
@@ -9845,28 +9845,28 @@ $$\boxed{\sqrt{ w^{2} (\Delta l)^{2} + l^{2} (\Delta w)^{2} }}$$
 
 ------
 ### Problem 10
-#### Background
+##### Background
 In scientific measurements, determining physical quantities often involves instruments with inherent precision limits. For instance, astronomers measuring the radius of a celestial body or engineers calibrating spherical components must account for measurement uncertainties. These uncertainties propagate to derived quantities, such as surface area, affecting subsequent calculations like material requirements or radiation flux estimates.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Definition and calculation of relative uncertainty.
 - Error propagation for functions of a single variable.
 - Application of derivatives in uncertainty analysis.
 - Simplification of symbolic expressions.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to calculus (derivatives as sensitivity coefficients), algebra (manipulating symbolic fractions), and geometry (properties of spheres). It extends to experimental physics, where uncertainty quantification is essential for data validation.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Tolerance analysis in manufacturing spherical components.
 - **Meteorology**: Estimating cloud or raindrop surface areas for climate models.
 - **Medicine**: Calculating dosage delivery via spherical nanoparticles in targeted drug systems.
 
-#### Real-World Applications
+##### Real-World Applications
 - Determining the minimal coating thickness for a spherical fuel tank when radius measurements have ±1% error.
 - Calculating solar radiation absorption by exoplanets based on telescopic radius measurements with known instrument precision.
 
-#### Problem Statement
+##### Problem Statement
 The surface area $A$ of a sphere is given by $A = 4\pi r^2$, where $r$ is the radius. Due to measurement limitations, the radius is reported as $r \pm \Delta r$, with $\Delta r$ denoting the absolute uncertainty in $r$. Derive a symbolic expression for the relative uncertainty in $A$. Express your answer solely in terms of $r$ and $\Delta r$, using a single fraction if applicable. Ensure all derivatives are explicitly calculated and simplified.
 
 ### Solution
@@ -9915,29 +9915,29 @@ The relative uncertainty in $A$ is therefore $2 \frac{\Delta r}{r}$.
 
 ------
 ### Problem 11
-#### Background
+##### Background
 In electronic circuit design, resistors are fundamental components used to control current flow. Manufacturing processes introduce tolerances in resistance values, often specified as a nominal resistance plus/minus an absolute uncertainty. When resistors are connected in series, their resistances add, but the uncertainties propagate according to the principles of error analysis. Understanding how to quantify the resulting uncertainty is crucial for designing reliable circuits.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of absolute uncertainty in measured quantities.
 2. Propagation of uncertainty for the sum of two independent variables.
 3. Application of partial derivatives in uncertainty analysis.
 4. Root-sum-square (RSS) method for combining independent uncertainties.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to the statistical treatment of measurement errors in physics, the derivation of uncertainty formulas for other operations (e.g., products or quotients), and the application of multivariate calculus in error propagation.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Statistics**: The RSS method arises from the variance of a sum of independent random variables.
 - **Engineering**: Tolerance stacking in electrical engineering requires uncertainty analysis to ensure circuit reliability.
 - **Manufacturing**: Quality control uses uncertainty propagation to predict the performance of assembled components.
 
-#### Real-World Applications
+##### Real-World Applications
 - Designing sensor circuits where precise resistance values affect measurement accuracy.
 - Calculating cumulative tolerances in series resistor networks for voltage dividers or filter circuits.
 - Predicting worst-case scenarios in aerospace or medical electronics where component variations impact safety.
 
-#### Problem Statement
+##### Problem Statement
 Two resistors with nominal resistances $ R_1 $ and $ R_2 $ are connected in series. Their absolute uncertainties are $ \Delta R_1 $ and $ \Delta R_2 $, respectively, and these uncertainties are independent. Derive the expression for the absolute uncertainty $ \Delta R_{\text{total}} $ in the total resistance $ R_{\text{total}} = R_1 + R_2 $.  
 
 Express your answer as an analytic expression solely in terms of $ \Delta R_1 $ and $ \Delta R_2 $.  
@@ -9982,26 +9982,26 @@ $$\boxed{\sqrt{(\Delta R_1)^2 + (\Delta R_2)^2}}$$
 
 ------
 ### Problem 12
-#### Background
+##### Background
 In projectile motion experiments, the horizontal range $R$ of an object launched with initial speed $v$ at an angle $\theta$ to the horizontal is modeled by the equation $R = \frac{v^2 \sin(2\theta)}{g}$, where $g$ is the acceleration due to gravity (known exactly). However, experimental measurements introduce uncertainties: the initial speed is recorded as $v \pm \Delta v$, and the launch angle is recorded as $\theta \pm \Delta \theta$ (with $\Delta \theta$ in radians). Understanding how these uncertainties propagate to the range is essential for reporting reliable results in physics and engineering applications.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Application of the range formula in projectile motion.
 2. Propagation of uncertainty for a function of multiple independent variables.
 3. Calculation of partial derivatives.
 4. Combination of uncertainties in quadrature (root sum of squares).
 5. Derivation of relative uncertainty ($\frac{\Delta R}{R}$).
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to kinematics (motion under constant acceleration), calculus (partial differentiation), and data analysis (error quantification). It extends the study of projectile motion by incorporating measurement limitations, a key aspect of experimental physics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Uncertainty analysis is critical in fields like engineering (e.g., trajectory optimization in aerospace), environmental science (e.g., predicting pollutant dispersion), and robotics (e.g., motion planning with sensor errors). The mathematical framework also applies to statistics for error combination in multivariable models.
 
-#### Real-World Applications
+##### Real-World Applications
 Accurate uncertainty quantification is vital in ballistics (estimating projectile impact zones), sports science (analyzing javelin throws), and disaster management (predicting volcanic ejecta ranges). For example, engineers use similar methods to assess landing zone safety for unmanned aerial vehicles under wind-speed uncertainties.
 
-#### Problem Statement
+##### Problem Statement
 The range $R$ of a projectile is given by $R = \frac{v^2 \sin(2\theta)}{g}$, where $g$ is exact. The initial speed $v$ has an absolute uncertainty $\Delta v$, and the launch angle $\theta$ (in radians) has an absolute uncertainty $\Delta \theta$. Assume $v$, $\Delta v$, $\theta$, and $\Delta \theta$ are known symbolic quantities, and uncertainties are independent. Derive an expression for the relative uncertainty in the range, $\frac{\Delta R}{R}$, in terms of $v$, $\Delta v$, $\theta$, and $\Delta \theta$.  
 
 Express your answer as a single simplified analytic expression using standard mathematical notation. Use $\cot$ for the cotangent function and ensure all trigonometric functions are explicitly written (e.g., $\sin$, $\cos$, $\cot$).
@@ -10063,31 +10063,31 @@ $$\boxed{2 \sqrt{ \left( \frac{\Delta v}{v} \right)^2 + \left( \cot(2\theta) \De
 
 ------
 ### Problem 13
-#### Background
+##### Background
 In experimental physics, determining the capacitance $C$ of a capacitor often involves measuring the charge $Q$ stored on it and the voltage $V$ across its terminals. These measurements inherently carry uncertainties due to instrument limitations. Charge might be measured using an electrometer with uncertainty $\Delta Q$, while voltage is measured with a voltmeter with uncertainty $\Delta V$. The relationship $C = Q/V$ is used to compute capacitance, but the uncertainties in $Q$ and $V$ propagate to the result. Understanding how these uncertainties combine is essential for evaluating the reliability of the calculated capacitance.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of relative uncertainty.
 2. Error propagation for a quotient of two independent measured quantities.
 3. Application of partial derivatives to derive uncertainty formulas.
 4. Simplification of expressions involving relative uncertainties.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to electrostatics (capacitance definition).
 - Extends to uncertainty analysis in other inverse relationships (e.g., resistance $R = V/I$).
 - Reinforces calculus concepts (partial differentiation).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering:** Critical for tolerance analysis in circuit design.
 - **Chemistry:** Analogous to uncertainty in concentration calculations ($c = n/V$).
 - **Statistics:** Relates to variance propagation in multiplicative models.
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibrating capacitors in precision timing circuits (e.g., oscillators).
 - Quality control in capacitor manufacturing.
 - Validating measurements in experimental setups (e.g., particle detectors).
 
-#### Problem Statement
+##### Problem Statement
 A capacitor's capacitance is determined using the formula $C = Q/V$, where $Q$ is the measured charge with absolute uncertainty $\Delta Q$, and $V$ is the measured voltage with absolute uncertainty $\Delta V$. Assume $Q$ and $V$ are independent measurements. Derive an expression for the relative uncertainty in the capacitance, $\frac{\Delta C}{C}$, in terms of the relative uncertainties in $Q$ and $V$. Use symbolic notation throughout, and express your final answer as a single simplified analytic expression.
 
 ### Solution
@@ -10115,31 +10115,31 @@ $$\boxed{\sqrt{ \left( \frac{\Delta Q}{Q} \right)^2 + \left( \frac{\Delta V}{V} 
 
 ------
 ### Problem 14
-#### Background
+##### Background
 In experimental physics, wave phenomena are often studied by measuring wavelength and frequency to determine wave speed. For instance, in a laboratory setting using a ripple tank to study water waves, students measure the distance between consecutive wave crests (wavelength, $\lambda$) and count oscillations per unit time (frequency, $f$). Each measurement has inherent uncertainty: wavelength is measured as $\lambda \pm \Delta \lambda$ and frequency as $f \pm \Delta f$, where $\Delta \lambda$ and $\Delta f$ represent absolute uncertainties. The wave speed $v$ is calculated from these measurements using the fundamental relationship $v = \lambda f$.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Propagation of uncertainty for a product of independent variables.
 2. Derivation of absolute uncertainty from relative uncertainties.
 3. Application of partial derivatives in error analysis.
 4. Simplification of expressions involving squares and square roots.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to wave mechanics ($v = \lambda f$) and measurement techniques in experimental physics.
 - Reinforces concepts of relative and absolute uncertainty from foundational error analysis.
 - Extends to uncertainty propagation for other multiplicative relationships (e.g., kinetic energy $E_k = \frac{1}{2}mv^2$).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Statistics**: Uses root-sum-square (RSS) error combination, analogous to standard deviation calculations.
 - **Engineering**: Critical for sensor calibration (e.g., radar speed measurements where wavelength and frequency uncertainties affect velocity accuracy).
 - **Environmental Science**: Applies to wave speed calculations in seismology (earthquake detection) or oceanography (tsunami modeling).
 
-#### Real-World Applications
+##### Real-World Applications
 - **Medical Imaging**: Ultrasound technicians must quantify uncertainties in wavelength and frequency to ensure accurate tumor size measurements.
 - **Wireless Communication**: Engineers account for uncertainties in signal wavelength and frequency to maintain reliable data transmission in 5G networks.
 - **Materials Testing**: Non-destructive testing using ultrasonic waves requires precise error analysis to detect flaws in aircraft components.
 
-#### Problem Statement
+##### Problem Statement
 Given the wave speed equation $v = \lambda f$, where $\lambda$ and $f$ are measured with independent absolute uncertainties $\Delta \lambda$ and $\Delta f$ respectively, derive the expression for the absolute uncertainty $\Delta v$ in the wave speed.  
 Express $\Delta v$ symbolically in terms of $\lambda$, $f$, $\Delta \lambda$, and $\Delta f$.  
 *Assume no covariance between $\lambda$ and $f$, and use the root-sum-square method for uncertainty propagation.*  
@@ -10168,27 +10168,27 @@ $$\boxed{ \sqrt{ f^{2} (\Delta \lambda)^{2} + \lambda^{2} (\Delta f)^{2} } }$$
 
 ------
 ### Problem 15
-#### Background
+##### Background
 In experimental physics, measurements often include uncertainties that propagate through calculations. Newton's second law states that acceleration $a$ of an object is given by the quotient of net force $F$ and mass $m$. When force is measured as $F \pm \Delta F$ and mass as $m \pm \Delta m$, the uncertainty in acceleration $\Delta a$ must be quantified. Understanding how relative uncertainties combine in quotients is essential for error analysis in mechanics and engineering.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of relative uncertainty: $\frac{\Delta q}{q}$ for a quantity $q$.
 2. Error propagation for the quotient of two independent measurements.
 3. Application of partial derivatives in uncertainty analysis.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to kinematics (acceleration calculations) and dynamics (force-mass relationships).
 - Extends to uncertainty principles in measurement-based experiments.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Chemistry: Propagation of error in concentration calculations ($C = n/V$).
 - Engineering: Tolerance analysis in mechanical design (e.g., stress-strain relationships).
 
-#### Real-World Applications
+##### Real-World Applications
 - Aerospace engineering: Calculating thrust-to-weight ratios with sensor uncertainties.
 - Medical physics: Determining radiation dosage accuracy ($\text{dose} = \text{energy}/\text{mass}$).
 
-#### Problem Statement
+##### Problem Statement
 A force $F$ is measured with absolute uncertainty $\Delta F$, and a mass $m$ is measured with absolute uncertainty $\Delta m$. The acceleration $a$ is calculated as $a = F/m$. Derive the expression for the **relative uncertainty** $\frac{\Delta a}{a}$ in terms of $F$, $\Delta F$, $m$, and $\Delta m$. Assume $F$ and $m$ are uncorrelated. Express your answer as an analytic expression.
 
 ### Solution
@@ -10223,27 +10223,27 @@ $$\boxed{\sqrt{ \left( \frac{\Delta F}{F} \right)^{2} + \left( \frac{\Delta m}{m
 
 ------
 ### Problem 16
-#### Background
+##### Background
 In experimental physics and engineering, accurately quantifying the uncertainty in derived quantities is essential. Consider a scenario where you are measuring the power dissipated by an electrical resistor using the formula $ P = \frac{V^2}{R} $. The voltage $ V $ is measured with an uncertainty $ \Delta V $, and the resistance $ R $ is measured with an uncertainty $ \Delta R $. Understanding how these individual uncertainties propagate to the calculated power $ P $ requires applying the principles of error propagation.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Partial differentiation for functions of multiple variables.
 - The general formula for propagation of uncertainties (root sum of squares).
 - Calculation of relative uncertainty for derived quantities.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to calculus (partial derivatives) and statistics (variance of derived quantities).
 - Extends the concept of measurement uncertainty from introductory physics to real-world experimental design.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Widely used in chemistry (reaction kinetics), environmental science (sensor data analysis), and economics (sensitivity of financial models).
 - Illustrates how mathematical tools unify uncertainty quantification across scientific domains.
 
-#### Real-World Applications
+##### Real-World Applications
 - Critical in calibrating power meters for renewable energy systems (e.g., solar inverters).
 - Essential for quality control in electronics manufacturing, where component tolerances affect device performance.
 
-#### Problem Statement
+##### Problem Statement
 The power $ P $ dissipated in a resistor is calculated using the formula $ P = \frac{V^2}{R} $, where $ V $ is the voltage (with absolute uncertainty $ \Delta V $) and $ R $ is the resistance (with absolute uncertainty $ \Delta R $). Derive the expression for the **relative uncertainty** in $ P $, denoted as $ \frac{\Delta P}{P} $, in terms of the relative uncertainties $ \frac{\Delta V}{V} $ and $ \frac{\Delta R}{R} $.  
 
 **Answer Requirements:**  
@@ -10290,29 +10290,29 @@ $$ \boxed{ \sqrt{ 4 \left( \frac{\Delta V}{V} \right)^2 + \left( \frac{\Delta R}
 
 ------
 ### Problem 17
-#### Background  
+##### Background  
 In engineering and manufacturing, cylindrical components like storage tanks, pipes, and rollers require precise volume calculations. The volume $V$ of a cylinder depends on its radius $r$ and height $h$, with measurements subject to experimental uncertainties. Understanding how uncertainties propagate through calculations is essential for quality control and design specifications.  
 
-#### Knowledge Points Tested  
+##### Knowledge Points Tested  
 - Relative uncertainty definition and calculation  
 - Error propagation for multivariable functions  
 - Partial differentiation and root-sum-square combination of uncertainties  
 
-#### Intradisciplinary Connections  
+##### Intradisciplinary Connections  
 - Connects to calculus (partial derivatives) and statistics (variance of derived quantities).  
 - Extends to uncertainty analysis in other geometric formulas (e.g., spheres, cones).  
 
-#### Interdisciplinary Connections  
+##### Interdisciplinary Connections  
 - Physics: Precision in experimental measurements (e.g., density calculations).  
 - Chemistry: Volumetric analysis of reactions in cylindrical containers.  
 - Industrial Engineering: Tolerance analysis in mechanical design.  
 
-#### Real-World Applications  
+##### Real-World Applications  
 - Determining fuel capacity uncertainty in rocket propellant tanks.  
 - Calculating medication dosage precision in cylindrical syringes.  
 - Estimating material volume tolerances in 3D printing.  
 
-#### Problem Statement  
+##### Problem Statement  
 A cylinder has radius $r$ measured with absolute uncertainty $\Delta r$ and height $h$ measured with absolute uncertainty $\Delta h$. The volume is given by $V = \pi r^2 h$.  
 Derive an expression for the **relative uncertainty** in the volume, $\frac{\Delta V}{V}$.  
 Express your final answer symbolically in terms of the relative uncertainties $\frac{\Delta r}{r}$ and $\frac{\Delta h}{h}$.  
@@ -10394,24 +10394,24 @@ $$
 
 ------
 ### Problem 18
-#### Background
+##### Background
 In an experiment to measure the gravitational potential energy of an object, a student records the mass $m$ of the object, the acceleration due to gravity $g$, and the height $h$ of the object above a reference point. Each measurement has an associated uncertainty: $\Delta m$ for mass, $\Delta g$ for gravity, and $\Delta h$ for height. The gravitational potential energy is calculated as $U = mgh$. To assess the reliability of the result, we need to determine how the uncertainties in the measured quantities propagate to the calculated energy.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Understanding of relative uncertainty and its significance in experimental physics.
 2. Application of error propagation rules for products of independent variables.
 3. Algebraic manipulation of uncertainty expressions.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to kinematics (through gravitational acceleration), energy conservation principles, and statistical analysis in experimental physics. It also reinforces the concept of dimensional analysis when verifying derived uncertainty expressions.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Uncertainty analysis is fundamental to all experimental sciences (e.g., chemistry for reaction yields, biology for population estimates) and engineering disciplines (e.g., structural load calculations). The mathematical root-sum-square method originates from statistics, specifically the propagation of variance in independent random variables.
 
-#### Real-World Applications
+##### Real-World Applications
 Accurate uncertainty quantification is essential in engineering projects (e.g., predicting the energy output of a hydroelectric dam based on water mass and height measurements) and scientific research (e.g., calculating the potential energy of satellites in orbit, where altitude and gravity measurements have inherent errors).
 
-#### Problem Statement
+##### Problem Statement
 A student measures the mass of an object as $m \pm \Delta m$, the acceleration due to gravity as $g \pm \Delta g$, and the height above a reference point as $h \pm \Delta h$. The gravitational potential energy is calculated using $U = mgh$.  
 
 Derive an expression for the relative uncertainty in $U$, denoted $\frac{\Delta U}{U}$, in terms of the measured quantities and their uncertainties. Express your final answer as a single simplified algebraic expression using the symbols $m$, $\Delta m$, $g$, $\Delta g$, $h$, and $\Delta h$.
@@ -10460,29 +10460,29 @@ $$ \boxed{ \sqrt{ \left( \frac{\Delta m}{m} \right)^2 + \left( \frac{\Delta g}{g
 
 ------
 ### Problem 19
-#### Background
+##### Background
 In an electronics experiment, you are measuring the time constant $ \tau $ of a resistor-capacitor (RC) circuit, which determines how quickly the capacitor charges or discharges. The time constant is defined as $ \tau = RC $, where $ R $ is the resistance and $ C $ is the capacitance. Your digital multimeter reports the resistance as $ R $ with an absolute uncertainty $ \Delta R $, and your capacitance meter reports the capacitance as $ C $ with an absolute uncertainty $ \Delta C $. The instruments are calibrated independently, so the uncertainties in $ R $ and $ C $ are uncorrelated.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Propagation of uncertainty for a product of independent variables.
 2. Partial derivatives in multivariable error analysis.
 3. Construction of absolute uncertainty expressions from first principles.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to circuit analysis in physics, where time constants model transient behavior.
 - Extends to uncertainty calculations in other physics formulas involving products (e.g., kinetic energy $ \frac{1}{2}mv^2 $, gravitational force $ G\frac{m_1m_2}{r^2} $).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Essential for tolerance analysis in electronic component selection.
 - **Statistics**: Relies on the root-sum-square (RSS) method for combining variances of independent random variables.
 - **Metrology**: Demonstrates how measurement instrument precision affects derived quantities.
 
-#### Real-World Applications
+##### Real-World Applications
 - Designing timing circuits in medical devices (e.g., pacemakers) where precise pulse durations are critical.
 - Calibrating analog-to-digital converters in data acquisition systems.
 - Quality control in manufacturing electronic filters for audio equipment.
 
-#### Problem Statement
+##### Problem Statement
 Using the general formula for propagation of uncertainty, derive the absolute uncertainty $ \Delta \tau $ in the time constant $ \tau = RC $. Assume $ R $ and $ C $ are independent measurements with absolute uncertainties $ \Delta R $ and $ \Delta C $, respectively. Express $ \Delta \tau $ symbolically in terms of $ R $, $ C $, $ \Delta R $, and $ \Delta C $.  
 **Format Instructions**:  
 - Use the variables $ R $, $ C $, $ \Delta R $, and $ \Delta C $ exactly as defined.  
@@ -10526,29 +10526,29 @@ $$
 
 ------
 ### Problem 2
-#### Background
+##### Background
 In a physics laboratory experiment, students are measuring the period of oscillation of a simple pendulum to verify the relationship between the period and the pendulum's length. The theoretical period $ T $ of a simple pendulum is derived from the principles of harmonic motion under small-angle approximation and is given by $ T = 2\pi \sqrt{\frac{L}{g}} $, where $ L $ is the length of the pendulum and $ g $ is the acceleration due to gravity. The length $ L $ is measured with a ruler that has a known absolute uncertainty $ \Delta L $. The value of $ g $ is treated as exact (no uncertainty) in this experiment.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Understanding the functional form of the pendulum period equation.
 2. Application of error propagation for a single-variable power-law function.
 3. Derivation of relative uncertainty using logarithmic differentiation or partial derivatives.
 4. Simplification of expressions involving uncertainties.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to harmonic motion (physics) and uncertainty analysis in experimental measurements. It reinforces how errors in measured quantities propagate through derived quantities, a fundamental concept in data analysis across scientific disciplines.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Precision in pendulum-based timing mechanisms (e.g., clocks) requires quantifying uncertainty.
 - **Statistics**: The relative uncertainty derivation uses principles of differential calculus for error propagation, linking to statistical methods for handling measurement errors.
 
-#### Real-World Applications
+##### Real-World Applications
 Accurate uncertainty analysis is critical in:
 - Gravimetry (measuring $ g $ for geological surveys).
 - Designing inertial navigation systems where pendulum-like sensors are used.
 - Calibrating timekeeping devices in horology.
 
-#### Problem Statement
+##### Problem Statement
 The period $ T $ of a simple pendulum is given by $ T = 2\pi \sqrt{\frac{L}{g}} $, where $ g $ is known exactly, and $ L $ is measured with an absolute uncertainty $ \Delta L $. Derive an expression for the relative uncertainty in the period, $ \frac{\Delta T}{T} $, in terms of $ L $ and $ \Delta L $.  
 Express your answer as a single simplified fraction.  
 **Important**: Do not substitute numerical values; keep all constants symbolic. Use exact fractions in the final expression.
@@ -10583,33 +10583,33 @@ $$\boxed{\dfrac{1}{2} \dfrac{\Delta L}{L}}$$
 
 ------
 ### Problem 20
-#### Background
+##### Background
 Resistivity is a fundamental property of materials that quantifies how strongly they resist electric current flow. In experimental physics and engineering, resistivity $\rho$ is determined through measurements of resistance $R$, cross-sectional area $A$, and length $L$ of a material sample. Each measured quantity carries inherent experimental uncertainty due to instrument precision and environmental factors. This problem explores how uncertainties propagate through the formula $\rho = \frac{R A}{L}$, requiring derivation of the relative uncertainty $\frac{\Delta \rho}{\rho}$ from the absolute uncertainties $\Delta R$, $\Delta A$, and $\Delta L$.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Propagation of uncertainty in multivariable functions
 - Relative uncertainty and error analysis
 - Partial derivatives for uncertainty quantification
 - Root-sum-square combination of independent errors
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to Ohm's law and electrical resistance calculations
 - Extends to thermal conductivity and diffusion coefficient models
 - Reinforces dimensional analysis and unit consistency
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Statistics: Variance propagation in composite measurements
 - Materials Science: Characterization of novel conductors/semiconductors
 - Metrology: Calibration of measurement instruments
 - Engineering: Tolerance analysis in circuit design
 
-#### Real-World Applications
+##### Real-World Applications
 - Quality control in semiconductor manufacturing
 - Precision measurement in national standards laboratories
 - Validation of superconductor purity for quantum computing
 - Geological surveying through electrical resistivity tomography
 
-#### Problem Statement
+##### Problem Statement
 A cylindrical wire sample has resistance $R \pm \Delta R$, cross-sectional area $A \pm \Delta A$, and length $L \pm \Delta L$. The resistivity is calculated as $\rho = \frac{R A}{L}$. Derive the expression for the relative uncertainty $\frac{\Delta \rho}{\rho}$ in terms of the relative uncertainties of the measured quantities. Assume all uncertainties are independent and random. Express your final answer as an analytic expression using $\frac{\Delta R}{R}$, $\frac{\Delta A}{A}$, and $\frac{\Delta L}{L}$.
 
 ### Solution
@@ -10654,29 +10654,29 @@ $$\boxed{\sqrt{ \left( \frac{\Delta R}{R} \right)^2 + \left( \frac{\Delta A}{A} 
 
 ------
 ### Problem 21
-#### Background
+##### Background
 In electrical engineering, when designing circuits with resistors, manufacturing tolerances lead to uncertainties in resistance values. When resistors are connected in parallel, the equivalent resistance is given by the formula for parallel resistors. Understanding how uncertainties propagate through this formula is essential for predicting the reliability and performance of circuits. For instance, in applications like sensor networks or audio equipment, even small uncertainties can affect signal accuracy and power distribution.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Understanding the formula for equivalent resistance of parallel resistors.
 - Principles of uncertainty propagation for functions of multiple variables.
 - Partial differentiation and its role in uncertainty analysis.
 - Combining uncertainties from independent sources using the root-sum-square method.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to circuit theory, where equivalent resistance calculations are fundamental. It also ties into the broader study of error analysis in experimental physics, such as when measuring resistance in Wheatstone bridges or analyzing series-parallel networks. The mathematical techniques used here are foundational for more advanced topics like sensitivity analysis in system design.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Physics**: Uncertainty propagation is a core concept in experimental physics, applicable to measurements in mechanics, thermodynamics, and electromagnetism.
 - **Mathematics**: The problem involves partial derivatives, algebra, and the chain rule, illustrating how calculus is applied to real-world problems.
 - **Engineering**: Beyond circuits, similar uncertainty analysis is used in structural engineering (e.g., stress calculations) and control systems (e.g., error in feedback loops).
 
-#### Real-World Applications
+##### Real-World Applications
 - **Electronics Manufacturing**: Predicting how resistor tolerances affect the overall resistance in devices like amplifiers or filters ensures consistent performance.
 - **Renewable Energy Systems**: In solar panel arrays, where cells are connected in parallel, uncertainty analysis helps estimate power output variations due to manufacturing differences.
 - **Medical Devices**: Circuits in equipment like ECG monitors use parallel resistors for signal conditioning; understanding uncertainty prevents misdiagnosis from measurement errors.
 
-#### Problem Statement
+##### Problem Statement
 Two resistors, $R_1$ and $R_2$, are connected in parallel. The equivalent resistance $R_p$ is given by:
 $$ R_p = \frac{R_1 R_2}{R_1 + R_2} $$
 The resistor $R_1$ has an absolute uncertainty $\Delta R_1$, and $R_2$ has an absolute uncertainty $\Delta R_2$. These uncertainties are independent. Derive an expression for the absolute uncertainty $\Delta R_p$ in the equivalent resistance $R_p$. Express $\Delta R_p$ symbolically in terms of $R_1$, $R_2$, $\Delta R_1$, and $\Delta R_2$ only.  
@@ -10718,30 +10718,30 @@ $$\boxed{\dfrac{\sqrt{R_{2}^{4} \left(\Delta R_{1}\right)^{2} + R_{1}^{4} \left(
 
 ------
 ### Problem 22
-#### Background
+##### Background
 In optics, the thin lens equation relates the focal length $f$ of a lens to the object distance $u$ and the image distance $v$:  
 
 $$ \frac{1}{f} = \frac{1}{u} + \frac{1}{v}. $$
   
 Experimental measurements of $u$ and $v$ inherently carry uncertainties. For example, in laser-based alignment systems or microscope calibration, precise knowledge of the uncertainty in $f$ is critical for assessing system reliability. Here, $u$ is measured as $u \pm \Delta u$ and $v$ as $v \pm \Delta v$, with independent random uncertainties.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Error propagation for functions of multiple variables.  
 2. Partial differentiation of implicitly defined physical relationships.  
 3. Absolute uncertainty derivation using the root-sum-square method for independent measurements.  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 Connects to geometric optics (lens equation) and statistical analysis of measurement errors in experimental physics. Also reinforces calculus applications in physics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Links to engineering (tolerance analysis in optical instrument design) and data science (uncertainty quantification in regression models of physical systems).
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibrating camera lenses to ensure image sharpness within specified tolerances.  
 - Determining acceptable error margins in telescopic mirror alignment for astronomy.  
 - Quality control in eyeglass lens manufacturing to meet vision-correction standards.
 
-#### Problem Statement
+##### Problem Statement
 Using the thin lens equation $\frac{1}{f} = \frac{1}{u} + \frac{1}{v}$, derive an expression for the absolute uncertainty $\Delta f$ in the focal length $f$ in terms of $u$, $v$, $\Delta u$, and $\Delta v$. Assume $\Delta u$ and $\Delta v$ are independent random uncertainties.  
 Express $\Delta f$ as a simplified analytic expression. Use only the symbols $u$, $v$, $\Delta u$, and $\Delta v$.
 
@@ -10810,24 +10810,24 @@ This is the simplified analytic expression for the absolute uncertainty in $f$.
 
 ------
 ### Problem 23
-#### Background
+##### Background
 In physics experiments, precise measurements are crucial. When calculating derived quantities, understanding how uncertainties propagate through formulas is essential. The force on a current-carrying conductor in a magnetic field is given by $ F = B I L \sin\theta $, where $ B $ is the magnetic field strength, $ I $ is the current, $ L $ is the conductor length, and $ \theta $ is the angle between the conductor and the magnetic field. Each measured quantity has an associated absolute uncertainty: $ \Delta B $ for $ B $, $ \Delta I $ for $ I $, $ \Delta L $ for $ L $, and $ \Delta \theta $ for $ \theta $.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Partial differentiation of multivariable functions.
 2. Error propagation formulas for absolute uncertainty.
 3. Trigonometric derivatives and their role in uncertainty analysis.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to calculus (partial derivatives) and statistics (uncertainty propagation), both integral to experimental physics and data analysis across mechanics, electromagnetism, and thermodynamics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Uncertainty propagation is vital in engineering (e.g., tolerance analysis), environmental science (e.g., climate modeling), and economics (e.g., risk assessment in financial models).
 
-#### Real-World Applications
+##### Real-World Applications
 Accurate uncertainty calculation is critical in designing electromagnetic devices (e.g., motors, MRI machines), where force predictions affect structural integrity and safety margins. It also underpins quality control in manufacturing processes involving magnetic fields.
 
-#### Problem Statement
+##### Problem Statement
 The force $ F $ on a current-carrying wire is modeled as $ F = B I L \sin\theta $. The measured quantities and their absolute uncertainties are:
 - Magnetic field strength: $ B \pm \Delta B $
 - Current: $ I \pm \Delta I $
@@ -10893,30 +10893,30 @@ $$
 
 ------
 ### Problem 24
-#### Background
+##### Background
 In experimental physics and engineering, accurately determining quantities like centripetal acceleration is crucial for applications such as designing centrifuges for medical laboratories, analyzing the motion of satellites, or testing materials under high stress. Centripetal acceleration, given by $ a = \omega^2 r $, depends on angular velocity $\omega$ and radius $r$. However, measurements of $\omega$ and $r$ always involve uncertainties, denoted as $\Delta \omega$ and $\Delta r$. To assess the reliability of the calculated acceleration, we must propagate these uncertainties through the formula.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. **Error propagation for power-law functions**: Deriving the relative uncertainty in a product of variables raised to powers.
 2. **Partial derivatives in uncertainty analysis**: Applying calculus to quantify how small changes in input variables affect the output.
 3. **Relative uncertainty definition**: Understanding $\frac{\Delta a}{a}$ as a dimensionless measure of precision.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Calculus**: Using partial derivatives to linearize the function $a(\omega, r)$.
 - **Statistics**: Combining independent uncertainties via root-sum-square addition, assuming uncorrelated errors.
 - **Classical mechanics**: Linking centripetal acceleration to rotational dynamics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Uncertainty analysis ensures safety margins in rotating machinery (e.g., turbines).
 - **Meteorology**: Error propagation applies to derived quantities like wind speed from radar measurements.
 - **Economics**: Similar methods quantify risk in financial models involving multiplicative terms.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Spacecraft design**: Calculating uncertainties in centripetal forces for artificial gravity systems.
 - **Medical centrifuges**: Ensuring precise separation of blood components by controlling acceleration tolerances.
 - **Particle physics**: Propagating measurement errors in cyclotron trajectory calculations.
 
-#### Problem Statement
+##### Problem Statement
 An experimental setup measures the angular velocity of a rotating object as $\omega \pm \Delta \omega$ and the radius of its circular path as $r \pm \Delta r$. The centripetal acceleration is calculated using $a = \omega^2 r$.  
 Derive the expression for the **relative uncertainty** $\frac{\Delta a}{a}$ in terms of the relative uncertainties $\frac{\Delta \omega}{\omega}$ and $\frac{\Delta r}{r}$.  
 Express your final answer as a single simplified analytic expression.  
@@ -10955,29 +10955,29 @@ $$\boxed{\sqrt{4 \left( \frac{\Delta \omega}{\omega} \right)^{2} + \left( \frac{
 
 ------
 ### Problem 25
-#### Background
+##### Background
 In thermodynamics, the heat transfer $ Q $ to an object is often calculated using the formula $ Q = mc\Delta T $, where $ m $ is the object's mass, $ c $ is its specific heat capacity, and $ \Delta T $ is its temperature change. Experimental measurements of these quantities always involve uncertainties due to instrument precision, environmental fluctuations, and human error. For example, in materials science labs, determining the specific heat of a new alloy requires propagating uncertainties from mass scales, thermometers, and calorimeters to report reliable results. This problem explores how uncertainties combine in a multiplicative physical relationship.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Propagation of uncertainty for products of independent variables.
 2. Calculation of relative uncertainty.
 3. Application of partial derivatives in error analysis.
 4. Root-sum-square (RSS) method for combining independent uncertainties.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to thermodynamics (heat transfer equations), measurement theory (absolute vs. relative uncertainty), and calculus (partial differentiation for sensitivity analysis). It also reinforces dimensional consistency when combining terms.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Statistics**: Variance propagation for multiplicative models resembles the formula for the variance of a product of random variables.
 - **Engineering**: Uncertainty analysis is critical in thermal system design (e.g., heat exchangers) and materials testing.
 - **Metrology**: Techniques for quantifying measurement errors align with international standards (e.g., ISO/IEC Guide 98-3).
 
-#### Real-World Applications
+##### Real-World Applications
 - Calorimetry experiments in chemistry labs to determine specific heats.
 - Quality control in manufacturing processes involving heat treatment.
 - Climate science models estimating ocean heat absorption with instrument uncertainties.
 
-#### Problem Statement
+##### Problem Statement
 The heat transfer $ Q $ is calculated as $ Q = m c \Delta T $, where:
 - Mass $ m $ has an absolute uncertainty $ \Delta m $,
 - Specific heat capacity $ c $ has an absolute uncertainty $ \Delta c $,
@@ -11054,7 +11054,7 @@ This is the final expression for the relative uncertainty in $ Q $.
 
 ------
 ### Problem 26
-#### Background
+##### Background
 In a physics laboratory experiment, you are investigating the pressure exerted by a metal cube resting on a horizontal surface. Pressure, defined as force per unit area, is given by $ P = F / A $, where $ F $ is the force applied perpendicular to the surface and $ A $ is the contact area. The force is measured using a calibrated force sensor, and the area is determined from the side length of the cube using a precision caliper. The measurements are recorded with their absolute uncertainties:
 
 - Force: $ F \pm \Delta F $
@@ -11062,27 +11062,27 @@ In a physics laboratory experiment, you are investigating the pressure exerted b
 
 The uncertainties $\Delta F$ and $\Delta A$ arise from instrumental limitations and are independent random errors. Your task is to quantify how these uncertainties propagate to the calculated pressure.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Definition of relative uncertainty.
 - Error propagation for a quotient of two measured quantities.
 - Application of the root sum square (RSS) method for independent random uncertainties.
 - Logarithmic differentiation to derive sensitivity coefficients.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to mechanics (pressure in solids) and experimental physics (data analysis).
 - Extends to uncertainty analysis in derived quantities across physics experiments, such as density calculations or Ohm's law applications.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Engineering: Uncertainty propagation is critical in structural design (e.g., stress analysis in materials).
 - Statistics: The RSS method relies on variance addition for uncorrelated variables.
 - Environmental science: Used in modeling pollutant dispersion or pressure variations in fluid systems.
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibration of pressure sensors in automotive safety systems (e.g., airbag deployment).
 - Quality control in manufacturing processes where force and area tolerances affect product reliability (e.g., semiconductor wafer pressing).
 - Medical devices: Estimating uncertainties in blood pressure monitors or prosthetic load-bearing surfaces.
 
-#### Problem Statement
+##### Problem Statement
 Using the principles of uncertainty propagation for independent random errors, derive an analytic expression for the relative uncertainty in the pressure, $\frac{\Delta P}{P}$, in terms of the relative uncertainties in force $\left( \frac{\Delta F}{F} \right)$ and area $\left( \frac{\Delta A}{A} \right)$.  
 **Express your answer as a single simplified analytic expression using only the symbols $\frac{\Delta F}{F}$ and $\frac{\Delta A}{A}$.**
 
@@ -11144,27 +11144,27 @@ $$\boxed{ \sqrt{ \left( \frac{\Delta F}{F} \right)^2 + \left( \frac{\Delta A}{A}
 
 ------
 ### Problem 27
-#### Background
+##### Background
 The Doppler effect is a phenomenon where the observed frequency of a wave changes due to the relative motion between the source and the observer. For sound waves, the observed frequency $ f' $ is given by $ f' = f \frac{v \pm v_o}{v \mp v_s} $, where $ f $ is the emitted frequency, $ v $ is the speed of sound in the medium, $ v_o $ is the speed of the observer, and $ v_s $ is the speed of the source. The signs $ \pm $ and $ \mp $ depend on the directions of motion: the numerator uses $ + $ if the observer moves toward the source and $ - $ if moving away; the denominator uses $ - $ if the source moves toward the observer and $ + $ if moving away. In an experiment, $ v $, $ v_o $, and $ v_s $ are measured with absolute uncertainties $ \Delta v $, $ \Delta v_o $, and $ \Delta v_s $ respectively, while $ f $ is known exactly.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Application of the Doppler effect formula for sound waves.
 2. Propagation of uncertainties for a function of multiple variables.
 3. Partial differentiation and error analysis.
 4. Algebraic manipulation of expressions with signed terms.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to wave mechanics, particularly the Doppler shift, and extends to experimental physics through uncertainty analysis. It reinforces the importance of error propagation in measurements, a fundamental skill in physics laboratories and data analysis.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Uncertainty analysis is critical in engineering (e.g., radar and sonar systems), meteorology (Doppler radar for weather prediction), and medical imaging (Doppler ultrasound for blood flow measurement). The principles of error propagation are also used in statistics and data science for quantitative modeling.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Speed radar guns**: Use the Doppler shift to measure vehicle speeds, where uncertainty analysis ensures accuracy in law enforcement.
 - **Astronomy**: Determines the velocity of stars and galaxies from spectral shifts, with uncertainties affecting cosmological models.
 - **Aviation**: Doppler navigation systems rely on precise frequency measurements to calculate aircraft velocity and position.
 
-#### Problem Statement
+##### Problem Statement
 Given the Doppler frequency formula for sound waves:
 $$ f' = f \frac{v \pm v_o}{v \mp v_s} $$
 where $ f $ is known exactly, and $ v $, $ v_o $, $ v_s $ have absolute uncertainties $ \Delta v $, $ \Delta v_o $, $ \Delta v_s $ respectively. The signs $ \pm $ and $ \mp $ are fixed for a specific scenario but retained in symbolic form.  
@@ -11221,25 +11221,25 @@ $$\boxed{\dfrac{f}{(v \mp v_{s})^{2}} \sqrt{(v_{o} - v_{s})^{2} (\Delta v)^{2} +
 
 ------
 ### Problem 28
-#### Background
+##### Background
 In optics, the refractive index of a material quantifies how much light bends when transitioning between media. It is experimentally determined using Snell's law: $n = \frac{\sin i}{\sin r}$, where $i$ is the angle of incidence and $r$ is the angle of refraction, both measured in radians. During measurement, instrumental limitations introduce uncertainties: the angle of incidence is reported as $i \pm \Delta i$, and the angle of refraction as $r \pm \Delta r$, with $\Delta i$ and $\Delta r$ representing absolute uncertainties in radians. Understanding how these uncertainties propagate to the refractive index is essential for assessing measurement reliability in applications like lens design.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of relative uncertainty and its computation.
 2. Error propagation for a quotient of two functions.
 3. Uncertainty propagation through trigonometric functions (sine and cotangent).
 4. Partial differentiation of multivariable functions.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to the wave model of light (Snell's law) in optics and extends to statistical methods for analyzing experimental errors in physics. It reinforces calculus concepts like derivatives and the chain rule.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Error analysis is fundamental across experimental sciences: in chemistry (concentration measurements), engineering (sensor calibration), and data science (uncertainty quantification in machine learning models). Trigonometric uncertainty propagation also appears in surveying and astronomy.
 
-#### Real-World Applications
+##### Real-World Applications
 Accurate refractive index measurements are critical in designing optical fibers for telecommunications, anti-reflective coatings for camera lenses, and corrective eyewear. For example, a 1% error in $n$ can misalign light paths in fiber optics, causing signal loss.
 
-#### Problem Statement
+##### Problem Statement
 The refractive index $n$ of a material is calculated as $n = \frac{\sin i}{\sin r}$, where $i$ and $r$ are angles measured in radians. The angle of incidence is $i \pm \Delta i$, and the angle of refraction is $r \pm \Delta r$, with $\Delta i$ and $\Delta r$ denoting absolute uncertainties. Derive an expression for the relative uncertainty in $n$, denoted $\frac{\Delta n}{n}$, in terms of $i$, $r$, $\Delta i$, and $\Delta r$. Ensure all trigonometric functions are expressed using standard notation (e.g., $\sin$, $\cot$), and angles are treated as dimensionless quantities in radians. Express your final answer as a single analytic expression.
 
 ### Solution
@@ -11288,31 +11288,31 @@ $$\boxed{\sqrt{ \left( \cot i  \cdot \Delta i \right)^{2} + \left( \cot r  \cdot
 
 ------
 ### Problem 29
-#### Background
+##### Background
 In automotive safety testing, engineers measure the impulse delivered to a crash-test dummy during a collision to evaluate injury risk. Impulse $J$ quantifies the change in momentum and is calculated as the product of the average force $F$ applied and the collision duration $\Delta t$. Force is measured as $F \pm \Delta F$, and time duration as $\Delta t \pm \Delta(\Delta t)$, where $\Delta F$ and $\Delta(\Delta t)$ represent absolute uncertainties. These uncertainties arise from sensor limitations and environmental noise.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of impulse and its relationship to force and time.
 2. Propagation of absolute uncertainty for a product of independent variables.
 3. Application of partial derivatives to derive uncertainty expressions.
 4. Construction of a combined uncertainty model from first principles.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Mechanics**: Relates to impulse-momentum theorem and force-time integrals.
 - **Experimental Physics**: Extends to uncertainty analysis in measurements.
 - **Calculus**: Utilizes partial differentiation for error propagation.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Critical for reliability analysis in safety systems (e.g., airbag deployment).
 - **Statistics**: Embodies variance composition for independent random variables.
 - **Data Science**: Illustrates error aggregation in multiplicative models.
 
-#### Real-World Applications
+##### Real-World Applications
 - Vehicle crash tests: Uncertainty in impulse affects injury probability estimates.
 - Sports science: Measuring impact forces in athletic equipment (e.g., helmets).
 - Manufacturing: Quality control for impulse-delivering systems (e.g., hammer presses).
 
-#### Problem Statement
+##### Problem Statement
 The impulse $J$ delivered during a collision is given by $J = F \Delta t$, where $F$ is the force and $\Delta t$ is the time duration. The force measurement is $F \pm \Delta F$, and the time measurement is $\Delta t \pm \Delta(\Delta t)$, with $\Delta F$ and $\Delta(\Delta t)$ denoting absolute uncertainties. Assume $F$ and $\Delta t$ are independent, and their uncertainties are symmetric and uncorrelated.  
 
 Derive an expression for the absolute uncertainty $\Delta J$ in the impulse. Use the propagation-of-uncertainty method via partial derivatives. Express $\Delta J$ symbolically in terms of $F$, $\Delta t$, $\Delta F$, and $\Delta(\Delta t)$.
@@ -11362,25 +11362,25 @@ $$\boxed{\sqrt{ (\Delta t)^2 (\Delta F)^2 + F^2 \left( \Delta(\Delta t) \right)^
 
 ------
 ### Problem 3
-#### Background
+##### Background
 In experimental physics, accurately determining the velocity of an object under constant acceleration requires accounting for measurement uncertainties. The kinematic equation $v = u + at$ relates final velocity $v$ to initial velocity $u$, acceleration $a$, and time $t$. Each measured quantity $u$, $a$, and $t$ has an associated absolute uncertainty: $\Delta u$ for initial velocity, $\Delta a$ for acceleration, and $\Delta t$ for time. These uncertainties propagate through calculations, affecting the certainty of the result.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Error propagation for sums and products of measured quantities.
 - Partial derivatives for uncertainty analysis.
 - Root-sum-square (RSS) combination of independent uncertainties.
 - Algebraic simplification of uncertainty expressions.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to kinematics in mechanics and statistical data analysis in experimental physics. It extends to uncertainty principles in quantum mechanics and tolerance modeling in engineering design.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Uncertainty quantification is essential in fields like meteorology (weather prediction models), economics (risk assessment), and robotics (sensor fusion). It also applies to medical imaging (resolution errors) and environmental science (pollutant dispersion forecasts).
 
-#### Real-World Applications
+##### Real-World Applications
 Engineers use uncertainty analysis to validate safety margins in automotive crash tests (e.g., predicting vehicle velocity from accelerometer data). Aerospace applications include trajectory calculations for spacecraft re-entry, where uncertainties in thrust or timing affect landing precision.
 
-#### Problem Statement
+##### Problem Statement
 Consider an object moving with constant acceleration. The final velocity $v$ is calculated using $v = u + at$, where $u$, $a$, and $t$ are measured with independent, random uncertainties $\Delta u$, $\Delta a$, and $\Delta t$, respectively. Derive an expression for the absolute uncertainty $\Delta v$ in the final velocity. Express your answer as an analytic expression in terms of $\Delta u$, $\Delta a$, $\Delta t$, $a$, and $t$, simplified to a single square root.  
 **Format requirements**:  
 - Use the notation $\Delta u$, $\Delta a$, $\Delta t$, $a$, and $t$ exactly as defined.  
@@ -11421,31 +11421,31 @@ $$\boxed{\sqrt{ (\Delta u)^2 + (t \Delta a)^2 + (a \Delta t)^2 }}$$
 
 ------
 ### Problem 30
-#### Background
+##### Background
 In experimental physics and engineering, quantifying the uncertainty in derived quantities is crucial for reliable data interpretation. Consider a scenario where a constant force is applied to move an object over a measured distance, and the work done is calculated as the product of force and distance. The force measurement has an associated uncertainty, as does the distance measurement. These uncertainties propagate to the calculated work.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Error propagation for multiplicative relationships
 2. Partial derivatives in uncertainty analysis
 3. Root-sum-square (RSS) combination of independent uncertainties
 4. Interpretation of absolute uncertainty in derived quantities
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to measurement techniques in mechanics (force sensors, motion tracking)
 - Extends to uncertainty analysis in other multiplicative relationships (e.g., pressure-volume work, electrical power)
 - Reinforces foundational calculus concepts through partial derivatives
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Essential for tolerance analysis in mechanical design
 - **Meteorology**: Uncertainty propagation in weather models (e.g., pressure-volume relationships)
 - **Economics**: Error analysis in derived financial metrics (e.g., revenue = price × quantity)
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibrating industrial robots where force and displacement uncertainties affect work calculations
 - Validating energy output in renewable energy systems (e.g., wind turbine torque-rotation work)
 - Quality control in manufacturing processes involving mechanical work
 
-#### Problem Statement
+##### Problem Statement
 A physics experiment measures a constant force $F$ with absolute uncertainty $\Delta F$ acting on an object displaced by distance $d$ with absolute uncertainty $\Delta d$. The work done is calculated as $W = F d$. Assume $F$ and $d$ are uncorrelated measured quantities. Derive the expression for the absolute uncertainty $\Delta W$ in the work calculation. Express $\Delta W$ symbolically in terms of $F$, $\Delta F$, $d$, and $\Delta d$ using the root-sum-square method for independent uncertainties. Provide your final answer as a single simplified expression.
 
 ### Solution
@@ -11470,31 +11470,31 @@ $$\boxed{\sqrt{ F^{2} \left( \Delta d \right)^{2} + d^{2} \left( \Delta F \right
 
 ------
 ### Problem 31
-#### Background
+##### Background
 In a physics laboratory experiment, students are measuring the momentum of a moving object to verify conservation laws in collisions. Momentum $ p $ is calculated as the product of the object's mass $ m $ and velocity $ v $. The mass is measured using a digital balance with an absolute uncertainty of $ \Delta m $, and the velocity is determined via a photogate system with an absolute uncertainty of $ \Delta v $. To properly interpret their results, students must quantify how these individual uncertainties propagate to the calculated momentum.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of absolute uncertainty.
 2. Propagation of uncertainties for a product of two independent variables.
 3. Application of partial derivatives in error analysis.
 4. Construction of the root-sum-square formula for combined uncertainty.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Calculus**: Partial differentiation is used to determine sensitivity coefficients for each variable.
 - **Statistics**: The root-sum-square method arises from the variance formula for independent random variables.
 - **Classical Mechanics**: Momentum is a conserved quantity in isolated systems, making uncertainty analysis critical for collision experiments.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Uncertainty propagation is essential in designing experiments and interpreting sensor data.
 - **Meteorology**: Similar error analysis techniques apply when combining measurements like wind speed and pressure.
 - **Economics**: Risk assessment models use analogous methods to propagate uncertainties in financial projections.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Particle Physics**: Precise momentum measurements of subatomic particles in accelerators require rigorous uncertainty analysis.
 - **Aerospace Engineering**: Rocket thrust calculations depend on mass flow rate and exhaust velocity uncertainties.
 - **Sports Science**: Evaluating the momentum of athletes during impact studies (e.g., football tackles) incorporates measurement errors.
 
-#### Problem Statement
+##### Problem Statement
 Consider an object with mass $ m $ and velocity $ v $, where the absolute uncertainties in these measurements are $ \Delta m $ and $ \Delta v $, respectively. The momentum is given by $ p = mv $. Assuming the uncertainties in mass and velocity are independent and uncorrelated, derive an expression for the absolute uncertainty $ \Delta p $ in the momentum. Express $ \Delta p $ symbolically in terms of $ m $, $ v $, $ \Delta m $, and $ \Delta v $.  
 *Reminder: Use the standard propagation formula for independent variables.*
 
@@ -11523,31 +11523,31 @@ $$\boxed{\sqrt{ v^{2} (\Delta m)^{2} + m^{2} (\Delta v)^{2} }}$$
 
 ------
 ### Problem 32
-#### Background
+##### Background
 The buoyant force, discovered by Archimedes, is the upward force exerted by a fluid on an immersed object. It is critical in designing submarines, ships, and underwater exploration vehicles. Precise knowledge of this force and its uncertainty ensures structural integrity and safety. For example, in oceanography, density measurements of seawater and volume estimates of submerged instruments have inherent uncertainties that propagate to the buoyant force. Understanding this propagation is essential for reliable engineering and scientific predictions.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of relative uncertainty: $\frac{\Delta Q}{Q}$ for a quantity $Q$.
 2. Error propagation for a product of independent variables with uncertainties.
 3. Partial derivatives for uncertainty analysis.
 4. Simplification of expressions involving relative uncertainties.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Fluid Mechanics**: Relates to buoyancy principles in hydrostatics.
 - **Measurement Techniques**: Connects to methods for determining density (e.g., hydrometers) and volume (e.g., displacement).
 - **Classical Mechanics**: Underpins force calculations in gravitational fields.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Marine Engineering**: Designing vessels requires uncertainty-aware buoyancy models to avoid overloading.
 - **Statistics**: Uncertainty propagation uses variance addition rules from probability theory.
 - **Environmental Science**: Assessing buoyancy uncertainties aids in predicting floating pollutant dispersion.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Submarine Ballast Systems**: Uncertainty in buoyant force affects trim control during dives.
 - **Shipbuilding**: Overestimating buoyancy can lead to inadequate hull strength.
 - **Ocean Drifters**: Buoyancy-driven floats measure currents; uncertainty quantification improves data reliability.
 
-#### Problem Statement
+##### Problem Statement
 The buoyant force $F_b$ on a submerged object is given by $F_b = \rho V g$, where $\rho$ is the fluid density, $V$ is the displaced volume, and $g$ is the acceleration due to gravity (known exactly). The density is measured as $\rho \pm \Delta \rho$, and the volume as $V \pm \Delta V$, with $\Delta \rho$ and $\Delta V$ representing absolute uncertainties. Assume $\rho$, $V$, $\Delta \rho$, and $\Delta V$ are positive, and the uncertainties in $\rho$ and $V$ are independent.
 
 Derive an expression for the relative uncertainty in the buoyant force, $\frac{\Delta F_b}{F_b}$. Express your answer in terms of the relative uncertainties $\frac{\Delta \rho}{\rho}$ and $\frac{\Delta V}{V}$.
@@ -11589,56 +11589,56 @@ $$\boxed{ \sqrt{ \left( \frac{\Delta \rho}{\rho} \right)^2 + \left( \frac{\Delta
 
 ------
 ### Problem 33
-#### Background
+##### Background
 In electrical engineering, the power dissipated in a resistor is given by $P = I^2 R$, where $I$ is the current and $R$ is the resistance. Experimental measurements of $I$ and $R$ always have inherent uncertainties, denoted as $\Delta I$ and $\Delta R$ respectively. To quantify the reliability of calculated power, we must determine how these uncertainties propagate through the equation. The relative uncertainty $\left( \frac{\Delta P}{P} \right)$ expresses the fractional error in power.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Error propagation for multiplicative and power functions  
 2. Partial derivatives in uncertainty analysis  
 3. Combining relative uncertainties using root-sum-square (RSS) methods  
 4. Interpretation of relative uncertainty as a dimensionless quantity  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Direct proportionality**: Relates to Ohm's law ($V = IR$) and power relationships.  
 - **Measurement techniques**: Connects to instrumentation precision in current and resistance measurements.  
 - **Dimensional analysis**: Ensures consistency of uncertainty expressions.  
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Statistics**: RSS method originates from variance addition in independent random variables.  
 - **Engineering design**: Critical for safety margins in electrical systems (e.g., power supply tolerances).  
 - **Data science**: Similar error propagation used in machine learning regression models.  
 
-#### Real-World Applications
+##### Real-World Applications
 1. **Circuit design**: Ensures power ratings of components (e.g., resistors, transistors) account for measurement errors.  
 2. **Renewable energy**: Predicts uncertainty in solar panel output calculations based on current/resistance measurements.  
 3. **Laboratory experiments**: Standard protocol for reporting confidence intervals in physics/engineering journals.  
 
-#### Problem Statement
+##### Problem Statement
 The power dissipated in a resistor is modeled as $P = I^2 R$, where current $I$ and resistance $R$ are measured with uncertainties $\Delta I$ and $\Delta R$. Assume $\Delta I$ and $\Delta R$ are independent and random. Derive an analytic expression for the relative uncertainty $\frac{\Delta P}{P}$ in terms of $I$, $\Delta I$, $R$, and $\Delta R$. Express your final answer as a single simplified expression under a square root.
 
 ### Solution
-#### Step 1: General formula for uncertainty propagation  
+##### Step 1: General formula for uncertainty propagation  
 For a function $P(I, R)$, the absolute uncertainty $\Delta P$ is given by:  
 $$\Delta P = \sqrt{ \left( \frac{\partial P}{\partial I} \Delta I \right)^2 + \left( \frac{\partial P}{\partial R} \Delta R \right)^2 }$$  
 This assumes uncorrelated errors and first-order Taylor approximation.  
 
-#### Step 2: Compute partial derivatives  
+##### Step 2: Compute partial derivatives  
 Given $P = I^2 R$:  
 - Partial derivative with respect to $I$:  
   $$\frac{\partial P}{\partial I} = 2IR$$  
 - Partial derivative with respect to $R$:  
   $$\frac{\partial P}{\partial R} = I^2$$  
 
-#### Step 3: Substitute into uncertainty formula  
+##### Step 3: Substitute into uncertainty formula  
 $$\Delta P = \sqrt{ \left( 2IR \cdot \Delta I \right)^2 + \left( I^2 \cdot \Delta R \right)^2 }$$  
 
-#### Step 4: Simplify the expression  
+##### Step 4: Simplify the expression  
 Factor out common terms:  
 $$\Delta P = \sqrt{ (2IR \Delta I)^2 + (I^2 \Delta R)^2 } = \sqrt{ 4I^2 R^2 (\Delta I)^2 + I^4 (\Delta R)^2 }$$  
 Extract $I^2$ from the square root:  
 $$\Delta P = I \sqrt{ 4 R^2 (\Delta I)^2 + I^2 (\Delta R)^2 }$$  
 
-#### Step 5: Compute relative uncertainty $\frac{\Delta P}{P}$  
+##### Step 5: Compute relative uncertainty $\frac{\Delta P}{P}$  
 Substitute $P = I^2 R$:  
 $$\frac{\Delta P}{P} = \frac{I \sqrt{ 4 R^2 (\Delta I)^2 + I^2 (\Delta R)^2 }}{I^2 R} = \frac{ \sqrt{ 4 R^2 (\Delta I)^2 + I^2 (\Delta R)^2 } }{I R}$$  
 Simplify the fraction:  
@@ -11646,7 +11646,7 @@ $$\frac{\Delta P}{P} = \sqrt{ \frac{ 4 R^2 (\Delta I)^2 + I^2 (\Delta R)^2 }{ I^
 Reduce each term:  
 $$\frac{\Delta P}{P} = \sqrt{ 4 \left( \frac{\Delta I}{I} \right)^2 + \left( \frac{\Delta R}{R} \right)^2 }$$  
 
-#### Step 6: Final simplified form  
+##### Step 6: Final simplified form  
 The expression is already compact. No further simplification is needed.
 
 ### Answer
@@ -11654,28 +11654,28 @@ $$\boxed{\sqrt{4 \left( \frac{\Delta I}{I} \right)^2 + \left( \frac{\Delta R}{R}
 
 ------
 ### Problem 34
-#### Background  
+##### Background  
 Magnetic flux, denoted by $\Phi$, is a fundamental concept in electromagnetism that quantifies the amount of magnetic field passing through a given surface area. It is defined as $\Phi = BA\cos\theta$, where $B$ is the magnetic field magnitude, $A$ is the area of the surface perpendicular to the field, and $\theta$ is the angle between the magnetic field vector and the normal to the surface. In experimental physics, measurements of $B$, $A$, and $\theta$ inherently carry uncertainties due to instrument limitations or environmental factors. Understanding how these individual uncertainties propagate to the overall uncertainty in $\Phi$ is crucial for reliable data interpretation and scientific reporting.  
 
-#### Knowledge Points Tested  
+##### Knowledge Points Tested  
 - Application of partial derivatives for error propagation in multivariable functions.  
 - Understanding the root-sum-square method for combining independent uncertainties.  
 - Trigonometric identities and simplification of expressions involving $\sin\theta$ and $\cos\theta$.  
 
-#### Intradisciplinary Connections  
+##### Intradisciplinary Connections  
 This problem bridges core topics in electromagnetism (magnetic flux) and experimental physics (uncertainty analysis). It extends the concept of measurement error from simple quantities to composite physical laws, reinforcing the mathematical framework of calculus in physics.  
 
-#### Interdisciplinary Connections  
+##### Interdisciplinary Connections  
 - **Mathematics**: Uses partial differentiation, trigonometric functions, and algebraic simplification.  
 - **Engineering**: Directly applicable to sensor design (e.g., Hall effect sensors) where precision in magnetic field measurements is critical.  
 - **Data Science**: Illustrates foundational principles for uncertainty quantification in predictive modeling.  
 
-#### Real-World Applications  
+##### Real-World Applications  
 - Calibrating magnetic resonance imaging (MRI) machines to ensure accurate diagnostics.  
 - Designing electric motors and generators, where flux uncertainty affects efficiency calculations.  
 - Space weather monitoring (e.g., satellite instruments measuring solar wind magnetic fields).  
 
-#### Problem Statement  
+##### Problem Statement  
 A laboratory experiment measures the magnetic flux $\Phi = BA\cos\theta$ through a rectangular loop. The measured values and their absolute uncertainties are:  
 - Magnetic field: $B \pm \Delta B$  
 - Area: $A \pm \Delta A$  
@@ -11743,31 +11743,31 @@ $$\boxed{\sqrt{ A^{2} \cos^{2}{\theta} \cdot (\Delta B)^{2} + B^{2} \cos^{2}{\th
 
 ------
 ### Problem 35
-#### Background
+##### Background
 In experimental physics and engineering, efficiency is a critical parameter defined as the ratio of useful output power to input power. When measuring power, uncertainties arise from instrument precision and random fluctuations. Consider a scenario where a researcher measures the efficiency $\eta$ of an energy conversion system, such as a wind turbine or a photovoltaic cell. The output power $P_{\text{out}}$ is measured with an absolute uncertainty $\Delta P_{\text{out}}$, and the input power $P_{\text{in}}$ with an absolute uncertainty $\Delta P_{\text{in}}$. The uncertainties are independent and random. Understanding how these uncertainties propagate to the efficiency is essential for evaluating system performance.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of relative uncertainty.
 2. Error propagation for a quotient of two measured quantities.
 3. Application of partial derivatives in uncertainty analysis.
 4. Simplification of uncertainty expressions using relative uncertainties.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to measurement techniques in laboratory physics.
 - Extends to sensitivity analysis in thermodynamics and electrical engineering.
 - Reinforces calculus applications in experimental error analysis.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Statistics**: Relies on variance propagation for independent variables.
 - **Environmental Science**: Applies to quantifying uncertainties in renewable energy systems.
 - **Robotics**: Used to evaluate efficiency uncertainties in actuator systems.
 
-#### Real-World Applications
+##### Real-World Applications
 - Assessing the reliability of solar panels under varying irradiance conditions.
 - Validating fuel efficiency claims in automotive engineering.
 - Calibrating medical imaging devices where input/output power ratios determine diagnostic accuracy.
 
-#### Problem Statement
+##### Problem Statement
 The efficiency $\eta$ of a system is defined as $\eta = \frac{P_{\text{out}}}{P_{\text{in}}}$, where $P_{\text{out}}$ is the output power and $P_{\text{in}}$ is the input power. The measured values are $P_{\text{out}} \pm \Delta P_{\text{out}}$ and $P_{\text{in}} \pm \Delta P_{\text{in}}$, with independent uncertainties. Derive the expression for the **relative uncertainty** $\frac{\Delta \eta}{\eta}$ in terms of the relative uncertainties of $P_{\text{out}}$ and $P_{\text{in}}$.  
 
 Express your answer as an analytic expression using $\Delta P_{\text{out}}$, $P_{\text{out}}$, $\Delta P_{\text{in}}$, and $P_{\text{in}}$.  
@@ -11813,25 +11813,25 @@ $$\boxed{ \sqrt{ \left( \frac{\Delta P_{\text{out}}}{P_{\text{out}}}} \right)^{2
 
 ------
 ### Problem 36
-#### Background
+##### Background
 In materials science, strain quantifies the deformation of an object under applied stress. It is defined as the ratio of the change in length ($\Delta L$) to the original length ($L$). Experimental measurements always involve uncertainties: the change in length is measured as $\Delta L \pm \Delta(\Delta L)$, and the original length as $L \pm \Delta L$. To accurately interpret results, scientists must quantify how these uncertainties propagate to the calculated strain.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Definition of relative uncertainty.
 - Error propagation for a quotient of two measured quantities.
 - Application of partial derivatives in uncertainty analysis.
 - Interpretation of independent measurement errors.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to the broader study of measurement theory in physics, elasticity in mechanics, and statistical analysis of experimental data. It reinforces the principle that uncertainties combine geometrically for multiplicative relationships.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Uncertainty propagation is essential in engineering (structural integrity assessments), environmental science (ground deformation monitoring), and metrology (precision instrument calibration). The mathematical framework also appears in economics (sensitivity analysis) and epidemiology (error in rate calculations).
 
-#### Real-World Applications
+##### Real-World Applications
 Accurate strain uncertainty analysis ensures safety in civil engineering (bridge load testing), aerospace (wing stress simulations), and medical devices (stent expansion tolerances). For example, underestimating strain uncertainty in tectonic plate monitoring could lead to inaccurate earthquake risk assessments.
 
-#### Problem Statement
+##### Problem Statement
 The strain $\epsilon$ of a material is given by $\epsilon = \frac{\Delta L}{L}$, where $\Delta L$ is the change in length with absolute uncertainty $\Delta(\Delta L)$, and $L$ is the original length with absolute uncertainty $\Delta L$. Assume $\Delta L$ and $L$ are measured independently. Derive an expression for the **relative uncertainty in the strain**, denoted as $\frac{\Delta \epsilon}{\epsilon}$, in terms of $\Delta L$, $\Delta(\Delta L)$, and $L$. Express your answer as a single analytic expression using only these variables.
 
 ### Solution
@@ -11869,30 +11869,30 @@ $$ \boxed{ \sqrt{ \left( \frac{\Delta(\Delta L)}{\Delta L} \right)^{2} + \left( 
 
 ------
 ### Problem 37
-#### Background
+##### Background
 In orbital mechanics, the orbital velocity of a satellite depends on the gravitational constant $G$, the mass $M$ of the central body, and the orbital radius $r$. Measurements of $M$ and $r$ have associated uncertainties $\Delta M$ and $\Delta r$, respectively, while $G$ is a known constant. Understanding how these uncertainties propagate to the orbital velocity is essential for mission planning and data analysis in astrophysics and aerospace engineering.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Error propagation for functions of multiple variables.
 2. Relative uncertainty calculation.
 3. Differentiation of power-law expressions.
 4. Root-sum-square combination of independent uncertainties.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to kinematics (circular motion) and gravitation (Newton's law of universal gravitation).
 - Extends to statistical analysis of experimental data in physics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Satellite deployment requires precise velocity calculations under measurement uncertainty.
 - **Statistics**: Demonstrates variance propagation through nonlinear transformations.
 - **Earth Science**: Applies to determining planetary masses and orbital parameters from observational data.
 
-#### Real-World Applications
+##### Real-World Applications
 - Calculating launch windows and fuel requirements for spacecraft.
 - Estimating uncertainties in exoplanet mass determinations from radial velocity measurements.
 - Validating orbital models for Global Positioning System (GPS) satellites.
 
-#### Problem Statement
+##### Problem Statement
 The orbital velocity $v$ of a satellite is given by $v = \sqrt{\frac{GM}{r}}$, where $G$ is the gravitational constant (known exactly), $M$ is the mass of the central body with uncertainty $\Delta M$, and $r$ is the orbital radius with uncertainty $\Delta r$. Assume $\Delta M$ and $\Delta r$ are independent. Derive an analytic expression for the **relative uncertainty in $v$**, denoted $\frac{\Delta v}{v}$, in terms of the relative uncertainties $\frac{\Delta M}{M}$ and $\frac{\Delta r}{r}$. Express your final answer using the notation $\frac{\Delta v}{v} = \text{[expression]}$.
 
 ### Solution
@@ -11930,28 +11930,28 @@ $$\boxed{\dfrac{1}{2} \sqrt{ \left( \dfrac{\Delta M}{M} \right)^{2} + \left( \df
 
 ------
 ### Problem 38
-#### Background
+##### Background
 In experimental physics, accurately determining physical quantities often involves measuring multiple parameters, each with inherent uncertainties. The electric field strength between parallel plates, for example, depends on the voltage applied and the separation between the plates. Understanding how uncertainties propagate through calculations is essential for reliable scientific conclusions and engineering designs.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. **Error propagation for quotients**: Deriving the absolute uncertainty in a quantity expressed as a quotient of two measured variables.
 2. **Partial derivatives**: Applying calculus to quantify how small changes in input parameters affect the output.
 3. **Quadrature (RSS) method**: Combining independent uncertainties using the root-sum-square approach.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Electrostatics**: Relates to Coulomb's law and electric field definitions.
 - **Measurement techniques**: Connects to instrumentation precision and calibration methods in laboratory settings.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Uncertainty analysis is critical in designing capacitors for electronic circuits.
 - **Statistics**: The quadrature method originates from statistical theories of independent random variables.
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibrating scientific instruments like mass spectrometers and particle detectors.
 - Quality control in manufacturing capacitors for consumer electronics.
 - Environmental monitoring equipment that measures atmospheric electric fields.
 
-#### Problem Statement
+##### Problem Statement
 Two parallel conducting plates generate a uniform electric field $E = V/d$, where $V$ is the voltage (with absolute uncertainty $\Delta V$) and $d$ is the plate separation (with absolute uncertainty $\Delta d$). All uncertainties are independent and random. Derive an expression for the absolute uncertainty $\Delta E$ in the electric field. Use **only** the symbols $V$, $\Delta V$, $d$, and $\Delta d$ in your final expression. Ensure the result is simplified and expressed as a single closed-form analytic expression.
 
 **Format Requirements**:
@@ -12010,24 +12010,24 @@ $$
 
 ------
 ### Problem 39
-#### Background
+##### Background
 In nuclear physics, the half-life $T_{1/2}$ of a radioactive isotope quantifies the time required for half of a sample to decay. This property is linked to the decay constant $\lambda$ through the relation $T_{1/2} = \frac{\ln 2}{\lambda}$. Experimental measurements of $\lambda$ inherently carry uncertainty, denoted as $\Delta \lambda$. Understanding how this uncertainty propagates to $T_{1/2}$ is essential for assessing the reliability of half-life determinations in applications like radiometric dating and nuclear medicine.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Propagation of uncertainty for a function of a single variable.
 - Calculation of relative uncertainty.
 - Differentiation of inverse functions.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to exponential decay models in physics and calculus-based error analysis in experimental physics. It reinforces the interplay between mathematical derivatives and physical interpretations of uncertainty.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Uncertainty propagation is fundamental in chemistry (reaction kinetics), engineering (sensor measurements), and environmental science (pollutant decay modeling). The mathematical framework applies broadly to any inverse relationship in experimental data.
 
-#### Real-World Applications
+##### Real-World Applications
 Accurate uncertainty quantification for half-life is critical in carbon-14 dating (archaeology), cancer treatment (radiation dose calibration), and nuclear waste management (decay rate predictions).
 
-#### Problem Statement
+##### Problem Statement
 The half-life of a radioactive isotope is given by $T_{1/2} = \frac{\ln 2}{\lambda}$, where $\lambda$ is the decay constant. If $\lambda$ has an absolute uncertainty $\Delta \lambda$, derive the relative uncertainty in the half-life, $\frac{\Delta T_{1/2}}{T_{1/2}}$. Express your answer symbolically in terms of $\lambda$ and $\Delta \lambda$.
 
 ### Solution
@@ -12067,29 +12067,29 @@ $$\boxed{\frac{\Delta \lambda}{\lambda}}$$
 
 ------
 ### Problem 4
-#### Background
+##### Background
 In manufacturing and quality control, precise measurements are critical. Consider a cubic component used in a mechanical assembly. The side length of the cube is measured as $ a \pm \Delta a $, where $ \Delta a $ represents the absolute uncertainty in the measurement. To ensure the component fits correctly, the volume must be calculated, and its uncertainty quantified. The relative uncertainty—defined as the ratio of absolute uncertainty to the measured value—provides insight into measurement reliability.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Definition of relative uncertainty.
 - Propagation of uncertainty for power functions.
 - Derivative-based error propagation in single-variable systems.
 - Algebraic manipulation of uncertainty expressions.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to calculus (derivatives for sensitivity analysis), algebra (exponent rules), and measurement theory (systematic vs. random errors). It extends to volume calculations in geometry and optimization in design engineering.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Physics**: Uncertainty principles in experimental data (e.g., material density calculations).
 - **Engineering**: Tolerance analysis in mechanical design and additive manufacturing.
 - **Statistics**: Variance estimation for derived quantities.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Semiconductor Fabrication**: Measuring silicon die dimensions to compute chip volume and predict thermal dissipation.
 - **Pharmaceuticals**: Calculating drug dosage volumes in capsules with strict tolerance limits.
 - **Aerospace**: Verifying fuel tank dimensions for spacecraft to ensure precise propellant loading.
 
-#### Problem Statement
+##### Problem Statement
 A machinist measures the side length of a metal cube as $ a \pm \Delta a $. The volume $ V $ of the cube is a function of the side length $ a $. Derive an analytic expression for the **relative uncertainty** in the volume, $ \frac{\Delta V}{V} $, in terms of $ a $ and $ \Delta a $. Assume $ \Delta a \ll a $ and that uncertainties propagate according to standard derivative-based methods. Express your final answer as a simplified symbolic expression using only the given parameters.
 
 ### Solution
@@ -12118,31 +12118,31 @@ $$\boxed{3 \frac{\Delta a}{a}}$$
 
 ------
 ### Problem 40
-#### Background
+##### Background
 In physics experiments involving projectile motion, the maximum height $ H $ reached by an object is a key parameter. The theoretical model relates $ H $ to the initial speed $ v $, launch angle $ \theta $, and gravitational acceleration $ g $. However, real-world measurements of $ v $ and $ \theta $ have inherent uncertainties due to instrument limitations or environmental factors. These uncertainties propagate to the calculated value of $ H $. Understanding how small errors in inputs affect the output is essential for experimental design and data analysis in fields ranging from sports science to aerospace engineering.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. **Uncertainty propagation**: Combining relative uncertainties for a multivariable function using partial derivatives.
 2. **Trigonometric identities**: Manipulating expressions involving $\sin\theta$ and $\cot\theta$.
 3. **Calculus**: Computing partial derivatives of $ H $ with respect to $ v $ and $ \theta $.
 4. **Error analysis**: Formulating the relative uncertainty $\Delta H / H$ as a function of input uncertainties $\Delta v$ and $\Delta \theta$.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Kinematics**: The maximum height formula derives from motion under constant acceleration.
 - **Calculus**: Partial differentiation is used to quantify sensitivity to each variable.
 - **Probability**: The error propagation formula assumes independent, random uncertainties (root-sum-square combination).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Critical for assessing reliability in trajectory-based systems (e.g., rocket launches).
 - **Meteorology**: Uncertainty analysis applies to predicting projectile paths in variable wind conditions.
 - **Data Science**: Demonstrates how input errors propagate in mathematical models.
 
-#### Real-World Applications
+##### Real-World Applications
 1. **Ballistics**: Estimating range uncertainty in artillery targeting when muzzle velocity and elevation angle have measurement errors.
 2. **Sports analytics**: Quantifying how small variations in a basketball player's release speed or angle affect the peak height of a shot.
 3. **Physics education labs**: Common experiment to teach uncertainty principles using a projectile launcher.
 
-#### Problem Statement
+##### Problem Statement
 The maximum height $ H $ of a projectile is modeled as:
 $$ H = \frac{v^2 \sin^2\theta}{2g} $$
 where:
@@ -12185,31 +12185,31 @@ $$\boxed{2 \sqrt{ \left( \frac{\Delta v}{v} \right)^2 + \left( \cot\theta  \Delt
 
 ------
 ### Problem 41
-#### Background  
+##### Background  
 In physics, the potential energy stored in a spring when it is compressed or stretched by a distance $x$ from its equilibrium position is given by $U = \frac{1}{2}kx^2$, where $k$ is the spring constant. Experimental measurements of $k$ and $x$ inherently have uncertainties due to limitations in instruments or techniques. These uncertainties propagate to the calculated potential energy $U$. Understanding how uncertainties combine is essential for reliable data analysis in scientific experiments.
 
-#### Knowledge Points Tested  
+##### Knowledge Points Tested  
 1. Error propagation for functions of multiple variables.  
 2. Calculation of relative uncertainty.  
 3. Partial differentiation and its role in uncertainty analysis.  
 4. Quadratic combination of independent uncertainties.  
 
-#### Intradisciplinary Connections  
+##### Intradisciplinary Connections  
 - Connects to Hooke's law ($F = -kx$) and mechanical energy conservation.  
 - Extends to uncertainty analysis in other energy forms (e.g., kinetic, gravitational).  
 - Reinforces algebraic manipulation of multivariable functions.  
 
-#### Interdisciplinary Connections  
+##### Interdisciplinary Connections  
 - **Engineering**: Precision requirements in spring design for mechanical systems (e.g., suspensions, scales).  
 - **Statistics**: Variance propagation in correlated and uncorrelated measurements.  
 - **Metrology**: Calibration standards for physical measurements.  
 
-#### Real-World Applications  
+##### Real-World Applications  
 - Quality control in manufacturing springs for automotive or aerospace industries.  
 - Validation of energy conservation in physics labs (e.g., spring-launched projectiles).  
 - Sensitivity analysis in computational models for material science.  
 
-#### Problem Statement  
+##### Problem Statement  
 A spring’s potential energy is modeled as $U = \frac{1}{2}kx^2$. The spring constant $k$ is measured with an absolute uncertainty $\Delta k$, and the displacement $x$ is measured with an absolute uncertainty $\Delta x$. Assume the uncertainties in $k$ and $x$ are independent and random. Derive an expression for the **relative uncertainty** $\frac{\Delta U}{U}$ in terms of $k$, $x$, $\Delta k$, and $\Delta x$.  
 **Express the final answer as a single simplified analytic expression.**
 
@@ -12274,29 +12274,29 @@ $$\boxed{\sqrt{ \left( \frac{\Delta k}{k} \right)^2 + 4 \left( \frac{\Delta x}{x
 
 ------
 ### Problem 42
-#### Background  
+##### Background  
 In physics experiments, understanding the uncertainty in measurements is crucial for accurate results. Consider a scenario where you are investigating the frictional force between two surfaces. The frictional force $f$ is modeled as the product of the coefficient of friction $\mu$ and the normal force $N$. Both $\mu$ and $N$ are measured with associated uncertainties: $\mu \pm \Delta \mu$ and $N \pm \Delta N$. These uncertainties arise from limitations in measurement tools or experimental conditions.  
 
-#### Knowledge Points Tested  
+##### Knowledge Points Tested  
 - Propagation of absolute uncertainty for a product of two independent variables.  
 - Application of partial derivatives in uncertainty analysis.  
 - Construction of error propagation formulas from first principles.  
 
-#### Intradisciplinary Connections  
+##### Intradisciplinary Connections  
 - Connects to Newtonian mechanics (friction models).  
 - Extends to statistical analysis of experimental data in laboratory physics.  
 
-#### Interdisciplinary Connections  
+##### Interdisciplinary Connections  
 - **Engineering**: Tolerance analysis in mechanical design (e.g., brake systems).  
 - **Chemistry**: Uncertainty in reaction rate calculations involving concentration products.  
 - **Meteorology**: Error propagation in pressure-temperature models for weather forecasting.  
 
-#### Real-World Applications  
+##### Real-World Applications  
 - **Automotive Safety**: Calculating uncertainty in braking force ensures reliable anti-lock braking systems (ABS).  
 - **Manufacturing**: Quality control for surface treatments where friction coefficients affect product durability.  
 - **Sports Science**: Optimizing shoe-traction designs for athletes by quantifying force-measurement errors.  
 
-#### Problem Statement  
+##### Problem Statement  
 The frictional force $f$ is given by $f = \mu N$, where $\mu$ and $N$ are measured with independent absolute uncertainties $\Delta \mu$ and $\Delta N$, respectively. Derive an expression for the absolute uncertainty $\Delta f$ in terms of $\mu$, $N$, $\Delta \mu$, and $\Delta N$. Assume all uncertainties are uncorrelated and random.  
 
 **Format Requirements**:  
@@ -12328,27 +12328,27 @@ $$\boxed{\sqrt{(N \Delta \mu)^2 + (\mu \Delta N)^2}}$$
 
 ------
 ### Problem 43
-#### Background
+##### Background
 In projectile motion, the time of flight $T$ represents the duration a projectile remains airborne when launched with initial speed $v$ at angle $\theta$ relative to the horizontal. The formula $T = \frac{2v \sin\theta}{g}$ depends on $v$ and $\theta$, where $g$ is the constant acceleration due to gravity. Experimental measurements of $v$ and $\theta$ inherently carry uncertainties $\Delta v$ and $\Delta \theta$ (in radians), respectively. Understanding how these uncertainties propagate to $T$ is essential for predicting the reliability of calculated results in fields like ballistics, sports science, and engineering.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Propagation of uncertainty for a function of multiple independent variables
 - Calculation of partial derivatives
 - Relative uncertainty formulation
 - Trigonometric identities (cotangent function)
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 Connects to kinematics (projectile motion), calculus (partial differentiation), and statistics (variance of derived quantities). Reinforces the transition from deterministic to probabilistic models in physics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Applies to chemistry (error analysis in reaction kinetics), engineering (robustness of trajectory-based systems), and environmental science (uncertainty in modeled atmospheric particle paths).
 
-#### Real-World Applications
+##### Real-World Applications
 - Precision targeting in aerospace (e.g., rocket stage separation timing)
 - Sports analytics (e.g., uncertainty in hang time of a football or golf ball)
 - Quality control in manufacturing (e.g., consistency of projected particle durations)
 
-#### Problem Statement
+##### Problem Statement
 The time of flight for a projectile is given by $T = \frac{2v \sin\theta}{g}$, where $g$ is constant and known exactly. The initial speed $v$ has an absolute uncertainty $\Delta v$, and the launch angle $\theta$ (measured in radians) has an absolute uncertainty $\Delta \theta$. Both uncertainties are independent. Derive an expression for the relative uncertainty in $T$, denoted $\frac{\Delta T}{T}$. Express your final answer symbolically in terms of $v$, $\theta$, $\Delta v$, and $\Delta \theta$, using the notation $\cot \theta$ for the cotangent function. Ensure all partial derivatives are explicitly shown in your derivation.
 
 ### Solution
@@ -12386,29 +12386,29 @@ $$\boxed{\sqrt{ \left( \frac{\Delta v}{v} \right)^2 + \left( \cot \theta \cdot \
 
 ------
 ### Problem 44
-#### Background
+##### Background
 In electrical engineering and experimental physics, measuring power consumption is fundamental. Power $P$ in a resistive circuit is calculated as the product of current $I$ and voltage $V$, expressed as $P = IV$. All physical measurements involve uncertainty: current is measured as $I \pm \Delta I$, and voltage as $V \pm \Delta V$, where $\Delta I$ and $\Delta V$ represent absolute uncertainties. To assess the reliability of power calculations, we analyze how uncertainties propagate through multiplicative relationships.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. **Error propagation for products**: Deriving the relative uncertainty of a product from the relative uncertainties of its factors.
 2. **Partial derivatives**: Using calculus to quantify sensitivity to individual variables.
 3. **Root-sum-square (RSS) combination**: Combining independent uncertainties geometrically under the assumption of statistical independence.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to Ohm's law ($V = IR$) and resistive heating ($P = I^2R$), where similar uncertainty analyses apply.
 - Extends to multivariate calculus (chain rule, partial differentiation) and statistics (variance of products).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Statistics**: RSS reflects the Pythagorean theorem for independent random variables.
 - **Metrology**: Standard technique in calibration laboratories for quantifying measurement reliability.
 - **Engineering design**: Critical for tolerance analysis in electrical component specifications.
 
-#### Real-World Applications
+##### Real-World Applications
 - Validating power efficiency claims for consumer electronics.
 - Uncertainty budgeting in precision energy measurements (e.g., smart grids, battery diagnostics).
 - Reliability assessment in aerospace systems where power fluctuations impact mission-critical devices.
 
-#### Problem Statement
+##### Problem Statement
 An experiment measures current $I$ with absolute uncertainty $\Delta I$ and voltage $V$ with absolute uncertainty $\Delta V$. The power dissipated is calculated as $P = IV$. Assuming $I$ and $V$ are statistically independent measured quantities:  
 **Derive an analytic expression for the relative uncertainty $\frac{\Delta P}{P}$ in terms of $I$, $\Delta I$, $V$, and $\Delta V$.**  
 *Express your final answer as a single simplified expression enclosed in \boxed{}.*
@@ -12462,31 +12462,31 @@ $$
 
 ------
 ### Problem 45
-#### Background
+##### Background
 In physics experiments, precise measurements of forces are crucial. The magnetic force on a moving charged particle is given by the formula $F = qvB\sin\theta$, where $q$ is the charge, $v$ is the velocity, $B$ is the magnetic field strength, and $\theta$ is the angle between the velocity vector and the magnetic field vector. Each measured quantity has an associated uncertainty: $q \pm \Delta q$, $v \pm \Delta v$, $B \pm \Delta B$, and $\theta \pm \Delta \theta$. These uncertainties propagate to the calculated force $F$.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Understanding the formula for magnetic force.
 2. Applying partial derivatives to compute sensitivity coefficients for uncertainty propagation.
 3. Using the root-sum-square method for combining independent uncertainties.
 4. Handling angular uncertainties in trigonometric functions (requires $\Delta \theta$ in radians).
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to measurement techniques in electromagnetism.
 - Relates to calculus-based error analysis in classical mechanics.
 - Extends to uncertainty principles in quantum mechanics (conceptual link).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering:** Precision instrument design (e.g., particle accelerators).
 - **Statistics:** Propagation of variance in multivariate functions.
 - **Meteorology:** Uncertainty in vector-based force calculations (e.g., wind and pressure systems).
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibrating mass spectrometers to identify chemical compounds.
 - Designing magnetic confinement systems in fusion reactors.
 - Validating particle trajectories in the Large Hadron Collider (LHC).
 
-#### Problem Statement
+##### Problem Statement
 A charged particle moves through a magnetic field. The measured parameters and their uncertainties are:  
 - Charge: $q \pm \Delta q$  
 - Speed: $v \pm \Delta v$  
@@ -12534,29 +12534,29 @@ $$\boxed{\sqrt{(vB\sin\theta \Delta q)^{2} + (qB\sin\theta \Delta v)^{2} + (qv\s
 
 ------
 ### Problem 46
-#### Background
+##### Background
 In fluid mechanics, hydrostatic pressure is the pressure exerted by a fluid at equilibrium due to the force of gravity. This pressure is calculated using the formula $P = \rho g h$, where $\rho$ is the fluid density, $g$ is the acceleration due to gravity, and $h$ is the height of the fluid column. Experimental measurements of $\rho$, $g$, and $h$ always involve uncertainties, denoted as $\Delta \rho$, $\Delta g$, and $\Delta h$ respectively. These uncertainties propagate to the calculated pressure $P$. Understanding how to quantify this propagation is essential for accurate scientific reporting and engineering design.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Uncertainty propagation for products of independent variables.
 2. Partial differentiation for multi-variable functions.
 3. Relative uncertainty calculation.
 4. Root-sum-square (RSS) combination of independent errors.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to error analysis in experimental physics, calculus-based derivations in fluid statics, and statistical methods for combining variances in measurement science.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Uncertainty analysis in hydraulic system design (e.g., dams, pipelines).
 - **Environmental Science**: Error estimation in atmospheric/oceanic pressure models.
 - **Metrology**: Standard protocols for reporting measurement precision in calibration labs.
 
-#### Real-World Applications
+##### Real-World Applications
 - Designing pressure sensors for submersible vehicles where depth ($h$) uncertainty affects safety margins.
 - Calibrating medical infusion pumps where fluid density ($\rho$) variations impact dosage accuracy.
 - Geophysical surveys where gravity ($g$) measurements influence oil reservoir pressure estimates.
 
-#### Problem Statement
+##### Problem Statement
 A student measures the density $\rho$, gravitational acceleration $g$, and fluid height $h$ with respective uncertainties $\Delta \rho$, $\Delta g$, and $\Delta h$. The variables $\rho$, $g$, and $h$ are statistically independent. Starting from the general formula for uncertainty propagation in a function $f(x_1, x_2, ..., x_n)$:  
 $$  
 \Delta f = \sqrt{ \sum_{i=1}^{n} \left( \frac{\partial f}{\partial x_i} \Delta x_i \right)^2 },  
@@ -12607,33 +12607,33 @@ $$ \boxed{ \sqrt{ \left( \frac{\Delta \rho}{\rho} \right)^2 + \left( \frac{\Delt
 
 ------
 ### Problem 47
-#### Background
+##### Background
 In experimental physics, understanding the propagation of uncertainty is crucial when measuring derived quantities. Consider the Coulomb potential energy between two point charges, a fundamental concept in electrostatics. The potential energy $U$ is given by:
 $$ U = k \frac{q_1 q_2}{r} $$
 where $k$ is a constant, $q_1$ and $q_2$ are the magnitudes of the charges, and $r$ is the distance between them. In a laboratory setting, measurements of $q_1$, $q_2$, and $r$ have associated uncertainties $\Delta q_1$, $\Delta q_2$, and $\Delta r$, respectively. These uncertainties arise from limitations in measurement instruments or environmental factors.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of relative uncertainty.
 2. Error propagation for products and quotients.
 3. Application of partial derivatives in uncertainty analysis.
 4. Combining independent uncertainties in quadrature.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - **Electrostatics**: Relies on Coulomb's law and the superposition principle.
 - **Calculus**: Utilizes partial differentiation to quantify sensitivity of $U$ to changes in $q_1$, $q_2$, and $r$.
 - **Probability**: Assumes independent, random errors modeled by Gaussian distributions.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Uncertainty analysis is essential for designing electrical systems with safety margins.
 - **Meteorology**: Similar error propagation methods apply when calculating derived quantities like humidity indices.
 - **Economics**: Sensitivity analysis in cost-benefit models uses analogous partial-derivative frameworks.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Particle Physics**: Calculating interaction energies in particle colliders with precise uncertainty bounds.
 - **Nanotechnology**: Designing electrostatic force microscopes where nanoscale charge measurements require rigorous error analysis.
 - **Renewable Energy**: Optimizing electrostatic precipitators in solar panel manufacturing to control particulate emissions.
 
-#### Problem Statement
+##### Problem Statement
 Two point charges with magnitudes $q_1 \pm \Delta q_1$ and $q_2 \pm \Delta q_2$ are separated by a distance $r \pm \Delta r$. The Coulomb potential energy $U$ is given by $U = k \frac{q_1 q_2}{r}$, where $k$ is an exact constant. Derive an expression for the relative uncertainty $\frac{\Delta U}{U}$ in terms of the relative uncertainties $\frac{\Delta q_1}{q_1}$, $\frac{\Delta q_2}{q_2}$, and $\frac{\Delta r}{r}$. Assume all uncertainties are independent and random. Express your final answer as a single simplified analytic expression.
 
 ### Solution
@@ -12664,7 +12664,7 @@ $$\boxed{\sqrt{ \left( \frac{\Delta q_{1}}{q_{1}} \right)^{2} + \left( \frac{\De
 
 ------
 ### Problem 48
-#### Background
+##### Background
 In materials science, Young's modulus (Y) quantifies a material's stiffness and is determined experimentally by applying tensile stress to a specimen. The formula for Young's modulus is derived from Hooke's law:  
 $$ Y = \frac{F L_0}{A \Delta L} $$  
 where:  
@@ -12675,26 +12675,26 @@ where:
 
 Experimental measurements always involve uncertainty. The force is measured as $F \pm \Delta F$, the original length as $L_0 \pm \Delta L_0$, the cross-sectional area as $A \pm \Delta A$, and the elongation as $\Delta L \pm \Delta(\Delta L)$.  
 
-#### Knowledge Points Tested  
+##### Knowledge Points Tested  
 1. Propagation of uncertainty in multivariable functions.  
 2. Relative uncertainty calculation for products and quotients.  
 3. Partial derivatives and error analysis.  
 
-#### Intradisciplinary Connections  
+##### Intradisciplinary Connections  
 - Connects to elasticity theory in solid mechanics.  
 - Extends to stress-strain relationships and material failure analysis.  
 
-#### Interdisciplinary Connections  
+##### Interdisciplinary Connections  
 - Physics: Application of measurement uncertainty principles.  
 - Engineering: Reliability analysis in structural design.  
 - Statistics: Variance computation in dependent variables.  
 
-#### Real-World Applications  
+##### Real-World Applications  
 - Quality control in manufacturing (e.g., verifying steel beam stiffness in construction).  
 - Biomedical engineering (e.g., measuring elasticity of artificial tendons).  
 - Aerospace testing (e.g., validating material properties for aircraft components).  
 
-#### Problem Statement  
+##### Problem Statement  
 Using the formula for Young's modulus $Y = \frac{F L_0}{A \Delta L}$, derive an expression for the **relative uncertainty** $\frac{\Delta Y}{Y}$ in terms of the relative uncertainties of the measured quantities:  
 - Force: $\frac{\Delta F}{F}$  
 - Original length: $\frac{\Delta L_0}{L_0}$  
@@ -12740,28 +12740,28 @@ $$\boxed{ \sqrt{ \left( \frac{\Delta F}{F} \right)^{2} + \left( \frac{\Delta L_{
 
 ------
 ### Problem 49
-#### Background
+##### Background
 In quantum physics, the energy of a single photon is given by the equation $E = hf$, where $h$ is Planck's constant and $f$ is the frequency of the electromagnetic wave. This relationship underpins technologies like solar cells, optical communications, and medical imaging. When measuring frequency experimentally (e.g., using interferometry or diffraction gratings), all instruments have inherent precision limits, leading to an absolute uncertainty $\Delta f$ in the frequency measurement. Since Planck's constant $h$ is a defined physical constant with negligible uncertainty, the dominant source of error in calculating photon energy comes from the frequency measurement.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Fundamental principles of uncertainty propagation for single-variable functions
 - Derivative-based approach to absolute uncertainty calculation
 - Interpretation of constants vs. measured quantities in error analysis
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 Connects to wave-particle duality in quantum mechanics, spectroscopy (energy-level transitions), and statistical mechanics (energy distribution of photons). Reinforces foundational calculus concepts through differentiation applications.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Calibration of optical sensors in telecommunications
 - **Chemistry**: Precision in photochemical reaction energy thresholds
 - **Data Science**: Error quantification in experimental datasets
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibrating laser systems for semiconductor manufacturing
 - Validating frequency measurements in atomic clocks
 - Assessing uncertainty in photovoltaic efficiency calculations for solar panels
 
-#### Problem Statement
+##### Problem Statement
 A laboratory measures the frequency of monochromatic light as $f \pm \Delta f$ using a high-resolution spectrometer. Planck's constant $h$ is treated as an exact value with no uncertainty. Derive an expression for the absolute uncertainty $\Delta E$ in the photon energy $E = hf$ solely in terms of $h$ and $\Delta f$. Express your final answer as a simplified analytic expression.  
 *Format requirements*:  
 - Use only the variables $h$ and $\Delta f$  
@@ -12800,29 +12800,29 @@ $$\boxed{h \cdot \Delta f}$$
 
 ------
 ### Problem 5
-#### Background
+##### Background
 In an electronics laboratory, students are measuring the resistance of a circuit component using Ohm's law. They use a voltmeter to measure the voltage drop $V$ across the component and an ammeter to measure the current $I$ flowing through it. Each instrument has a specified absolute uncertainty: $\Delta V$ for the voltmeter and $\Delta I$ for the ammeter. The resistance $R$ is calculated as $R = V/I$. To assess the reliability of their result, students must quantify how uncertainties in $V$ and $I$ propagate to the absolute uncertainty in $R$.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Definition of absolute uncertainty in measured quantities.
 2. Propagation of uncertainties through division operations.
 3. Partial differentiation for error propagation in multivariable functions.
 4. Root-sum-square combination of independent uncertainties.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to Ohm's law in circuit theory and measurement techniques in experimental physics.
 - Extends to uncertainty analysis in derived physical quantities (e.g., resistivity, power dissipation).
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Applies to error analysis in chemistry (e.g., concentration calculations) and engineering (e.g., sensor calibration).
 - Relevant to data science for quantifying measurement reliability in empirical datasets.
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibration of electronic components in manufacturing to ensure tolerance specifications.
 - Validation of experimental results in research publications where measurement uncertainties must be rigorously reported.
 - Quality control in medical devices (e.g., precision of bioimpedance measurements).
 
-#### Problem Statement
+##### Problem Statement
 The resistance $R$ of a component is calculated from voltage and current measurements: $R = V/I$. The voltage $V$ has an absolute uncertainty $\Delta V$, and the current $I$ has an absolute uncertainty $\Delta I$. Assume $\Delta V$ and $\Delta I$ arise from independent random errors.  
 
 Using calculus-based error propagation, derive an analytic expression for the absolute uncertainty $\Delta R$ in the resistance $R$. Express $\Delta R$ symbolically in terms of $V$, $I$, $\Delta V$, and $\Delta I$.  
@@ -12882,28 +12882,28 @@ $$\boxed{ \dfrac{ \sqrt{ I^{2} \left( \Delta V \right)^{2} + V^{2} \left( \Delta
 
 ------
 ### Problem 50
-#### Background  
+##### Background  
 In experimental physics and engineering, precise measurements are crucial. When multiple independent measurements of the same quantity are taken, the mean value is often reported to improve accuracy. However, each measurement carries an uncertainty, and these uncertainties propagate when calculating the mean. Consider a scenario where two researchers independently measure the length of a titanium alloy rod using calibrated instruments. The first researcher reports $L_1 \pm \Delta L_1$, and the second reports $L_2 \pm \Delta L_2$, where $\Delta L_1$ and $\Delta L_2$ are the absolute uncertainties in each measurement. The mean length is defined as $\bar{L} = (L_1 + L_2)/2$.  
 
-#### Knowledge Points Tested  
+##### Knowledge Points Tested  
 - Propagation of uncertainty for independent measurements.  
 - Derivation of absolute uncertainty in a linear combination of variables.  
 - Application of partial derivatives in error analysis.  
 
-#### Intradisciplinary Connections  
+##### Intradisciplinary Connections  
 This problem connects to statistical analysis of data (e.g., standard error of the mean) and reinforces foundational calculus concepts like partial differentiation. It also extends to curve-fitting methods where weighted averages depend on measurement uncertainties.  
 
-#### Interdisciplinary Connections  
+##### Interdisciplinary Connections  
 - **Statistics**: Uncertainty propagation relies on variance rules for independent random variables.  
 - **Engineering**: Precision in manufacturing tolerances requires aggregating measurements from multiple sensors.  
 - **Environmental Science**: Averaging field measurements (e.g., pollutant concentrations) necessitates uncertainty quantification.  
 
-#### Real-World Applications  
+##### Real-World Applications  
 - Calibrating satellite altimeters that measure sea-level rise by combining redundant sensors.  
 - Quality control in semiconductor fabrication, where wafer thickness is averaged across multiple probes to reduce error.  
 - Medical imaging devices (e.g., MRI) that merge scans from different angles to enhance resolution.  
 
-#### Problem Statement  
+##### Problem Statement  
 Derive the absolute uncertainty $\Delta \bar{L}$ in the mean length $\bar{L} = (L_1 + L_2)/2$, where $L_1$ and $L_2$ are independent measurements with absolute uncertainties $\Delta L_1$ and $\Delta L_2$, respectively. Assume the uncertainties are uncorrelated and arise from random errors. Express $\Delta \bar{L}$ as a symbolic function of $\Delta L_1$ and $\Delta L_2$ only.  
 
 **Answer Format Instructions**  
@@ -12958,24 +12958,24 @@ $$\boxed{\dfrac{\sqrt{(\Delta L_1)^2 + (\Delta L_2)^2}}{2}}$$
 
 ------
 ### Problem 51
-#### Background
+##### Background
 In acoustics experiments, the speed of sound is often measured by timing how long it takes for a sound wave to travel a known distance. A student sets up a straight tube of length $d$ with a sound emitter at one end and a sensor at the other. The distance $d$ is measured with an uncertainty $\Delta d$ due to calibration errors in the measuring tape, and the travel time $t$ is recorded with an uncertainty $\Delta t$ caused by limitations in the electronic timing system. The speed of sound $v$ is calculated as $v = d / t$. Understanding how uncertainties in $d$ and $t$ propagate to the final result is essential for evaluating the experiment's accuracy.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 1. Propagation of uncertainty for a quotient of two measured quantities.
 2. Application of partial derivatives and root-sum-square combination for independent random errors.
 3. Derivation of absolute uncertainty from relative uncertainties.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This connects to measurement techniques in wave physics, error analysis in experimental design, and the study of sound waves in different media. It also reinforces concepts in calculus-based physics, such as partial differentiation.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Error propagation is fundamental in fields like engineering (e.g., tolerance analysis in manufacturing), chemistry (e.g., concentration calculations), and environmental science (e.g., seismic wave velocity measurements).
 
-#### Real-World Applications
+##### Real-World Applications
 Accurate uncertainty analysis is critical in sonar systems for underwater navigation, medical ultrasound imaging, and acoustic positioning in robotics. Misestimating uncertainties can lead to faulty conclusions in climate science (e.g., speed of sound in oceans for temperature monitoring).
 
-#### Problem Statement
+##### Problem Statement
 Using the formula $v = d / t$, derive an expression for the absolute uncertainty $\Delta v$ in the speed of sound, given that $d$ and $t$ have independent random uncertainties $\Delta d$ and $\Delta t$, respectively. Express $\Delta v$ symbolically in terms of $d$, $t$, $\Delta d$, and $\Delta t$ only. Simplify the expression as much as possible. Ensure all derivatives are explicitly calculated and combined using root-sum-square.
 
 ### Solution
@@ -13050,27 +13050,27 @@ $$
 
 ------
 ### Problem 52
-#### Background
+##### Background
 In experimental physics, the ideal gas law is a fundamental equation of state for a hypothetical ideal gas: $P = \frac{nRT}{V}$, where $P$ is pressure, $n$ is the number of moles (constant), $R$ is the universal gas constant, $T$ is temperature, and $V$ is volume. When measuring temperature and volume experimentally, uncertainties arise due to instrument limitations. Suppose a gas sample's temperature $T$ has an absolute uncertainty $\Delta T$, and its volume $V$ has an absolute uncertainty $\Delta V$. 
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Propagation of uncertainty for multiplicative expressions
 - Partial derivatives in uncertainty analysis
 - Relative uncertainty calculations
 - Ideal gas law relationships
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 Connects to thermodynamics (ideal gas behavior), calculus (partial differentiation), and experimental physics (error quantification). Extends to more complex equations of state like Van der Waals equations.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Relevant to chemistry (gas reactions), engineering (pressure vessel design), and environmental science (atmospheric modeling). Error propagation principles apply broadly to any field involving measured quantities.
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibrating pressure sensors in industrial systems
 - Validating climate models where temperature and volume uncertainties affect pressure predictions
 - Quality control in pharmaceutical manufacturing where gas pressures must be precisely monitored
 
-#### Problem Statement
+##### Problem Statement
 A laboratory measures the temperature $T$ and volume $V$ of an ideal gas sample, with $n$ and $R$ known exactly. The temperature measurement has an absolute uncertainty $\Delta T$, and the volume measurement has an absolute uncertainty $\Delta V$. Using the ideal gas law $P = \frac{nRT}{V}$, derive an expression for the **relative uncertainty** $\frac{\Delta P}{P}$ in terms of $\frac{\Delta T}{T}$, $\frac{\Delta V}{V}$, and fundamental constants. Express your final answer as a single analytic expression using the symbols $\Delta T$, $T$, $\Delta V$, and $V$ only.
 
 ### Solution
@@ -13111,31 +13111,31 @@ $$\boxed{\sqrt{ \left( \frac{\Delta T}{T} \right)^2 + \left( \frac{\Delta V}{V} 
 
 ------
 ### Problem 53
-#### Background
+##### Background
 In physics experiments, the acceleration due to gravity $g$ is often determined using a simple pendulum. The relationship is given by $g = \frac{4\pi^2 L}{T^2}$, where $L$ is the pendulum's length and $T$ is its oscillation period. Experimental measurements always involve uncertainties: length is measured as $L \pm \Delta L$, and period as $T \pm \Delta T$. To assess the reliability of the calculated $g$, we must analyze how these uncertainties propagate through the formula.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Relative uncertainty definition and calculation
 - Error propagation for multiplicative and power-law functions
 - Partial derivatives in uncertainty analysis
 - Root-sum-square combination of independent uncertainties
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Connects to oscillation theory (period dependence on length and gravity)
 - Extends measurement techniques from kinematics to gravitational physics
 - Reinforces dimensional analysis (verifying consistency of $g$'s units)
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Mathematics**: Application of partial differentiation and quadrature summation
 - **Statistics**: Interpretation of uncertainty as standard deviation
 - **Engineering**: Precision requirements in geophysical instruments
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibrating gravimeters for geological surveys (detecting mineral deposits)
 - Monitoring ground stability in civil engineering
 - Validating satellite-based gravity measurements (e.g., GOCE mission)
 
-#### Problem Statement
+##### Problem Statement
 A student measures a pendulum's length as $L \pm \Delta L$ and period as $T \pm \Delta T$. Using the formula $g = \frac{4\pi^2 L}{T^2}$, derive an expression for the **relative uncertainty** $\frac{\Delta g}{g}$ in terms of the relative uncertainties $\frac{\Delta L}{L}$ and $\frac{\Delta T}{T}$. Assume $\Delta L$ and $\Delta T$ are independent random errors.  
 
 Express your final answer as a single analytic expression using only the symbols for the relative uncertainties in $L$ and $T$. Do not include any absolute uncertainty terms ($\Delta L$, $\Delta T$) in the final expression.
@@ -13216,27 +13216,27 @@ $$\boxed{\sqrt{ \left( \frac{\Delta L}{L} \right)^2 + 4 \left( \frac{\Delta T}{T
 
 ------
 ### Problem 54
-#### Background
+##### Background
 In scientific measurements, every physical quantity is subject to uncertainty due to limitations in measurement instruments or techniques. When deriving new quantities from measured values, we must propagate these uncertainties using mathematical principles. Consider a scenario where you're calculating the radius of a circular object from its measured area, or determining the speed of an object from its kinetic energy—both require taking square roots of measured values. Understanding how uncertainty propagates through such operations is essential for accurate data analysis.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Definition of absolute uncertainty
 - Derivative-based uncertainty propagation for functions of one variable
 - Application of the chain rule in error analysis
 - Simplification of uncertainty expressions
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to calculus concepts (derivatives as sensitivity coefficients) and foundational measurement theory. It also extends to statistical methods for combining uncertainties in multivariable systems, which builds upon the single-variable case presented here.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Uncertainty propagation is vital in engineering (tolerance analysis), economics (risk modeling of derived financial indicators), and environmental science (error estimation in pollution dispersion models). The square-root function specifically appears in signal processing (root-mean-square calculations) and quantum mechanics (wavefunction normalization).
 
-#### Real-World Applications
+##### Real-World Applications
 - Determining uncertainty in the radius of a planet from telescopic area measurements
 - Calculating speed uncertainty in radar systems using Doppler shift energy measurements
 - Estimating dose uncertainties in medical imaging where intensity follows inverse-square laws
 
-#### Problem Statement
+##### Problem Statement
 A physical quantity $x$ is measured with an absolute uncertainty $\Delta x$, meaning the true value lies in the interval $[x - \Delta x, x + \Delta x]$. The derived quantity $y$ is defined as the square root of $x$:  
 $$ y = \sqrt{x} $$  
 Derive an analytic expression for the absolute uncertainty $\Delta y$ in terms of $x$ and $\Delta x$. Assume $x > 0$ and $\Delta x > 0$.  
@@ -13268,27 +13268,27 @@ $$\boxed{\dfrac{\Delta x}{2\sqrt{x}}}$$
 
 ------
 ### Problem 55
-#### Background
+##### Background
 In electronic circuit design, precise resistance values are critical for functionality. Resistors are manufactured with inherent tolerances, leading to uncertainties in their resistance values. When resistors are connected in series, the total resistance is the sum of individual resistances, but the uncertainty in the total resistance must be calculated using statistical methods to account for error propagation. This ensures accurate predictions of circuit behavior.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Propagation of absolute uncertainties for sums of independent measurements.
 - Partial derivatives in uncertainty analysis.
 - Quadratic addition of independent errors.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Relates to series circuit analysis in DC electronics.
 - Connects to statistical treatment of measurement errors in experimental physics.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Applies error propagation techniques used in engineering metrology and quality control.
 - Relevant to data analysis in scientific experiments where multiple measurements are combined.
 
-#### Real-World Applications
+##### Real-World Applications
 - Calculating tolerance stacks in electronic component assemblies (e.g., voltage dividers, sensor circuits).
 - Predicting performance margins in aerospace avionics and medical device instrumentation.
 
-#### Problem Statement
+##### Problem Statement
 Three resistors with nominal resistances $R_1$, $R_2$, and $R_3$ are connected in series. Each resistor has an associated absolute uncertainty: $\Delta R_1$ for $R_1$, $\Delta R_2$ for $R_2$, and $\Delta R_3$ for $R_3$. These uncertainties arise from manufacturing tolerances and are statistically independent. Derive an expression for the absolute uncertainty $\Delta R_{\text{total}}$ in the total resistance $R_{\text{total}}$. Express $\Delta R_{\text{total}}$ symbolically in terms of $\Delta R_1$, $\Delta R_2$, and $\Delta R_3$ only.  
 **Format Requirements**:  
 1. Use the notation $\Delta R_{\text{total}}$ for the final uncertainty.  
@@ -13318,29 +13318,29 @@ $$\boxed{\sqrt{ (\Delta R_1)^2 + (\Delta R_2)^2 + (\Delta R_3)^2 }}$$
 
 ------
 ### Problem 56
-#### Background
+##### Background
 In precision manufacturing, engineers must calculate the volume of rectangular components to ensure they meet design specifications. Consider a rectangular prism with length $ l $, width $ w $, and height $ h $, each measured independently with associated absolute uncertainties $ \Delta l $, $ \Delta w $, and $ \Delta h $. These uncertainties arise from measurement instrument limitations (e.g., caliper resolution) and environmental factors. The volume $ V $ is given by $ V = l w h $. Understanding how uncertainties propagate to the volume is crucial for quality control and tolerance analysis.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Definition of relative uncertainty and its significance in error analysis.
 - Propagation of uncertainty for products of independent variables.
 - Application of partial derivatives in uncertainty quantification.
 - Simplification of expressions involving squares and square roots.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to differential calculus (partial derivatives) for error propagation and to statistics (variance of independent random variables). It also reinforces algebraic manipulation skills for simplifying complex expressions.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Tolerance stacking in mechanical design and manufacturing.
 - **Physics**: Uncertainty in derived quantities like density or pressure.
 - **Environmental Science**: Estimating uncertainties in volume calculations for water reservoirs or pollutant dispersion models.
 
-#### Real-World Applications
+##### Real-World Applications
 - Calculating fuel tank capacity in automotive engineering with measured dimensions.
 - Determining pharmaceutical dosages based on tablet volume in biotechnology.
 - Assessing material requirements for construction projects with dimensional tolerances.
 
-#### Problem Statement
+##### Problem Statement
 Derive an expression for the relative uncertainty $ \frac{\Delta V}{V} $ in the volume $ V = l w h $ of a rectangular prism, given independent uncertainties $ \Delta l $, $ \Delta w $, and $ \Delta h $ in the dimensions $ l $, $ w $, and $ h $. Use the general formula for uncertainty propagation in multivariable functions. Express your final answer as an analytic expression in terms of the relative uncertainties $ \frac{\Delta l}{l} $, $ \frac{\Delta w}{w} $, and $ \frac{\Delta h}{h} $. Show all steps of the derivation explicitly.
 
 ### Solution
@@ -13379,7 +13379,7 @@ $$\boxed{ \sqrt{ \left( \frac{\Delta l}{l} \right)^2 + \left( \frac{\Delta w}{w}
 
 ------
 ### Problem 57
-#### Background
+##### Background
 In a physics laboratory experiment, students are determining the specific heat capacity of an unknown metal sample. The specific heat capacity $c$ is calculated using the formula $c = \frac{Q}{m \Delta T}$, where $Q$ is the heat energy transferred to the sample, $m$ is its mass, and $\Delta T$ is its temperature change. The measured values and their uncertainties are:
 - Heat energy: $Q \pm \Delta Q$
 - Mass: $m \pm \Delta m$
@@ -13387,28 +13387,28 @@ In a physics laboratory experiment, students are determining the specific heat c
 
 Uncertainty analysis is essential for evaluating the reliability of experimental results, as errors propagate through calculations. This requires understanding how uncertainties in measured quantities affect derived quantities.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Propagation of uncertainty for multivariable functions
 - Relative uncertainty calculation
 - Partial derivatives for error analysis
 - Independence of measurement errors
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Thermodynamics (specific heat capacity definition)
 - Measurement techniques (calorimetry, temperature sensing)
 - Statistical analysis of experimental data
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Chemistry (enthalpy calculations)
 - Engineering (material property characterization)
 - Data science (uncertainty quantification)
 
-#### Real-World Applications
+##### Real-World Applications
 - Material science research (determining thermal properties of alloys)
 - Quality control in manufacturing (e.g., verifying thermal specifications of building materials)
 - Climate science (calibrating temperature sensors in environmental monitoring)
 
-#### Problem Statement
+##### Problem Statement
 Derive the expression for the **relative uncertainty** $\frac{\Delta c}{c}$ in the specific heat capacity $c = \frac{Q}{m \Delta T}$, given independent uncertainties $\Delta Q$, $\Delta m$, and $\Delta(\Delta T)$. Express your result as a symbolic expression in terms of the relative uncertainties $\frac{\Delta Q}{Q}$, $\frac{\Delta m}{m}$, and $\frac{\Delta(\Delta T)}{\Delta T}$.  
 *Final answer must be an analytic expression enclosed in \boxed{}.*
 
@@ -13472,25 +13472,25 @@ $$\boxed{\sqrt{ \left( \frac{\Delta Q}{Q} \right)^{2} + \left( \frac{\Delta m}{m
 
 ------
 ### Problem 58
-#### Background
+##### Background
 In optics, the magnification of a lens system quantifies how much larger or smaller an image appears compared to the object. When measuring the object distance $u$ and image distance $v$, experimental uncertainties arise due to limitations in measurement tools or techniques. The magnification is given by $m = v/u$, and understanding how uncertainties propagate through this calculation is essential for assessing result reliability.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Propagation of uncertainty for a quotient of measured quantities
 - Calculation of relative uncertainty
 - Partial derivatives in error analysis
 - Independence of measurement errors
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 Connects to geometric optics (lens equations) and foundational calculus concepts (partial differentiation). Extends to uncertainty analysis in other physics formulas involving ratios, such as refractive index or density calculations.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Applies to engineering (tolerance analysis), chemistry (concentration determinations), and data science (error propagation in algorithmic computations). Essential in fields requiring precision instrumentation like astronomy or microscopy.
 
-#### Real-World Applications
+##### Real-World Applications
 Used to evaluate measurement quality in optical device calibration (e.g., microscopes, telescopes), photolithography in semiconductor manufacturing, and medical imaging systems. Critical for determining acceptable error margins in experimental physics.
 
-#### Problem Statement
+##### Problem Statement
 A student measures the image distance $v$ of a lens system with absolute uncertainty $\Delta v$, and the object distance $u$ with absolute uncertainty $\Delta u$. The magnification is calculated as $m = v/u$.  
 Derive an analytic expression for the relative uncertainty in the magnification, $\frac{\Delta m}{|m|}$, in terms of $u$, $v$, $\Delta u$, and $\Delta v$. Assume $\Delta u$ and $\Delta v$ are independent and random.  
 Express your final answer as a single simplified expression using the given symbols.  
@@ -13552,26 +13552,26 @@ $$\boxed{\sqrt{ \left( \frac{\Delta v}{v} \right)^2 + \left( \frac{\Delta u}{u} 
 
 ------
 ### Problem 59
-#### Background
+##### Background
 In experimental physics, accurately determining electric fields is crucial for applications like designing particle accelerators or medical imaging devices. The electric field $E$ due to a point charge $Q$ at a distance $r$ is given by $E = kQ/r^2$, where $k$ is Coulomb's constant. However, all measurements have inherent uncertainties: the charge is measured as $Q \pm \Delta Q$, and the distance as $r \pm \Delta r$. To assess the reliability of $E$, we need to quantify how these uncertainties propagate.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Propagation of relative uncertainties for functions involving products and powers.
 - Partial derivatives and error analysis.
 - Interpretation of absolute and relative uncertainties in physical formulas.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to inverse-square laws in electrostatics (e.g., gravitational fields) and extends to uncertainty analysis in experimental physics, such as verifying Coulomb's law or measuring fundamental constants.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 Error propagation is essential in engineering (e.g., sensor calibration), chemistry (concentration measurements), and data science (modeling noisy datasets). The mathematical framework applies to any system governed by power-law relationships.
 
-#### Real-World Applications
+##### Real-World Applications
 - **Electronics**: Calibrating field strength in capacitors for memory devices.
 - **Environmental Science**: Measuring atmospheric electric fields near thunderstorms.
 - **Space Exploration**: Determining ion thruster performance using charge and distance uncertainties.
 
-#### Problem Statement
+##### Problem Statement
 Consider a point charge $Q$ with absolute uncertainty $\Delta Q$, and a distance $r$ with absolute uncertainty $\Delta r$. The electric field is $E = kQ/r^2$, where $k$ is an exact constant with no uncertainty. Derive an analytic expression for the **relative uncertainty** in $E$, denoted $\frac{\Delta E}{E}$. Use only the symbols $\Delta Q$, $Q$, $\Delta r$, and $r$ in your final expression. Explicitly state any assumptions about error independence.
 
 ### Solution
@@ -13616,27 +13616,27 @@ $$
 
 ------
 ### Problem 6
-#### Background
+##### Background
 In experimental physics, accurately reporting measurements requires quantifying the uncertainty in derived quantities. Consider a scenario where a student measures the mass $m$ of a moving object with an absolute uncertainty $\Delta m$ and its speed $v$ with an absolute uncertainty $\Delta v$. The kinetic energy is calculated as $K = \frac{1}{2} m v^2$. Since $K$ depends on both $m$ and $v$, its uncertainty arises from the propagation of errors in these independent measurements.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Error propagation for multivariable functions using partial derivatives.
 - Calculation of relative uncertainty ($\frac{\Delta K}{K}$).
 - Application of the root-sum-square (RSS) method for independent uncertainties.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This problem connects to differential calculus (partial derivatives) and statistics (variance of derived quantities). It also reinforces the concept of dimensional analysis, as the relative uncertainty must be dimensionless.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Uncertainty analysis is critical in designing systems with tolerances (e.g., aerospace components).
 - **Chemistry**: Used in calculating uncertainties in derived quantities like reaction rates or energy changes.
 - **Data Science**: RSS error propagation aligns with the Pythagorean theorem for independent random variables.
 
-#### Real-World Applications
+##### Real-World Applications
 - In particle physics experiments, kinetic energy uncertainties affect the precision of mass measurements for subatomic particles.
 - Automotive crash tests use high-speed cameras to measure $v$; combined with mass uncertainties, this determines the reliability of kinetic energy calculations for safety assessments.
 
-#### Problem Statement
+##### Problem Statement
 The kinetic energy of an object is given by $K = \frac{1}{2} m v^2$, where $m$ is the mass and $v$ is the speed. The mass is measured with an absolute uncertainty $\Delta m$, and the speed is measured with an absolute uncertainty $\Delta v$. Assume the uncertainties in $m$ and $v$ are independent. Derive an expression for the relative uncertainty in the kinetic energy, $\frac{\Delta K}{K}$, in terms of the relative uncertainties $\frac{\Delta m}{m}$ and $\frac{\Delta v}{v}$.
 
 ### Solution
@@ -13667,27 +13667,27 @@ $$\boxed{ \sqrt{ \left( \frac{\Delta m}{m} \right)^2 + \left( 2 \frac{\Delta v}{
 
 ------
 ### Problem 7
-#### Background
+##### Background
 In a geological survey, two rock layers are measured for their thicknesses using seismic reflection. The thickness of the upper layer is recorded as $ x \pm \Delta x $, and the thickness of the lower layer as $ y \pm \Delta y $. Geologists need to compute the difference in thickness between these layers to analyze sediment deposition rates. The absolute uncertainty in this difference must be quantified to assess the reliability of the conclusion.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Propagation of absolute uncertainties in subtraction.
 - Worst-case error analysis for independent measurements.
 - Interval arithmetic for maximum/minimum possible values.
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 This connects to statistical error analysis in experimental physics and calculus-based optimization problems, where bounds on derived quantities are determined from input uncertainties.
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - **Engineering**: Tolerance stack-up analysis in mechanical design (e.g., clearance between parts).
 - **Environmental Science**: Uncertainty in pollutant concentration differences across locations.
 - **Economics**: Error margins in derived metrics like GDP growth rate differentials.
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibrating satellite altimetry data to measure ice-sheet thickness changes in climate studies.
 - Quality control in manufacturing, where the gap between components must meet specifications despite measurement errors.
 
-#### Problem Statement
+##### Problem Statement
 Given two independent measurements $ x \pm \Delta x $ and $ y \pm \Delta y $, derive an expression for the absolute uncertainty $ \Delta d $ in the difference $ d = x - y $. Use worst-case scenario analysis to ensure the result bounds the maximum possible error. Express $ \Delta d $ solely in terms of $ \Delta x $ and $ \Delta y $.  
 *Assume errors are independent and symmetrically distributed about the measured values.*
 
@@ -13725,28 +13725,28 @@ This result holds under the assumption of independence and symmetric error distr
 
 ------
 ### Problem 8
-#### Background
+##### Background
 In physics experiments, measuring acceleration due to gravity ($g$) often involves timing the fall of an object from a known height. The formula $g = 2h/t^2$ connects height $h$, time $t$, and gravitational acceleration. Experimental measurements always have uncertainties: height is measured with absolute uncertainty $\Delta h$, and time with absolute uncertainty $\Delta t$. Understanding how these uncertainties propagate to the final result is essential for evaluating experimental reliability.
 
-#### Knowledge Points Tested
+##### Knowledge Points Tested
 - Relative uncertainty definition and calculation  
 - Error propagation for multiplicative/inverse relationships  
 - Root-sum-square combination of independent uncertainties  
 
-#### Intradisciplinary Connections
+##### Intradisciplinary Connections
 - Kinematics: Derivation of $g = 2h/t^2$ from free-fall equations  
 - Data Analysis: Quantitative uncertainty handling in experimental physics  
 
-#### Interdisciplinary Connections
+##### Interdisciplinary Connections
 - Statistics: Variance propagation for independent random variables  
 - Mathematics: Partial derivatives and Taylor series approximation  
 
-#### Real-World Applications
+##### Real-World Applications
 - Calibrating inertial navigation systems where precise $g$-values are needed  
 - Validating geological surveys (e.g., mineral density affects local $g$)  
 - Quality control in manufacturing processes involving timed movements  
 
-#### Problem Statement  
+##### Problem Statement  
 A student determines gravitational acceleration using $g = 2h/t^2$, where $h$ is the drop height and $t$ is the fall time. The height measurement has absolute uncertainty $\Delta h$, and the time measurement has absolute uncertainty $\Delta t$. Assume $\Delta h$ and $\Delta t$ are independent and random. Derive an expression for the relative uncertainty in $g$, denoted $\frac{\Delta g}{g}$.  
 
 Express your answer analytically in terms of $h$, $t$, $\Delta h$, and $\Delta t$. Finalize the expression under a square root and simplify all coefficients.
@@ -13807,30 +13807,30 @@ $$\boxed{ \sqrt{ \left( \frac{\Delta h}{h} \right)^2 + 4 \left( \frac{\Delta t}{
 
 ------
 ### Problem 9
-#### Background  
+##### Background  
 In physics experiments, Hooke's law describes the behavior of springs: the force $F$ required to stretch or compress a spring by a distance $x$ is proportional to that distance, $F = kx$, where $k$ is the spring constant. When measuring $F$ and $x$ experimentally, uncertainties arise due to instrument precision. The force measurement has an absolute uncertainty $\Delta F$, and the displacement measurement has an absolute uncertainty $\Delta x$. These uncertainties propagate to the calculated spring constant $k = F/x$. Understanding how uncertainties combine is essential for reliable experimental conclusions.  
 
-#### Knowledge Points Tested  
+##### Knowledge Points Tested  
 - Propagation of uncertainties for a quotient of measured quantities.  
 - Calculation of relative uncertainty.  
 - Application of partial derivatives in error analysis.  
 - Interpretation of independent random errors.  
 
-#### Intradisciplinary Connections  
+##### Intradisciplinary Connections  
 - Connects to mechanics (Hooke's law) and statistical analysis of measurements.  
 - Extends to uncertainty propagation in other inverse relationships (e.g., resistivity $\rho = RA/L$).  
 
-#### Interdisciplinary Connections  
+##### Interdisciplinary Connections  
 - Chemistry: Error analysis in concentration calculations ($C = n/V$).  
 - Engineering: Tolerance analysis in material stress-strain relationships.  
 - Data Science: Uncertainty quantification in regression models.  
 
-#### Real-World Applications  
+##### Real-World Applications  
 - Calibrating force sensors in automotive suspension systems.  
 - Validating material properties in quality control for spring manufacturing.  
 - Improving accuracy in physics lab experiments involving elastic moduli.  
 
-#### Problem Statement  
+##### Problem Statement  
 A student measures the force $F$ applied to a spring and the resulting displacement $x$ to determine the spring constant $k = F/x$. The absolute uncertainty in the force measurement is $\Delta F$, and the absolute uncertainty in the displacement measurement is $\Delta x$. Assume the uncertainties in $F$ and $x$ are independent and random. Derive an expression for the **relative uncertainty in the spring constant**, $\frac{\Delta k}{k}$, in terms of $F$, $x$, $\Delta F$, and $\Delta x$.  
 
 Express your answer as a single analytic expression using the variables $F$, $x$, $\Delta F$, and $\Delta x$. Use $\frac{a}{b}$ for fractions and $\sqrt{\ldots}$ for square roots. Do not simplify or substitute numerical values.

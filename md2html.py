@@ -887,11 +887,56 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
 
         return '\n'.join(fixed_lines)
 
+    def fix_loose_list_spacing(text):
+        """
+        Remove blank lines within continuous numbered/bulleted lists to prevent loose lists.
+        This ensures tight lists without <p> tags around list items.
+        """
+        lines = text.split('\n')
+        result_lines = []
+        i = 0
+        
+        while i < len(lines):
+            current_line = lines[i]
+            result_lines.append(current_line)
+            
+            # Check if current line is a list item
+            if is_list_item(current_line):
+                # Look ahead for blank lines followed by list items
+                j = i + 1
+                while j < len(lines):
+                    if lines[j].strip() == '':  # Blank line
+                        # Check if next non-blank line is a list item
+                        k = j + 1
+                        while k < len(lines) and lines[k].strip() == '':
+                            k += 1
+                        
+                        if k < len(lines) and is_list_item(lines[k]):
+                            # Skip this blank line to create tight lists
+                            j += 1
+                            continue
+                        else:
+                            # Keep blank line - it's not between list items
+                            result_lines.append(lines[j])
+                            break
+                    elif is_list_item(lines[j]):
+                        # Another list item directly - good, keep going
+                        break
+                    else:
+                        # Non-list content - stop processing
+                        break
+                    j += 1
+                i = j - 1  # Continue from where we left off
+            
+            i += 1
+        
+        return '\n'.join(result_lines)
+
     # === END LIST PROCESSING MODULE ===
 
     # Preprocess markdown to fix list formatting issues
-
     temp_md_text = fix_list_formatting(temp_md_text)
+    temp_md_text = fix_loose_list_spacing(temp_md_text)
 
     # Convert markdown to HTML
     md_converter = markdown.Markdown(
