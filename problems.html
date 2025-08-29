@@ -1238,6 +1238,29 @@ input[type='checkbox'] {
     display: none;
 }
 
+/* Task list checkbox styling - override the generic hidden checkbox rule */
+.task-list-item-checkbox {
+    display: inline-block !important;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+/* Task list item styling */
+.task-list-item {
+    list-style-type: none !important;
+    margin-left: -1.5em;
+    position: relative;
+}
+
+/* Styling for completed tasks */
+.task-list-item input[type="checkbox"]:checked + * {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
 body:not(.dark-theme) .lbl-toggle {
     display: block;
     font-weight: 500;
@@ -1752,6 +1775,79 @@ body.dark-theme .wrap-content-collapsible .content-collapsible-content pre::-web
 body.dark-theme .collapsible-content pre::-webkit-scrollbar-thumb:hover,
 body.dark-theme .wrap-content-collapsible .content-collapsible-content pre::-webkit-scrollbar-thumb:hover {
     background: rgba(255,255,255,0.5) !important;
+}
+
+/* Table of Contents Styling - for mistune's <details class="toc"> */
+details.toc {
+    background-color: #f8f9fa;
+    border: 1px solid #e1e5e9;
+    border-radius: 6px;
+    padding: 12px;
+    margin: 20px 0;
+    max-width: 100%;
+    width: 100%;
+}
+
+details.toc summary {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #495057;
+    cursor: pointer;
+    margin-bottom: 12px;
+    outline: none;
+    user-select: none;
+}
+
+details.toc summary:hover {
+    color: #0066cc;
+}
+
+details.toc ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 8px 0 0 0;
+}
+
+details.toc ul ul {
+    padding-left: 20px;
+    margin: 4px 0;
+}
+
+details.toc li {
+    margin: 3px 0;
+    line-height: 1.4;
+}
+
+details.toc a {
+    color: #0066cc;
+    text-decoration: none;
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    font-size: 0.95em;
+}
+
+details.toc a:hover {
+    background-color: #e3f2fd;
+    text-decoration: none;
+    color: #004494;
+}
+
+/* Smooth scrolling to anchors */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Style for targeted headers (when clicked from TOC) */
+h1:target, h2:target, h3:target, h4:target, h5:target, h6:target {
+    scroll-margin-top: 20px;
+    animation: highlight-flash 2s ease-out;
+}
+
+@keyframes highlight-flash {
+    0% { background-color: #fff3cd; }
+    100% { background-color: transparent; }
 }
 
     </style>
