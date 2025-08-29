@@ -1,82 +1,200 @@
-# My Awesome Document
+# Sample Document for MD2HTML Testing
 
-This is a demonstration of converting Markdown to a beautiful HTML file.
+This document demonstrates the conversion of Markdown to HTML with comprehensive testing of all supported features.
 
 ## Table of Contents
 [TOC]
 
-## Features
-- Custom styling via CSS
-- Syntax highlighting for code
-- Table support
+## Unicode Character Tests
 
-### Python Example
-Here is a Python code block that will be highlighted.
+This section tests the rendering of various Unicode characters and symbols.
 
-```python
-# this is to test section heading in copy block not counted as real one
-import sys
+### Mathematical Symbols
+- Superscripts: x², x³, x⁴, x⁵, x⁶, x⁷, x⁸, x⁹, x¹⁰
+- Subscripts: H₂O, CO₂, CH₄, N₂O, SO₄²⁻, Ca²⁺
+- Greek letters: α, β, γ, δ, ε, ζ, η, θ, λ, μ, π, ρ, σ, τ, φ, χ, ψ, ω
+- Greek capitals: Α, Β, Γ, Δ, Ε, Θ, Λ, Π, Σ, Φ, Ψ, Ω
+- Math operators: ±, ×, ÷, ≠, ≤, ≥, ≈, ∞, ∑, ∏, ∫, ∂, ∇, √, ∆
 
-def greet(name):
-    """A simple greeting function."""
-    return f"Hello, {name}!"
-
-if __name__ == "__main__":
-    person = sys.argv[1] if len(sys.argv) > 1 else "World"
-    print(greet(person))
-```
-
-### List Example
-
-1. First list item
-    - First nested list item
-        - Second nested list item
-
-2. First list item
-    - First nested list item
-        - Second nested list item
-
-## Problem 1
-
-**Topic**: Multicritical points (123)
-
-**Thumbnail**: For a system described by two coupled scalar order parameters at a stable tetracritical point, calculate the mean-field ratio of the two order parameter magnitudes in the mixed-symmetry phase.
-
-### Problem Statement
-
-A problem with dispaly math 
-$$F(\phi_1, \phi_2) = \frac{1}{2} r_1 \phi_1^2 + \frac{1}{2} r_2 \phi_2^2 + \frac{1}{4} g_1 \phi_1^4 + \frac{1}{4} g_2 \phi_2^4 + \frac{1}{2} g_{12} \phi_1^2 \phi_2^2$$
-
-And inline math $r_1 = r_2 = 0$.
-
-### Solution
-
-The free energy is:
-$$F(\phi_1, \phi_2) = \frac{1}{2} r_1 \phi_1^2 + \frac{1}{2} r_2 \phi_2^2 + \frac{1}{4} g_1 \phi_1^4 + \frac{1}{4} g_2 \phi_2^4 + \frac{1}{2} g_{12} \phi_1^2 \phi_2^2$$
-
-Dislay math again:
-$$ \frac{|\phi_1|}{|\phi_2|} = \sqrt{\frac{\phi_1^2}{\phi_2^2}} = \sqrt{\frac{g_2 - g_{12}}{g_1 - g_{12}}} $$
-
-This is the final expression for the ratio of the order parameter magnitudes.
-
-### Answer
-
-$$ \boxed{\sqrt{\frac{g_2 - g_{12}}{g_1 - g_{12}}}} $$
+### Physical Units  
+- Speed: m/s², km/h, rad/s²
+- Energy: J/kg·K, W/m²·K, kWh
+- Temperature: °C, °F, K
+- Angles: 45°, 90°, 180°, 2π radians
+- Electricity: μA, mV, kΩ, MΩ
 
 ---
 
-## Problem 2
-### Problem Statement
-This is to test table detection (preceding text mingled with table) 
+## LaTeX Math Delimiter Tests
 
-| A | B |
-|---|---|
-| C | D |
+This section demonstrates all supported LaTeX math delimiter types and features.
+
+### Display Math Delimiters
+
+#### 1. Double Dollar Signs 
+Test `$$...$$` math
+$$F(x) = \int_{-\infty}^{\infty} f(t) e^{-2\pi ixt} dt$$
+
+#### 2. Square Brackets Display Math
+Test `\[...\]` math
+\[
+E = mc^2 + \frac{1}{2}mv^2
+\]
+
+#### 3. Standalone Boxed Expressions (Auto Display Math)
+Test standalone `\boxed{...}` 
+\boxed{\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}}
+
+### Inline Math Delimiters
+
+#### 4. Single Dollar Signs 
+Test `$...$` math 
+The quadratic formula is $x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$ for solving $ax^2 + bx + c = 0$.
+
+#### 5. Parentheses Inline Math 
+Test `\(...\)` math. Einstein's mass-energy equivalence is \(E = mc^2\) where \(c\) is the speed of light.
+
+### Complex Nested Examples
+
+#### Mixed Delimiters in Same Paragraph
+Consider the equation $f(x) = x^2 + 1$ and the integral \(\int_0^1 f(x)dx\). The solution is:
+$$\int_0^1 (x^2 + 1)dx = \left[\frac{x^3}{3} + x\right]_0^1 = \frac{4}{3}$$
+
+#### Nested Braces in Boxed Expressions
+\boxed{\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}}
+
+\boxed{\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e}
+
+#### Complex Display Math with Multiple Lines
+\[
+\begin{align}
+\nabla \cdot \mathbf{E} &= \frac{\rho}{\epsilon_0} \\
+\nabla \cdot \mathbf{B} &= 0 \\
+\nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\
+\nabla \times \mathbf{B} &= \mu_0 \mathbf{J} + \mu_0 \epsilon_0 \frac{\partial \mathbf{E}}{\partial t}
+\end{align}
+\]
+
+### Boxed Math Inside Other Delimiters
+
+#### Boxed Inside Display Math
+$$\boxed{H = -\sum_i p_i \log p_i}$$
+
+#### Multiple Boxed Expressions
+The final answers are:
+$$\boxed{x_1 = \frac{-b + \sqrt{\Delta}}{2a}} \quad \text{and} \quad \boxed{x_2 = \frac{-b - \sqrt{\Delta}}{2a}}$$
+
+### Edge Cases and Special Characters
+
+#### Greek Letters and Special Symbols
+$$\alpha + \beta = \gamma \quad \Rightarrow \quad \sum_{i=1}^n \alpha_i = \prod_{j=1}^m \beta_j$$
+
+#### Fractions within Fractions
+\boxed{\frac{\frac{a}{b} + \frac{c}{d}}{\frac{e}{f} - \frac{g}{h}}}
+
+#### Matrix Notation
+\[
+\mathbf{A} = \begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}
+\]
+
+---
+
+## List Formatting Tests
+
+This section tests various list types and nesting patterns.
+
+### Normal List With Preceding Text 
+
+**Final Answer Format Instructions:**  
+- Your answer must be a single analytic expression.  
+- Use the symbol $\pi$ for pi.  
+- Use standard mathematical notation: multiplication must be denoted explicitly (e.g., $a \cdot b$ or $ab$), and fractions must be written using `\frac{}{}`.  
+- The expression must be boxed using `$\boxed{}$`.
 
 
-**Standard Model (SM) Sector:**
+### Mixed Indentation Lists
+1. First main item
+    - Nested bullet point (4-space indent)
+        - Deeply nested item (8-space indent)
+    - Another nested item
+2. Second main item
+    - Different indentation (2-space indent)
+    - Sub-item with 4-space indent
+3. Third main item with multiple paragraphs This paragraph is part of item 3.
+    - Nested list after paragraph
+    - Another nested item
+
+### Complex Nested Structure
+1. **Project Setup**
+    This is the main project setup phase.
+    1. Create virtual environment:
+       ```bash
+       python -m venv venv
+       source venv/bin/activate  # Linux/Mac
+       venv\Scripts\activate     # Windows
+       ```
+    2. Install dependencies:
+      - Core packages: `pip install markdown`
+      - Optional packages: `pip install beautifulsoup4`
+
+2. **Configuration**
+    - Edit configuration file
+    - Set up templates  
+    - Configure themes
+   
+3. **Testing**
+    Run tests to verify setup.
+    - Unit tests: `pytest tests/`
+    - Integration tests: `pytest integration/`
+
+### GitHub-Style Task Lists
+
+**Project Development Checklist:**
+- [x] Set up project structure
+- [x] Implement basic markdown conversion
+- [x] Add syntax highlighting with Prism.js
+- [x] Create responsive table system
+- [x] Migrate from Python markdown to Mistune
+- [ ] Add table of contents generation
+- [ ] Implement advanced math rendering
+- [ ] Create mobile-responsive design
+- [ ] Add print stylesheet optimization
+
+**Feature Implementation Status:**
+- [x] **Core Features**
+  - [x] Markdown to HTML conversion
+  - [x] Code syntax highlighting
+  - [x] Math equation rendering
+- [x] **Advanced Tables**
+  - [x] Responsive padding adjustment
+  - [x] Hover effects and modern styling
+  - [x] Natural width sizing
+- [ ] **Enhanced Features**
+  - [x] Section collapsing functionality
+  - [ ] Advanced TOC with anchor links
+  - [ ] Custom theme system
+  - [ ] Plugin architecture
+
+---
+
+## Table Formatting Tests
+
+This section tests various table layouts and formatting options.
+
+### Basic Table
+| Column A | Column B | Column C |
+|----------|----------|----------|
+| Data 1   | Data 2   | Data 3   |
+| Item X   | Item Y   | Item Z   |
+
+### Scientific Data Table
 | Particle | Representation | $g$ | $B$ | $L$ | $Y$ |
-|:---|:---|:---:|:---:|:---:|:---:|
+|:---------|:---------------|:---:|:---:|:---:|:---:|
 | Left-handed quarks | $({\bf 3}, {\bf 2})_{1/6}$ | 6 | 1/3 | 0 | 1/6 |
 | Right-handed up-quark | $({\bf 3}, {\bf 1})_{2/3}$| 3 | 1/3 | 0 | 2/3 |
 | Right-handed down-quark | $({\bf 3}, {\bf 1})_{-1/3}$ | 3 | 1/3 | 0 | -1/3 |
@@ -84,279 +202,158 @@ This is to test table detection (preceding text mingled with table)
 | Right-handed electron | $({\bf 1}, {\bf 1})_{-1}$ | 1 | 0 | 1 | -1 |
 | Higgs boson, $H$ | $({\bf 1}, {\bf 2})_{1/2}$ | 2 | 0 | 0 | 1/2 |
 
-Standalone table should always work.
-
-| Particle | Representation | $g$ | $D$ | $L_D$ | $Y_D$ |
-|:---|:---|:---:|:---:|:---:|:---:|
-| Left-handed dark quarks, $\Psi_D$| $({\bf 2}, {\bf 2})_{1/2}$ | 4 | 1/2 | 0 | 1/2 |
-| Right-handed dark quarks, $\Psi_{D,R}$ | $({\bf 2}, {\bf 1})_{1/2}$ | 2 | 1/2 | 0 | 1/2 |
-| Left-handed dark leptons, $\chi_D$ | $({\bf 1}, {\bf 2})_{-1/2}$ | 2 | 0 | 1 | -1/2|
-| Dark Higgs boson, $\Phi_D$ | $({\bf 1}, {\bf 2})_{0}$ | 2 | 0 | 0 | 0 |
-
-### Solution 
-
-Placeholder for solution paragraph 1. 
-
-Placeholder for solution paragraph 2. 
-
-### Answer
-$$\boxed{-\frac{42}{13}}$$
+### Performance Statistics Table
+| Subject | Total Files | ✓ Success | ✗ Failure | Success Rate | ? Missing |
+|---------|-------------|-----------|-----------|--------------|-----------|
+| Electromagnetism | 24,782 | 12,379 | 12,352 | 50.0% | 51 |
+| Linear Algebra | 62,265 | 47,324 | 14,506 | 76.0% | 435 |
+| Many Body Physics | 42,146 | 19,577 | 22,407 | 46.5% | 162 |
+| Mathematical Analysis | 76,771 | 50,986 | 25,407 | 66.4% | 378 |
+| Mechanics | 21,965 | 12,129 | 9,768 | 55.2% | 68 |
+| **TOTAL** | **379,752** | **142,395** | **84,440** | **37.5%** | **1,094** |
 
 ---
 
-## Problem 3
-### Parameter Sets
-You are provided with three sets of parameters in JSON format. Your code should be able to run on any of these sets.
 
-**Set 1:**
+## Code Syntax Highlighting Tests
+
+This section demonstrates syntax highlighting for various programming languages.
+
+### JSON Configuration
 ```json
 {
-    "duration": 10,
-    "fs": 1000,
-    "baseline_coeffs": [1.0e-9, 0.5e-9],
-    "noise_std": 2.0e-10,
-    "event_count": 15,
-    "peak_loc_range": [1.0, 9.0],
-    "peak_amp_range": [1.0e-9, 5.0e-9],
-    "peak_width_range": [0.01, 0.05],
-    "seed": 42
+    "name": "md2html-converter",
+    "version": "1.0.0",
+    "dependencies": {
+        "markdown": "^3.4.0"
+    },
+    "settings": {
+        "theme": "elegant",
+        "math_support": true,
+        "code_highlighting": true
+    }
 }
 ```
 
-**Set 2:**
-```json
-{
-    "duration": 20,
-    "fs": 2000,
-    "baseline_coeffs": [5.0e-9, -0.2e-9],
-    "noise_std": 1.0e-9,
-    "event_count": 30,
-    "peak_loc_range": [1.0, 19.0],
-    "peak_amp_range": [3.0e-9, 10.0e-9],
-    "peak_width_range": [0.02, 0.08],
-    "seed": 123
-}
-```
-
-**Set 3:**
-```json
-{
-    "duration": 5,
-    "fs": 5000,
-    "baseline_coeffs": [2.0e-9, 0.0],
-    "noise_std": 0.5e-9,
-    "event_count": 10,
-    "peak_loc_range": [0.5, 4.5],
-    "peak_amp_range": [8.0e-9, 15.0e-9],
-    "peak_width_range": [0.005, 0.015],
-    "seed": 2024
-}
-```
-
-### Output
-The function should return a single numeric value: the mean moles of electrons per event ($\bar{n}_e$), rounded to an appropriate number of significant figures, but for the purpose of this problem, round to 6 decimal places (relative to the base unit, not femto/pico etc). For example, `1.234567e-18`. If no events are detected, the function should return `0.0`.
-
-## Solution(Gemini-2.5-pro)
-### Solution Plan
-
-The problem requires a multi-step signal processing and analysis pipeline. The plan is to first generate the specified current-time data, then process it to isolate and integrate the event spikes, and finally compute the average moles of electrons per event.
-
-#### Constants and Setup
--   The Faraday constant, $F$, is a key physical constant. We will use the value from `scipy.constants.Faraday`.
-
-#### 1. Signal Generation
--   **Time Array**: A time vector `t` will be created using `numpy.linspace` or `numpy.arange` from `0` to `duration` with a total of `duration * fs` points.
--   **Randomness**: To ensure reproducibility, the random number generator will be seeded using `numpy.random.seed(seed)`.
--   **Baseline**: The linear baseline current $I_{\text{base}} = a + bt$ will be calculated vectorized over the time array `t`.
--   **Events**: A loop running `event_count` times will generate the peaks. In each iteration:
-    -   Peak parameters (location $\mu_i$, amplitude $A_i$, width $\sigma_i$) are drawn from their respective uniform distributions using `numpy.random.uniform()`.
-    -   A Gaussian function $A_i \exp(-\frac{(t - \mu_i)^2}{2\sigma_i^2})$ is computed and added to an initially zero `I_events` array.
--   **Noise**: Gaussian noise will be generated using `numpy.random.normal(0, noise_std, size=len(t))`.
--   **Total Signal**: The final signal is the sum of the components: $I_{\text{total}} = I_{\text{base}} + I_{\text{events}} + I_{\text{noise}}$.
-
-#### 2. Baseline Correction
--   Since the peaks are relatively sparse, a linear regression on the total signal can provide a good estimate of the baseline parameters.
--   We will use `scipy.stats.linregress(x=t, y=I_total)` to obtain the estimated slope and intercept of the baseline.
--   The estimated baseline is then subtracted from the total signal to obtain a baseline-corrected signal: $I_{\text{corrected}} = I_{\text{total}} - (slope \cdot t + intercept)$.
-
-#### 3. Peak Detection
--   The core of the event identification will be `scipy.signal.find_peaks`. This function efficiently finds local maxima in a 1D array.
--   To distinguish genuine peaks from noise, a `height` threshold is necessary. A robust choice is a multiple of the known noise standard deviation, e.g., `height = 5 * noise_std`.
--   To avoid detecting multiple maxima on a single noisy peak, a `distance` parameter will be set. This specifies the minimum horizontal distance in samples between peaks. A sensible value is `distance = min_width * fs`, where `min_width` is the lower bound of `peak_width_range`.
-
-#### 4. Peak Integration (Charge Calculation)
--   For each peak found, we need to determine its boundaries for integration. The `scipy.signal.peak_widths` function is ideal for this.
--   We will call `scipy.signal.peak_widths(I_corrected, peaks, rel_height=0.5)`, where `peaks` is the array of peak indices from `find_peaks`. `rel_height=0.5` measures the full width at half maximum (FWHM), which is a standard and robust choice.
--   This function returns several properties, including `left_ips` and `right_ips`, which are the interpolated start and end points of each peak at the specified relative height.
--   These floating-point indices will be converted to integer indices for slicing: `start_idx = np.floor(left_ips).astype(int)` and `end_idx = np.ceil(right_ips).astype(int)`.
--   A loop will iterate through each detected peak:
-    -   Slice the `I_corrected` and `t` arrays using the `start_idx` and `end_idx`.
-    -   Calculate the charge $Q_i$ for the peak by numerical integration using `scipy.integrate.trapz(y=current_slice, x=time_slice)`. The trapezoidal rule is simple and sufficient for this dense data.
-    -   The calculated charges for all peaks are stored in a list.
-
-#### 5. Final Calculation
--   If the list of detected peaks is empty (i.e., no peaks were found above the threshold), the function will return `0.0`.
--   Otherwise, the list of charges ($Q_i$) is converted to a NumPy array.
--   Each charge is converted to moles of electrons using the formula $n_{e,i} = Q_i / F$.
--   The mean of the resulting array of moles is computed using `numpy.mean()`.
--   This final value is returned as the result. A single numeric value. The complexity of this entire pipeline is dominated by the signal generation and processing steps, which are linear in the number of samples, approximately $O(\text{duration} \times \text{fs})$.
-
-## Python code
-```python
-import numpy as np
-import scipy.stats
-import scipy.signal
-import scipy.integrate
-import scipy.constants
-
-def solve_electron_moles(params: dict) -> float:
-    """
-    Analyzes a simulated electro-collision signal to find the mean moles of 
-    electrons transferred per event.
-
-    The process involves:
-    1. Generating a signal with baseline, Gaussian peaks, and noise.
-    2. Estimating and removing the linear baseline.
-    3. Detecting peaks (events) in the corrected signal.
-    4. Integrating each peak's current to find the charge.
-    5. Converting charges to moles of electrons and finding the average.
-
-    Args:
-        params (dict): A dictionary of parameters for signal generation.
-
-    Returns:
-        float: The average moles of electrons per detected event.
-    """
-    # Unpack parameters from the dictionary
-    duration = params['duration']
-    fs = params['fs']
-    a, b = params['baseline_coeffs']
-    noise_std = params['noise_std']
-    event_count = params['event_count']
-    peak_loc_range = params['peak_loc_range']
-    peak_amp_range = params['peak_amp_range']
-    peak_width_range = params['peak_width_range']
-    seed = params['seed']
+### JavaScript Example
+```javascript
+class MathUtils {
+    static factorial(n) {
+        if (n === 0 || n === 1) return 1;
+        return n * this.factorial(n - 1);
+    }
     
-    # Use the Faraday constant from SciPy
-    F = scipy.constants.Faraday
-
-    # 1. Signal Generation
-    np.random.seed(seed)
-    num_points = int(duration * fs)
-    t = np.linspace(0, duration, num_points)
-
-    # Baseline and a container for event signals
-    I_base = a + b * t
-    I_events = np.zeros_like(t)
-
-    # Generate Gaussian peaks for each event
-    for _ in range(event_count):
-        mu = np.random.uniform(*peak_loc_range)
-        A = np.random.uniform(*peak_amp_range)
-        sigma = np.random.uniform(*peak_width_range)
-        I_events += A * np.exp(-((t - mu)**2) / (2 * sigma**2))
-
-    # Generate noise
-    I_noise = np.random.normal(0, noise_std, num_points)
-
-    # Combine components into the total signal
-    I_total = I_base + I_events + I_noise
-
-    # 2. Baseline Correction
-    # Estimate baseline from the total signal using linear regression
-    slope, intercept, _, _, _ = scipy.stats.linregress(t, I_total)
-    I_baseline_est = slope * t + intercept
-    I_corrected = I_total - I_baseline_est
-
-    # 3. Peak Detection
-    # Set detection threshold and minimum peak distance
-    height_threshold = 5 * noise_std
-    min_peak_dist_s = peak_width_range[0]
-    min_peak_dist_samples = int(min_peak_dist_s * fs)
-    
-    # Find peaks in the corrected signal
-    peaks, _ = scipy.signal.find_peaks(
-        I_corrected, height=height_threshold, distance=min_peak_dist_samples
-    )
-
-    if len(peaks) == 0:
-        return 0.0
-
-    # 4. Determine Integration Boundaries
-    # Use peak_widths to find start and end of each peak for integration
-    widths_info = scipy.signal.peak_widths(I_corrected, peaks, rel_height=0.5)
-    left_ips = widths_info[2]
-    right_ips = widths_info[3]
-
-    start_indices = np.floor(left_ips).astype(int)
-    end_indices = np.ceil(right_ips).astype(int)
-    
-    # Clip indices to ensure they are within the array bounds
-    start_indices = np.maximum(0, start_indices)
-    end_indices = np.minimum(num_points - 1, end_indices)
-
-    # 5. Integrate Peaks to Find Charge
-    charges = []
-    for i in range(len(peaks)):
-        start_idx, end_idx = start_indices[i], end_indices[i]
-        
-        # Ensure there are at least two points for integration
-        if end_idx > start_idx:
-            time_slice = t[start_idx : end_idx + 1]
-            current_slice = I_corrected[start_idx : end_idx + 1]
-            # Integrate using the trapezoidal rule to get charge in Coulombs
-            charge = scipy.integrate.trapz(current_slice, time_slice)
-            if charge > 0: # Only consider positive charges (physical phenomenon)
-                charges.append(charge)
-
-    if not charges:
-        return 0.0
-        
-    # 6. Calculate Mean Moles of Electrons
-    moles_per_event = np.array(charges) / F
-    mean_moles = np.mean(moles_per_event)
-
-    return mean_moles
-
-def main():
-    """
-    Defines parameter sets and runs the solver for each, returning the results.
-    """
-    param_sets = [
-        {
-            "duration": 10, "fs": 1000, "baseline_coeffs": [1.0e-9, 0.5e-9], 
-            "noise_std": 2.0e-10, "event_count": 15, "peak_loc_range": [1.0, 9.0], 
-            "peak_amp_range": [1.0e-9, 5.0e-9], "peak_width_range": [0.01, 0.05], "seed": 42
-        },
-        {
-            "duration": 20, "fs": 2000, "baseline_coeffs": [5.0e-9, -0.2e-9], 
-            "noise_std": 1.0e-9, "event_count": 30, "peak_loc_range": [1.0, 19.0], 
-            "peak_amp_range": [3.0e-9, 10.0e-9], "peak_width_range": [0.02, 0.08], "seed": 123
-        },
-        {
-            "duration": 5, "fs": 5000, "baseline_coeffs": [2.0e-9, 0.0], 
-            "noise_std": 0.5e-9, "event_count": 10, "peak_loc_range": [0.5, 4.5], 
-            "peak_amp_range": [8.0e-9, 15.0e-9], "peak_width_range": [0.005, 0.015], "seed": 2024
+    static isPrime(num) {
+        if (num < 2) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) return false;
         }
-    ]
-
-    results = []
-    for params in param_sets:
-        result = solve_electron_moles(params)
-        # Round final result to specified precision
-        results.append(round(result, 6 + 18)) # 1e-18 precision, round at 24th decimal place.
-
-    return results
-
-if __name__ == '__main__':
-    # Execute the main function and print the results for verification.
-    results = main()
-    # Let's format the output to be readable in scientific notation
-    formatted_results = [f"{res:.6e}" for res in results]
-    print(formatted_results)
-
+        return true;
+    }
+}
 ```
 
-------
 
+### Python Code Block
+```python
+# Test of Python syntax highlighting
+import numpy as np
+import matplotlib.pyplot as plt
+
+def fibonacci(n):
+    """Generate the first n Fibonacci numbers."""
+    if n <= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+if __name__ == "__main__":
+    numbers = fibonacci(10)
+    print(f"First 10 Fibonacci numbers: {numbers}")
+```
+
+
+---
+
+## Problem Examples
+
+This section contains sample problems demonstrating real-world usage scenarios.
+
+## Problem 1: Physics - Multicritical Points
+
+**Topic**: Multicritical points (Advanced Statistical Mechanics)
+
+**Thumbnail**: For a system described by two coupled scalar order parameters at a stable tetracritical point, calculate the mean-field ratio of the two order parameter magnitudes in the mixed-symmetry phase.
+
+### Problem Statement
+
+Consider a system with free energy functional:
+$$F(\phi_1, \phi_2) = \frac{1}{2} r_1 \phi_1^2 + \frac{1}{2} r_2 \phi_2^2 + \frac{1}{4} g_1 \phi_1^4 + \frac{1}{4} g_2 \phi_2^4 + \frac{1}{2} g_{12} \phi_1^2 \phi_2^2$$
+
+At the tetracritical point, both order parameters can be non-zero. Find the ratio of the order parameter magnitudes when $r_1 = r_2 = 0$.
+
+### Solution
+
+The equilibrium conditions are:
+$$\frac{\partial F}{\partial \phi_1} = r_1 \phi_1 + g_1 \phi_1^3 + g_{12} \phi_1 \phi_2^2 = 0$$
+$$\frac{\partial F}{\partial \phi_2} = r_2 \phi_2 + g_2 \phi_2^3 + g_{12} \phi_1^2 \phi_2 = 0$$
+
+Setting $r_1 = r_2 = 0$ and assuming non-trivial solutions:
+$$g_1 \phi_1^2 + g_{12} \phi_2^2 = 0 \quad \Rightarrow \quad \phi_1^2 = -\frac{g_{12}}{g_1} \phi_2^2$$
+$$g_2 \phi_2^2 + g_{12} \phi_1^2 = 0 \quad \Rightarrow \quad \phi_2^2 = -\frac{g_{12}}{g_2} \phi_1^2$$
+
+Substituting the second into the first:
+$$\phi_1^2 = -\frac{g_{12}}{g_1} \left(-\frac{g_{12}}{g_2} \phi_1^2\right) = \frac{g_{12}^2}{g_1 g_2} \phi_1^2$$
+
+For non-trivial solutions: $\frac{g_{12}^2}{g_1 g_2} = 1$, thus $g_{12}^2 = g_1 g_2$.
+
+The ratio of magnitudes is:
+$$\frac{|\phi_1|}{|\phi_2|} = \sqrt{\frac{g_2 - g_{12}}{g_1 - g_{12}}}$$
+
+### Answer
+$$\boxed{\sqrt{\frac{g_2 - g_{12}}{g_1 - g_{12}}}}$$
+
+---
+
+## Problem 2: Mathematics - Advanced Calculus
+
+**Topic**: Multivariable optimization with constraints
+
+**Thumbnail**: Find the extrema of $f(x,y) = x^2 + y^2 - xy$ subject to the constraint $x + y = 1$.
+
+### Problem Statement
+
+Using Lagrange multipliers, find the critical points of:
+$$f(x,y) = x^2 + y^2 - xy$$
+subject to the constraint:
+$$g(x,y) = x + y - 1 = 0$$
+
+### Solution
+
+Set up the Lagrangian:
+$$\mathcal{L}(x,y,\lambda) = x^2 + y^2 - xy - \lambda(x + y - 1)$$
+
+Taking partial derivatives:
+$$\frac{\partial \mathcal{L}}{\partial x} = 2x - y - \lambda = 0$$
+$$\frac{\partial \mathcal{L}}{\partial y} = 2y - x - \lambda = 0$$
+$$\frac{\partial \mathcal{L}}{\partial \lambda} = -(x + y - 1) = 0$$
+
+From the first two equations: $2x - y = 2y - x$, which gives $3x = 3y$, so $x = y$.
+
+Using the constraint $x + y = 1$ with $x = y$:
+$$2x = 1 \quad \Rightarrow \quad x = y = \frac{1}{2}$$
+
+The critical point is $\left(\frac{1}{2}, \frac{1}{2}\right)$ with function value:
+$$f\left(\frac{1}{2}, \frac{1}{2}\right) = \frac{1}{4} + \frac{1}{4} - \frac{1}{4} = \frac{1}{4}$$
+
+### Answer
+\boxed{\text{Minimum at } \left(\frac{1}{2}, \frac{1}{2}\right) \text{ with value } \frac{1}{4}}
+
+---

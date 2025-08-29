@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample</title>
+    <title>Sample Document for MD2HTML Testing</title>
     
     <!-- MathJax Configuration and Loading - NOTE: Requires internet for LaTeX rendering -->
     <script type="text/x-mathjax-config">
@@ -285,266 +285,229 @@ html {
 }
 
 /* Mobile-responsive styles */
-/* Mobile-First Responsive CSS for Markdown Documents */
+/* Hybrid CSS: Fixed-width for PC, Responsive for Mobile */
 
-/* Reset and normalize for mobile */
+/* Reset and normalize - applies to all devices */
 * {
     box-sizing: border-box;
 }
 
-/* Mobile-first base styles */
-body {
-    font-size: 16px;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-}
+/* PC First: Preserve existing fixed-width layout for desktop */
+/* Your existing layout is preserved by default */
 
-/* Container responsive design */
-#__next {
-    width: 100%;
-    max-width: 100vw;
-    margin: 0;
-    padding: 0 16px;
-    background-color: #d8d8d8;
-    min-height: 100vh;
-}
+/* MOBILE ONLY: Apply responsive design only on mobile screens */
+@media screen and (max-width: 767px) {
+    /* Mobile base styles */
+    body {
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+    }
 
-#page-ctn {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 16px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    border-radius: 0;
-}
+    /* Container responsive design */
+    #__next {
+        width: 100% !important;
+        max-width: 100vw !important;
+        margin: 0 !important;
+        padding: 0 16px !important;
+        background-color: #d8d8d8;
+        min-height: 100vh;
+    }
 
-/* Hide header on mobile */
-#page-header {
-    display: none;
-}
-
-.markdown-body {
-    padding: 0;
-    font-size: 16px;
-    line-height: 1.6;
-}
-
-/* Mobile typography */
-.markdown-body h1 {
-    font-size: 1.8em;
-    margin: 0.8em 0 0.5em 0;
-    text-align: left;
-}
-
-.markdown-body h2 {
-    font-size: 1.5em;
-    margin: 0.7em 0 0.4em 0;
-}
-
-.markdown-body h3 {
-    font-size: 1.3em;
-    margin: 0.6em 0 0.3em 0;
-}
-
-.markdown-body h4 {
-    font-size: 1.1em;
-    margin: 0.5em 0 0.3em 0;
-}
-
-.markdown-body h5 {
-    font-size: 1em;
-    margin: 0.5em 0 0.2em 0;
-}
-
-.markdown-body h6 {
-    font-size: 0.9em;
-    margin: 0.4em 0 0.2em 0;
-}
-
-/* Mobile-friendly code blocks */
-.markdown-body pre {
-    font-size: 14px;
-    padding: 12px;
-    margin: 16px 0;
-    border-radius: 6px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-.markdown-body code {
-    font-size: 0.9em;
-    padding: 2px 4px;
-    border-radius: 3px;
-    word-break: break-word;
-}
-
-/* Mobile tables */
-.markdown-body table {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    border-spacing: 0;
-    border-collapse: collapse;
-    margin: 16px 0;
-}
-
-.markdown-body table th,
-.markdown-body table td {
-    padding: 8px 12px;
-    border: 1px solid #dfe2e5;
-    font-size: 14px;
-}
-
-/* Mobile-friendly lists */
-.markdown-body ul,
-.markdown-body ol {
-    padding-left: 24px;
-    margin: 16px 0;
-}
-
-.markdown-body li {
-    margin: 4px 0;
-    word-wrap: break-word;
-}
-
-/* Mobile collapsible sections */
-.wrap-collabsible {
-    margin: 16px 0;
-    padding: 0;
-}
-
-.lbl-toggle {
-    display: block;
-    font-size: 12px;
-    font-weight: 500;
-    padding: 8px 12px;
-    background: #6AB0DE;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    -webkit-tap-highlight-color: rgba(0,0,0,0.1);
-}
-
-.collapsible-content {
-    border-radius: 0 0 4px 4px;
-}
-
-.toggle:checked+.lbl-toggle+.collapsible-content {
-    max-height: 70vh; /* Smaller on mobile */
-    overflow-y: auto;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-
-.collapsible-content .content-inner {
-    padding: 8px 12px;
-    margin-top: 0;
-}
-
-/* Math rendering mobile optimization */
-.MathJax {
-    font-size: 0.9em !important;
-}
-
-/* Touch-friendly links */
-.markdown-body a {
-    text-decoration: underline;
-    color: #4073dd;
-    word-break: break-word;
-    -webkit-tap-highlight-color: rgba(64, 115, 221, 0.3);
-}
-
-/* Images responsive */
-.markdown-body img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-    margin: 8px 0;
-}
-
-/* Blockquotes mobile */
-.markdown-body blockquote {
-    margin: 16px 0;
-    padding: 12px 16px;
-    border-left: 4px solid #dfe2e5;
-    background-color: #f6f8fa;
-}
-
-/* Copy button mobile optimization */
-div.code-toolbar > .toolbar button {
-    font-size: 0.8em;
-    padding: 4px 6px;
-    min-width: 40px;
-    min-height: 32px;
-}
-
-/* Tablet styles */
-@media screen and (min-width: 768px) {
     #page-ctn {
-        padding: 24px;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 auto !important;
+        padding: 16px !important;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        border-radius: 0;
+        min-height: auto !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Hide header on mobile */
+    #page-header {
+        display: none !important;
+    }
+
+    .markdown-body {
+        width: 100% !important;
+        padding: 0 !important;
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        margin: 0 !important;
+    }
+
+    /* Mobile typography */
+    .markdown-body h1 {
+        font-size: 1.8em !important;
+        margin: 0.8em 0 0.5em 0 !important;
+        text-align: left !important;
+        padding-top: 0.5em !important;
+        padding-bottom: 0.3em !important;
+    }
+
+    .markdown-body h2 {
+        font-size: 1.5em !important;
+        margin: 0.7em 0 0.4em 0 !important;
+    }
+
+    .markdown-body h3 {
+        font-size: 1.3em !important;
+        margin: 0.6em 0 0.3em 0 !important;
+    }
+
+    .markdown-body h4 {
+        font-size: 1.1em !important;
+        margin: 0.5em 0 0.3em 0 !important;
+    }
+
+    .markdown-body h5 {
+        font-size: 1em !important;
+        margin: 0.5em 0 0.2em 0 !important;
+    }
+
+    .markdown-body h6 {
+        font-size: 0.9em !important;
+        margin: 0.4em 0 0.2em 0 !important;
+    }
+
+    /* Mobile-friendly code blocks */
+    .markdown-body pre {
+        font-size: 14px !important;
+        padding: 12px !important;
+        margin: 16px 0 !important;
+        border-radius: 6px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .markdown-body code {
+        font-size: 0.9em !important;
+        padding: 2px 4px !important;
+        border-radius: 3px;
+        word-break: break-word;
+    }
+
+    /* Mobile tables - force horizontal scroll */
+    .markdown-body table {
+        display: block !important;
+        width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+        margin: 16px auto !important;
+    }
+
+    .markdown-body table th,
+    .markdown-body table td {
+        padding: 6px 8px !important;
+        font-size: 12px !important;
+        white-space: nowrap;
+        min-width: 80px;
+    }
+
+    /* Mobile-friendly lists */
+    .markdown-body ul,
+    .markdown-body ol {
+        padding-left: 20px !important;
+        margin: 12px 0 !important;
+    }
+
+    .markdown-body li {
+        margin: 4px 0 !important;
+        word-wrap: break-word;
+    }
+
+    /* Mobile collapsible sections */
+    .wrap-collabsible,
+    .wrap-content-collapsible {
+        margin: 16px 0 !important;
+        padding: 0;
+    }
+
+    .lbl-toggle {
+        font-size: 12px !important;
+        padding: 8px 12px !important;
+        -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+    }
+
+    .toggle:checked+.lbl-toggle+.collapsible-content,
+    .toggle:checked+.lbl-toggle+.content-collapsible-content {
+        max-height: 70vh !important;
+        overflow-y: auto !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .collapsible-content .content-inner,
+    .content-collapsible-content .content-inner {
+        padding: 8px 12px !important;
+        margin-top: 0 !important;
+    }
+
+    /* Math rendering mobile optimization */
+    .MathJax {
+        font-size: 0.9em !important;
+    }
+
+    /* Touch-friendly links */
+    .markdown-body a {
+        -webkit-tap-highlight-color: rgba(64, 115, 221, 0.3);
+        word-break: break-word;
+    }
+
+    /* Images responsive */
+    .markdown-body img {
+        max-width: 100% !important;
+        height: auto !important;
+        margin: 8px 0 !important;
+    }
+
+    /* Admonition mobile */
+    .admonition-wrapper {
+        padding: 12px 0 !important;
+    }
+
+    .admonition.orange {
+        margin: 8px !important;
+        padding: 4px 8px !important;
+    }
+
+    .admonition-orange {
+        margin: -8px !important;
+        padding: 1px 8px !important;
+        font-size: 0.9em !important;
+    }
+}
+
+/* TABLET: Medium screens */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    #page-ctn {
+        margin: 16px auto !important;
         border-radius: 8px;
-        margin: 16px auto;
     }
     
     #__next {
-        padding: 0 24px;
-    }
-    
-    .markdown-body {
-        font-size: 17px;
+        padding: 0 24px !important;
     }
     
     .markdown-body h1 {
-        font-size: 2em;
-        text-align: center;
-    }
-    
-    .markdown-body h2 {
-        font-size: 1.7em;
-    }
-    
-    .markdown-body pre {
-        font-size: 15px;
-        padding: 16px;
-    }
-    
-    .toggle:checked+.lbl-toggle+.collapsible-content {
-        max-height: 80vh;
+        text-align: center !important;
     }
 }
 
-/* Desktop styles */
+/* DESKTOP: Large screens - preserve your fixed-width design */
 @media screen and (min-width: 1024px) {
-    #page-ctn {
-        padding: 32px;
-        margin: 24px auto;
-    }
+    /* Your existing CSS rules take precedence here */
+    /* No overrides needed - keep your 700px/800px layout */
     
-    .markdown-body {
-        font-size: 18px;
-    }
-    
-    .markdown-body h1 {
-        font-size: 2.25em;
-    }
-    
-    .markdown-body h2 {
-        font-size: 1.75em;
-    }
-    
-    .markdown-body pre {
-        font-size: 16px;
-        padding: 20px;
-    }
-    
-    /* Show header on desktop */
+    /* Ensure header is visible on desktop */
     #page-header {
-        display: block;
+        display: block !important;
     }
 }
 
@@ -554,19 +517,6 @@ div.code-toolbar > .toolbar button {
     .markdown-body {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-    }
-}
-
-/* Dark mode media query support */
-@media (prefers-color-scheme: dark) {
-    body:not(.dark-theme):not(.light-theme) #__next {
-        background-color: #2d2d2d;
-    }
-    
-    body:not(.dark-theme):not(.light-theme) #page-ctn {
-        background-color: #1a1a1a;
-        color: #e0e0e0;
-        box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
 }
 
@@ -585,7 +535,8 @@ div.code-toolbar > .toolbar button {
         width: 100%;
     }
     
-    .wrap-collabsible {
+    .wrap-collabsible,
+    .wrap-content-collapsible {
         display: none !important;
     }
     
@@ -1113,18 +1064,27 @@ html {
     /* the background-color should be set as white, otherwise iMac print gray bottom */
     /* background-color: #d8d8d8; */
     background-color: white;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* the settings have no effect */
+/* Remove default margins and padding */
 body {
     background-color: #d8d8d8;
-    padding: 0;
-    margin: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Remove top margin from first element to eliminate white space at top */
+body > *:first-child,
+.markdown-body > *:first-child {
+    margin-top: 0 !important;
 }
 
 #__next {
     /* width: 100%; */
-    padding: 0;
+    padding: 0 !important;
+    margin: 0 !important;
     /*SOMETIMES need to set margin to offset the html background-color margin*/
     /* margin: -2em; */
     background-color: #d8d8d8;
@@ -1138,7 +1098,8 @@ body {
     min-height: 840px;
     margin-left: auto;
     margin-right: auto;
-    /* padding-top:0px; */
+    margin-top: 0 !important; /* Force zero top margin */
+    padding-top: 0 !important; /* Force zero top padding */
     /* margin-top:0px; */
     margin-bottom: -4em;
     /* aesthetic in web, not good for print */
@@ -1162,14 +1123,14 @@ body {
 
 .markdown-body {
     color: #24292e;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, "Noto Sans", "Noto Sans Symbols", Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
     font-size: 13px;
     line-height: 1.5;
     word-wrap: break-word;
     /* set it below 640px to print correctly with the 700px setting in page-ctn */
     width: 700px;
     text-align: left;
-    padding: 1em 2em 2em 2em;
+    padding: 0 2em 2em 2em; /* Remove top padding: was 1em 2em 2em 2em */
     /* padding to the left and the right boarders*/
     /*center content in the middle of page-ctn */
     margin: auto;
@@ -1224,9 +1185,10 @@ body {
 .markdown-body h1 {
     font-size: 2.25em;
     text-align: center;
-    padding-top: 0.em;
+    padding-top: 1em;
     padding-bottom: 0.5em;
     color: #000000 !important; /* Force h1 to be black */
+    border-bottom: none !important; /* Remove any border below h1 */
     /* background-color: #eee; */
 }
 
@@ -1263,6 +1225,23 @@ body {
 .markdown-body h4 + ul,
 .markdown-body h4 + ol {
     margin-top: 0px;
+}
+
+/* Reduce top margin of <ul> elements that follows a paragraphs */
+.markdown-body p + ul,
+.markdown-body p + ol {
+    margin-top: 4px !important;
+}
+
+/* Reduce bottom margin from paragraphs that precede lists */
+.markdown-body p:has(+ ul),
+.markdown-body p:has(+ ol) {
+    margin-bottom: 4px !important;
+}
+
+/* Fallback for browsers that don't support :has() */
+.markdown-body p {
+    margin-bottom: 8px;
 }
 
 .markdown-body h5 {
@@ -1393,7 +1372,7 @@ body {
 }
 
 .markdown-body table th {
-    padding: 8px 24px;
+    padding: 6px 24px;
     text-align: left;
     font-weight: 600;
     color: #374151;
@@ -1404,7 +1383,7 @@ body {
 }
 
 .markdown-body table td {
-    padding: 7px 24px;
+    padding: 5px 24px;
     border-bottom: 1px solid #f3f4f6;
     color: #4b5563;
     background: #ffffff;
@@ -1425,11 +1404,11 @@ body {
 @media (max-width: 800px) {
     /* Content area becoming constrained, reduce table padding */
     .markdown-body table th {
-        padding: 8px 16px !important;
+        padding: 6px 16px !important;
         background: red !important;
     }
     .markdown-body table td {
-        padding: 7px 16px !important;
+        padding: 5px 16px !important;
         background: yellow !important;
     }
 }
@@ -1437,11 +1416,11 @@ body {
 @media (max-width: 750px) {
     /* Approaching 70% threshold for 700px content */
     .markdown-body table th {
-        padding: 8px 12px !important;
+        padding: 6px 12px !important;
         background: blue !important;
     }
     .markdown-body table td {
-        padding: 7px 12px !important;
+        padding: 5px 12px !important;
         background: green !important;
     }
 }
@@ -1449,11 +1428,11 @@ body {
 @media (max-width: 700px) {
     /* At content width limit, minimal padding */
     .markdown-body table th {
-        padding: 8px 8px !important;
+        padding: 6px 8px !important;
         background: purple !important;
     }
     .markdown-body table td {
-        padding: 7px 8px !important;
+        padding: 5px 8px !important;
         background: orange !important;
     }
 }
@@ -1571,7 +1550,7 @@ body:not(.dark-theme) .markdown-body pre code .token.string {
 }
 
 .markdown-body li>p {
-    margin-top: 16px;
+    margin-top: 6px;
 }
 
 .markdown-body li+li {
@@ -1644,10 +1623,15 @@ body:not(.dark-theme) .markdown-body pre code .token.string {
     margin-bottom: 24px;
 }
 
+/* Modular admonition spacing system - using padding to avoid margin collapse */
+.admonition-wrapper {
+    padding: 8px 0 0 4px; /* Outer spacing - easy to adjust */
+}
+
 .admonition.orange {
     padding: 6px 12px;
     line-height: 24px;
-    margin-bottom: 24px;
+    margin-bottom: 0; /* Remove bottom margin - handled by wrapper */
     background: #ffedcc;
 }
 
@@ -1658,7 +1642,7 @@ body:not(.dark-theme) .markdown-body pre code .token.string {
     display: block;
     color: #fff;
     background: #f0b37e;
-    margin: -12px;
+    margin: -12px; /* Keep negative margin for header overlap effect */
     padding: 2px 12px;
     margin-bottom: 6px;
 }
@@ -1687,11 +1671,34 @@ body:not(.dark-theme) .markdown-body pre code .token.string {
 /* Legacy collapsible system - keeping for code block collapsing only */
 .wrap-content-collapsible {
     margin-bottom: 1.2rem 0;
-    padding: 1em 0em 1em 0em;
+    padding: 0em 0em 0.5em 0em; /* Reduced top padding from 1em to 0.2em */
 }
 
 input[type='checkbox'] {
     display: none;
+}
+
+/* Task list checkbox styling - override the generic hidden checkbox rule */
+.task-list-item-checkbox {
+    display: inline-block !important;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+/* Task list item styling */
+.task-list-item {
+    list-style-type: none !important;
+    margin-left: -1.5em;
+    position: relative;
+}
+
+/* Styling for completed tasks */
+.task-list-item input[type="checkbox"]:checked + * {
+    text-decoration: line-through;
+    opacity: 0.7;
 }
 
 body:not(.dark-theme) .lbl-toggle {
@@ -2219,538 +2226,460 @@ body.dark-theme .wrap-content-collapsible .content-collapsible-content pre::-web
                 <h3></h3>
             </header>
             <section class="markdown-body">
-<h1 id="my-awesome-document">My Awesome Document</h1>
-<p>This is a demonstration of converting Markdown to a beautiful HTML file.</p>
-<h2 id="table-of-contents">Table of Contents</h2>
-<div class="toc">
+<h1>Sample Document for MD2HTML Testing</h1>
+<p>This document demonstrates the conversion of Markdown to HTML with comprehensive testing of all supported features.</p>
+<h2>Table of Contents</h2>
+<p>[TOC]</p>
+<h2>Unicode Character Tests</h2>
+<p>This section tests the rendering of various Unicode characters and symbols.</p>
+<h3>Mathematical Symbols</h3>
 <ul>
-<li><a href="#my-awesome-document">My Awesome Document</a><ul>
-<li><a href="#table-of-contents">Table of Contents</a></li>
-<li><a href="#features">Features</a><ul>
-<li><a href="#python-example">Python Example</a></li>
-<li><a href="#list-example">List Example</a></li>
+<li>Superscripts: x², x³, x⁴, x⁵, x⁶, x⁷, x⁸, x⁹, x¹⁰</li>
+<li>Subscripts: H₂O, CO₂, CH₄, N₂O, SO₄²⁻, Ca²⁺</li>
+<li>Greek letters: α, β, γ, δ, ε, ζ, η, θ, λ, μ, π, ρ, σ, τ, φ, χ, ψ, ω</li>
+<li>Greek capitals: Α, Β, Γ, Δ, Ε, Θ, Λ, Π, Σ, Φ, Ψ, Ω</li>
+<li>Math operators: ±, ×, ÷, ≠, ≤, ≥, ≈, ∞, ∑, ∏, ∫, ∂, ∇, √, ∆</li>
 </ul>
-</li>
-<li><a href="#problem-1">Problem 1</a><ul>
-<li><a href="#problem-statement">Problem Statement</a></li>
-<li><a href="#solution">Solution</a></li>
-<li><a href="#answer">Answer</a></li>
-</ul>
-</li>
-<li><a href="#problem-2">Problem 2</a><ul>
-<li><a href="#problem-statement_1">Problem Statement</a></li>
-<li><a href="#solution_1">Solution</a></li>
-<li><a href="#answer_1">Answer</a></li>
-</ul>
-</li>
-<li><a href="#problem-3">Problem 3</a><ul>
-<li><a href="#parameter-sets">Parameter Sets</a></li>
-<li><a href="#output">Output</a></li>
-</ul>
-</li>
-<li><a href="#solutiongemini-25-pro">Solution(Gemini-2.5-pro)</a><ul>
-<li><a href="#solution-plan">Solution Plan</a><ul>
-<li><a href="#constants-and-setup">Constants and Setup</a></li>
-<li><a href="#1-signal-generation">1. Signal Generation</a></li>
-<li><a href="#2-baseline-correction">2. Baseline Correction</a></li>
-<li><a href="#3-peak-detection">3. Peak Detection</a></li>
-<li><a href="#4-peak-integration-charge-calculation">4. Peak Integration (Charge Calculation)</a></li>
-<li><a href="#5-final-calculation">5. Final Calculation</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#python-code">Python code</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<h2 id="features">Features</h2>
+<h3>Physical Units</h3>
 <ul>
-<li>Custom styling via CSS</li>
-<li>Syntax highlighting for code</li>
-<li>Table support</li>
+<li>Speed: m/s², km/h, rad/s²</li>
+<li>Energy: J/kg·K, W/m²·K, kWh</li>
+<li>Temperature: °C, °F, K</li>
+<li>Angles: 45°, 90°, 180°, 2π radians</li>
+<li>Electricity: μA, mV, kΩ, MΩ</li>
 </ul>
-<h3 id="python-example">Python Example</h3>
-<p>Here is a Python code block that will be highlighted.</p>
-<div class="wrap-content-collapsible">
-    <input id="code-collapse-1" class="toggle" type="checkbox">
-    <label for="code-collapse-1" class="lbl-toggle">PYTHON (11 lines)</label>
-    <div class="content-collapsible-content">
-        <div class="content-inner">
-<pre><code class="language-python"># this is to test section heading in copy block not counted as real one
-import sys
-
-def greet(name):
-    &quot;&quot;&quot;A simple greeting function.&quot;&quot;&quot;
-    return f&quot;Hello, {name}!&quot;
-
-if __name__ == &quot;__main__&quot;:
-    person = sys.argv[1] if len(sys.argv) &gt; 1 else &quot;World&quot;
-    print(greet(person))
-</code></pre>
-        </div>
-    </div>
-</div>
-<h3 id="list-example">List Example</h3>
+<hr />
+<h2>LaTeX Math Delimiter Tests</h2>
+<p>This section demonstrates all supported LaTeX math delimiter types and features.</p>
+<h3>Display Math Delimiters</h3>
+<h4>1. Double Dollar Signs</h4>
+<p>Test <code class="language-python">$$...$$</code> math
+<script type="math/tex; mode=display">F(x) = \int_{-\infty}^{\infty} f(t) e^{-2\pi ixt} dt</script></p>
+<h4>2. Square Brackets Display Math</h4>
+<p>Test <code class="language-python">\[...\]</code> math
+<script type="math/tex; mode=display">
+E = mc^2 + \frac{1}{2}mv^2
+</script></p>
+<h4>3. Standalone Boxed Expressions (Auto Display Math)</h4>
+<p>Test standalone <code class="language-python">\boxed{...}</code>
+<script type="math/tex; mode=display">\boxed{\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}}</script></p>
+<h3>Inline Math Delimiters</h3>
+<h4>4. Single Dollar Signs</h4>
+<p>Test <code class="language-python">$...$</code> math
+The quadratic formula is <script type="math/tex">x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}</script> for solving <script type="math/tex">ax^2 + bx + c = 0</script>.</p>
+<h4>5. Parentheses Inline Math</h4>
+<p>Test <code class="language-python">\(...\)</code> math. Einstein's mass-energy equivalence is <script type="math/tex">E = mc^2</script> where <script type="math/tex">c</script> is the speed of light.</p>
+<h3>Complex Nested Examples</h3>
+<h4>Mixed Delimiters in Same Paragraph</h4>
+<p>Consider the equation <script type="math/tex">f(x) = x^2 + 1</script> and the integral <script type="math/tex">\int_0^1 f(x)dx</script>. The solution is:
+<script type="math/tex; mode=display">\int_0^1 (x^2 + 1)dx = \left[\frac{x^3}{3} + x\right]_0^1 = \frac{4}{3}</script></p>
+<h4>Nested Braces in Boxed Expressions</h4>
+<p><script type="math/tex; mode=display">\boxed{\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}}</script></p>
+<p><script type="math/tex; mode=display">\boxed{\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e}</script></p>
+<h4>Complex Display Math with Multiple Lines</h4>
+<p><script type="math/tex; mode=display">
+\begin{align}
+\nabla \cdot \mathbf{E} &= \frac{\rho}{\epsilon_0} \\
+\nabla \cdot \mathbf{B} &= 0 \\
+\nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}}{\partial t} \\
+\nabla \times \mathbf{B} &= \mu_0 \mathbf{J} + \mu_0 \epsilon_0 \frac{\partial \mathbf{E}}{\partial t}
+\end{align}
+</script></p>
+<h3>Boxed Math Inside Other Delimiters</h3>
+<h4>Boxed Inside Display Math</h4>
+<p><script type="math/tex; mode=display">\boxed{H = -\sum_i p_i \log p_i}</script></p>
+<h4>Multiple Boxed Expressions</h4>
+<p>The final answers are:
+<script type="math/tex; mode=display">\boxed{x_1 = \frac{-b + \sqrt{\Delta}}{2a}} \quad \text{and} \quad \boxed{x_2 = \frac{-b - \sqrt{\Delta}}{2a}}</script></p>
+<h3>Edge Cases and Special Characters</h3>
+<h4>Greek Letters and Special Symbols</h4>
+<p><script type="math/tex; mode=display">\alpha + \beta = \gamma \quad \Rightarrow \quad \sum_{i=1}^n \alpha_i = \prod_{j=1}^m \beta_j</script></p>
+<h4>Fractions within Fractions</h4>
+<p><script type="math/tex; mode=display">\boxed{\frac{\frac{a}{b} + \frac{c}{d}}{\frac{e}{f} - \frac{g}{h}}}</script></p>
+<h4>Matrix Notation</h4>
+<p><script type="math/tex; mode=display">
+\mathbf{A} = \begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{pmatrix}
+</script></p>
+<hr />
+<h2>List Formatting Tests</h2>
+<p>This section tests various list types and nesting patterns.</p>
+<h3>Normal List With Preceding Text</h3>
+<p><strong>Final Answer Format Instructions:</strong></p>
+<ul>
+<li>Your answer must be a single analytic expression.</li>
+<li>Use the symbol <script type="math/tex">\pi</script> for pi.</li>
+<li>Use standard mathematical notation: multiplication must be denoted explicitly (e.g., <script type="math/tex">a \cdot b</script> or <script type="math/tex">ab</script>), and fractions must be written using <code class="language-python">\frac{}{}</code>.</li>
+<li>The expression must be boxed using <code class="language-python">$\boxed{}$</code>.</li>
+</ul>
+<h3>Mixed Indentation Lists</h3>
 <ol>
-<li>First list item<ul>
-<li>First nested list item<ul>
-<li>Second nested list item</li>
+<li>First main item<ul>
+<li>Nested bullet point (4-space indent)<ul>
+<li>Deeply nested item (8-space indent)</li>
 </ul>
 </li>
+<li>Another nested item</li>
 </ul>
 </li>
-<li>First list item<ul>
-<li>First nested list item<ul>
-<li>Second nested list item</li>
+<li>Second main item<ul>
+<li>Different indentation (2-space indent)</li>
+<li>Sub-item with 4-space indent</li>
 </ul>
 </li>
+<li>Third main item with multiple paragraphs This paragraph is part of item 3.<ul>
+<li>Nested list after paragraph</li>
+<li>Another nested item</li>
 </ul>
 </li>
 </ol>
-<h2 id="problem-1">Problem 1</h2>
-<div class="admonition orange">
-        <p class="admonition-orange">Multicritical points (123)</p>
-        For a system described by two coupled scalar order parameters at a stable tetracritical point, calculate the mean-field ratio of the two order parameter magnitudes in the mixed-symmetry phase.
-    </div>
-<h3 id="problem-statement">Problem Statement</h3>
-<p>A problem with dispaly math 
-<script type="math/tex; mode=display">F(\phi_1, \phi_2) = \frac{1}{2} r_1 \phi_1^2 + \frac{1}{2} r_2 \phi_2^2 + \frac{1}{4} g_1 \phi_1^4 + \frac{1}{4} g_2 \phi_2^4 + \frac{1}{2} g_{12} \phi_1^2 \phi_2^2</script></p>
-<p>And inline math <script type="math/tex">r_1 = r_2 = 0</script>.</p>
-<h3 id="solution">Solution</h3>
-<p>The free energy is:
-<script type="math/tex; mode=display">F(\phi_1, \phi_2) = \frac{1}{2} r_1 \phi_1^2 + \frac{1}{2} r_2 \phi_2^2 + \frac{1}{4} g_1 \phi_1^4 + \frac{1}{4} g_2 \phi_2^4 + \frac{1}{2} g_{12} \phi_1^2 \phi_2^2</script></p>
-<p>Dislay math again:
-<script type="math/tex; mode=display"> \frac{|\phi_1|}{|\phi_2|} = \sqrt{\frac{\phi_1^2}{\phi_2^2}} = \sqrt{\frac{g_2 - g_{12}}{g_1 - g_{12}}} </script></p>
-<p>This is the final expression for the ratio of the order parameter magnitudes.</p>
-<h3 id="answer">Answer</h3>
-<p><script type="math/tex; mode=display"> \boxed{\sqrt{\frac{g_2 - g_{12}}{g_1 - g_{12}}}} </script></p>
-<hr />
-<h2 id="problem-2">Problem 2</h2>
-<h3 id="problem-statement_1">Problem Statement</h3>
-<p>This is to test table detection (preceding text mingled with table) </p>
-<table>
-<thead>
-<tr>
-<th>A</th>
-<th>B</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>C</td>
-<td>D</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Standard Model (SM) Sector:</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Particle</th>
-<th style="text-align: left;">Representation</th>
-<th style="text-align: center;"><script type="math/tex">g</script></th>
-<th style="text-align: center;"><script type="math/tex">B</script></th>
-<th style="text-align: center;"><script type="math/tex">L</script></th>
-<th style="text-align: center;"><script type="math/tex">Y</script></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Left-handed quarks</td>
-<td style="text-align: left;"><script type="math/tex">({\bf 3}, {\bf 2})_{1/6}</script></td>
-<td style="text-align: center;">6</td>
-<td style="text-align: center;">1/3</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1/6</td>
-</tr>
-<tr>
-<td style="text-align: left;">Right-handed up-quark</td>
-<td style="text-align: left;"><script type="math/tex">({\bf 3}, {\bf 1})_{2/3}</script></td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">1/3</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">2/3</td>
-</tr>
-<tr>
-<td style="text-align: left;">Right-handed down-quark</td>
-<td style="text-align: left;"><script type="math/tex">({\bf 3}, {\bf 1})_{-1/3}</script></td>
-<td style="text-align: center;">3</td>
-<td style="text-align: center;">1/3</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">-1/3</td>
-</tr>
-<tr>
-<td style="text-align: left;">Left-handed leptons</td>
-<td style="text-align: left;"><script type="math/tex">({\bf 1}, {\bf 2})_{-1/2}</script></td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">-1/2</td>
-</tr>
-<tr>
-<td style="text-align: left;">Right-handed electron</td>
-<td style="text-align: left;"><script type="math/tex">({\bf 1}, {\bf 1})_{-1}</script></td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">-1</td>
-</tr>
-<tr>
-<td style="text-align: left;">Higgs boson, <script type="math/tex">H</script></td>
-<td style="text-align: left;"><script type="math/tex">({\bf 1}, {\bf 2})_{1/2}</script></td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1/2</td>
-</tr>
-</tbody>
-</table>
-<p>Standalone table should always work.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Particle</th>
-<th style="text-align: left;">Representation</th>
-<th style="text-align: center;"><script type="math/tex">g</script></th>
-<th style="text-align: center;"><script type="math/tex">D</script></th>
-<th style="text-align: center;"><script type="math/tex">L_D</script></th>
-<th style="text-align: center;"><script type="math/tex">Y_D</script></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;">Left-handed dark quarks, <script type="math/tex">\Psi_D</script></td>
-<td style="text-align: left;"><script type="math/tex">({\bf 2}, {\bf 2})_{1/2}</script></td>
-<td style="text-align: center;">4</td>
-<td style="text-align: center;">1/2</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1/2</td>
-</tr>
-<tr>
-<td style="text-align: left;">Right-handed dark quarks, <script type="math/tex">\Psi_{D,R}</script></td>
-<td style="text-align: left;"><script type="math/tex">({\bf 2}, {\bf 1})_{1/2}</script></td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">1/2</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1/2</td>
-</tr>
-<tr>
-<td style="text-align: left;">Left-handed dark leptons, <script type="math/tex">\chi_D</script></td>
-<td style="text-align: left;"><script type="math/tex">({\bf 1}, {\bf 2})_{-1/2}</script></td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">1</td>
-<td style="text-align: center;">-1/2</td>
-</tr>
-<tr>
-<td style="text-align: left;">Dark Higgs boson, <script type="math/tex">\Phi_D</script></td>
-<td style="text-align: left;"><script type="math/tex">({\bf 1}, {\bf 2})_{0}</script></td>
-<td style="text-align: center;">2</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-<td style="text-align: center;">0</td>
-</tr>
-</tbody>
-</table>
-<h3 id="solution_1">Solution</h3>
-<p>Placeholder for solution paragraph 1. </p>
-<p>Placeholder for solution paragraph 2. </p>
-<h3 id="answer_1">Answer</h3>
-<p><script type="math/tex; mode=display">\boxed{-\frac{42}{13}}</script></p>
-<hr />
-<h2 id="problem-3">Problem 3</h2>
-<h3 id="parameter-sets">Parameter Sets</h3>
-<p>You are provided with three sets of parameters in JSON format. Your code should be able to run on any of these sets.</p>
-<p><strong>Set 1:</strong></p>
-<div class="wrap-content-collapsible">
-    <input id="code-collapse-2" class="toggle" type="checkbox">
-    <label for="code-collapse-2" class="lbl-toggle">JSON (12 lines)</label>
-    <div class="content-collapsible-content">
-        <div class="content-inner">
-<pre><code class="language-javascript">{
-    &quot;duration&quot;: 10,
-    &quot;fs&quot;: 1000,
-    &quot;baseline_coeffs&quot;: [1.0e-9, 0.5e-9],
-    &quot;noise_std&quot;: 2.0e-10,
-    &quot;event_count&quot;: 15,
-    &quot;peak_loc_range&quot;: [1.0, 9.0],
-    &quot;peak_amp_range&quot;: [1.0e-9, 5.0e-9],
-    &quot;peak_width_range&quot;: [0.01, 0.05],
-    &quot;seed&quot;: 42
-}
+<h3>Complex Nested Structure</h3>
+<ol>
+<li><p><strong>Project Setup</strong>
+This is the main project setup phase.</p>
+<ol>
+<li>Create virtual environment:<pre><code class="language-bash">python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
 </code></pre>
-        </div>
-    </div>
-</div>
-<p><strong>Set 2:</strong></p>
-<div class="wrap-content-collapsible">
-    <input id="code-collapse-3" class="toggle" type="checkbox">
-    <label for="code-collapse-3" class="lbl-toggle">JSON (12 lines)</label>
-    <div class="content-collapsible-content">
-        <div class="content-inner">
-<pre><code class="language-javascript">{
-    &quot;duration&quot;: 20,
-    &quot;fs&quot;: 2000,
-    &quot;baseline_coeffs&quot;: [5.0e-9, -0.2e-9],
-    &quot;noise_std&quot;: 1.0e-9,
-    &quot;event_count&quot;: 30,
-    &quot;peak_loc_range&quot;: [1.0, 19.0],
-    &quot;peak_amp_range&quot;: [3.0e-9, 10.0e-9],
-    &quot;peak_width_range&quot;: [0.02, 0.08],
-    &quot;seed&quot;: 123
-}
-</code></pre>
-        </div>
-    </div>
-</div>
-<p><strong>Set 3:</strong></p>
-<div class="wrap-content-collapsible">
-    <input id="code-collapse-4" class="toggle" type="checkbox">
-    <label for="code-collapse-4" class="lbl-toggle">JSON (12 lines)</label>
-    <div class="content-collapsible-content">
-        <div class="content-inner">
-<pre><code class="language-javascript">{
-    &quot;duration&quot;: 5,
-    &quot;fs&quot;: 5000,
-    &quot;baseline_coeffs&quot;: [2.0e-9, 0.0],
-    &quot;noise_std&quot;: 0.5e-9,
-    &quot;event_count&quot;: 10,
-    &quot;peak_loc_range&quot;: [0.5, 4.5],
-    &quot;peak_amp_range&quot;: [8.0e-9, 15.0e-9],
-    &quot;peak_width_range&quot;: [0.005, 0.015],
-    &quot;seed&quot;: 2024
-}
-</code></pre>
-        </div>
-    </div>
-</div>
-<h3 id="output">Output</h3>
-<p>The function should return a single numeric value: the mean moles of electrons per event (<script type="math/tex">\bar{n}_e</script>), rounded to an appropriate number of significant figures, but for the purpose of this problem, round to 6 decimal places (relative to the base unit, not femto/pico etc). For example, <code class="language-python">1.234567e-18</code>. If no events are detected, the function should return <code class="language-python">0.0</code>.</p>
-<h2 id="solutiongemini-25-pro">Solution(Gemini-2.5-pro)</h2>
-<h3 id="solution-plan">Solution Plan</h3>
-<p>The problem requires a multi-step signal processing and analysis pipeline. The plan is to first generate the specified current-time data, then process it to isolate and integrate the event spikes, and finally compute the average moles of electrons per event.</p>
-<h4 id="constants-and-setup">Constants and Setup</h4>
+</li>
+<li>Install dependencies:</li>
+</ol>
 <ul>
-<li>The Faraday constant, <script type="math/tex">F</script>, is a key physical constant. We will use the value from <code class="language-python">scipy.constants.Faraday</code>.</li>
-</ul>
-<h4 id="1-signal-generation">1. Signal Generation</h4>
-<ul>
-<li><strong>Time Array</strong>: A time vector <code class="language-python">t</code> will be created using <code class="language-python">numpy.linspace</code> or <code class="language-python">numpy.arange</code> from <code class="language-python">0</code> to <code class="language-python">duration</code> with a total of <code class="language-python">duration * fs</code> points.</li>
-<li><strong>Randomness</strong>: To ensure reproducibility, the random number generator will be seeded using <code class="language-python">numpy.random.seed(seed)</code>.</li>
-<li><strong>Baseline</strong>: The linear baseline current <script type="math/tex">I_{\text{base}} = a + bt</script> will be calculated vectorized over the time array <code class="language-python">t</code>.</li>
-<li><strong>Events</strong>: A loop running <code class="language-python">event_count</code> times will generate the peaks. In each iteration:<ul>
-<li>Peak parameters (location <script type="math/tex">\mu_i</script>, amplitude <script type="math/tex">A_i</script>, width <script type="math/tex">\sigma_i</script>) are drawn from their respective uniform distributions using <code class="language-python">numpy.random.uniform()</code>.</li>
-<li>A Gaussian function <script type="math/tex">A_i \exp(-\frac{(t - \mu_i)^2}{2\sigma_i^2})</script> is computed and added to an initially zero <code class="language-python">I_events</code> array.</li>
+<li>Core packages: <code class="language-python">pip install markdown</code></li>
+<li>Optional packages: <code class="language-python">pip install beautifulsoup4</code></li>
 </ul>
 </li>
-<li><strong>Noise</strong>: Gaussian noise will be generated using <code class="language-python">numpy.random.normal(0, noise_std, size=len(t))</code>.</li>
-<li><strong>Total Signal</strong>: The final signal is the sum of the components: <script type="math/tex">I_{\text{total}} = I_{\text{base}} + I_{\text{events}} + I_{\text{noise}}</script>.</li>
-</ul>
-<h4 id="2-baseline-correction">2. Baseline Correction</h4>
+<li><p><strong>Configuration</strong></p>
 <ul>
-<li>Since the peaks are relatively sparse, a linear regression on the total signal can provide a good estimate of the baseline parameters.</li>
-<li>We will use <code class="language-python">scipy.stats.linregress(x=t, y=I_total)</code> to obtain the estimated slope and intercept of the baseline.</li>
-<li>The estimated baseline is then subtracted from the total signal to obtain a baseline-corrected signal: <script type="math/tex">I_{\text{corrected}} = I_{\text{total}} - (slope \cdot t + intercept)</script>.</li>
+<li>Edit configuration file</li>
+<li>Set up templates</li>
+<li>Configure themes</li>
 </ul>
-<h4 id="3-peak-detection">3. Peak Detection</h4>
+</li>
+<li><p><strong>Testing</strong>
+Run tests to verify setup.</p>
 <ul>
-<li>The core of the event identification will be <code class="language-python">scipy.signal.find_peaks</code>. This function efficiently finds local maxima in a 1D array.</li>
-<li>To distinguish genuine peaks from noise, a <code class="language-python">height</code> threshold is necessary. A robust choice is a multiple of the known noise standard deviation, e.g., <code class="language-python">height = 5 * noise_std</code>.</li>
-<li>To avoid detecting multiple maxima on a single noisy peak, a <code class="language-python">distance</code> parameter will be set. This specifies the minimum horizontal distance in samples between peaks. A sensible value is <code class="language-python">distance = min_width * fs</code>, where <code class="language-python">min_width</code> is the lower bound of <code class="language-python">peak_width_range</code>.</li>
+<li>Unit tests: <code class="language-python">pytest tests/</code></li>
+<li>Integration tests: <code class="language-python">pytest integration/</code></li>
 </ul>
-<h4 id="4-peak-integration-charge-calculation">4. Peak Integration (Charge Calculation)</h4>
+</li>
+</ol>
+<h3>GitHub-Style Task Lists</h3>
+<p><strong>Project Development Checklist:</strong></p>
 <ul>
-<li>For each peak found, we need to determine its boundaries for integration. The <code class="language-python">scipy.signal.peak_widths</code> function is ideal for this.</li>
-<li>We will call <code class="language-python">scipy.signal.peak_widths(I_corrected, peaks, rel_height=0.5)</code>, where <code class="language-python">peaks</code> is the array of peak indices from <code class="language-python">find_peaks</code>. <code class="language-python">rel_height=0.5</code> measures the full width at half maximum (FWHM), which is a standard and robust choice.</li>
-<li>This function returns several properties, including <code class="language-python">left_ips</code> and <code class="language-python">right_ips</code>, which are the interpolated start and end points of each peak at the specified relative height.</li>
-<li>These floating-point indices will be converted to integer indices for slicing: <code class="language-python">start_idx = np.floor(left_ips).astype(int)</code> and <code class="language-python">end_idx = np.ceil(right_ips).astype(int)</code>.</li>
-<li>A loop will iterate through each detected peak:<ul>
-<li>Slice the <code class="language-python">I_corrected</code> and <code class="language-python">t</code> arrays using the <code class="language-python">start_idx</code> and <code class="language-python">end_idx</code>.</li>
-<li>Calculate the charge <script type="math/tex">Q_i</script> for the peak by numerical integration using <code class="language-python">scipy.integrate.trapz(y=current_slice, x=time_slice)</code>. The trapezoidal rule is simple and sufficient for this dense data.</li>
-<li>The calculated charges for all peaks are stored in a list.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Set up project structure</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Implement basic markdown conversion</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Add syntax highlighting with Prism.js</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Create responsive table system</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Migrate from Python markdown to Mistune</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Add table of contents generation</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Implement advanced math rendering</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Create mobile-responsive design</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Add print stylesheet optimization</li>
+</ul>
+<p><strong>Feature Implementation Status:</strong></p>
+<ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/><strong>Core Features</strong><ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Markdown to HTML conversion</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Code syntax highlighting</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Math equation rendering</li>
+</ul>
+</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/><strong>Advanced Tables</strong><ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Responsive padding adjustment</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Hover effects and modern styling</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Natural width sizing</li>
+</ul>
+</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/><strong>Enhanced Features</strong><ul>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Section collapsing functionality</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Advanced TOC with anchor links</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Custom theme system</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled/>Plugin architecture</li>
 </ul>
 </li>
 </ul>
-<h4 id="5-final-calculation">5. Final Calculation</h4>
-<ul>
-<li>If the list of detected peaks is empty (i.e., no peaks were found above the threshold), the function will return <code class="language-python">0.0</code>.</li>
-<li>Otherwise, the list of charges (<script type="math/tex">Q_i</script>) is converted to a NumPy array.</li>
-<li>Each charge is converted to moles of electrons using the formula <script type="math/tex">n_{e,i} = Q_i / F</script>.</li>
-<li>The mean of the resulting array of moles is computed using <code class="language-python">numpy.mean()</code>.</li>
-<li>This final value is returned as the result. A single numeric value. The complexity of this entire pipeline is dominated by the signal generation and processing steps, which are linear in the number of samples, approximately <script type="math/tex">O(\text{duration} \times \text{fs})</script>.</li>
-</ul>
-<h2 id="python-code">Python code</h2>
-<div class="wrap-content-collapsible">
-    <input id="code-collapse-5" class="toggle" type="checkbox">
-    <label for="code-collapse-5" class="lbl-toggle">PYTHON (156 lines)</label>
-    <div class="content-collapsible-content">
-        <div class="content-inner">
-<pre><code class="language-python">import numpy as np
-import scipy.stats
-import scipy.signal
-import scipy.integrate
-import scipy.constants
-
-def solve_electron_moles(params: dict) -&gt; float:
-    &quot;&quot;&quot;
-    Analyzes a simulated electro-collision signal to find the mean moles of 
-    electrons transferred per event.
-
-    The process involves:
-
-    1. Generating a signal with baseline, Gaussian peaks, and noise.
-    2. Estimating and removing the linear baseline.
-    3. Detecting peaks (events) in the corrected signal.
-    4. Integrating each peak's current to find the charge.
-    5. Converting charges to moles of electrons and finding the average.
-
-
-    Args:
-        params (dict): A dictionary of parameters for signal generation.
-
-    Returns:
-        float: The average moles of electrons per detected event.
-    &quot;&quot;&quot;
-    # Unpack parameters from the dictionary
-    duration = params['duration']
-    fs = params['fs']
-    a, b = params['baseline_coeffs']
-    noise_std = params['noise_std']
-    event_count = params['event_count']
-    peak_loc_range = params['peak_loc_range']
-    peak_amp_range = params['peak_amp_range']
-    peak_width_range = params['peak_width_range']
-    seed = params['seed']
-
-    # Use the Faraday constant from SciPy
-    F = scipy.constants.Faraday
-
-    # 1. Signal Generation
-    np.random.seed(seed)
-    num_points = int(duration * fs)
-    t = np.linspace(0, duration, num_points)
-
-    # Baseline and a container for event signals
-    I_base = a + b * t
-    I_events = np.zeros_like(t)
-
-    # Generate Gaussian peaks for each event
-    for _ in range(event_count):
-        mu = np.random.uniform(*peak_loc_range)
-        A = np.random.uniform(*peak_amp_range)
-        sigma = np.random.uniform(*peak_width_range)
-        I_events += A * np.exp(-((t - mu)**2) / (2 * sigma**2))
-
-    # Generate noise
-    I_noise = np.random.normal(0, noise_std, num_points)
-
-    # Combine components into the total signal
-    I_total = I_base + I_events + I_noise
-
-    # 2. Baseline Correction
-    # Estimate baseline from the total signal using linear regression
-    slope, intercept, _, _, _ = scipy.stats.linregress(t, I_total)
-    I_baseline_est = slope * t + intercept
-    I_corrected = I_total - I_baseline_est
-
-    # 3. Peak Detection
-    # Set detection threshold and minimum peak distance
-    height_threshold = 5 * noise_std
-    min_peak_dist_s = peak_width_range[0]
-    min_peak_dist_samples = int(min_peak_dist_s * fs)
-
-    # Find peaks in the corrected signal
-    peaks, _ = scipy.signal.find_peaks(
-        I_corrected, height=height_threshold, distance=min_peak_dist_samples
-    )
-
-    if len(peaks) == 0:
-        return 0.0
-
-    # 4. Determine Integration Boundaries
-    # Use peak_widths to find start and end of each peak for integration
-    widths_info = scipy.signal.peak_widths(I_corrected, peaks, rel_height=0.5)
-    left_ips = widths_info[2]
-    right_ips = widths_info[3]
-
-    start_indices = np.floor(left_ips).astype(int)
-    end_indices = np.ceil(right_ips).astype(int)
-
-    # Clip indices to ensure they are within the array bounds
-    start_indices = np.maximum(0, start_indices)
-    end_indices = np.minimum(num_points - 1, end_indices)
-
-    # 5. Integrate Peaks to Find Charge
-    charges = []
-    for i in range(len(peaks)):
-        start_idx, end_idx = start_indices[i], end_indices[i]
-
-        # Ensure there are at least two points for integration
-        if end_idx &gt; start_idx:
-            time_slice = t[start_idx : end_idx + 1]
-            current_slice = I_corrected[start_idx : end_idx + 1]
-            # Integrate using the trapezoidal rule to get charge in Coulombs
-            charge = scipy.integrate.trapz(current_slice, time_slice)
-            if charge &gt; 0: # Only consider positive charges (physical phenomenon)
-                charges.append(charge)
-
-    if not charges:
-        return 0.0
-
-    # 6. Calculate Mean Moles of Electrons
-    moles_per_event = np.array(charges) / F
-    mean_moles = np.mean(moles_per_event)
-
-    return mean_moles
-
-def main():
-    &quot;&quot;&quot;
-    Defines parameter sets and runs the solver for each, returning the results.
-    &quot;&quot;&quot;
-    param_sets = [
-        {
-            &quot;duration&quot;: 10, &quot;fs&quot;: 1000, &quot;baseline_coeffs&quot;: [1.0e-9, 0.5e-9], 
-            &quot;noise_std&quot;: 2.0e-10, &quot;event_count&quot;: 15, &quot;peak_loc_range&quot;: [1.0, 9.0], 
-            &quot;peak_amp_range&quot;: [1.0e-9, 5.0e-9], &quot;peak_width_range&quot;: [0.01, 0.05], &quot;seed&quot;: 42
-        },
-        {
-            &quot;duration&quot;: 20, &quot;fs&quot;: 2000, &quot;baseline_coeffs&quot;: [5.0e-9, -0.2e-9], 
-            &quot;noise_std&quot;: 1.0e-9, &quot;event_count&quot;: 30, &quot;peak_loc_range&quot;: [1.0, 19.0], 
-            &quot;peak_amp_range&quot;: [3.0e-9, 10.0e-9], &quot;peak_width_range&quot;: [0.02, 0.08], &quot;seed&quot;: 123
-        },
-        {
-            &quot;duration&quot;: 5, &quot;fs&quot;: 5000, &quot;baseline_coeffs&quot;: [2.0e-9, 0.0], 
-            &quot;noise_std&quot;: 0.5e-9, &quot;event_count&quot;: 10, &quot;peak_loc_range&quot;: [0.5, 4.5], 
-            &quot;peak_amp_range&quot;: [8.0e-9, 15.0e-9], &quot;peak_width_range&quot;: [0.005, 0.015], &quot;seed&quot;: 2024
+<hr />
+<h2>Table Formatting Tests</h2>
+<p>This section tests various table layouts and formatting options.</p>
+<h3>Basic Table</h3>
+<table>
+<thead>
+<tr>
+  <th>Column A</th>
+  <th>Column B</th>
+  <th>Column C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Data 1</td>
+  <td>Data 2</td>
+  <td>Data 3</td>
+</tr>
+<tr>
+  <td>Item X</td>
+  <td>Item Y</td>
+  <td>Item Z</td>
+</tr>
+</tbody>
+</table>
+<h3>Scientific Data Table</h3>
+<table>
+<thead>
+<tr>
+  <th style="text-align:left">Particle</th>
+  <th style="text-align:left">Representation</th>
+  <th style="text-align:center"><script type="math/tex">g</script></th>
+  <th style="text-align:center"><script type="math/tex">B</script></th>
+  <th style="text-align:center"><script type="math/tex">L</script></th>
+  <th style="text-align:center"><script type="math/tex">Y</script></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td style="text-align:left">Left-handed quarks</td>
+  <td style="text-align:left"><script type="math/tex">({\bf 3}, {\bf 2})_{1/6}</script></td>
+  <td style="text-align:center">6</td>
+  <td style="text-align:center">1/3</td>
+  <td style="text-align:center">0</td>
+  <td style="text-align:center">1/6</td>
+</tr>
+<tr>
+  <td style="text-align:left">Right-handed up-quark</td>
+  <td style="text-align:left"><script type="math/tex">({\bf 3}, {\bf 1})_{2/3}</script></td>
+  <td style="text-align:center">3</td>
+  <td style="text-align:center">1/3</td>
+  <td style="text-align:center">0</td>
+  <td style="text-align:center">2/3</td>
+</tr>
+<tr>
+  <td style="text-align:left">Right-handed down-quark</td>
+  <td style="text-align:left"><script type="math/tex">({\bf 3}, {\bf 1})_{-1/3}</script></td>
+  <td style="text-align:center">3</td>
+  <td style="text-align:center">1/3</td>
+  <td style="text-align:center">0</td>
+  <td style="text-align:center">-1/3</td>
+</tr>
+<tr>
+  <td style="text-align:left">Left-handed leptons</td>
+  <td style="text-align:left"><script type="math/tex">({\bf 1}, {\bf 2})_{-1/2}</script></td>
+  <td style="text-align:center">2</td>
+  <td style="text-align:center">0</td>
+  <td style="text-align:center">1</td>
+  <td style="text-align:center">-1/2</td>
+</tr>
+<tr>
+  <td style="text-align:left">Right-handed electron</td>
+  <td style="text-align:left"><script type="math/tex">({\bf 1}, {\bf 1})_{-1}</script></td>
+  <td style="text-align:center">1</td>
+  <td style="text-align:center">0</td>
+  <td style="text-align:center">1</td>
+  <td style="text-align:center">-1</td>
+</tr>
+<tr>
+  <td style="text-align:left">Higgs boson, <script type="math/tex">H</script></td>
+  <td style="text-align:left"><script type="math/tex">({\bf 1}, {\bf 2})_{1/2}</script></td>
+  <td style="text-align:center">2</td>
+  <td style="text-align:center">0</td>
+  <td style="text-align:center">0</td>
+  <td style="text-align:center">1/2</td>
+</tr>
+</tbody>
+</table>
+<h3>Performance Statistics Table</h3>
+<table>
+<thead>
+<tr>
+  <th>Subject</th>
+  <th>Total Files</th>
+  <th>✓ Success</th>
+  <th>✗ Failure</th>
+  <th>Success Rate</th>
+  <th>? Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Electromagnetism</td>
+  <td>24,782</td>
+  <td>12,379</td>
+  <td>12,352</td>
+  <td>50.0%</td>
+  <td>51</td>
+</tr>
+<tr>
+  <td>Linear Algebra</td>
+  <td>62,265</td>
+  <td>47,324</td>
+  <td>14,506</td>
+  <td>76.0%</td>
+  <td>435</td>
+</tr>
+<tr>
+  <td>Many Body Physics</td>
+  <td>42,146</td>
+  <td>19,577</td>
+  <td>22,407</td>
+  <td>46.5%</td>
+  <td>162</td>
+</tr>
+<tr>
+  <td>Mathematical Analysis</td>
+  <td>76,771</td>
+  <td>50,986</td>
+  <td>25,407</td>
+  <td>66.4%</td>
+  <td>378</td>
+</tr>
+<tr>
+  <td>Mechanics</td>
+  <td>21,965</td>
+  <td>12,129</td>
+  <td>9,768</td>
+  <td>55.2%</td>
+  <td>68</td>
+</tr>
+<tr>
+  <td><strong>TOTAL</strong></td>
+  <td><strong>379,752</strong></td>
+  <td><strong>142,395</strong></td>
+  <td><strong>84,440</strong></td>
+  <td><strong>37.5%</strong></td>
+  <td><strong>1,094</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Code Syntax Highlighting Tests</h2>
+<p>This section demonstrates syntax highlighting for various programming languages.</p>
+<h3>JSON Configuration</h3>
+<pre><code class="language-javascript">{
+    &quot;name&quot;: &quot;md2html-converter&quot;,
+    &quot;version&quot;: &quot;1.0.0&quot;,
+    &quot;dependencies&quot;: {
+        &quot;markdown&quot;: &quot;^3.4.0&quot;
+    },
+    &quot;settings&quot;: {
+        &quot;theme&quot;: &quot;elegant&quot;,
+        &quot;math_support&quot;: true,
+        &quot;code_highlighting&quot;: true
+    }
+}
+</code></pre>
+<h3>JavaScript Example</h3>
+<pre><code class="language-javascript">class MathUtils {
+    static factorial(n) {
+        if (n === 0 || n === 1) return 1;
+        return n * this.factorial(n - 1);
+    }
+    
+    static isPrime(num) {
+        if (num &lt; 2) return false;
+        for (let i = 2; i &lt;= Math.sqrt(num); i++) {
+            if (num % i === 0) return false;
         }
-    ]
+        return true;
+    }
+}
+</code></pre>
+<h3>Python Code Block</h3>
+<div class="wrap-content-collapsible">
+    <input id="code-collapse-1" class="toggle" type="checkbox">
+    <label for="code-collapse-1" class="lbl-toggle">PYTHON (22 lines)</label>
+    <div class="content-collapsible-content">
+        <div class="content-inner">
+<pre><code class="language-python"># Test of Python syntax highlighting
+import numpy as np
+import matplotlib.pyplot as plt
 
-    results = []
-    for params in param_sets:
-        result = solve_electron_moles(params)
-        # Round final result to specified precision
-        results.append(round(result, 6 + 18)) # 1e-18 precision, round at 24th decimal place.
+def fibonacci(n):
+    &quot;&quot;&quot;Generate the first n Fibonacci numbers.&quot;&quot;&quot;
+    if n &lt;= 0:
+        return []
+    elif n == 1:
+        return [0]
+    elif n == 2:
+        return [0, 1]
+    
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
 
-    return results
-
-if __name__ == '__main__':
-    # Execute the main function and print the results for verification.
-    results = main()
-    # Let's format the output to be readable in scientific notation
-    formatted_results = [f&quot;{res:.6e}&quot; for res in results]
-    print(formatted_results)
-
+if __name__ == &quot;__main__&quot;:
+    numbers = fibonacci(10)
+    print(f&quot;First 10 Fibonacci numbers: {numbers}&quot;)
 </code></pre>
         </div>
     </div>
 </div>
 <hr />
+<h2>Problem Examples</h2>
+<p>This section contains sample problems demonstrating real-world usage scenarios.</p>
+<h2>Problem 1: Physics - Multicritical Points</h2>
+<div class="admonition-wrapper">
+        <div class="admonition orange">
+            <p class="admonition-orange">Multicritical points (Advanced Statistical Mechanics)</p>
+            For a system described by two coupled scalar order parameters at a stable tetracritical point, calculate the mean-field ratio of the two order parameter magnitudes in the mixed-symmetry phase.
+        </div>
+    </div>
+<h3>Problem Statement</h3>
+<p>Consider a system with free energy functional:
+<script type="math/tex; mode=display">F(\phi_1, \phi_2) = \frac{1}{2} r_1 \phi_1^2 + \frac{1}{2} r_2 \phi_2^2 + \frac{1}{4} g_1 \phi_1^4 + \frac{1}{4} g_2 \phi_2^4 + \frac{1}{2} g_{12} \phi_1^2 \phi_2^2</script></p>
+<p>At the tetracritical point, both order parameters can be non-zero. Find the ratio of the order parameter magnitudes when <script type="math/tex">r_1 = r_2 = 0</script>.</p>
+<h3>Solution</h3>
+<p>The equilibrium conditions are:
+<script type="math/tex; mode=display">\frac{\partial F}{\partial \phi_1} = r_1 \phi_1 + g_1 \phi_1^3 + g_{12} \phi_1 \phi_2^2 = 0</script>
+<script type="math/tex; mode=display">\frac{\partial F}{\partial \phi_2} = r_2 \phi_2 + g_2 \phi_2^3 + g_{12} \phi_1^2 \phi_2 = 0</script></p>
+<p>Setting <script type="math/tex">r_1 = r_2 = 0</script> and assuming non-trivial solutions:
+<script type="math/tex; mode=display">g_1 \phi_1^2 + g_{12} \phi_2^2 = 0 \quad \Rightarrow \quad \phi_1^2 = -\frac{g_{12}}{g_1} \phi_2^2</script>
+<script type="math/tex; mode=display">g_2 \phi_2^2 + g_{12} \phi_1^2 = 0 \quad \Rightarrow \quad \phi_2^2 = -\frac{g_{12}}{g_2} \phi_1^2</script></p>
+<p>Substituting the second into the first:
+<script type="math/tex; mode=display">\phi_1^2 = -\frac{g_{12}}{g_1} \left(-\frac{g_{12}}{g_2} \phi_1^2\right) = \frac{g_{12}^2}{g_1 g_2} \phi_1^2</script></p>
+<p>For non-trivial solutions: <script type="math/tex">\frac{g_{12}^2}{g_1 g_2} = 1</script>, thus <script type="math/tex">g_{12}^2 = g_1 g_2</script>.</p>
+<p>The ratio of magnitudes is:
+<script type="math/tex; mode=display">\frac{|\phi_1|}{|\phi_2|} = \sqrt{\frac{g_2 - g_{12}}{g_1 - g_{12}}}</script></p>
+<h3>Answer</h3>
+<p><script type="math/tex; mode=display">\boxed{\sqrt{\frac{g_2 - g_{12}}{g_1 - g_{12}}}}</script></p>
+<hr />
+<h2>Problem 2: Mathematics - Advanced Calculus</h2>
+<div class="admonition-wrapper">
+        <div class="admonition orange">
+            <p class="admonition-orange">Multivariable optimization with constraints</p>
+            Find the extrema of <script type="math/tex">f(x,y) = x^2 + y^2 - xy</script> subject to the constraint <script type="math/tex">x + y = 1</script>.
+        </div>
+    </div>
+<h3>Problem Statement</h3>
+<p>Using Lagrange multipliers, find the critical points of:
+<script type="math/tex; mode=display">f(x,y) = x^2 + y^2 - xy</script>
+subject to the constraint:
+<script type="math/tex; mode=display">g(x,y) = x + y - 1 = 0</script></p>
+<h3>Solution</h3>
+<p>Set up the Lagrangian:
+<script type="math/tex; mode=display">\mathcal{L}(x,y,\lambda) = x^2 + y^2 - xy - \lambda(x + y - 1)</script></p>
+<p>Taking partial derivatives:
+<script type="math/tex; mode=display">\frac{\partial \mathcal{L}}{\partial x} = 2x - y - \lambda = 0</script>
+<script type="math/tex; mode=display">\frac{\partial \mathcal{L}}{\partial y} = 2y - x - \lambda = 0</script>
+<script type="math/tex; mode=display">\frac{\partial \mathcal{L}}{\partial \lambda} = -(x + y - 1) = 0</script></p>
+<p>From the first two equations: <script type="math/tex">2x - y = 2y - x</script>, which gives <script type="math/tex">3x = 3y</script>, so <script type="math/tex">x = y</script>.</p>
+<p>Using the constraint <script type="math/tex">x + y = 1</script> with <script type="math/tex">x = y</script>:
+<script type="math/tex; mode=display">2x = 1 \quad \Rightarrow \quad x = y = \frac{1}{2}</script></p>
+<p>The critical point is <script type="math/tex">\left(\frac{1}{2}, \frac{1}{2}\right)</script> with function value:
+<script type="math/tex; mode=display">f\left(\frac{1}{2}, \frac{1}{2}\right) = \frac{1}{4} + \frac{1}{4} - \frac{1}{4} = \frac{1}{4}</script></p>
+<h3>Answer</h3>
+<p><script type="math/tex; mode=display">\boxed{\text{Minimum at } \left(\frac{1}{2}, \frac{1}{2}\right) \text{ with value } \frac{1}{4}}</script></p>
+<hr />
+
     
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const collapsedSections = ["Solution", "Answer"];
+        const collapsedSections = ["Solution", "Problem"];
         const isDarkTheme = true;
         
         // Apply dark theme only to pre code blocks if needed
@@ -2802,9 +2731,9 @@ if __name__ == '__main__':
             const text = header.textContent;
             const sectionId = 'section-' + index;
             
-            // Check if this section should be collapsed by default
+            // Check if this section should be collapsed by default (exact match only)
             const isCollapsed = collapsedSections.some(section => 
-                text.toLowerCase().includes(section.toLowerCase())
+                text.toLowerCase().trim() === section.toLowerCase().trim()
             );
             
             // Create wrapper div for the header

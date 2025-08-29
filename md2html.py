@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import argparse
-import markdown
+import mistune
 import sys
 import re
 
@@ -317,9 +317,9 @@ def add_universal_section_folding(html_content, default_collapsed_sections=None,
             const text = header.textContent;
             const sectionId = 'section-' + index;
             
-            // Check if this section should be collapsed by default
+            // Check if this section should be collapsed by default (exact match only)
             const isCollapsed = collapsedSections.some(section => 
-                text.toLowerCase().includes(section.toLowerCase())
+                text.toLowerCase().trim() === section.toLowerCase().trim()
             );
             
             // Create wrapper div for the header
@@ -492,19 +492,9 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
     except FileNotFoundError:
         print("Warning: mobile-responsive.css not found. Mobile support may be limited.")
 
-    # --- 2. Configure Markdown extensions ---
-    # 'fenced_code': For GitHub-style code blocks (```)
-    # 'tables': For Markdown tables
-    # 'extra': Includes tables, fenced_code, and more
-    # 'toc': Table of contents generation from headings (optional)
-    extensions = ['extra']
-    extension_configs = {}
-
-    if enable_toc:
-        extensions.append('toc')
-        extension_configs['toc'] = {
-            'permalink': False  # Don't add permalink anchors to headings
-        }
+    # --- 2. Mistune handles extensions via plugins ---
+    # No complex extension configuration needed - mistune is simpler
+    # TOC functionality will be handled separately if needed
 
     # Configure line numbers but don't add theme classes to body
     if line_numbers:
@@ -525,10 +515,77 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
         math_expressions.append(match.group(0))
         return f"MATHPLACEHOLDER{len(math_expressions)-1}MATHPLACEHOLDER"
 
-    # Replace display math first ($$...$$ - can span lines), then inline math ($...$)
-    temp_md_text = re.sub(r'\$\$([^$]+?)\$\$',
-                          replace_math, md_text, flags=re.DOTALL)
-    temp_md_text = re.sub(r'\$([^$\n]+?)\$', replace_math, temp_md_text)
+    # Function to check if a match is inside backticks
+    def is_inside_backticks(text, match_start, match_end):
+        # Count backticks before the match on the same line
+        line_start = text.rfind('\n', 0, match_start) + 1
+        line_text = text[line_start:match_start]
+        backtick_count = line_text.count('`')
+        # If odd number of backticks before match, we're inside code
+        return backtick_count % 2 == 1
+    
+    def safe_replace_math(pattern, text, flags=0):
+        result = []
+        last_end = 0
+        for match in re.finditer(pattern, text, flags):
+            if not is_inside_backticks(text, match.start(), match.end()):
+                # Not inside backticks, safe to replace
+                result.append(text[last_end:match.start()])
+                math_expressions.append(match.group(0))
+                result.append(f"MATHPLACEHOLDER{len(math_expressions)-1}MATHPLACEHOLDER")
+            else:
+                # Inside backticks, keep original
+                result.append(text[last_end:match.end()])
+            last_end = match.end()
+        result.append(text[last_end:])
+        return ''.join(result)
+
+    # Replace display math first ($$...$$ and \[...\] - can span lines), then inline math ($...$ and \(...\)), then standalone \boxed{}
+    temp_md_text = safe_replace_math(r'\$\$([^$]+?)\$\$', md_text, re.DOTALL)
+    temp_md_text = safe_replace_math(r'\\\[(.+?)\\\]', temp_md_text, re.DOTALL)
+    temp_md_text = safe_replace_math(r'\\\((.+?)\\\)', temp_md_text)
+    temp_md_text = safe_replace_math(r'\$([^$\n]+?)\$', temp_md_text)
+    # Capture standalone \boxed{...} expressions (not already inside math delimiters)
+    # Use a function to match nested braces properly with backtick protection
+    def match_boxed(text):
+        result = text
+        # Find \boxed{ and match the corresponding closing brace
+        start = 0
+        while True:
+            match_start = result.find('\\boxed{', start)
+            if match_start == -1:
+                break
+            
+            # Find the matching closing brace
+            brace_count = 0
+            pos = match_start + 7  # Start after '\boxed{'
+            while pos < len(result):
+                if result[pos] == '{':
+                    brace_count += 1
+                elif result[pos] == '}':
+                    if brace_count == 0:
+                        # Found the matching closing brace
+                        match_end = pos + 1
+                        # Check if this match is inside backticks
+                        if not is_inside_backticks(result, match_start, match_end):
+                            full_expression = result[match_start:match_end]
+                            math_expressions.append(full_expression)
+                            placeholder = f"MATHPLACEHOLDER{len(math_expressions)-1}MATHPLACEHOLDER"
+                            result = result[:match_start] + placeholder + result[match_end:]
+                            start = match_start + len(placeholder)
+                        else:
+                            start = match_end
+                        break
+                    else:
+                        brace_count -= 1
+                pos += 1
+            else:
+                # No matching closing brace found, skip this one
+                start = match_start + 7
+        
+        return result
+    
+    temp_md_text = match_boxed(temp_md_text)
 
     # Preprocess markdown to fix table formatting issues
     # Add blank lines before tables that don't have them
@@ -599,360 +656,40 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
 
     temp_md_text = fix_table_formatting(temp_md_text)
 
-    # === LIST PROCESSING MODULE ===
-    # Modular functions for nested list detection and formatting
+    # === ALL COMPLEX LIST PROCESSING REMOVED ===
+    # Let mistune handle all list rendering naturally - much simpler and more reliable
 
-    def is_list_item(line):
-        """Check if line looks like a list item, including indented ones."""
-        stripped = line.strip()
-        if not stripped:
-            return False
+    # Simple preprocessing - only handle math expressions protection
+    # No complex list processing - let mistune handle lists naturally
 
-        # Check for unordered list markers: -, *, +
-        if stripped.startswith(('- ', '* ', '+ ')):
-            return True
-
-        # Check for ordered list markers: 1., 2., etc.
-        import re
-        if re.match(r'^\d+\.\s+', stripped):
-            return True
-
-        return False
-
-    def is_heading(line):
-        """Check if line is a markdown heading (##, ###, ####, #####)."""
-        stripped = line.strip()
-        import re
-        return re.match(r'^#{2,5}\s+', stripped) is not None
-
-    def get_raw_indent(line):
-        """Get the raw indentation count (spaces + tabs*4)."""
-        indent = 0
-        for char in line:
-            if char == ' ':
-                indent += 1
-            elif char == '\t':
-                indent += 4
-            else:
-                break
-        return indent
-
-    def detect_indent_pattern_in_section(section_lines):
-        """Auto-detect indentation pattern using GCD of spacings for mixed patterns."""
-        indents = []
-        for line in section_lines:
-            if is_list_item(line):
-                raw_indent = get_raw_indent(line)
-                indents.append(raw_indent)
-
-        if not indents:
-            return 4  # Default to 4-space if no list items found
-
-        # Remove zero indents for pattern detection
-        non_zero_indents = [indent for indent in indents if indent > 0]
-
-        if not non_zero_indents:
-            return 4  # All items at top level
-
-        # If only one non-zero level, determine standard pattern
-        if len(set(non_zero_indents)) == 1:
-            indent = non_zero_indents[0]
-            if indent <= 2:
-                return 2
-            elif indent <= 4:
-                return 4
-            else:
-                return indent
-
-        # Multiple indent levels - find GCD to handle mixed patterns
-        import math
-
-        # Calculate differences between consecutive indent levels
-        unique_indents = sorted(set(non_zero_indents))
-
-        # Find the greatest common divisor of all non-zero indents
-        # This handles cases like [2, 4, 4, 8] -> GCD=2 or [4, 8] -> GCD=4
-        gcd_result = unique_indents[0]
-        for indent in unique_indents[1:]:
-            gcd_result = math.gcd(gcd_result, indent)
-
-        # Ensure we get a reasonable base unit (2 or 4 typically)
-        if gcd_result == 1:
-            # If GCD is 1, fall back to minimum non-zero indent
-            return min(non_zero_indents)
-        else:
-            return gcd_result
-
-    def split_into_sections(lines):
-        """Split the document into sections based on headings (##, ###, ####, #####)."""
-        sections = []
-        current_section_lines = []
-        current_section_start = 0
-
-        for i, line in enumerate(lines):
-            if is_heading(line):
-                # If we have accumulated lines, save the previous section
-                if current_section_lines:
-                    sections.append(
-                        (current_section_start, i - 1, current_section_lines))
-                # Start new section with this heading
-                current_section_lines = [line]
-                current_section_start = i
-            else:
-                current_section_lines.append(line)
-
-        # Add the final section
-        if current_section_lines:
-            sections.append((current_section_start, len(
-                lines) - 1, current_section_lines))
-
-        return sections
-
-    def get_list_indent_level(line, indent_unit):
-        """Get the logical indentation level of a list item."""
-        if not is_list_item(line):
-            return -1
-
-        raw_indent = get_raw_indent(line)
-        return raw_indent // indent_unit
-
-    def detect_list_blocks(lines):
-        """Detect separate list blocks and their indentation patterns."""
-        list_blocks = []
-        current_block = []
-        current_start = -1
-
-        for i, line in enumerate(lines):
-            if is_list_item(line):
-                current_indent = get_raw_indent(line)
-
-                # Check if this should start a new block
-                should_start_new_block = False
-
-                if not current_block:
-                    # First list item - start new block
-                    should_start_new_block = True
-                elif current_indent == 0:
-                    # This is a top-level item
-                    # Check if previous item was also top-level with nested items after it
-                    last_item_indent = get_raw_indent(current_block[-1][1])
-
-                    # If we have a current block and this is a new top-level item,
-                    # and the last item in the block was nested (not top-level),
-                    # then this likely starts a new list
-                    if last_item_indent > 0:
-                        should_start_new_block = True
-                    # Also check if we're switching from an ordered to unordered list or vice versa
-                    elif last_item_indent == 0:
-                        last_item_type = 'ordered' if re.match(
-                            r'^\d+\.', current_block[-1][1].strip()) else 'unordered'
-                        current_item_type = 'ordered' if re.match(
-                            r'^\d+\.', line.strip()) else 'unordered'
-                        # For consecutive top-level items of the same type, check indentation pattern compatibility
-                        block_indents = [get_raw_indent(
-                            item[1]) for item in current_block if get_raw_indent(item[1]) > 0]
-                        if block_indents:
-                            # If current block has mixed indentation (both small and large values), split
-                            min_indent = min(block_indents)
-                            max_indent = max(block_indents)
-                            if min_indent <= 2 and max_indent >= 4:
-                                should_start_new_block = True
-
-                if should_start_new_block and current_block:
-                    # End current block
-                    block_lines = [item[1] for item in current_block]
-                    indent_pattern = detect_indent_pattern_for_block(
-                        block_lines)
-                    list_blocks.append(
-                        (current_start, current_block[-1][0], indent_pattern, current_block))
-                    current_block = []
-
-                if not current_block:  # Start new block
-                    current_start = i
-                current_block.append((i, line))
-            else:
-                # Non-list line
-                if current_block:
-                    # End current block and detect its pattern
-                    block_lines = [item[1] for item in current_block]
-                    indent_pattern = detect_indent_pattern_for_block(
-                        block_lines)
-                    list_blocks.append(
-                        (current_start, current_block[-1][0], indent_pattern, current_block))
-                    current_block = []
-
-        # Handle final block
-        if current_block:
-            block_lines = [item[1] for item in current_block]
-            indent_pattern = detect_indent_pattern_for_block(block_lines)
-            list_blocks.append(
-                (current_start, current_block[-1][0], indent_pattern, current_block))
-
-        return list_blocks
-
-    def detect_indent_pattern_for_block(block_lines):
-        """Detect indentation pattern for a single list block."""
-        indents = []
-        for line in block_lines:
-            raw_indent = get_raw_indent(line)
-            indents.append(raw_indent)
-
-        non_zero_indents = [indent for indent in indents if indent > 0]
-
-        if not non_zero_indents:
-            return 4  # All items at top level
-
-        # For a single block, use the minimal spacing between levels
-        unique_indents = sorted(set(indents))
-
-        # If only two levels (0 and something), use standard patterns
-        if len(unique_indents) == 2 and unique_indents[0] == 0:
-            indent = unique_indents[1]
-            if indent <= 2:
-                return 2
-            elif indent <= 4:
-                return 4
-            else:
-                return indent
-
-        # Find minimum non-zero spacing between levels
-        if len(unique_indents) > 1:
-            min_diff = float('inf')
-            for i in range(1, len(unique_indents)):
-                diff = unique_indents[i] - unique_indents[i-1]
-                if diff > 0:
-                    min_diff = min(min_diff, diff)
-
-            if min_diff != float('inf'):
-                return min_diff
-
-        # Fallback to minimum non-zero indent
-        return min(non_zero_indents) if non_zero_indents else 4
-
-    # Main list formatting function
-    def fix_list_formatting(text):
-        """Fix list formatting issues by adding blank lines and normalizing indentation."""
-        lines = text.split('\n')
-        fixed_lines = []
-
-        # Detect separate list blocks with their own patterns
-        list_blocks = detect_list_blocks(lines)
-        block_patterns = {}
-
-        # Store pattern for each line index
-        for start_idx, end_idx, pattern, block_items in list_blocks:
-            for line_idx, line_content in block_items:
-                block_patterns[line_idx] = pattern
-
-        # Process lines with block-specific indentation detection
-        for i, line in enumerate(lines):
-            # Check if this line is a list item
-            if is_list_item(line):
-                # Get the pattern for this specific list block
-                current_indent_unit = block_patterns.get(i, 4)
-
-                # Calculate the logical nesting level using block-specific pattern
-                raw_indent = get_raw_indent(line)
-                current_level = raw_indent // current_indent_unit
-
-                # Normalize ALL list items to use 4-space indentation standard
-                stripped_content = line.strip()
-                if current_level > 0:
-                    # Create normalized line with exactly 4 spaces per nesting level
-                    normalized_indent = '    ' * current_level  # 4 spaces per level
-                    normalized_line = normalized_indent + stripped_content
-                else:
-                    # Top-level items have no indentation
-                    normalized_line = stripped_content
-
-                line = normalized_line
-
-                # Check if we need to add a blank line before this list item
-                should_add_blank = False
-
-                if i > 0 and lines[i - 1].strip() != '':
-                    prev_line = lines[i - 1]
-
-                    # If previous line is NOT a list item, this starts a new list
-                    # Exception: Don't add blank after headings as it's usually not needed
-                    if not is_list_item(prev_line) and not is_heading(prev_line):
-                        should_add_blank = True
-                    # If previous line IS a list item, never add blank lines
-                    # This preserves the nested structure and continuous lists
-
-                if should_add_blank:
-                    fixed_lines.append('')
-
-            fixed_lines.append(line)
-
-        return '\n'.join(fixed_lines)
-
-    def fix_loose_list_spacing(text):
-        """
-        Remove blank lines within continuous numbered/bulleted lists to prevent loose lists.
-        This ensures tight lists without <p> tags around list items.
-        """
-        lines = text.split('\n')
-        result_lines = []
-        i = 0
-        
-        while i < len(lines):
-            current_line = lines[i]
-            result_lines.append(current_line)
-            
-            # Check if current line is a list item
-            if is_list_item(current_line):
-                # Look ahead for blank lines followed by list items
-                j = i + 1
-                while j < len(lines):
-                    if lines[j].strip() == '':  # Blank line
-                        # Check if next non-blank line is a list item
-                        k = j + 1
-                        while k < len(lines) and lines[k].strip() == '':
-                            k += 1
-                        
-                        if k < len(lines) and is_list_item(lines[k]):
-                            # Skip this blank line to create tight lists
-                            j += 1
-                            continue
-                        else:
-                            # Keep blank line - it's not between list items
-                            result_lines.append(lines[j])
-                            break
-                    elif is_list_item(lines[j]):
-                        # Another list item directly - good, keep going
-                        break
-                    else:
-                        # Non-list content - stop processing
-                        break
-                    j += 1
-                i = j - 1  # Continue from where we left off
-            
-            i += 1
-        
-        return '\n'.join(result_lines)
-
-    # === END LIST PROCESSING MODULE ===
-
-    # Preprocess markdown to fix list formatting issues
-    temp_md_text = fix_list_formatting(temp_md_text)
-    temp_md_text = fix_loose_list_spacing(temp_md_text)
-
-    # Convert markdown to HTML
-    md_converter = markdown.Markdown(
-        extensions=extensions, extension_configs=extension_configs)
-    html_body = md_converter.convert(temp_md_text)
+    # Convert markdown to HTML using mistune
+    mistune_md = mistune.create_markdown(
+        escape=False,
+        plugins=['strikethrough', 'table', 'footnotes', 'task_lists']
+    )
+    html_body = mistune_md(temp_md_text)
 
     # Restore math expressions as proper MathJax script tags
     def restore_math(match):
         index = int(match.group(1))
         original_math = math_expressions[index]
         if original_math.startswith('$$'):
-            # Display math
+            # Display math with $$ delimiters
             content = original_math[2:-2]
             return f'<script type="math/tex; mode=display">{content}</script>'
+        elif original_math.startswith('\\['):
+            # Display math with \[ \] delimiters
+            content = original_math[2:-2]
+            return f'<script type="math/tex; mode=display">{content}</script>'
+        elif original_math.startswith('\\boxed'):
+            # Standalone \boxed{...} as display math
+            return f'<script type="math/tex; mode=display">{original_math}</script>'
+        elif original_math.startswith('\\('):
+            # Inline math with \( \) delimiters
+            content = original_math[2:-2]
+            return f'<script type="math/tex">{content}</script>'
         else:
-            # Inline math
+            # Inline math with $ delimiters
             content = original_math[1:-1]
             return f'<script type="math/tex">{content}</script>'
 
@@ -985,9 +722,11 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
             # Content of Thumbnail (becomes body)
             thumbnail_content = match.group(2)
 
-            return f'''<div class="admonition orange">
-        <p class="admonition-orange">{topic_content}</p>
-        {thumbnail_content}
+            return f'''<div class="admonition-wrapper">
+        <div class="admonition orange">
+            <p class="admonition-orange">{topic_content}</p>
+            {thumbnail_content}
+        </div>
     </div>'''
 
         # Also handle cases where there's only Topic (no Thumbnail)
@@ -995,8 +734,10 @@ def convert_md_to_html(md_file_path, css_file_path='style.css', prism_theme='pri
 
         def replace_topic_only(match):
             topic_content = match.group(1)
-            return f'''<div class="admonition orange">
-        <p class="admonition-orange">{topic_content}</p>
+            return f'''<div class="admonition-wrapper">
+        <div class="admonition orange">
+            <p class="admonition-orange">{topic_content}</p>
+        </div>
     </div>'''
 
         # First handle Topic+Thumbnail pairs, then handle standalone Topics
@@ -1096,7 +837,7 @@ def main():
     parser.add_argument(
         "--collapse",
         type=int,
-        default=10,
+        default=15,
         metavar="N",
         help="Auto-collapse code blocks longer than N lines into collapsible sections (default: 10). Use 0 to disable."
     )
@@ -1148,7 +889,7 @@ def main():
     if args.fold_sections == []:  # Empty list when --fold-sections used without args - use default
         foldable_sections = ["Solution"]  # Use the default value
     elif args.fold_sections is None:  # Not provided at all - use default sections
-        foldable_sections = ["Solution", "Answer"]  # Enable by default
+        foldable_sections = ["Solution", "Problem"]  # Enable by default
     else:  # Non-empty list - use as provided
         foldable_sections = args.fold_sections
     full_html = convert_md_to_html(args.input_file, args.css, args.theme,

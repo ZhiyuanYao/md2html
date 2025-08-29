@@ -20,18 +20,27 @@ html {
     /* the background-color should be set as white, otherwise iMac print gray bottom */
     /* background-color: #d8d8d8; */
     background-color: white;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* the settings have no effect */
+/* Remove default margins and padding */
 body {
     background-color: #d8d8d8;
-    padding: 0;
-    margin: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Remove top margin from first element to eliminate white space at top */
+body > *:first-child,
+.markdown-body > *:first-child {
+    margin-top: 0 !important;
 }
 
 #__next {
     /* width: 100%; */
-    padding: 0;
+    padding: 0 !important;
+    margin: 0 !important;
     /*SOMETIMES need to set margin to offset the html background-color margin*/
     /* margin: -2em; */
     background-color: #d8d8d8;
@@ -45,7 +54,8 @@ body {
     min-height: 840px;
     margin-left: auto;
     margin-right: auto;
-    /* padding-top:0px; */
+    margin-top: 0 !important; /* Force zero top margin */
+    padding-top: 0 !important; /* Force zero top padding */
     /* margin-top:0px; */
     margin-bottom: -4em;
     /* aesthetic in web, not good for print */
@@ -69,14 +79,14 @@ body {
 
 .markdown-body {
     color: #24292e;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, "Noto Sans", "Noto Sans Symbols", Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
     font-size: 13px;
     line-height: 1.5;
     word-wrap: break-word;
     /* set it below 640px to print correctly with the 700px setting in page-ctn */
     width: 700px;
     text-align: left;
-    padding: 1em 2em 2em 2em;
+    padding: 0 2em 2em 2em; /* Remove top padding: was 1em 2em 2em 2em */
     /* padding to the left and the right boarders*/
     /*center content in the middle of page-ctn */
     margin: auto;
@@ -131,9 +141,10 @@ body {
 .markdown-body h1 {
     font-size: 2.25em;
     text-align: center;
-    padding-top: 0.em;
+    padding-top: 1em;
     padding-bottom: 0.5em;
     color: #000000 !important; /* Force h1 to be black */
+    border-bottom: none !important; /* Remove any border below h1 */
     /* background-color: #eee; */
 }
 
@@ -170,6 +181,23 @@ body {
 .markdown-body h4 + ul,
 .markdown-body h4 + ol {
     margin-top: 0px;
+}
+
+/* Reduce top margin of <ul> elements that follows a paragraphs */
+.markdown-body p + ul,
+.markdown-body p + ol {
+    margin-top: 4px !important;
+}
+
+/* Reduce bottom margin from paragraphs that precede lists */
+.markdown-body p:has(+ ul),
+.markdown-body p:has(+ ol) {
+    margin-bottom: 4px !important;
+}
+
+/* Fallback for browsers that don't support :has() */
+.markdown-body p {
+    margin-bottom: 8px;
 }
 
 .markdown-body h5 {
@@ -300,7 +328,7 @@ body {
 }
 
 .markdown-body table th {
-    padding: 8px 24px;
+    padding: 6px 24px;
     text-align: left;
     font-weight: 600;
     color: #374151;
@@ -311,7 +339,7 @@ body {
 }
 
 .markdown-body table td {
-    padding: 7px 24px;
+    padding: 5px 24px;
     border-bottom: 1px solid #f3f4f6;
     color: #4b5563;
     background: #ffffff;
@@ -332,11 +360,11 @@ body {
 @media (max-width: 800px) {
     /* Content area becoming constrained, reduce table padding */
     .markdown-body table th {
-        padding: 8px 16px !important;
+        padding: 6px 16px !important;
         background: red !important;
     }
     .markdown-body table td {
-        padding: 7px 16px !important;
+        padding: 5px 16px !important;
         background: yellow !important;
     }
 }
@@ -344,11 +372,11 @@ body {
 @media (max-width: 750px) {
     /* Approaching 70% threshold for 700px content */
     .markdown-body table th {
-        padding: 8px 12px !important;
+        padding: 6px 12px !important;
         background: blue !important;
     }
     .markdown-body table td {
-        padding: 7px 12px !important;
+        padding: 5px 12px !important;
         background: green !important;
     }
 }
@@ -356,11 +384,11 @@ body {
 @media (max-width: 700px) {
     /* At content width limit, minimal padding */
     .markdown-body table th {
-        padding: 8px 8px !important;
+        padding: 6px 8px !important;
         background: purple !important;
     }
     .markdown-body table td {
-        padding: 7px 8px !important;
+        padding: 5px 8px !important;
         background: orange !important;
     }
 }
@@ -478,7 +506,7 @@ body:not(.dark-theme) .markdown-body pre code .token.string {
 }
 
 .markdown-body li>p {
-    margin-top: 16px;
+    margin-top: 6px;
 }
 
 .markdown-body li+li {
@@ -551,10 +579,15 @@ body:not(.dark-theme) .markdown-body pre code .token.string {
     margin-bottom: 24px;
 }
 
+/* Modular admonition spacing system - using padding to avoid margin collapse */
+.admonition-wrapper {
+    padding: 8px 0 0 4px; /* Outer spacing - easy to adjust */
+}
+
 .admonition.orange {
     padding: 6px 12px;
     line-height: 24px;
-    margin-bottom: 24px;
+    margin-bottom: 0; /* Remove bottom margin - handled by wrapper */
     background: #ffedcc;
 }
 
@@ -565,7 +598,7 @@ body:not(.dark-theme) .markdown-body pre code .token.string {
     display: block;
     color: #fff;
     background: #f0b37e;
-    margin: -12px;
+    margin: -12px; /* Keep negative margin for header overlap effect */
     padding: 2px 12px;
     margin-bottom: 6px;
 }
@@ -594,11 +627,34 @@ body:not(.dark-theme) .markdown-body pre code .token.string {
 /* Legacy collapsible system - keeping for code block collapsing only */
 .wrap-content-collapsible {
     margin-bottom: 1.2rem 0;
-    padding: 1em 0em 1em 0em;
+    padding: 0em 0em 0.5em 0em; /* Reduced top padding from 1em to 0.2em */
 }
 
 input[type='checkbox'] {
     display: none;
+}
+
+/* Task list checkbox styling - override the generic hidden checkbox rule */
+.task-list-item-checkbox {
+    display: inline-block !important;
+    margin-right: 0.5em;
+    vertical-align: middle;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+/* Task list item styling */
+.task-list-item {
+    list-style-type: none !important;
+    margin-left: -1.5em;
+    position: relative;
+}
+
+/* Styling for completed tasks */
+.task-list-item input[type="checkbox"]:checked + * {
+    text-decoration: line-through;
+    opacity: 0.7;
 }
 
 body:not(.dark-theme) .lbl-toggle {

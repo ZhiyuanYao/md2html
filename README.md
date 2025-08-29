@@ -1,11 +1,22 @@
 # Advanced Markdown to HTML Converter
 
-A sophisticated Python-based markdown to HTML conversion system with advanced styling, theme support, and intelligent table formatting.
+A sophisticated Python-based markdown to HTML conversion system with advanced styling, responsive tables, and intelligent list formatting.
+
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Architecture](#architecture)
+- [Advanced Features Deep Dive](#advanced-features-deep-dive)
+- [Development History](#development-history)
+- [Troubleshooting](#troubleshooting)
+- [License](#license)
 
 ## Features
 
 ### Core Functionality
-- **Markdown to HTML Conversion**: Convert markdown files to beautiful, styled HTML documents
+- **Markdown to HTML Conversion**: Convert markdown files to beautiful, styled HTML documents using Mistune
 - **Syntax Highlighting**: Powered by Prism.js with support for multiple programming languages
 - **Math Rendering**: Full LaTeX math support with MathJax integration
 - **Table of Contents**: Automatic TOC generation with `[TOC]` placeholder
@@ -13,28 +24,27 @@ A sophisticated Python-based markdown to HTML conversion system with advanced st
 
 ### Advanced Table Features
 - **Natural Width Tables**: Tables size to their content instead of forced 100% width
-- **Responsive Padding**: JavaScript-based intelligent padding adjustment
+- **Intelligent Padding**: JavaScript-based responsive padding adjustment
   - Tables exceeding 70% of content width (490px) get reduced padding (12px)
   - Smaller tables maintain full padding (24px)
 - **Modern Styling**: Rounded corners, hover effects, and gradient backgrounds
-- **Light Green Hover**: Beautiful light green row highlighting on hover
+- **Light Green Hover**: Beautiful row highlighting on hover
 
 ### Theme Support
 - **Light Theme**: Clean, professional appearance with optimal readability
 - **Dark Theme**: Applied selectively to code blocks only, preserving document readability
 - **Inline Code**: Always uses light theme for consistency
 
-### Code Block Features
-- **Line Numbers**: Optional line numbering for code blocks
-- **Language Detection**: Automatic syntax highlighting based on language tags
-- **Collapsible Code**: Long code blocks can be made collapsible
-- **Horizontal Scrolling**: Automatic scrollbars for wide code content
+### List Processing
+- **Mistune-Based**: Simple, reliable list parsing without complex preprocessing
+- **Tight Spacing**: CSS rules for professional spacing between headers and lists
+- **Task Lists**: Native support for GitHub-style task lists
 
 ## Installation
 
 ### Prerequisites
 ```bash
-pip install markdown pygments
+pip install mistune 
 ```
 
 ### Setup
@@ -80,886 +90,188 @@ python md2html.py [-h] [--css CSS] [--theme THEME] [--line-numbers]
                   [input_file] [output_file]
 ```
 
-## File Structure
+## Architecture
 
+### File Structure
 ```
-render/
+md2html/
 ├── md2html.py              # Main conversion script
 ├── sample.md               # Example markdown file
 ├── .prism/
-│   ├── style.css          # Main stylesheet with advanced table features
+│   ├── style.css          # Main stylesheet with responsive features
 │   └── prism.js           # Syntax highlighting library
+├── demo_markdown_vs_mistune.py  # Library comparison tool
 ├── test_*.html            # Generated test files
 └── README.md              # This documentation
 ```
 
-## Key Technical Features
+### Core Conversion Pipeline
 
-### Critical Fix: Browser Window Width vs Content Width Detection
-
-**The Problem We Solved:**
-The most challenging aspect was implementing responsive table padding that triggers based on **table width relative to content width**, NOT browser window width.
-
-#### Initial Approach (WRONG ❌)
-```css
-/* This was the wrong approach - compares browser window width */
-@media (max-width: 800px) {
-    .markdown-body table th {
-        padding: 12px 8px;
-    }
-}
+```python
+def convert_markdown_to_html(md_text, css_content, js_content, theme='light'):
+    # Simple mistune conversion
+    mistune_md = mistune.create_markdown(
+        escape=False,
+        plugins=['strikethrough', 'table', 'footnotes', 'task_lists']
+    )
+    
+    # Direct conversion - no complex preprocessing
+    html_body = mistune_md(md_text)
+    
+    # Post-processing for code blocks, math, etc.
+    html_body = process_code_blocks(html_body, theme=theme)
+    html_body = add_math_delimiters(html_body)
+    
+    return generate_final_html(html_body, css_content, js_content)
 ```
 
-**Why This Failed:**
-- `@media (max-width: 800px)` detects when the **browser window** is narrow
-- But we needed to detect when a **specific table** exceeds 70% of the **content area** (700px)
-- A wide 6-column physics table should get reduced padding even on a large monitor
-- A narrow 2-column table should keep full padding even on a small screen
+## Advanced Features Deep Dive
 
-#### The Breakthrough Solution (CORRECT ✅)
-**JavaScript-based Real Table Width Detection:**
+### Intelligent Table Sizing
+
+The system uses JavaScript to detect table width vs content width:
 
 ```javascript
-// Get the actual content width (markdown-body is 700px)
-const contentWidth = 700;
+// Critical table width detection
+const contentWidth = 700; // markdown-body width
 const threshold = contentWidth * 0.7; // 70% = 490px
 
-const tables = document.querySelectorAll('.markdown-body table');
 tables.forEach(function(table) {
-    // Force natural width calculation
-    table.style.width = 'auto';
-    
-    // Get ACTUAL rendered table width
     const tableWidth = table.getBoundingClientRect().width;
     
     if (tableWidth > threshold) {
-        // THIS specific table is too wide - reduce its padding
-        const ths = table.querySelectorAll('th');
-        const tds = table.querySelectorAll('td');
-        
-        ths.forEach(function(th) {
-            th.style.padding = '12px 12px'; // Reduced from 24px
-        });
-        
-        tds.forEach(function(td) {
-            td.style.padding = '11px 12px'; // Reduced from 24px
-        });
+        // Reduce padding for wide tables
+        ths.forEach(th => th.style.padding = '12px 12px');
+        tds.forEach(td => td.style.padding = '11px 12px');
     }
 });
 ```
 
-**Key Insight:**
-- `getBoundingClientRect().width` gives us the **actual rendered width** of each individual table
-- We compare each table's width against the **content container width** (700px)
-- Only tables that actually exceed 70% of content width get reduced padding
-- This works regardless of browser window size
+**Why This Works**:
+- Measures actual rendered table width, not column count
+- Compares against content container (700px), not browser window
+- Wide physics tables get compact spacing; narrow tables stay spacious
 
-#### Failed Approaches We Tried
+### Collapsible Code Blocks
 
-**1. CSS Container Queries (Limited Browser Support)**
+**Features**:
+- Automatic collapse for code blocks exceeding specified line count
+- Horizontal scrolling at container level
+- No visual "jumping" during collapse/expand transitions
+- Seamless border integration
+
+**CSS Solution for Smooth Animation**:
 ```css
-@container (min-width: 490px) {
-    .markdown-body table th {
-        padding: 12px 8px;
-    }
-}
-```
-*Problem: Container queries have limited browser support and didn't work reliably*
-
-**2. Column Counting with nth-child (Too Rigid)**
-```css
-.markdown-body table th:nth-child(5) ~ th {
-    padding: 12px 8px;
-}
-```
-*Problem: This targets columns, not actual table width. A table with 3 wide columns might need reduced padding, while a table with 6 narrow columns might not*
-
-**3. Viewport-based Media Queries (Wrong Measurement)**
-```css
-@media (max-width: 750px) {
-    .markdown-body table th {
-        padding: 12px 8px;
-    }
-}
-```
-*Problem: This measures browser window width, not table content width*
-
-#### The Debugging Process
-
-**Step 1: Extreme Debug Values**
-We used extreme padding (0px, 50px) and bright colors (red, yellow backgrounds) with `!important` flags to verify if CSS changes were being applied at all.
-
-**Step 2: Testing Media Query Activation**
-We tested whether `@media` queries were triggering by resizing browser windows and checking for visual changes.
-
-**Step 3: CSS Specificity Investigation**
-We discovered that media queries needed to be placed at the end of the CSS file and use `!important` to override existing table styles.
-
-**Step 4: The JavaScript Revelation**
-Finally realized that CSS cannot detect "table width vs content width" - only JavaScript can measure actual rendered dimensions using `getBoundingClientRect()`.
-
-#### Practical Example from sample.md
-
-**Small Table (2 columns):**
-```markdown
-| A | B |
-|---|---|
-| C | D |
-```
-- Actual rendered width: ~100px
-- 100px < 490px threshold → **Keep full 24px padding**
-
-**Large Physics Table (6 columns):**
-```markdown
-| Particle | Representation | g | B | L | Y |
-|:---------|:---------------|:-:|:-:|:-:|:-:|
-| Left-handed quarks | (3, 2)₁/₆ | 6 | 1/3 | 0 | 1/6 |
-```
-- Actual rendered width: ~580px  
-- 580px > 490px threshold → **Reduce to 12px padding**
-
-**The Beauty of This Solution:**
-- The 2-column table stays spacious and readable
-- The 6-column physics table becomes compact to fit properly
-- No manual CSS classes or complex selectors needed
-- Works automatically for any markdown table
-
-### Intelligent Table Sizing
-The system uses this JavaScript solution to measure actual table width vs content width:
-- **Content Width**: 700px (markdown-body container)
-- **Threshold**: 70% = 490px
-- **Logic**: `if (actualTableWidth > 490px)` → reduce padding to 12px
-- **Benefit**: Wide tables (like 6-column physics tables) get compact spacing while narrow tables keep full spacing
-
-### CSS Architecture Deep Dive
-
-#### Core Table Structure (.prism/style.css)
-
-**1. Container Setup**
-```css
-.markdown-body {
-    color: #24292e;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
-    font-size: 13px;
-    line-height: 1.5;
-    word-wrap: break-word;
-    width: 700px; /* Critical: This is our content width reference */
-    text-align: left;
-    padding: 1em 2em 2em 2em;
-    margin: auto;
-    background-color: white;
-}
-```
-*The 700px width is the foundation for our 70% table width calculations*
-
-**2. Natural Table Sizing**
-```css
-.markdown-body table {
-    display: table;
-    border-collapse: separate;
-    border-spacing: 0;
-    margin: 24px auto;
-    border-radius: 8px;
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    width: auto;
-    overflow: hidden;
+/* Keep width consistent in both states to prevent shifting */
+.content-collapsible-content pre {
+    width: max-content !important;
+    min-width: 100% !important;
 }
 ```
 
-**3. Header Styling with Gradients**
-```css
-.markdown-body table thead {
-    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-    border-bottom: 1px solid #d1d5db;
-}
+### Section Folding System
 
-.markdown-body table th {
-    padding: 12px 24px;  /* ← Default padding (reduced by JavaScript) */
-    text-align: left;
-    font-weight: 600;
-    color: #374151;
-    font-size: 0.95em;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    border: none;
-}
-```
-
-**4. Cell Styling**
-```css
-.markdown-body table td {
-    padding: 11px 24px;  /* ← Default padding (reduced by JavaScript) */
-    border-bottom: 1px solid #f3f4f6;
-    color: #4b5563;
-    background: #ffffff;
-    border-left: none;
-    border-right: none;
-}
-```
-
-**5. Interactive Hover Effects**
-```css
-.markdown-body table tbody tr:hover {
-    background: #f0fdf4;  /* Light green background */
-    color: #166534;
-    transform: translateY(-1px);
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.markdown-body table tbody tr:hover td {
-    border-left: 3px solid #22c55e;  /* Green left border accent */
-    background: inherit;
-}
-```
-
-**6. Rounded Corner Implementation**
-```css
-.markdown-body table tr:last-child td {
-    border-bottom: none;  /* Remove border from last row */
-}
-```
-*Critical: `border-collapse: separate` + `border-spacing: 0` + `overflow: hidden` creates perfect rounded corners*
-
-#### Theme System
-
-**Light Theme (Default)**
-- Headers: Gradient from `#f8fafc` to `#f1f5f9`
-- Cells: White background `#ffffff`
-- Hover: Light green `#f0fdf4` with green accent `#22c55e`
-
-**Dark Theme (Code Blocks Only)**
-```css
-pre.dark-theme {
-    background-color: #1e1e1e !important;
-    color: #d4d4d4 !important;
-}
-```
-*Applied via JavaScript only to `pre` elements, not entire document*
-
-**Inline Code (Always Light)**
-```css
-.markdown-body code:not(pre code),
-code:not(pre code) {
-    background-color: rgba(27, 31, 35, .05) !important;
-    color: #333 !important;
-    border-radius: 3px !important;
-    font-size: 90% !important;
-    padding: 1px 3px !important;
-}
-```
-*Uses `!important` to override any dark theme inheritance*
-
-#### Selection Colors
-```css
-*::selection {
-    background-color: #C0D4F3 !important;
-    color: inherit !important;
-}
-```
-*Consistent blue selection across all content*
-
-### Python Script Architecture (md2html.py)
-
-#### Core Structure and Flow
-
-**1. Import and Setup**
-```python
-import markdown
-import sys
-import argparse
-from pathlib import Path
-import re
-import os
-import pygments
-```
-
-**2. Command Line Argument Parsing**
-```python
-def main():
-    parser = argparse.ArgumentParser(description='Convert Markdown to styled HTML')
-    parser.add_argument('input_file', nargs='?', help='Input Markdown file')
-    parser.add_argument('output_file', nargs='?', help='Output HTML file')
-    parser.add_argument('--css', help='Custom CSS file path')
-    parser.add_argument('--theme', choices=['light', 'dark'], default='light')
-    parser.add_argument('--line-numbers', action='store_true')
-    parser.add_argument('--collapse', type=int, metavar='N', 
-                       help='Make code blocks with more than N lines collapsible')
-    parser.add_argument('--fold-sections', nargs='*', 
-                       help='Keywords for sections to fold by default')
-    parser.add_argument('--no-toc', action='store_true', 
-                       help='Disable table of contents generation')
-```
-
-#### Key Functions Breakdown
-
-**1. Table Detection and Formatting**
-```python
-def fix_table_formatting(md_text):
-    """
-    Ensures tables are properly formatted by adding blank lines before/after
-    Critical for markdown parser to recognize tables correctly
-    """
-    lines = md_text.split('\n')
-    result = []
-    in_table = False
-    
-    for i, line in enumerate(lines):
-        is_table_line = '|' in line and line.strip()
-        
-        if is_table_line and not in_table:
-            # Starting a table - ensure blank line before
-            if i > 0 and result and result[-1].strip():
-                result.append('')
-            in_table = True
-        elif not is_table_line and in_table:
-            # Ending a table - ensure blank line after
-            result.append(line)
-            if i < len(lines) - 1 and lines[i + 1].strip():
-                result.append('')
-            in_table = False
-            continue
-            
-        result.append(line)
-    
-    return '\n'.join(result)
-```
-
-**2. Code Block Processing**
-```python
-def process_code_blocks(html_content, collapse_threshold=None, 
-                       add_line_numbers=False, theme='light'):
-    """
-    Enhanced code block processing with:
-    - Language detection and syntax highlighting
-    - Optional line numbers
-    - Collapsible long code blocks
-    - Theme-aware styling
-    """
-    # Pattern to match code blocks with language specification
-    code_block_pattern = r'<pre><code class="language-(\w+)">(.*?)</code></pre>'
-    
-    def replace_code_block(match):
-        language = match.group(1)
-        code = match.group(2)
-        
-        # Handle special language cases
-        if language == "javascript" and is_json_like(code):
-            language = "json"
-        
-        # Count lines for collapse decision
-        lines = code.split('\n')
-        line_count = len(lines)
-        
-        # Build CSS classes
-        classes = [f"language-{language}"]
-        if theme == 'dark':
-            classes.append('dark-theme')
-        
-        # Create collapsible wrapper if needed
-        if collapse_threshold and line_count > collapse_threshold:
-            return create_collapsible_code_block(code, language, line_count, classes)
-        else:
-            return create_standard_code_block(code, language, classes, add_line_numbers)
-```
-
-**3. JavaScript Integration for Table Width Detection**
-```python
-# Embedded JavaScript (lines 260-300 in md2html.py)
-javascript_code = f"""
-document.addEventListener('DOMContentLoaded', function() {{
-    const isDarkTheme = {str(is_dark_theme).lower()};
-    
-    // Dark theme application (only to pre elements)
-    if (isDarkTheme) {{
-        const codeBlocks = document.querySelectorAll('pre');
-        codeBlocks.forEach(function(pre) {{
-            pre.classList.add('dark-theme');
-        }});
-    }}
-    
-    // ★ CRITICAL TABLE WIDTH DETECTION ★
-    const contentWidth = 700; // markdown-body width
-    const threshold = contentWidth * 0.7; // 70% = 490px
-    
-    const tables = document.querySelectorAll('.markdown-body table');
-    tables.forEach(function(table) {{
-        table.style.width = 'auto'; // Force natural width
-        
-        // Get actual rendered table width
-        const tableWidth = table.getBoundingClientRect().width;
-        
-        if (tableWidth > threshold) {{
-            // Reduce padding for wide tables
-            const ths = table.querySelectorAll('th');
-            const tds = table.querySelectorAll('td');
-            
-            ths.forEach(function(th) {{
-                th.style.padding = '12px 12px'; // Reduced from 24px
-            }});
-            
-            tds.forEach(function(td) {{
-                td.style.padding = '11px 12px'; // Reduced from 24px
-            }});
-        }}
-    }});
-}});
-"""
-```
-
-**4. Section Collapsing System**
-```python
-def create_collapsible_sections(headers, collapsed_sections):
-    """
-    Creates interactive collapsible sections based on header keywords
-    """
-    for header in headers:
-        text = header.textContent
-        section_id = f'section-{index}'
-        
-        # Check if section should be collapsed by default
-        is_collapsed = any(keyword.lower() in text.lower() 
-                          for keyword in collapsed_sections)
-        
-        # Create header wrapper with click handler
-        header_div = create_header_wrapper(is_collapsed, section_id)
-        
-        # Wrap content in collapsible container
-        content_wrapper = create_content_wrapper(is_collapsed, section_id)
-```
-
-**5. HTML Template Generation**
-```python
-def generate_html_template(title, custom_css, javascript_code, prism_js_content):
-    """
-    Generates complete HTML document with:
-    - MathJax integration for math rendering
-    - Prism.js for syntax highlighting  
-    - Custom CSS and JavaScript injection
-    - Responsive meta tags
-    """
-    return f"""
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{title}</title>
-        
-        <!-- MathJax for LaTeX math rendering -->
-        <script type="text/javascript" async
-            src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js">
-        </script>
-        
-        <!-- Custom CSS with table intelligence -->
-        <style>{custom_css}</style>
-    </head>
-    <body>
-        <div class="markdown-body">
-            {{content}}
-        </div>
-        
-        <!-- Prism.js for syntax highlighting -->
-        <script>{prism_js_content}</script>
-        
-        <!-- Table width detection and section collapsing -->
-        <script>{javascript_code}</script>
-    </body>
-    </html>
-    """
-```
-
-#### Processing Pipeline
-
-**Step 1: Input Processing**
-1. Read markdown file
-2. Apply table formatting fixes
-3. Parse command line arguments
-
-**Step 2: Markdown Conversion** 
-1. Initialize markdown processor with extensions
-2. Convert markdown to HTML
-3. Process code blocks for syntax highlighting
-
-**Step 3: Enhancement Layer**
-1. Add table of contents if requested
-2. Create collapsible sections
-3. Apply theme-specific modifications
-
-**Step 4: JavaScript Integration**
-1. Embed table width detection logic
-2. Add section collapsing functionality  
-3. Apply dark theme to code blocks only
-
-**Step 5: Output Generation**
-1. Load custom CSS (.prism/style.css)
-2. Load Prism.js for highlighting
-3. Generate final HTML with all components
-4. Write to output file
-
-#### Error Handling and Robustness
-
-```python
-try:
-    with open(md_file_path, 'r', encoding='utf-8') as f:
-        md_text = f.read()
-except FileNotFoundError:
-    print(f"Error: Input Markdown file not found at '{md_file_path}'")
-    sys.exit(1)
-
-try:
-    with open(css_file_path, 'r', encoding='utf-8') as f:
-        custom_css = f.read()
-except FileNotFoundError:
-    print(f"Warning: Custom CSS file not found. Proceeding without it.")
-```
-
-This architecture creates a robust, extensible system that handles the complex interaction between markdown parsing, CSS styling, and JavaScript enhancement to create intelligent, responsive table formatting.
-
-## Code Highlighting Challenges We Solved
-
-### Background Color Theme Issues
-
-**The Problem:**
-We spent significant time debugging why code block backgrounds weren't applying correctly in dark theme mode, and why inline code was inheriting dark theme styles when it shouldn't.
-
-#### Initial Issue: Whole Document Dark Theme (WRONG ❌)
+**DOM-Based Approach** (vs HTML string parsing):
 ```javascript
-// This was applying dark theme to EVERYTHING
-if (isDarkTheme) {
-    document.body.classList.add('dark-theme');
-}
-```
-**Problems this caused:**
-- Tables became dark themed
-- Inline code became unreadable  
-- Entire document appearance changed
-- Lost the clean document aesthetic
-
-#### The Correct Solution: Selective Dark Theme (CORRECT ✅)
-```javascript
-// Apply dark theme ONLY to pre code blocks
-if (isDarkTheme) {
-    const codeBlocks = document.querySelectorAll('pre');
-    codeBlocks.forEach(function(pre) {
-        pre.classList.add('dark-theme');
+// Process after HTML is fully rendered
+document.addEventListener('DOMContentLoaded', function() {
+    const headers = document.querySelectorAll('.markdown-body h2, h3, h4');
+    
+    headers.forEach(function(header) {
+        // Create wrapper using DOM API - preserves HTML entities
+        const contentDiv = document.createElement('div');
+        
+        // Move actual DOM nodes
+        while (nextElement && !isNextHeader(nextElement)) {
+            contentDiv.appendChild(nextElement);
+            nextElement = headerDiv.nextElementSibling;
+        }
     });
+});
+```
+
+### Responsive Design Strategy
+
+**PC-First Hybrid Approach**:
+- **Desktop (1024px+)**: Original fixed-width design preserved
+- **Tablet (768-1023px)**: Refined desktop with breathing room
+- **Mobile (<767px)**: Complete responsive transformation
+
+```css
+/* Mobile transformation */
+@media screen and (max-width: 767px) {
+    .markdown-body {
+        width: 100% !important;
+        font-size: 16px !important;
+        padding: 0 !important;
+    }
+}
+
+/* Tablet refinement */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    #page-ctn {
+        margin: 16px auto !important;
+        border-radius: 8px;
+    }
 }
 ```
 
-**CSS Implementation:**
-```css
-/* Dark theme styles - ONLY for pre elements */
-pre.dark-theme {
-    background-color: #1e1e1e !important;
-    color: #d4d4d4 !important;
-}
+## Development History
 
-/* Force inline code to ALWAYS use light theme */
-.markdown-body code:not(pre code),
-code:not(pre code) {
-    background-color: rgba(27, 31, 35, .05) !important;
-    color: #333 !important;
-    border-radius: 3px !important;
-    font-size: 90% !important;
-    margin: 0 !important;
-    padding: 1px 3px !important;
-    text-shadow: none !important; /* Override any dark theme text shadow */
-    border: none !important; /* Override any dark theme borders */
-}
+### Major Problem-Solving Iterations
+
+1. **Table Responsive Padding System**
+   - **Challenge**: Tables needed different padding based on content width, not browser width
+   - **Solution**: JavaScript-based actual width detection vs CSS media queries
+
+2. **Section Collapse Architecture**
+   - **Challenge**: HTML string parsing broke HTML entities in code blocks
+   - **Solution**: DOM-based manipulation after document load
+
+3. **Dark Theme Scope Control**
+   - **Challenge**: Global dark theme made entire document unreadable
+   - **Solution**: Selective application to code blocks only
+
+4. **List Processing Simplification**
+   - **Challenge**: 230+ lines of complex list detection code
+   - **Solution**: Migration to Mistune for native list handling
+
+5. **CSS Spacing Optimization**
+   - **Challenge**: Excessive spacing between headers and lists
+   - **Solution**: Multi-rule CSS targeting paragraph-list adjacency
+
+### Key Technical Breakthroughs
+
+**1. Browser Width vs Content Width Detection**
+```javascript
+// WRONG: Browser window width
+@media (max-width: 800px) { }
+
+// CORRECT: Actual table content width
+const tableWidth = table.getBoundingClientRect().width;
+if (tableWidth > threshold) { /* adjust padding */ }
 ```
 
-### Scrollbar Issues in Collapsible Content
-
-**The Problem:**
-Horizontal scrollbars were missing in collapsible content areas, making wide code blocks unreadable.
-
-#### What We Discovered:
-Initially thought this was a bug, but after debugging realized it was correct behavior:
-- **Short code blocks**: No horizontal scroll needed → No scrollbar (correct)
-- **Long code blocks**: Content overflows → Scrollbar appears (correct)
-
-#### The Investigation Process:
-
-**Step 1: CSS Debugging**
+**2. Seamless Border System**
 ```css
-/* Tried forcing scrollbars everywhere */
+/* Remove all spacing for edge-to-edge fit */
 .content-collapsible {
-    overflow-x: auto !important; /* This was unnecessary */
-}
-
-.content-collapsible pre {
-    overflow-x: scroll !important; /* This was wrong - should be 'auto' */
+    padding: 0;
+    margin: 0;
+    border-top: none; /* seamless connection */
 }
 ```
 
-**Step 2: HTML Structure Analysis**
-We checked multiple code blocks:
-- PYTHON (159 lines): Has scrollbar when needed ✅
-- PYTHON (118 lines): No scrollbar because content fits ✅
-- Short code snippets: No scrollbar because not needed ✅
-
-**Step 3: The Realization**
-The user feedback: *"my bad, no issue actually. some pre code contains short code lines that do not need h scroll bar. The behavior is actually correct."*
-
-#### Final CSS for Proper Scrollbar Behavior:
+**3. Animation Without Layout Shift**
 ```css
-.content-collapsible {
-    max-height: 400px;
-    overflow-y: auto;
-    padding: 0; /* Critical: No padding to avoid spacing issues */
-    margin: 0;  /* Critical: No margin for seamless borders */
-}
-
-.content-collapsible pre {
-    overflow-x: auto; /* Only show scrollbar when needed */
-    margin: 0 !important; /* Remove default pre margins */
-    border-radius: 0; /* Square corners inside collapsible */
+/* Keep layout properties identical between states */
+.collapsed-state, .expanded-state {
+    width: max-content !important; /* No width change = no shift */
+    min-width: 100% !important;
 }
 ```
 
-### Zero Margin Between Code and Collapsible Border
-
-**The Problem:**
-There was unwanted spacing between code snippets and the collapsible container border, creating visual gaps.
-
-#### CSS Issues We Fixed:
-
-**1. Pre Element Default Margins**
-```css
-/* Problem: Browser default margins on pre elements */
-pre {
-    margin: 1em 0; /* Browser default - caused gaps */
-}
-
-/* Solution: Force zero margins in collapsible context */
-.content-collapsible pre {
-    margin: 0 !important;
-    border-radius: 0; /* Remove rounded corners for seamless fit */
-}
-```
-
-**2. Container Padding Issues**
-```css
-/* Problem: Padding on collapsible container */
-.content-collapsible {
-    padding: 10px; /* This created unwanted spacing */
-}
-
-/* Solution: Zero padding for seamless borders */
-.content-collapsible {
-    padding: 0; /* Seamless edge-to-edge fit */
-    margin: 0;  /* No external spacing */
-    border: 1px solid #e1e5e9;
-    border-top: none; /* Seamless connection to header */
-}
-```
-
-**3. Border Radius Conflicts**
-```css
-/* Problem: Rounded corners on code blocks created gaps */
-.content-collapsible pre code {
-    border-radius: 6px; /* This left gaps at corners */
-}
-
-/* Solution: Square corners for seamless fit */
-.content-collapsible pre {
-    border-radius: 0 !important;
-}
-.content-collapsible pre code {
-    border-radius: 0 !important;
-}
-```
-
-#### Complete Collapsible Code Block CSS Solution:
-```css
-/* Collapsible container - seamless borders */
-.content-collapsible {
-    max-height: 400px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 0; /* Zero padding for seamless fit */
-    margin: 0;  /* Zero margin for seamless fit */
-    border: 1px solid #e1e5e9;
-    border-top: none;
-    border-radius: 0 0 8px 8px;
-    background: white;
-}
-
-/* Code blocks inside collapsible - no gaps */
-.content-collapsible pre {
-    margin: 0 !important; /* Remove all margins */
-    border-radius: 0 !important; /* Square corners */
-    border: none !important; /* No double borders */
-    overflow-x: auto; /* Horizontal scroll when needed */
-}
-
-/* Header styling for seamless connection */
-.section-collapsible-header {
-    padding: 8px 16px;
-    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-    border: 1px solid #e1e5e9;
-    border-radius: 8px 8px 0 0; /* Rounded top, square bottom */
-    cursor: pointer;
-}
-
-/* Collapsed state - full rounding */
-.section-collapsible-header.collapsed {
-    border-radius: 8px; /* Full rounding when collapsed */
-    border-bottom: 1px solid #e1e5e9;
-}
-```
-
-### The Debugging Timeline
-
-1. **Initial Problem**: Dark theme applied to entire document
-   - **Fix**: JavaScript selector targeting only `pre` elements
-
-2. **Inline Code Issue**: Inheriting dark theme styles  
-   - **Fix**: CSS `!important` overrides for inline code
-
-3. **Missing Scrollbars**: Thought horizontal scrollbars were broken
-   - **Discovery**: Actually correct behavior - scrollbars only when needed
-
-4. **Margin Gaps**: Unwanted spacing between code and borders
-   - **Fix**: Zero margins and padding with seamless border system
-
-5. **Border Radius Conflicts**: Rounded corners creating visual gaps
-   - **Fix**: Square corners inside collapsible, rounded on container
-
-### Key Insights Learned
-
-1. **Theme Inheritance**: CSS cascade can cause unintended theme application
-2. **Default Browser Styles**: `pre` elements have default margins that must be overridden  
-3. **Scrollbar Behavior**: `overflow: auto` is better than `overflow: scroll` for conditional scrollbars
-4. **Seamless Borders**: Zero padding/margin + careful border-radius creates professional appearance
-5. **Visual Debugging**: Colored backgrounds and extreme values help identify CSS application issues
-
-These fixes ensure that code blocks have proper theming, appropriate scrollbars, and seamless integration with collapsible containers.
-
-### Section Collapsing
-- **Auto-detection**: Sections with keywords like "solution", "answer" can auto-collapse
-- **Interactive**: Click headers to expand/collapse sections
-- **Smooth Animation**: CSS transitions for professional feel
-
-## Markdown Extensions
-
-### Table of Contents
-```markdown
-# My Document
-
-## Table of Contents
-[TOC]
-
-## Section 1
-Content here...
-```
-
-### Math Support
-```markdown
-Inline math: $E = mc^2$
-
-Display math:
-$$\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}$$
-```
-
-### Code Blocks with Languages
-```markdown
-​```python
-def hello_world():
-    print("Hello, World!")
-​```
-
-​```json
-{
-    "name": "example",
-    "version": "1.0.0"
-}
-​```
-```
-
-### Tables
-```markdown
-| Column 1 | Column 2 | Column 3 |
-|----------|----------|----------|
-| Data 1   | Data 2   | Data 3   |
-| Row 2    | Row 2    | Row 3    |
-```
-
-## Styling Customization
-
-### Table Styling
-Tables automatically adjust based on width:
-- **Small tables**: Full 24px horizontal padding
-- **Large tables**: Reduced 12px horizontal padding
-- **All tables**: Light green hover effects, rounded corners, modern gradients
-
-### Color Scheme
-- **Headers**: Gradient background `linear-gradient(135deg, #f8fafc, #f1f5f9)`
-- **Hover**: Light green `#f0fdf4` background with `#22c55e` left border
-- **Borders**: Subtle `#e5e7eb` and `#f3f4f6` borders
-
-### Responsive Design
-The system adapts to different content types:
-- Physics tables with many columns get compact spacing
-- Simple 2-column tables retain spacious formatting
-- Code blocks auto-scroll when content is wide
-
-## Examples
-
-### Input: sample.md
-- Demonstrates table detection and formatting
-- Shows math rendering capabilities  
-- Includes complex multi-column tables
-- Features collapsible code sections
-
-### Output: Generated HTML
-- Professional document appearance
-- Interactive table hover effects
-- Properly sized tables based on content
-- Syntax-highlighted code blocks
-
-## Browser Compatibility
-
-- **Modern Browsers**: Full feature support (Chrome, Firefox, Safari, Edge)
-- **JavaScript Required**: For table width detection and section collapsing
-- **CSS Grid Support**: Enhanced layout capabilities
-- **MathJax**: Requires internet connection for math rendering
-
-## Development
-
-### Key Files
-- **`md2html.py`**: Main converter with table detection logic
-- **`.prism/style.css`**: Advanced CSS with responsive table features
-- **`.prism/prism.js`**: Syntax highlighting engine
-
-### Recent Improvements
-- JavaScript-based table width detection (vs CSS media queries)
-- Intelligent padding adjustment based on actual table width
-- Natural table sizing instead of forced 100% width
-- Light green hover theme with modern aesthetics
-
-## Troubleshooting
-
-### Tables Not Formatting Correctly
-- Ensure JavaScript is enabled
-- Check that table has proper markdown syntax
-- Verify `.prism/style.css` is loaded correctly
-
-### Math Not Rendering
-- Check internet connection (MathJax CDN required)
-- Verify math syntax follows LaTeX standards
-- Ensure `$$` for display math, `$` for inline math
-
-### Code Not Highlighting
-- Check language identifier after opening ​```
-- Ensure `.prism/prism.js` supports the language
-- Verify Prism.js is loaded correctly
-
-## License
-
-## Major Issues We Solved Through Multiple Iterations
+## Details on Key Technical Issues 
 
 ### 1. Section Collapse System: HTML String Parsing vs DOM Manipulation
 
@@ -1145,29 +457,47 @@ Double background styling and conflicting padding rules.
 }
 ```
 
-### 7. List Detection Issues (Like Tables)
+### 7. CSS Spacing Fixes for List Headers
 
-**The Problem Identified:**
-Similar to tables, lists need blank lines before them to be detected by Markdown parser.
+**Problem**: Excessive spacing between bold paragraph headers and following lists created visual gaps.
 
-**Example Failing Case:**
-```markdown
-Knowledge Points Tested:
-- Angular displacement ($\theta$), angular velocity ($\omega$)
-- Relationship between linear distance (arc length)
+**Example HTML Structure**:
+```html
+<p><strong>Final Answer Format Instructions:</strong></p>
+<ul>
+    <li>Your answer must be a single analytic expression.</li>
+    <li>Use the symbol $π$ for pi.</li>
+</ul>
 ```
 
-**The Fix Needed:**
-A `fix_list_formatting()` function similar to `fix_table_formatting()` that adds blank lines before lists.
+#### The Working Solution:
+```css
+/* Reduce top margin of lists that follow paragraphs */
+.markdown-body p + ul,
+.markdown-body p + ol {
+    margin-top: 4px !important;
+}
 
-### Timeline of Major Fixes
+/* Reduce bottom margin of paragraphs that precede lists (modern browsers) */
+.markdown-body p:has(+ ul),
+.markdown-body p:has(+ ol) {
+    margin-bottom: 4px !important;
+}
 
-1. **Session 1-5**: Table responsive padding system development
-2. **Session 6-8**: Section collapsible system from HTML parsing to DOM manipulation  
-3. **Session 9-12**: Dark theme scope limitation and background coverage fixes
-4. **Session 13-15**: Scrollbar placement and CSS class organization
-5. **Session 16**: Content collapsible padding conflicts and final polish
-6. **Current**: List detection issue identification (similar to table fix)
+/* Fallback paragraph margin for browsers without :has() support */
+.markdown-body p {
+    margin-bottom: 8px;
+}
+```
+
+**How It Works**:
+1. **Rule 1**: Reduces the top margin of `<ul>/<ol>` elements when they follow `<p>` elements
+2. **Rule 2**: Reduces the bottom margin of `<p>` elements when followed by `<ul>/<ol>` (modern browsers with `:has()` support)
+3. **Rule 3**: Sets standard paragraph bottom margin for older browsers
+
+**Result**: Tight, professional spacing between bold instruction headers and their corresponding list items.
+
+
 
 ### 8. Section Header Spacing Issues
 
@@ -1279,6 +609,111 @@ Keep width properties identical in both states to prevent layout recalculation.
 **Essential Principle:**
 Don't change layout properties (width, padding, margins) between CSS states during transitions.
 
+### 10. Hybrid Responsive Design System
+
+**The Challenge:**
+Modern web needs to work on both desktop computers and mobile devices, but a single design approach doesn't work well for both. Desktop users expect precise, information-dense layouts, while mobile users need touch-friendly, readable interfaces.
+
+**Our Solution: PC-First Hybrid Approach**
+
+#### Architecture Overview:
+```css
+/* PC First: Default layout preserves fixed-width design */
+/* No media queries = desktop gets original layout */
+
+/* MOBILE ONLY: Responsive overrides */
+@media screen and (max-width: 767px) {
+    /* Complete mobile transformation */
+}
+
+/* TABLET: Refined desktop layout */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Subtle enhancements to desktop design */
+}
+
+/* DESKTOP: Explicit desktop features */
+@media screen and (min-width: 1024px) {
+    /* Ensure desktop-specific elements work */
+}
+```
+
+#### Device Targeting:
+
+**1. Mobile Phones (320px-428px CSS pixels)**
+- **CSS Breakpoint**: `max-width: 767px`
+- **Examples**: iPhone 15 (393px), Galaxy S24 (360px), Pixel 8 (412px)
+- **Strategy**: Complete responsive transformation
+- **Changes Applied**:
+  ```css
+  .markdown-body {
+      width: 100% !important;      /* Fluid width */
+      font-size: 16px !important;  /* Larger, readable font */
+      padding: 0 !important;       /* Edge-to-edge content */
+  }
+  
+  #page-ctn {
+      width: 100% !important;      /* Full screen width */
+      padding: 16px !important;    /* Touch-friendly spacing */
+  }
+  
+  .markdown-body h1 {
+      text-align: left !important; /* Left-aligned headers */
+      font-size: 1.8em !important; /* Proportional sizing */
+  }
+  
+  .markdown-body table {
+      overflow-x: auto !important; /* Horizontal scroll */
+      font-size: 12px !important;  /* Compact tables */
+  }
+  ```
+
+**2. Tablets (768px-1023px CSS pixels)**
+- **CSS Breakpoint**: `min-width: 768px` and `max-width: 1023px`
+- **Examples**: iPad (768px), iPad Pro (834px), Surface Pro (912px)
+- **Strategy**: Refined desktop experience
+- **Changes Applied**:
+  ```css
+  #page-ctn {
+      margin: 16px auto !important; /* Breathing room */
+      border-radius: 8px;           /* Modern rounded corners */
+  }
+  
+  #__next {
+      padding: 0 24px !important;   /* Side margins */
+  }
+  
+  .markdown-body h1 {
+      text-align: center !important; /* Keep desktop centering */
+  }
+  ```
+- **Inherited**: Fixed 700px/800px containers, 13px fonts, all table styling
+
+**3. Desktop/PC (1024px+ CSS pixels)**
+- **CSS Breakpoint**: `min-width: 1024px` (and default styles)
+- **Examples**: Laptops, desktop monitors, large displays
+- **Strategy**: Preserve original fixed-width design
+- **Key Features**:
+  - Fixed 700px markdown-body width
+  - Fixed 800px page container
+  - 13px base font size (information-dense)
+  - Centered layout with precise spacing
+  - Complex table layouts optimized for large screens
+  - Page header visible
+
+#### Why This Works:
+
+**Modern Phone Reality**:
+- **Physical pixels**: iPhone 15 has 1179x2556 pixels
+- **CSS pixels**: iPhone 15 reports 393x852 pixels (3x device pixel ratio)
+- **Media query result**: 393px < 767px = Mobile styles applied ✅
+
+**Cross-Platform Benefits**:
+- ✅ **Desktop**: Exact original layout preserved, no compromises
+- ✅ **Mobile**: Fully responsive, touch-optimized experience  
+- ✅ **Tablet**: Best of both worlds with refined desktop layout
+- ✅ **Print**: Specialized print styles for documents
+- ✅ **High DPI**: Font smoothing for Retina displays
+
 ### Key Lessons Learned
 
 1. **DOM Manipulation > String Parsing**: JavaScript DOM manipulation is safer than HTML string parsing
@@ -1298,6 +733,7 @@ Don't change layout properties (width, padding, margins) between CSS states duri
 
 This project demonstrates the importance of iterative development and responsive problem-solving in creating robust document processing systems.
 
+
 ## License
 
-This project is a custom markdown converter developed for advanced document generation with emphasis on beautiful table formatting and modern web standards.
+This project is a custom markdown converter developed for advanced document generation with emphasis on beautiful table formatting, intelligent list processing, and modern web standards.
