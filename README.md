@@ -4,14 +4,63 @@ A sophisticated Python-based markdown to HTML conversion system with advanced st
 
 ## Table of Contents
 
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Architecture](#architecture)
-- [Advanced Features Deep Dive](#advanced-features-deep-dive)
-- [Development History](#development-history)
-- [Troubleshooting](#troubleshooting)
-- [License](#license)
+<!-- vim-markdown-toc GFM -->
+
+* [Features](#features)
+    * [Core Functionality](#core-functionality)
+    * [Advanced Table Features](#advanced-table-features)
+    * [Theme Support](#theme-support)
+    * [List Processing](#list-processing)
+* [Installation](#installation)
+    * [Prerequisites](#prerequisites)
+    * [Setup](#setup)
+* [Usage](#usage)
+    * [Basic Conversion](#basic-conversion)
+    * [Advanced Options](#advanced-options)
+    * [Full Command Reference](#full-command-reference)
+* [Architecture](#architecture)
+    * [File Structure](#file-structure)
+    * [Core Conversion Pipeline](#core-conversion-pipeline)
+* [Advanced Features Deep Dive](#advanced-features-deep-dive)
+    * [Intelligent Table Sizing](#intelligent-table-sizing)
+    * [Collapsible Code Blocks](#collapsible-code-blocks)
+    * [Section Folding System](#section-folding-system)
+    * [Responsive Design Strategy](#responsive-design-strategy)
+* [Development History](#development-history)
+    * [Major Problem-Solving Iterations](#major-problem-solving-iterations)
+    * [Key Technical Breakthroughs](#key-technical-breakthroughs)
+* [Details on Key Technical Issues](#details-on-key-technical-issues)
+    * [1. Section Collapse System: HTML String Parsing vs DOM Manipulation](#1-section-collapse-system-html-string-parsing-vs-dom-manipulation)
+        * [Failed Approach: Complex HTML String Parsing](#failed-approach-complex-html-string-parsing)
+        * [The Breakthrough: DOM-Based JavaScript Manipulation](#the-breakthrough-dom-based-javascript-manipulation)
+    * [2. Dark Theme Scope: Global vs Selective Application](#2-dark-theme-scope-global-vs-selective-application)
+        * [Failed Approach: Body-Level Dark Theme](#failed-approach-body-level-dark-theme)
+        * [The Solution: Content-Collapsible Pre Code Only](#the-solution-content-collapsible-pre-code-only)
+    * [3. Background Color Coverage in Wide Code Blocks](#3-background-color-coverage-in-wide-code-blocks)
+        * [The Issue Visualization:](#the-issue-visualization)
+        * [The Fix: Max-Content Width](#the-fix-max-content-width)
+    * [4. Horizontal Scrollbar Placement: Individual vs Window Level](#4-horizontal-scrollbar-placement-individual-vs-window-level)
+        * [User's Request:](#users-request)
+        * [The Solution: Window-Level Scrolling](#the-solution-window-level-scrolling)
+    * [5. Collapsible Class Naming Conflicts](#5-collapsible-class-naming-conflicts)
+        * [The Cleanup:](#the-cleanup)
+    * [6. CSS Padding Issues in Content Collapsible](#6-css-padding-issues-in-content-collapsible)
+        * [The Fix:](#the-fix)
+    * [7. CSS Spacing Fixes for List Headers](#7-css-spacing-fixes-for-list-headers)
+        * [The Working Solution:](#the-working-solution)
+    * [8. Section Header Spacing Issues](#8-section-header-spacing-issues)
+        * [Root Cause Analysis:](#root-cause-analysis)
+        * [The Complete Solution](#the-complete-solution)
+    * [9. Collapsible Code Block Shifting Fix](#9-collapsible-code-block-shifting-fix)
+    * [10. Hybrid Responsive Design System](#10-hybrid-responsive-design-system)
+        * [Architecture Overview:](#architecture-overview)
+        * [Device Targeting:](#device-targeting)
+        * [Why This Works:](#why-this-works)
+    * [Key Lessons Learned](#key-lessons-learned)
+    * [Development Approach That Worked](#development-approach-that-worked)
+* [License](#license)
+
+<!-- vim-markdown-toc -->
 
 ## Features
 
@@ -19,8 +68,13 @@ A sophisticated Python-based markdown to HTML conversion system with advanced st
 - **Markdown to HTML Conversion**: Convert markdown files to beautiful, styled HTML documents using Mistune
 - **Syntax Highlighting**: Powered by Prism.js with support for multiple programming languages
 - **Math Rendering**: Full LaTeX math support with MathJax integration
-- **Table of Contents**: Automatic TOC generation with `[TOC]` placeholder
+- **Enhanced Table of Contents**: Advanced TOC with custom symbols, nested structure, and auto-generation
+  - Manual insertion via `[TOC]` marker
+  - Auto-generation with `--toc` flag
+  - Custom symbols (•, ○, ▪, ▫) for different heading levels
+  - Support for all header levels (H1-H5)
 - **Collapsible Sections**: Interactive section folding with customizable defaults
+- **GitHub-Style Task Lists**: Support for `- [x]` and `- [ ]` checkbox syntax
 
 ### Advanced Table Features
 - **Natural Width Tables**: Tables size to their content instead of forced 100% width
@@ -77,8 +131,8 @@ python md2html.py input.md output.html --fold-sections "solution" "answer"
 # Collapsible long code blocks (>N lines)
 python md2html.py input.md output.html --collapse 50
 
-# Disable table of contents
-python md2html.py input.md output.html --no-toc
+# Auto-generate table of contents
+python md2html.py input.md output.html --toc
 ```
 
 ### Full Command Reference
@@ -86,9 +140,45 @@ python md2html.py input.md output.html --no-toc
 python md2html.py [-h] [--css CSS] [--theme THEME] [--line-numbers]
                   [--collapse N] [--download-themes]
                   [--inline-lang INLINE_LANG]
-                  [--fold-sections [FOLD_SECTIONS ...]] [--no-toc]
+                  [--fold-sections [FOLD_SECTIONS ...]] [--toc]
                   [input_file] [output_file]
 ```
+
+### Table of Contents (TOC) Features
+
+The converter supports advanced table of contents generation with:
+
+- **Manual TOC**: Add `[TOC]` marker in your markdown
+- **Auto-generate TOC**: Use `--toc` flag to automatically insert TOC section
+- **Enhanced styling**: Custom symbols (•, ◦, ▪, ▫) for different levels
+- **Nested structure**: Proper indentation for hierarchical headers
+- **All header levels**: Supports H1-H6 headers
+
+#### TOC Usage Examples
+
+```bash
+# Files with [TOC] marker - TOC generated automatically
+python md2html.py sample.md sample.html
+
+# Files without [TOC] - use --toc to auto-generate
+python md2html.py problems.md problems.html --toc
+
+# Both approaches produce the same styled TOC
+```
+
+#### 🎯  Custom Header ID
+
+**Smart Header ID Generation**:
+
+- `--toc` and `[TOC]`  create `toc_n` link id by  default, but automatically detect and use your custom slugs from markdown links if any
+
+- If you use `[Problem 1](#problem-1)` in your markdown, the header gets `id="problem-1"` ; Otherwise not provide,  generate default link id, e.g. `id=toc_3`
+
+- Example of working usage:
+  ```markdown
+  ## 🧭 Problem Roadmap  
+  - [Problem 1](#problem-1)         <!-- ✅ WORKS: Slug automatically applied -->
+  ```
 
 ## Architecture
 
@@ -278,7 +368,7 @@ if (tableWidth > threshold) { /* adjust padding */ }
 **The Original Problem:**
 The initial section folding system used complex HTML string manipulation that was breaking code blocks with HTML entities.
 
-#### Failed Approach: Complex HTML String Parsing (❌)
+#### Failed Approach: Complex HTML String Parsing
 ```python
 # This was breaking HTML entities like &quot; in code blocks
 def create_section_boundaries(html_content):
@@ -296,7 +386,7 @@ def create_section_boundaries(html_content):
 - Sibling sections were nested incorrectly inside each other
 - Complex boundary detection logic was unreliable
 
-#### The Breakthrough: DOM-Based JavaScript Manipulation (✅)
+#### The Breakthrough: DOM-Based JavaScript Manipulation
 ```javascript
 // Process after HTML is fully rendered - no string parsing
 document.addEventListener('DOMContentLoaded', function() {
@@ -327,7 +417,7 @@ document.addEventListener('DOMContentLoaded', function() {
 **The Problem:**
 Dark theme was initially applied to the entire document, making it unreadable and affecting tables, inline code, and main text.
 
-#### Failed Approach: Body-Level Dark Theme (❌)
+#### Failed Approach: Body-Level Dark Theme
 ```javascript
 // This made everything dark-themed
 if (isDarkTheme) {
@@ -341,7 +431,7 @@ if (isDarkTheme) {
 - Inline code became invisible against dark backgrounds
 - Headers and section text were affected
 
-#### The Solution: Content-Collapsible Pre Code Only (✅)
+#### The Solution: Content-Collapsible Pre Code Only
 ```javascript
 // Apply dark theme ONLY to pre code blocks in content-collapsible areas
 if (isDarkTheme) {
@@ -379,7 +469,7 @@ Pre code background was limited to container width, showing white background whe
 └────────────────────┘
 ```
 
-#### The Fix: Max-Content Width (✅)
+#### The Fix: Max-Content Width
 ```css
 .content-collapsible-content pre {
     width: max-content !important;  /* Expand to fit content */
@@ -403,7 +493,7 @@ Individual code blocks had their own scrollbars, making navigation difficult for
 #### User's Request:
 *"Please add at the bottom of the content-collapsible window, instead of at the bottom of code in pre code. This is because I need to scroll left right even when the code not scroll down to the bottom"*
 
-#### The Solution: Window-Level Scrolling (✅)
+#### The Solution: Window-Level Scrolling
 ```css
 /* Remove scrollbars from individual pre blocks */
 .content-collapsible-content pre {
@@ -530,7 +620,7 @@ Multiple CSS rules were adding unwanted spacing:
 }
 ```
 
-#### The Complete Solution (✅):
+#### The Complete Solution
 ```css
 /* 1. Remove header container spacing */
 .section-collapsible-header {

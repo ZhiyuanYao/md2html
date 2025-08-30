@@ -3,7 +3,6 @@
 This file contains 41 randomly sampled problems (all problems, regardless of verification status).
 
 ## 🧭 Problem Roadmap
-
 - **[Problem 1](#problem-1)**: **Mass Spectrometer Principles**
   - After acceleration through voltage $V$, an ion enters perpendicular to magnetic field $B$; express its path radius $r$ in terms of $m$, $q$, $V$, and $B$.
 - **[Problem 2](#problem-2)**: **Energy Loss Due to Friction**

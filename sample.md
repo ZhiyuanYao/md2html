@@ -2,9 +2,6 @@
 
 This document demonstrates the conversion of Markdown to HTML with comprehensive testing of all supported features.
 
-## Table of Contents
-[TOC]
-
 ## Unicode Character Tests
 
 This section tests the rendering of various Unicode characters and symbols.

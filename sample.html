@@ -1777,8 +1777,8 @@ body.dark-theme .wrap-content-collapsible .content-collapsible-content pre::-web
     background: rgba(255,255,255,0.5) !important;
 }
 
-/* Table of Contents Styling - for mistune's <details class="toc"> */
-details.toc {
+/* Table of Contents Styling - simple div without title */
+div.toc {
     background-color: #f8f9fa;
     border: 1px solid #e1e5e9;
     border-radius: 6px;
@@ -1788,47 +1788,53 @@ details.toc {
     width: 100%;
 }
 
-details.toc summary {
-    font-size: 1.1em;
-    font-weight: 600;
-    color: #495057;
-    cursor: pointer;
-    margin-bottom: 12px;
-    outline: none;
-    user-select: none;
-}
-
-details.toc summary:hover {
-    color: #0066cc;
-}
-
-details.toc ul {
+div.toc ul {
     list-style: none;
     padding-left: 0;
-    margin: 8px 0 0 0;
+    margin: 0;
 }
 
-details.toc ul ul {
+div.toc ul ul {
     padding-left: 20px;
     margin: 4px 0;
 }
 
-details.toc li {
+div.toc .toc-symbol {
+    margin-right: 4px;
+    color: #666;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: baseline;
+}
+
+div.toc .toc-symbol[data-level="2"],
+div.toc .toc-symbol[data-level="3"] {
+    font-size: 0.5em;
+    transform: translateY(-2px);
+}
+
+div.toc .toc-symbol[data-level="4"],
+div.toc .toc-symbol[data-level="5"] {
+    font-size: 1.2em;
+    transform: translateY(1px);
+}
+
+div.toc li {
     margin: 3px 0;
     line-height: 1.4;
 }
 
-details.toc a {
+div.toc a {
     color: #0066cc;
     text-decoration: none;
     display: inline-block;
     padding: 2px 6px;
     border-radius: 4px;
     transition: all 0.2s ease;
-    font-size: 0.95em;
+    font-size: 1.0em;
 }
 
-details.toc a:hover {
+div.toc a:hover {
     background-color: #e3f2fd;
     text-decoration: none;
     color: #004494;
@@ -1862,61 +1868,79 @@ h1:target, h2:target, h3:target, h4:target, h5:target, h6:target {
 <h1 id="toc_1">Sample Document for MD2HTML Testing</h1>
 <p>This document demonstrates the conversion of Markdown to HTML with comprehensive testing of all supported features.</p>
 <h2 id="toc_2">Table of Contents</h2>
-<details class="toc" open><summary>Table of Contents</summary><ul>
-<li><a href="#toc_3">Unicode Character Tests</a>
-<ul>
-<li><a href="#toc_4">Mathematical Symbols</a></li>
-<li><a href="#toc_5">Physical Units</a></li>
+<div class="toc"><ul>
+  <ul>
+    <li><span class="toc-symbol" data-level="2">●</span><a href="#toc_3">Unicode Character Tests</a></li>
+    <ul>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_4">Mathematical Symbols</a></li>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_5">Physical Units</a></li>
+    </ul>
+    <li><span class="toc-symbol" data-level="2">●</span><a href="#toc_6">LaTeX Math Delimiter Tests</a></li>
+    <ul>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_7">Display Math Delimiters</a></li>
+      <ul>
+        <li><span class="toc-symbol" data-level="4">▪</span><a href="#toc_8">1. Double Dollar Signs</a></li>
+        <li><span class="toc-symbol" data-level="4">▪</span><a href="#toc_9">2. Square Brackets Display Math</a></li>
+        <li><span class="toc-symbol" data-level="4">▪</span><a href="#toc_10">3. Standalone Boxed Expressions (Auto Display Math)</a></li>
+      </ul>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_11">Inline Math Delimiters</a></li>
+      <ul>
+        <li><span class="toc-symbol" data-level="4">▪</span><a href="#toc_12">4. Single Dollar Signs</a></li>
+        <li><span class="toc-symbol" data-level="4">▪</span><a href="#toc_13">5. Parentheses Inline Math</a></li>
+      </ul>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_14">Complex Nested Examples</a></li>
+      <ul>
+        <li><span class="toc-symbol" data-level="4">▪</span><a href="#toc_15">Mixed Delimiters in Same Paragraph</a></li>
+        <li><span class="toc-symbol" data-level="4">▪</span><a href="#toc_16">Nested Braces in Boxed Expressions</a></li>
+        <li><span class="toc-symbol" data-level="4">▪</span><a href="#toc_17">Complex Display Math with Multiple Lines</a></li>
+      </ul>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_18">Boxed Math Inside Other Delimiters</a></li>
+      <ul>
+        <li><span class="toc-symbol" data-level="4">▪</span><a href="#toc_19">Boxed Inside Display Math</a></li>
+        <li><span class="toc-symbol" data-level="4">▪</span><a href="#toc_20">Multiple Boxed Expressions</a></li>
+      </ul>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_21">Edge Cases and Special Characters</a></li>
+      <ul>
+        <li><span class="toc-symbol" data-level="4">▪</span><a href="#toc_22">Greek Letters and Special Symbols</a></li>
+        <li><span class="toc-symbol" data-level="4">▪</span><a href="#toc_23">Fractions within Fractions</a></li>
+        <li><span class="toc-symbol" data-level="4">▪</span><a href="#toc_24">Matrix Notation</a></li>
+      </ul>
+    </ul>
+    <li><span class="toc-symbol" data-level="2">●</span><a href="#toc_25">List Formatting Tests</a></li>
+    <ul>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_26">Normal List With Preceding Text</a></li>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_27">Mixed Indentation Lists</a></li>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_28">Complex Nested Structure</a></li>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_29">GitHub-Style Task Lists</a></li>
+    </ul>
+    <li><span class="toc-symbol" data-level="2">●</span><a href="#toc_30">Table Formatting Tests</a></li>
+    <ul>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_31">Basic Table</a></li>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_32">Scientific Data Table</a></li>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_33">Performance Statistics Table</a></li>
+    </ul>
+    <li><span class="toc-symbol" data-level="2">●</span><a href="#toc_34">Code Syntax Highlighting Tests</a></li>
+    <ul>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_35">JSON Configuration</a></li>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_36">JavaScript Example</a></li>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_37">Python Code Block</a></li>
+    </ul>
+    <li><span class="toc-symbol" data-level="2">●</span><a href="#toc_38">Problem Examples</a></li>
+    <li><span class="toc-symbol" data-level="2">●</span><a href="#toc_39">Problem 1: Physics - Multicritical Points</a></li>
+    <ul>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_40">Problem Statement</a></li>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_41">Solution</a></li>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_42">Answer</a></li>
+    </ul>
+    <li><span class="toc-symbol" data-level="2">●</span><a href="#toc_43">Problem 2: Mathematics - Advanced Calculus</a></li>
+    <ul>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_44">Problem Statement</a></li>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_45">Solution</a></li>
+      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_46">Answer</a></li>
+    </ul>
+  </ul>
 </ul>
-</li>
-<li><a href="#toc_6">LaTeX Math Delimiter Tests</a>
-<ul>
-<li><a href="#toc_7">Display Math Delimiters</a></li>
-<li><a href="#toc_8">Inline Math Delimiters</a></li>
-<li><a href="#toc_9">Complex Nested Examples</a></li>
-<li><a href="#toc_10">Boxed Math Inside Other Delimiters</a></li>
-<li><a href="#toc_11">Edge Cases and Special Characters</a></li>
-</ul>
-</li>
-<li><a href="#toc_12">List Formatting Tests</a>
-<ul>
-<li><a href="#toc_13">Normal List With Preceding Text</a></li>
-<li><a href="#toc_14">Mixed Indentation Lists</a></li>
-<li><a href="#toc_15">Complex Nested Structure</a></li>
-<li><a href="#toc_16">GitHub-Style Task Lists</a></li>
-</ul>
-</li>
-<li><a href="#toc_17">Table Formatting Tests</a>
-<ul>
-<li><a href="#toc_18">Basic Table</a></li>
-<li><a href="#toc_19">Scientific Data Table</a></li>
-<li><a href="#toc_20">Performance Statistics Table</a></li>
-</ul>
-</li>
-<li><a href="#toc_21">Code Syntax Highlighting Tests</a>
-<ul>
-<li><a href="#toc_22">JSON Configuration</a></li>
-<li><a href="#toc_23">JavaScript Example</a></li>
-<li><a href="#toc_24">Python Code Block</a></li>
-</ul>
-</li>
-<li><a href="#toc_25">Problem Examples</a></li>
-<li><a href="#toc_26">Problem 1: Physics - Multicritical Points</a>
-<ul>
-<li><a href="#toc_27">Problem Statement</a></li>
-<li><a href="#toc_28">Solution</a></li>
-<li><a href="#toc_29">Answer</a></li>
-</ul>
-</li>
-<li><a href="#toc_30">Problem 2: Mathematics - Advanced Calculus</a>
-<ul>
-<li><a href="#toc_31">Problem Statement</a></li>
-<li><a href="#toc_32">Solution</a></li>
-<li><a href="#toc_33">Answer</a></li>
-</ul>
-</li>
-</ul>
-</details>
+</div>
 
 <h2 id="toc_3">Unicode Character Tests</h2>
 <p>This section tests the rendering of various Unicode characters and symbols.</p>
@@ -1940,31 +1964,31 @@ h1:target, h2:target, h3:target, h4:target, h5:target, h6:target {
 <h2 id="toc_6">LaTeX Math Delimiter Tests</h2>
 <p>This section demonstrates all supported LaTeX math delimiter types and features.</p>
 <h3 id="toc_7">Display Math Delimiters</h3>
-<h4>1. Double Dollar Signs</h4>
+<h4 id="toc_8">1. Double Dollar Signs</h4>
 <p>Test <code class="language-python">$$...$$</code> math
 <script type="math/tex; mode=display">F(x) = \int_{-\infty}^{\infty} f(t) e^{-2\pi ixt} dt</script></p>
-<h4>2. Square Brackets Display Math</h4>
+<h4 id="toc_9">2. Square Brackets Display Math</h4>
 <p>Test <code class="language-python">\[...\]</code> math
 <script type="math/tex; mode=display">
 E = mc^2 + \frac{1}{2}mv^2
 </script></p>
-<h4>3. Standalone Boxed Expressions (Auto Display Math)</h4>
+<h4 id="toc_10">3. Standalone Boxed Expressions (Auto Display Math)</h4>
 <p>Test standalone <code class="language-python">\boxed{...}</code>
 <script type="math/tex; mode=display">\boxed{\frac{-b \pm \sqrt{b^2 - 4ac}}{2a}}</script></p>
-<h3 id="toc_8">Inline Math Delimiters</h3>
-<h4>4. Single Dollar Signs</h4>
+<h3 id="toc_11">Inline Math Delimiters</h3>
+<h4 id="toc_12">4. Single Dollar Signs</h4>
 <p>Test <code class="language-python">$...$</code> math
 The quadratic formula is <script type="math/tex">x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}</script> for solving <script type="math/tex">ax^2 + bx + c = 0</script>.</p>
-<h4>5. Parentheses Inline Math</h4>
+<h4 id="toc_13">5. Parentheses Inline Math</h4>
 <p>Test <code class="language-python">\(...\)</code> math. Einstein's mass-energy equivalence is <script type="math/tex">E = mc^2</script> where <script type="math/tex">c</script> is the speed of light.</p>
-<h3 id="toc_9">Complex Nested Examples</h3>
-<h4>Mixed Delimiters in Same Paragraph</h4>
+<h3 id="toc_14">Complex Nested Examples</h3>
+<h4 id="toc_15">Mixed Delimiters in Same Paragraph</h4>
 <p>Consider the equation <script type="math/tex">f(x) = x^2 + 1</script> and the integral <script type="math/tex">\int_0^1 f(x)dx</script>. The solution is:
 <script type="math/tex; mode=display">\int_0^1 (x^2 + 1)dx = \left[\frac{x^3}{3} + x\right]_0^1 = \frac{4}{3}</script></p>
-<h4>Nested Braces in Boxed Expressions</h4>
+<h4 id="toc_16">Nested Braces in Boxed Expressions</h4>
 <p><script type="math/tex; mode=display">\boxed{\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}}</script></p>
 <p><script type="math/tex; mode=display">\boxed{\lim_{x \to \infty} \left(1 + \frac{1}{x}\right)^x = e}</script></p>
-<h4>Complex Display Math with Multiple Lines</h4>
+<h4 id="toc_17">Complex Display Math with Multiple Lines</h4>
 <p><script type="math/tex; mode=display">
 \begin{align}
 \nabla \cdot \mathbf{E} &= \frac{\rho}{\epsilon_0} \\
@@ -1973,18 +1997,18 @@ The quadratic formula is <script type="math/tex">x = \frac{-b \pm \sqrt{b^2 - 4a
 \nabla \times \mathbf{B} &= \mu_0 \mathbf{J} + \mu_0 \epsilon_0 \frac{\partial \mathbf{E}}{\partial t}
 \end{align}
 </script></p>
-<h3 id="toc_10">Boxed Math Inside Other Delimiters</h3>
-<h4>Boxed Inside Display Math</h4>
+<h3 id="toc_18">Boxed Math Inside Other Delimiters</h3>
+<h4 id="toc_19">Boxed Inside Display Math</h4>
 <p><script type="math/tex; mode=display">\boxed{H = -\sum_i p_i \log p_i}</script></p>
-<h4>Multiple Boxed Expressions</h4>
+<h4 id="toc_20">Multiple Boxed Expressions</h4>
 <p>The final answers are:
 <script type="math/tex; mode=display">\boxed{x_1 = \frac{-b + \sqrt{\Delta}}{2a}} \quad \text{and} \quad \boxed{x_2 = \frac{-b - \sqrt{\Delta}}{2a}}</script></p>
-<h3 id="toc_11">Edge Cases and Special Characters</h3>
-<h4>Greek Letters and Special Symbols</h4>
+<h3 id="toc_21">Edge Cases and Special Characters</h3>
+<h4 id="toc_22">Greek Letters and Special Symbols</h4>
 <p><script type="math/tex; mode=display">\alpha + \beta = \gamma \quad \Rightarrow \quad \sum_{i=1}^n \alpha_i = \prod_{j=1}^m \beta_j</script></p>
-<h4>Fractions within Fractions</h4>
+<h4 id="toc_23">Fractions within Fractions</h4>
 <p><script type="math/tex; mode=display">\boxed{\frac{\frac{a}{b} + \frac{c}{d}}{\frac{e}{f} - \frac{g}{h}}}</script></p>
-<h4>Matrix Notation</h4>
+<h4 id="toc_24">Matrix Notation</h4>
 <p><script type="math/tex; mode=display">
 \mathbf{A} = \begin{pmatrix}
 a_{11} & a_{12} & \cdots & a_{1n} \\
@@ -1994,9 +2018,9 @@ a_{m1} & a_{m2} & \cdots & a_{mn}
 \end{pmatrix}
 </script></p>
 <hr />
-<h2 id="toc_12">List Formatting Tests</h2>
+<h2 id="toc_25">List Formatting Tests</h2>
 <p>This section tests various list types and nesting patterns.</p>
-<h3 id="toc_13">Normal List With Preceding Text</h3>
+<h3 id="toc_26">Normal List With Preceding Text</h3>
 <p><strong>Final Answer Format Instructions:</strong></p>
 <ul>
 <li>Your answer must be a single analytic expression.</li>
@@ -2004,7 +2028,7 @@ a_{m1} & a_{m2} & \cdots & a_{mn}
 <li>Use standard mathematical notation: multiplication must be denoted explicitly (e.g., <script type="math/tex">a \cdot b</script> or <script type="math/tex">ab</script>), and fractions must be written using <code class="language-python">\frac{}{}</code>.</li>
 <li>The expression must be boxed using <code class="language-python">$\boxed{}$</code>.</li>
 </ul>
-<h3 id="toc_14">Mixed Indentation Lists</h3>
+<h3 id="toc_27">Mixed Indentation Lists</h3>
 <ol>
 <li>First main item<ul>
 <li>Nested bullet point (4-space indent)<ul>
@@ -2025,7 +2049,7 @@ a_{m1} & a_{m2} & \cdots & a_{mn}
 </ul>
 </li>
 </ol>
-<h3 id="toc_15">Complex Nested Structure</h3>
+<h3 id="toc_28">Complex Nested Structure</h3>
 <ol>
 <li><p><strong>Project Setup</strong>
 This is the main project setup phase.</p>
@@ -2057,7 +2081,7 @@ Run tests to verify setup.</p>
 </ul>
 </li>
 </ol>
-<h3 id="toc_16">GitHub-Style Task Lists</h3>
+<h3 id="toc_29">GitHub-Style Task Lists</h3>
 <p><strong>Project Development Checklist:</strong></p>
 <ul>
 <li class="task-list-item"><input class="task-list-item-checkbox" type="checkbox" disabled checked/>Set up project structure</li>
@@ -2093,9 +2117,9 @@ Run tests to verify setup.</p>
 </li>
 </ul>
 <hr />
-<h2 id="toc_17">Table Formatting Tests</h2>
+<h2 id="toc_30">Table Formatting Tests</h2>
 <p>This section tests various table layouts and formatting options.</p>
-<h3 id="toc_18">Basic Table</h3>
+<h3 id="toc_31">Basic Table</h3>
 <table>
 <thead>
 <tr>
@@ -2117,7 +2141,7 @@ Run tests to verify setup.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="toc_19">Scientific Data Table</h3>
+<h3 id="toc_32">Scientific Data Table</h3>
 <table>
 <thead>
 <tr>
@@ -2180,7 +2204,7 @@ Run tests to verify setup.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="toc_20">Performance Statistics Table</h3>
+<h3 id="toc_33">Performance Statistics Table</h3>
 <table>
 <thead>
 <tr>
@@ -2244,9 +2268,9 @@ Run tests to verify setup.</p>
 </tbody>
 </table>
 <hr />
-<h2 id="toc_21">Code Syntax Highlighting Tests</h2>
+<h2 id="toc_34">Code Syntax Highlighting Tests</h2>
 <p>This section demonstrates syntax highlighting for various programming languages.</p>
-<h3 id="toc_22">JSON Configuration</h3>
+<h3 id="toc_35">JSON Configuration</h3>
 <pre><code class="language-javascript">{
     &quot;name&quot;: &quot;md2html-converter&quot;,
     &quot;version&quot;: &quot;1.0.0&quot;,
@@ -2260,7 +2284,7 @@ Run tests to verify setup.</p>
     }
 }
 </code></pre>
-<h3 id="toc_23">JavaScript Example</h3>
+<h3 id="toc_36">JavaScript Example</h3>
 <pre><code class="language-javascript">class MathUtils {
     static factorial(n) {
         if (n === 0 || n === 1) return 1;
@@ -2276,7 +2300,7 @@ Run tests to verify setup.</p>
     }
 }
 </code></pre>
-<h3 id="toc_24">Python Code Block</h3>
+<h3 id="toc_37">Python Code Block</h3>
 <div class="wrap-content-collapsible">
     <input id="code-collapse-1" class="toggle" type="checkbox">
     <label for="code-collapse-1" class="lbl-toggle">PYTHON (22 lines)</label>
@@ -2308,20 +2332,20 @@ if __name__ == &quot;__main__&quot;:
     </div>
 </div>
 <hr />
-<h2 id="toc_25">Problem Examples</h2>
+<h2 id="toc_38">Problem Examples</h2>
 <p>This section contains sample problems demonstrating real-world usage scenarios.</p>
-<h2 id="toc_26">Problem 1: Physics - Multicritical Points</h2>
+<h2 id="toc_39">Problem 1: Physics - Multicritical Points</h2>
 <div class="admonition-wrapper">
         <div class="admonition orange">
             <p class="admonition-orange">Multicritical points (Advanced Statistical Mechanics)</p>
             For a system described by two coupled scalar order parameters at a stable tetracritical point, calculate the mean-field ratio of the two order parameter magnitudes in the mixed-symmetry phase.
         </div>
     </div>
-<h3 id="toc_27">Problem Statement</h3>
+<h3 id="toc_40">Problem Statement</h3>
 <p>Consider a system with free energy functional:
 <script type="math/tex; mode=display">F(\phi_1, \phi_2) = \frac{1}{2} r_1 \phi_1^2 + \frac{1}{2} r_2 \phi_2^2 + \frac{1}{4} g_1 \phi_1^4 + \frac{1}{4} g_2 \phi_2^4 + \frac{1}{2} g_{12} \phi_1^2 \phi_2^2</script></p>
 <p>At the tetracritical point, both order parameters can be non-zero. Find the ratio of the order parameter magnitudes when <script type="math/tex">r_1 = r_2 = 0</script>.</p>
-<h3 id="toc_28">Solution</h3>
+<h3 id="toc_41">Solution</h3>
 <p>The equilibrium conditions are:
 <script type="math/tex; mode=display">\frac{\partial F}{\partial \phi_1} = r_1 \phi_1 + g_1 \phi_1^3 + g_{12} \phi_1 \phi_2^2 = 0</script>
 <script type="math/tex; mode=display">\frac{\partial F}{\partial \phi_2} = r_2 \phi_2 + g_2 \phi_2^3 + g_{12} \phi_1^2 \phi_2 = 0</script></p>
@@ -2333,22 +2357,22 @@ if __name__ == &quot;__main__&quot;:
 <p>For non-trivial solutions: <script type="math/tex">\frac{g_{12}^2}{g_1 g_2} = 1</script>, thus <script type="math/tex">g_{12}^2 = g_1 g_2</script>.</p>
 <p>The ratio of magnitudes is:
 <script type="math/tex; mode=display">\frac{|\phi_1|}{|\phi_2|} = \sqrt{\frac{g_2 - g_{12}}{g_1 - g_{12}}}</script></p>
-<h3 id="toc_29">Answer</h3>
+<h3 id="toc_42">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\sqrt{\frac{g_2 - g_{12}}{g_1 - g_{12}}}}</script></p>
 <hr />
-<h2 id="toc_30">Problem 2: Mathematics - Advanced Calculus</h2>
+<h2 id="toc_43">Problem 2: Mathematics - Advanced Calculus</h2>
 <div class="admonition-wrapper">
         <div class="admonition orange">
             <p class="admonition-orange">Multivariable optimization with constraints</p>
             Find the extrema of <script type="math/tex">f(x,y) = x^2 + y^2 - xy</script> subject to the constraint <script type="math/tex">x + y = 1</script>.
         </div>
     </div>
-<h3 id="toc_31">Problem Statement</h3>
+<h3 id="toc_44">Problem Statement</h3>
 <p>Using Lagrange multipliers, find the critical points of:
 <script type="math/tex; mode=display">f(x,y) = x^2 + y^2 - xy</script>
 subject to the constraint:
 <script type="math/tex; mode=display">g(x,y) = x + y - 1 = 0</script></p>
-<h3 id="toc_32">Solution</h3>
+<h3 id="toc_45">Solution</h3>
 <p>Set up the Lagrangian:
 <script type="math/tex; mode=display">\mathcal{L}(x,y,\lambda) = x^2 + y^2 - xy - \lambda(x + y - 1)</script></p>
 <p>Taking partial derivatives:
@@ -2360,14 +2384,14 @@ subject to the constraint:
 <script type="math/tex; mode=display">2x = 1 \quad \Rightarrow \quad x = y = \frac{1}{2}</script></p>
 <p>The critical point is <script type="math/tex">\left(\frac{1}{2}, \frac{1}{2}\right)</script> with function value:
 <script type="math/tex; mode=display">f\left(\frac{1}{2}, \frac{1}{2}\right) = \frac{1}{4} + \frac{1}{4} - \frac{1}{4} = \frac{1}{4}</script></p>
-<h3 id="toc_33">Answer</h3>
+<h3 id="toc_46">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\text{Minimum at } \left(\frac{1}{2}, \frac{1}{2}\right) \text{ with value } \frac{1}{4}}</script></p>
 <hr />
 
     
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const collapsedSections = ["Solution", "Problem"];
+        const collapsedSections = ["Problem", "Solution"];
         const isDarkTheme = false;
         
         // Apply dark theme only to pre code blocks if needed
