@@ -71,7 +71,7 @@ A sophisticated Python-based markdown to HTML conversion system with advanced st
 - **Enhanced Table of Contents**: Advanced TOC with custom symbols, nested structure, and auto-generation
   - Manual insertion via `[TOC]` marker
   - Auto-generation with `--toc` flag
-  - Custom symbols (•, ○, ▪, ▫) for different heading levels
+  - Custom symbols (•, ◦, ▪, ▫) for different heading levels
   - Support for all header levels (H1-H5)
 - **Collapsible Sections**: Interactive section folding with customizable defaults
 - **GitHub-Style Task Lists**: Support for `- [x]` and `- [ ]` checkbox syntax
@@ -185,14 +185,18 @@ python md2html.py problems.md problems.html --toc
 ### File Structure
 ```
 md2html/
-├── md2html.py              # Main conversion script
-├── sample.md               # Example markdown file
+├── md2html.py                 # Main conversion script
 ├── .prism/
-│   ├── style.css          # Main stylesheet with responsive features
-│   └── prism.js           # Syntax highlighting library
-├── demo_markdown_vs_mistune.py  # Library comparison tool
-├── test_*.html            # Generated test files
-└── README.md              # This documentation
+│   ├── style.css              # Main stylesheet with responsive features
+│   ├── prism.js               # Syntax highlighting library
+│   ├── normalize.css          # Resets/normalizes browser default styles consistently
+│   ├── modern-base.css        # Modern foundational CSS for base styling
+│   ├── mobile-responsive.css  # CSS for mobile-first responsive layouts
+│   └── theme-prism-xxx.js     # Theme file 
+├── markdown_vs_mistune.py     # Library comparison tool
+├── sample.md                  # Example markdown file
+├── sample.html                # Generated sample files
+└── README.md                  # This documentation
 ```
 
 ### Core Conversion Pipeline
