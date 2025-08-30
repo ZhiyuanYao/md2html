@@ -546,448 +546,8 @@ html {
     }
 }
 
-/* Prism prism-one-dark theme - embedded for offline use */
-/**
- * One Dark theme for prism.js
- * Based on Atom's One Dark theme: https://github.com/atom/atom/tree/master/packages/one-dark-syntax
- */
-
-/**
- * One Dark colours (accurate as of commit 8ae45ca on 6 Sep 2018)
- * From colors.less
- * --mono-1: hsl(220, 14%, 71%);
- * --mono-2: hsl(220, 9%, 55%);
- * --mono-3: hsl(220, 10%, 40%);
- * --hue-1: hsl(187, 47%, 55%);
- * --hue-2: hsl(207, 82%, 66%);
- * --hue-3: hsl(286, 60%, 67%);
- * --hue-4: hsl(95, 38%, 62%);
- * --hue-5: hsl(355, 65%, 65%);
- * --hue-5-2: hsl(5, 48%, 51%);
- * --hue-6: hsl(29, 54%, 61%);
- * --hue-6-2: hsl(39, 67%, 69%);
- * --syntax-fg: hsl(220, 14%, 71%);
- * --syntax-bg: hsl(220, 13%, 18%);
- * --syntax-gutter: hsl(220, 14%, 45%);
- * --syntax-guide: hsla(220, 14%, 71%, 0.15);
- * --syntax-accent: hsl(220, 100%, 66%);
- * From syntax-variables.less
- * --syntax-selection-color: hsl(220, 13%, 28%);
- * --syntax-gutter-background-color-selected: hsl(220, 13%, 26%);
- * --syntax-cursor-line: hsla(220, 100%, 80%, 0.04);
- */
-
-code[class*="language-"],
-pre[class*="language-"] {
-	background: hsl(220, 13%, 18%);
-	color: hsl(220, 14%, 71%);
-	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-	font-family: "Fira Code", "Fira Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
-	direction: ltr;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
-	line-height: 1.5;
-	-moz-tab-size: 2;
-	-o-tab-size: 2;
-	tab-size: 2;
-	-webkit-hyphens: none;
-	-moz-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-}
-
-/* Selection */
-code[class*="language-"]::-moz-selection,
-code[class*="language-"] *::-moz-selection,
-pre[class*="language-"] *::-moz-selection {
-	background: hsl(220, 13%, 28%);
-	color: inherit;
-	text-shadow: none;
-}
-
-code[class*="language-"]::selection,
-code[class*="language-"] *::selection,
-pre[class*="language-"] *::selection {
-	background: hsl(220, 13%, 28%);
-	color: inherit;
-	text-shadow: none;
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-	padding: 1em;
-	margin: 0.5em 0;
-	overflow: auto;
-	border-radius: 0.3em;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-	padding: 0.2em 0.3em;
-	border-radius: 0.3em;
-	white-space: normal;
-}
-
-/* Print */
-@media print {
-	code[class*="language-"],
-	pre[class*="language-"] {
-		text-shadow: none;
-	}
-}
-
-.token.comment,
-.token.prolog,
-.token.cdata {
-	color: hsl(220, 10%, 40%);
-}
-
-.token.doctype,
-.token.punctuation,
-.token.entity {
-	color: hsl(220, 14%, 71%);
-}
-
-.token.attr-name,
-.token.class-name,
-.token.boolean,
-.token.constant,
-.token.number,
-.token.atrule {
-	color: hsl(29, 54%, 61%);
-}
-
-.token.keyword {
-	color: hsl(286, 60%, 67%);
-}
-
-.token.property,
-.token.tag,
-.token.symbol,
-.token.deleted,
-.token.important {
-	color: hsl(355, 65%, 65%);
-}
-
-.token.selector,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted,
-.token.regex,
-.token.attr-value,
-.token.attr-value > .token.punctuation {
-	color: hsl(95, 38%, 62%);
-}
-
-.token.variable,
-.token.operator,
-.token.function {
-	color: hsl(207, 82%, 66%);
-}
-
-.token.url {
-	color: hsl(187, 47%, 55%);
-}
-
-/* HTML overrides */
-.token.attr-value > .token.punctuation.attr-equals,
-.token.special-attr > .token.attr-value > .token.value.css {
-	color: hsl(220, 14%, 71%);
-}
-
-/* CSS overrides */
-.language-css .token.selector {
-	color: hsl(355, 65%, 65%);
-}
-
-.language-css .token.property {
-	color: hsl(220, 14%, 71%);
-}
-
-.language-css .token.function,
-.language-css .token.url > .token.function {
-	color: hsl(187, 47%, 55%);
-}
-
-.language-css .token.url > .token.string.url {
-	color: hsl(95, 38%, 62%);
-}
-
-.language-css .token.important,
-.language-css .token.atrule .token.rule {
-	color: hsl(286, 60%, 67%);
-}
-
-/* JS overrides */
-.language-javascript .token.operator {
-	color: hsl(286, 60%, 67%);
-}
-
-.language-javascript .token.template-string > .token.interpolation > .token.interpolation-punctuation.punctuation {
-	color: hsl(5, 48%, 51%);
-}
-
-/* JSON overrides */
-.language-json .token.operator {
-	color: hsl(220, 14%, 71%);
-}
-
-.language-json .token.null.keyword {
-	color: hsl(29, 54%, 61%);
-}
-
-/* MD overrides */
-.language-markdown .token.url,
-.language-markdown .token.url > .token.operator,
-.language-markdown .token.url-reference.url > .token.string {
-	color: hsl(220, 14%, 71%);
-}
-
-.language-markdown .token.url > .token.content {
-	color: hsl(207, 82%, 66%);
-}
-
-.language-markdown .token.url > .token.url,
-.language-markdown .token.url-reference.url {
-	color: hsl(187, 47%, 55%);
-}
-
-.language-markdown .token.blockquote.punctuation,
-.language-markdown .token.hr.punctuation {
-	color: hsl(220, 10%, 40%);
-	font-style: italic;
-}
-
-.language-markdown .token.code-snippet {
-	color: hsl(95, 38%, 62%);
-}
-
-.language-markdown .token.bold .token.content {
-	color: hsl(29, 54%, 61%);
-}
-
-.language-markdown .token.italic .token.content {
-	color: hsl(286, 60%, 67%);
-}
-
-.language-markdown .token.strike .token.content,
-.language-markdown .token.strike .token.punctuation,
-.language-markdown .token.list.punctuation,
-.language-markdown .token.title.important > .token.punctuation {
-	color: hsl(355, 65%, 65%);
-}
-
-/* General */
-.token.bold {
-	font-weight: bold;
-}
-
-.token.comment,
-.token.italic {
-	font-style: italic;
-}
-
-.token.entity {
-	cursor: help;
-}
-
-.token.namespace {
-	opacity: 0.8;
-}
-
-/* Plugin overrides */
-/* Selectors should have higher specificity than those in the plugins' default stylesheets */
-
-/* Show Invisibles plugin overrides */
-.token.token.tab:not(:empty):before,
-.token.token.cr:before,
-.token.token.lf:before,
-.token.token.space:before {
-	color: hsla(220, 14%, 71%, 0.15);
-	text-shadow: none;
-}
-
-/* Toolbar plugin overrides */
-/* Space out all buttons and move them away from the right edge of the code block */
-div.code-toolbar > .toolbar.toolbar > .toolbar-item {
-	margin-right: 0.4em;
-}
-
-/* Styling the buttons */
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > button,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > a,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > span {
-	background: hsl(220, 13%, 26%);
-	color: hsl(220, 9%, 55%);
-	padding: 0.1em 0.4em;
-	border-radius: 0.3em;
-}
-
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:hover,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:focus,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:hover,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:focus,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:hover,
-div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:focus {
-	background: hsl(220, 13%, 28%);
-	color: hsl(220, 14%, 71%);
-}
-
-/* Line Highlight plugin overrides */
-/* The highlighted line itself */
-.line-highlight.line-highlight {
-	background: hsla(220, 100%, 80%, 0.04);
-}
-
-/* Default line numbers in Line Highlight plugin */
-.line-highlight.line-highlight:before,
-.line-highlight.line-highlight[data-end]:after {
-	background: hsl(220, 13%, 26%);
-	color: hsl(220, 14%, 71%);
-	padding: 0.1em 0.6em;
-	border-radius: 0.3em;
-	box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2); /* same as Toolbar plugin default */
-}
-
-/* Hovering over a linkable line number (in the gutter area) */
-/* Requires Line Numbers plugin as well */
-pre[id].linkable-line-numbers.linkable-line-numbers span.line-numbers-rows > span:hover:before {
-	background-color: hsla(220, 100%, 80%, 0.04);
-}
-
-/* Line Numbers and Command Line plugins overrides */
-/* Line separating gutter from coding area */
-.line-numbers.line-numbers .line-numbers-rows,
-.command-line .command-line-prompt {
-	border-right-color: hsla(220, 14%, 71%, 0.15);
-}
-
-/* Stuff in the gutter */
-.line-numbers .line-numbers-rows > span:before,
-.command-line .command-line-prompt > span:before {
-	color: hsl(220, 14%, 45%);
-}
-
-/* Match Braces plugin overrides */
-/* Note: Outline colour is inherited from the braces */
-.rainbow-braces .token.token.punctuation.brace-level-1,
-.rainbow-braces .token.token.punctuation.brace-level-5,
-.rainbow-braces .token.token.punctuation.brace-level-9 {
-	color: hsl(355, 65%, 65%);
-}
-
-.rainbow-braces .token.token.punctuation.brace-level-2,
-.rainbow-braces .token.token.punctuation.brace-level-6,
-.rainbow-braces .token.token.punctuation.brace-level-10 {
-	color: hsl(95, 38%, 62%);
-}
-
-.rainbow-braces .token.token.punctuation.brace-level-3,
-.rainbow-braces .token.token.punctuation.brace-level-7,
-.rainbow-braces .token.token.punctuation.brace-level-11 {
-	color: hsl(207, 82%, 66%);
-}
-
-.rainbow-braces .token.token.punctuation.brace-level-4,
-.rainbow-braces .token.token.punctuation.brace-level-8,
-.rainbow-braces .token.token.punctuation.brace-level-12 {
-	color: hsl(286, 60%, 67%);
-}
-
-/* Diff Highlight plugin overrides */
-/* Taken from https://github.com/atom/github/blob/master/styles/variables.less */
-pre.diff-highlight > code .token.token.deleted:not(.prefix),
-pre > code.diff-highlight .token.token.deleted:not(.prefix) {
-	background-color: hsla(353, 100%, 66%, 0.15);
-}
-
-pre.diff-highlight > code .token.token.deleted:not(.prefix)::-moz-selection,
-pre.diff-highlight > code .token.token.deleted:not(.prefix) *::-moz-selection,
-pre > code.diff-highlight .token.token.deleted:not(.prefix)::-moz-selection,
-pre > code.diff-highlight .token.token.deleted:not(.prefix) *::-moz-selection {
-	background-color: hsla(353, 95%, 66%, 0.25);
-}
-
-pre.diff-highlight > code .token.token.deleted:not(.prefix)::selection,
-pre.diff-highlight > code .token.token.deleted:not(.prefix) *::selection,
-pre > code.diff-highlight .token.token.deleted:not(.prefix)::selection,
-pre > code.diff-highlight .token.token.deleted:not(.prefix) *::selection {
-	background-color: hsla(353, 95%, 66%, 0.25);
-}
-
-pre.diff-highlight > code .token.token.inserted:not(.prefix),
-pre > code.diff-highlight .token.token.inserted:not(.prefix) {
-	background-color: hsla(137, 100%, 55%, 0.15);
-}
-
-pre.diff-highlight > code .token.token.inserted:not(.prefix)::-moz-selection,
-pre.diff-highlight > code .token.token.inserted:not(.prefix) *::-moz-selection,
-pre > code.diff-highlight .token.token.inserted:not(.prefix)::-moz-selection,
-pre > code.diff-highlight .token.token.inserted:not(.prefix) *::-moz-selection {
-	background-color: hsla(135, 73%, 55%, 0.25);
-}
-
-pre.diff-highlight > code .token.token.inserted:not(.prefix)::selection,
-pre.diff-highlight > code .token.token.inserted:not(.prefix) *::selection,
-pre > code.diff-highlight .token.token.inserted:not(.prefix)::selection,
-pre > code.diff-highlight .token.token.inserted:not(.prefix) *::selection {
-	background-color: hsla(135, 73%, 55%, 0.25);
-}
-
-/* Previewers plugin overrides */
-/* Based on https://github.com/atom-community/atom-ide-datatip/blob/master/styles/atom-ide-datatips.less and https://github.com/atom/atom/blob/master/packages/one-dark-ui */
-/* Border around popup */
-.prism-previewer.prism-previewer:before,
-.prism-previewer-gradient.prism-previewer-gradient div {
-	border-color: hsl(224, 13%, 17%);
-}
-
-/* Angle and time should remain as circles and are hence not included */
-.prism-previewer-color.prism-previewer-color:before,
-.prism-previewer-gradient.prism-previewer-gradient div,
-.prism-previewer-easing.prism-previewer-easing:before {
-	border-radius: 0.3em;
-}
-
-/* Triangles pointing to the code */
-.prism-previewer.prism-previewer:after {
-	border-top-color: hsl(224, 13%, 17%);
-}
-
-.prism-previewer-flipped.prism-previewer-flipped.after {
-	border-bottom-color: hsl(224, 13%, 17%);
-}
-
-/* Background colour within the popup */
-.prism-previewer-angle.prism-previewer-angle:before,
-.prism-previewer-time.prism-previewer-time:before,
-.prism-previewer-easing.prism-previewer-easing {
-	background: hsl(219, 13%, 22%);
-}
-
-/* For angle, this is the positive area (eg. 90deg will display one quadrant in this colour) */
-/* For time, this is the alternate colour */
-.prism-previewer-angle.prism-previewer-angle circle,
-.prism-previewer-time.prism-previewer-time circle {
-	stroke: hsl(220, 14%, 71%);
-	stroke-opacity: 1;
-}
-
-/* Stroke colours of the handle, direction point, and vector itself */
-.prism-previewer-easing.prism-previewer-easing circle,
-.prism-previewer-easing.prism-previewer-easing path,
-.prism-previewer-easing.prism-previewer-easing line {
-	stroke: hsl(220, 14%, 71%);
-}
-
-/* Fill colour of the handle */
-.prism-previewer-easing.prism-previewer-easing circle {
-	fill: transparent;
-}
-
+/* Prism prism theme - embedded for offline use */
+code[class*=language-],pre[class*=language-]{color:#000;background:0 0;text-shadow:0 1px #fff;font-family:Consolas,Monaco,'Andale Mono','Ubuntu Mono',monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-] ::-moz-selection,code[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection{text-shadow:none;background:#b3d4fc}code[class*=language-] ::selection,code[class*=language-]::selection,pre[class*=language-] ::selection,pre[class*=language-]::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.token.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}
     </style>
     
     <!-- Copy the exact prism.js that demo.html uses -->
@@ -2217,85 +1777,6 @@ body.dark-theme .wrap-content-collapsible .content-collapsible-content pre::-web
     background: rgba(255,255,255,0.5) !important;
 }
 
-/* Table of Contents Styling - simple div without title */
-div.toc {
-    background-color: #f8f9fa;
-    border: 1px solid #e1e5e9;
-    border-radius: 6px;
-    padding: 12px;
-    margin: 20px 0;
-    max-width: 100%;
-    width: 100%;
-}
-
-div.toc ul {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
-}
-
-div.toc ul ul {
-    padding-left: 20px;
-    margin: 4px 0;
-}
-
-div.toc .toc-symbol {
-    margin-right: 4px;
-    color: #666;
-    display: inline-flex;
-    align-items: center;
-    vertical-align: baseline;
-}
-
-div.toc .toc-symbol[data-level="2"],
-div.toc .toc-symbol[data-level="3"] {
-    font-size: 0.5em;
-    transform: translateY(-2px);
-}
-
-div.toc .toc-symbol[data-level="4"],
-div.toc .toc-symbol[data-level="5"] {
-    font-size: 1.2em;
-    transform: translateY(1px);
-}
-
-div.toc li {
-    margin: 3px 0;
-    line-height: 1.4;
-}
-
-div.toc a {
-    color: #0066cc;
-    text-decoration: none;
-    display: inline-block;
-    padding: 2px 6px;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-    font-size: 1.0em;
-}
-
-div.toc a:hover {
-    background-color: #e3f2fd;
-    text-decoration: none;
-    color: #004494;
-}
-
-/* Smooth scrolling to anchors */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Style for targeted headers (when clicked from TOC) */
-h1:target, h2:target, h3:target, h4:target, h5:target, h6:target {
-    scroll-margin-top: 20px;
-    animation: highlight-flash 2s ease-out;
-}
-
-@keyframes highlight-flash {
-    0% { background-color: #fff3cd; }
-    100% { background-color: transparent; }
-}
-
     </style>
 </head>
 <body>
@@ -2307,267 +1788,7 @@ h1:target, h2:target, h3:target, h4:target, h5:target, h6:target {
             <section class="markdown-body">
 <h1 id="toc_1">Sampled Problems</h1>
 <p>This file contains 41 randomly sampled problems (all problems, regardless of verification status).</p>
-<h2 id="toc_2">Table of Contents</h2>
-<div class="toc"><ul>
-  <ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#toc_3">🧭 Problem Roadmap</a></li>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-1">Problem 1</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_5">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_6">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_7">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-2">Problem 2</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_9">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_10">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_11">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-3">Problem 3</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_13">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_14">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_15">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-4">Problem 4</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_17">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_18">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_19">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-5">Problem 5</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_21">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_22">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_23">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-6">Problem 6</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_25">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_26">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_27">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-7">Problem 7</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_29">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_30">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_31">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-8">Problem 8</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_33">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_34">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_35">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-9">Problem 9</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_37">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_38">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_39">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-10">Problem 10</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_41">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_42">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_43">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-11">Problem 11</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_45">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_46">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_47">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-12">Problem 12</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_49">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_50">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_51">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-13">Problem 13</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_53">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_54">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_55">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-14">Problem 14</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_57">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_58">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_59">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-15">Problem 15</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_61">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_62">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_63">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-16">Problem 16</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_65">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_66">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_67">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-17">Problem 17</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_69">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_70">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_71">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-18">Problem 18</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_73">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_74">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_75">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-19">Problem 19</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_77">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_78">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_79">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-20">Problem 20</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_81">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_82">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_83">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-21">Problem 21</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_85">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_86">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_87">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-22">Problem 22</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_89">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_90">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_91">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-23">Problem 23</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_93">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_94">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_95">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-24">Problem 24</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_97">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_98">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_99">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-25">Problem 25</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_101">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_102">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_103">Step 1: Convert units for consistency</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_104">Step 2: Calculate the volume of the raindrop</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_105">Step 3: Calculate the mass of the raindrop</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_106">Step 4: Calculate the number of moles</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_107">Step 5: Calculate the number of water molecules</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_108">Step 6: Express as a power of 10 and round the exponent</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_109">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-26">Problem 26</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_111">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_112">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_113">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-27">Problem 27</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_115">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_116">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_117">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-28">Problem 28</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_119">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_120">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_121">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-29">Problem 29</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_123">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_124">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_125">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-30">Problem 30</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_127">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_128">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_129">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-31">Problem 31</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_131">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_132">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_133">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-32">Problem 32</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_135">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_136">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_137">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-33">Problem 33</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_139">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_140">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_141">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-34">Problem 34</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_143">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_144">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_145">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-35">Problem 35</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_147">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_148">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_149">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-36">Problem 36</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_151">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_152">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_153">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-37">Problem 37</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_155">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_156">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_157">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-38">Problem 38</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_159">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_160">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_161">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-39">Problem 39</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_163">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_164">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_165">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-40">Problem 40</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_167">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_168">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_169">Answer</a></li>
-    </ul>
-    <li><span class="toc-symbol" data-level="2">●</span><a href="#problem-41">Problem 41</a></li>
-    <ul>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_171">Problem</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_172">Solution</a></li>
-      <li><span class="toc-symbol" data-level="3">○</span><a href="#toc_173">Answer</a></li>
-    </ul>
-  </ul>
-</ul>
-</div>
-
-<h2 id="toc_3">🧭 Problem Roadmap</h2>
+<h2 id="toc_2">🧭 Problem Roadmap</h2>
 <ul>
 <li><strong><a href="#problem-1">Problem 1</a></strong>: <strong>Mass Spectrometer Principles</strong><ul>
 <li>After acceleration through voltage <script type="math/tex">V</script>, an ion enters perpendicular to magnetic field <script type="math/tex">B</script>; express its path radius <script type="math/tex">r</script> in terms of <script type="math/tex">m</script>, <script type="math/tex">q</script>, <script type="math/tex">V</script>, and <script type="math/tex">B</script>.</li>
@@ -2742,7 +1963,7 @@ h1:target, h2:target, h3:target, h4:target, h5:target, h6:target {
             After acceleration through voltage <script type="math/tex">V</script>, an ion enters perpendicular to magnetic field <script type="math/tex">B</script>; express its path radius <script type="math/tex">r</script> in terms of <script type="math/tex">m</script>, <script type="math/tex">q</script>, <script type="math/tex">V</script>, and <script type="math/tex">B</script>.
         </div>
     </div>
-<h3 id="toc_5">Problem</h3>
+<h3 id="toc_4">Problem</h3>
 <p>In a mass spectrometer, ions are accelerated from rest through an electric potential difference of <script type="math/tex">V</script>. After acceleration, an ion of mass <script type="math/tex">m</script> and charge <script type="math/tex">q</script> enters a region of uniform magnetic field of magnitude <script type="math/tex">B</script> perpendicular to the field direction. The ion subsequently follows a circular trajectory of radius <script type="math/tex">r</script>.</p>
 <p>Derive an expression for the radius <script type="math/tex">r</script> in terms of <script type="math/tex">m</script>, <script type="math/tex">q</script>, <script type="math/tex">V</script>, and <script type="math/tex">B</script>.</p>
 <p>Your final answer must be a closed-form analytic expression using only the given symbolic variables. Express the answer in the simplest exact form, using standard mathematical notation. Specifically:</p>
@@ -2753,7 +1974,7 @@ h1:target, h2:target, h3:target, h4:target, h5:target, h6:target {
 <li>For exponents, use the caret with curly braces (e.g., <script type="math/tex">B^{2}</script>).</li>
 </ul>
 <p>Do not include numerical values, units, or any other constants. The problem is purely symbolic.</p>
-<h3 id="toc_6">Solution</h3>
+<h3 id="toc_5">Solution</h3>
 <p><strong>Step 1: Relate kinetic energy to acceleration voltage</strong><br />
 The ion starts from rest and is accelerated through a potential difference <script type="math/tex">V</script>. The kinetic energy gained equals the loss in electric potential energy:<br />
 <script type="math/tex; mode=display">\frac{1}{2} m v^{2} = q V</script><br />
@@ -2778,7 +1999,7 @@ Alternatively, write as a single square root:<br />
 <script type="math/tex; mode=display">r = \sqrt{ \left( \frac{1}{B} \right)^{2} \cdot \frac{2 m V}{q} } = \sqrt{ \frac{2 m V}{q B^{2}} }</script><br />
 Both forms are equivalent, but the latter is standard. Thus:<br />
 <script type="math/tex; mode=display">r = \sqrt{\frac{2 m V}{q B^{2}}}</script></p>
-<h3 id="toc_7">Answer</h3>
+<h3 id="toc_6">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\sqrt{\dfrac{2 m V}{q B^{2}}}}</script></p>
 <hr />
 <h2 id="problem-2">Problem 2</h2>
@@ -2788,10 +2009,10 @@ Both forms are equivalent, but the latter is standard. Thus:<br />
             A crate slides down a <script type="math/tex">30^\circ</script> incline with friction coefficient <script type="math/tex">\mu</script>; derive its velocity at the bottom if released from rest at height <script type="math/tex">h</script>.
         </div>
     </div>
-<h3 id="toc_9">Problem</h3>
+<h3 id="toc_8">Problem</h3>
 <p>A crate of mass <script type="math/tex">m</script> slides down an incline that makes an angle <script type="math/tex">\theta</script> (in radians) with the horizontal. The coefficient of kinetic friction between the crate and the incline is <script type="math/tex">\mu</script>. The crate is released from rest at a vertical height <script type="math/tex">h</script> above the bottom of the incline. The acceleration due to gravity is <script type="math/tex">g</script>. Derive an expression for the speed of the crate when it reaches the bottom of the incline.</p>
 <p>Express your answer symbolically in terms of <script type="math/tex">g</script>, <script type="math/tex">h</script>, <script type="math/tex">\mu</script>, and <script type="math/tex">\theta</script>. Use standard mathematical notation for trigonometric functions and omit the degree symbol for any trigonometric evaluations. Ensure all physical quantities are expressed in consistent units.</p>
-<h3 id="toc_10">Solution</h3>
+<h3 id="toc_9">Solution</h3>
 <p>The forces acting on the crate are gravity, the normal force, and kinetic friction. The component of gravity parallel to the incline is <script type="math/tex">mg \sin\theta</script>, while the normal force balances the perpendicular component: <script type="math/tex">N = mg \cos\theta</script>. The kinetic friction force is <script type="math/tex">f_k = \mu N = \mu mg \cos\theta</script>.</p>
 <p>The work-energy theorem states that the net work done on the crate equals its change in kinetic energy:
 <script type="math/tex; mode=display">
@@ -2827,7 +2048,7 @@ Take the positive square root for speed:
 v = \sqrt{2gh(1 - \mu \cot\theta)}
 </script>
 This expression is valid when <script type="math/tex">1 - \mu \cot\theta > 0</script> (i.e., <script type="math/tex">\mu < \tan\theta</script>), ensuring motion occurs.</p>
-<h3 id="toc_11">Answer</h3>
+<h3 id="toc_10">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\sqrt{2gh\left(1 - \mu \cot \theta\right)}}</script></p>
 <hr />
 <h2 id="problem-3">Problem 3</h2>
@@ -2837,10 +2058,10 @@ This expression is valid when <script type="math/tex">1 - \mu \cot\theta > 0</sc
             A 100 g copper block at 90°C is placed in 200 g of water at 25°C; calculate the equilibrium temperature.
         </div>
     </div>
-<h3 id="toc_13">Problem</h3>
+<h3 id="toc_12">Problem</h3>
 <p>In a calorimetry experiment, a copper calorimeter of mass <script type="math/tex"> m_c </script> contains water of mass <script type="math/tex"> m_w </script>. The specific heat capacity of copper is <script type="math/tex"> c_c </script>, and that of water is <script type="math/tex"> c_w </script>. Initially, the calorimeter and water are at temperature <script type="math/tex"> T_w </script>. A copper block of mass <script type="math/tex"> m_b </script> at temperature <script type="math/tex"> T_b </script> is placed into the water. The system is isolated from the surroundings. Derive an expression for the equilibrium temperature <script type="math/tex"> T </script> of the entire system.</p>
 <p>Express your answer symbolically in terms of <script type="math/tex"> m_c </script>, <script type="math/tex"> m_w </script>, <script type="math/tex"> c_c </script>, <script type="math/tex"> c_w </script>, <script type="math/tex"> T_w </script>, and <script type="math/tex"> m_b </script>, <script type="math/tex"> T_b </script>. Use standard mathematical notation: fractions must be written with \frac{numerator}{denominator}, and exponents with \text{base}^{\text{exponent}} inside curly braces. Do not substitute any numerical values.</p>
-<h3 id="toc_14">Solution</h3>
+<h3 id="toc_13">Solution</h3>
 <p>The system reaches thermal equilibrium when the heat lost by the copper block equals the heat gained by the calorimeter and water. The heat transfer is governed by the principle of conservation of energy in an isolated system.</p>
 <p>The heat lost by the copper block as it cools from <script type="math/tex"> T_b </script> to <script type="math/tex"> T </script> is:</p>
 <p><script type="math/tex; mode=display"> Q_{\text{block}} = m_b c_c (T_b - T) </script></p>
@@ -2862,7 +2083,7 @@ This expression is valid when <script type="math/tex">1 - \mu \cot\theta > 0</sc
 <p><script type="math/tex; mode=display"> T = \frac{ m_b c_c T_b + (m_c c_c + m_w c_w) T_w }{ m_b c_c + m_c c_c + m_w c_w } </script></p>
 <p>Rewrite the numerator to combine like terms:</p>
 <p><script type="math/tex; mode=display"> T = \frac{ m_b c_c T_b + m_c c_c T_w + m_w c_w T_w }{ m_b c_c + m_c c_c + m_w c_w } </script></p>
-<h3 id="toc_15">Answer</h3>
+<h3 id="toc_14">Answer</h3>
 <p><script type="math/tex; mode=display"> \boxed{ \dfrac{ m_{b} c_{c} T_{b} + m_{c} c_{c} T_{w} + m_{w} c_{w} T_{w} }{ m_{b} c_{c} + m_{c} c_{c} + m_{w} c_{w} } } </script></p>
 <hr />
 <h2 id="problem-4">Problem 4</h2>
@@ -2872,9 +2093,9 @@ This expression is valid when <script type="math/tex">1 - \mu \cot\theta > 0</sc
             Determine the dimension of the universal gravitational constant G using Newton's law of universal gravitation <script type="math/tex">F = G\frac{m_1 m_2}{r^2}</script>.
         </div>
     </div>
-<h3 id="toc_17">Problem</h3>
+<h3 id="toc_16">Problem</h3>
 <p>Newton's law of universal gravitation describes the gravitational force <script type="math/tex">F</script> between two point masses <script type="math/tex">m_1</script> and <script type="math/tex">m_2</script> separated by a distance <script type="math/tex">r</script>, given by <script type="math/tex">F = G \frac{m_1 m_2}{r^2}</script>, where <script type="math/tex">G</script> is the universal gravitational constant. The dimensions of force <script type="math/tex">F</script> are <script type="math/tex">[F] = M L T^{-2}</script>, where <script type="math/tex">M</script> represents mass, <script type="math/tex">L</script> represents length, and <script type="math/tex">T</script> represents time. Determine the dimensional formula of <script type="math/tex">G</script> by deriving its exponents for <script type="math/tex">M</script>, <script type="math/tex">L</script>, and <script type="math/tex">T</script>. Express your answer in the form <script type="math/tex">M^a L^b T^c</script> and provide the explicit expression.</p>
-<h3 id="toc_18">Solution</h3>
+<h3 id="toc_17">Solution</h3>
 <p>To determine the dimensions of <script type="math/tex">G</script>, start with the given equation:<br />
 <script type="math/tex; mode=display"> F = G \frac{m_1 m_2}{r^2} </script><br />
 Express this relationship dimensionally. The dimension of force <script type="math/tex">[F]</script> is <script type="math/tex">M L T^{-2}</script>. The dimensions of mass <script type="math/tex">m_1</script> and <script type="math/tex">m_2</script> are both <script type="math/tex">M</script>, and the dimension of distance <script type="math/tex">r</script> is <script type="math/tex">L</script>. Since <script type="math/tex">G</script> is multiplied by <script type="math/tex">\frac{m_1 m_2}{r^2}</script>, the dimensional equation is:<br />
@@ -2886,7 +2107,7 @@ Solve for <script type="math/tex">[G]</script> by isolating it:<br />
 Simplify the expression:<br />
 <script type="math/tex; mode=display"> [G] = \frac{M L^3 T^{-2}}{M^2} = M^{1-2} L^{3} T^{-2} = M^{-1} L^{3} T^{-2} </script><br />
 Thus, the dimensional formula of <script type="math/tex">G</script> is <script type="math/tex">M^{-1} L^{3} T^{-2}</script>.</p>
-<h3 id="toc_19">Answer</h3>
+<h3 id="toc_18">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{M^{-1} L^{3} T^{-2}}</script></p>
 <hr />
 <h2 id="problem-5">Problem 5</h2>
@@ -2896,9 +2117,9 @@ Thus, the dimensional formula of <script type="math/tex">G</script> is <script t
             A 0.05 kg bullet strikes a 5 kg wooden block at rest; if the bullet embeds and the block moves at 2 m/s, what was the bullet's initial speed?
         </div>
     </div>
-<h3 id="toc_21">Problem</h3>
+<h3 id="toc_20">Problem</h3>
 <p>A wooden block of mass <script type="math/tex">M</script> is at rest on a horizontal surface with coefficient of kinetic friction <script type="math/tex">\mu_k</script>. The block is attached to one end of a spring with spring constant <script type="math/tex">k</script>; the other end is anchored to a fixed wall. The spring is initially at its natural length. A bullet of mass <script type="math/tex">m</script> is fired horizontally at the block and embeds itself completely. After the collision, the block (with embedded bullet) moves and compresses the spring. The maximum compression distance of the spring is measured to be <script type="math/tex">d</script>. Derive an expression for the initial speed of the bullet. Express your answer symbolically in terms of <script type="math/tex">m</script>, <script type="math/tex">M</script>, <script type="math/tex">\mu_k</script>, <script type="math/tex">k</script>, <script type="math/tex">d</script>, and <script type="math/tex">g</script> (the acceleration due to gravity).</p>
-<h3 id="toc_22">Solution</h3>
+<h3 id="toc_21">Solution</h3>
 <p><strong>Stage 1: Inelastic Collision (Conservation of Momentum)</strong><br />
 Let <script type="math/tex">v_b</script> be the initial speed of the bullet. Since the block is initially at rest, conservation of momentum for the collision gives:<br />
 <script type="math/tex; mode=display"> m v_b = (m + M) v_f </script><br />
@@ -2935,7 +2156,7 @@ Factor <script type="math/tex">(m + M)</script> inside the square root:<br />
 Alternatively, express as:<br />
 <script type="math/tex; mode=display"> v_b = \frac{m + M}{m} \sqrt{ \frac{k d^2}{m + M} + 2 \mu_k g d } </script><br />
 Both forms are equivalent, but the latter is more compact.</p>
-<h3 id="toc_23">Answer</h3>
+<h3 id="toc_22">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{ \frac{m + M}{m} \sqrt{ \frac{k d^{2}}{m + M} + 2 \mu_k g d } }</script></p>
 <hr />
 <h2 id="problem-6">Problem 6</h2>
@@ -2945,10 +2166,10 @@ Both forms are equivalent, but the latter is more compact.</p>
             Determine the mass in grams of 1.5 × 10²³ molecules of carbon dioxide (CO₂).
         </div>
     </div>
-<h3 id="toc_25">Problem</h3>
+<h3 id="toc_24">Problem</h3>
 <p>A sample of carbon dioxide gas (CO₂) is isolated in a container. The sample contains <script type="math/tex">N</script> molecules. The atomic mass of carbon is <script type="math/tex">m_C</script> (in atomic mass units), and the atomic mass of oxygen is <script type="math/tex">m_O</script> (in atomic mass units). Avogadro's number, denoted <script type="math/tex">N_A</script>, is the number of molecules per mole of any substance.</p>
 <p>Derive an expression for the mass <script type="math/tex">m</script> (in grams) of this carbon dioxide sample. Express your answer solely in terms of <script type="math/tex">N</script>, <script type="math/tex">m_C</script>, <script type="math/tex">m_O</script>, and <script type="math/tex">N_A</script>.</p>
-<h3 id="toc_26">Solution</h3>
+<h3 id="toc_25">Solution</h3>
 <p>To determine the mass <script type="math/tex">m</script> of the CO₂ sample, we start by finding the mass of one molecule of CO₂. Each CO₂ molecule consists of one carbon atom and two oxygen atoms. Thus, the molecular mass <script type="math/tex">M_{\text{CO}_2}</script> in atomic mass units is:<br />
 <script type="math/tex; mode=display"> M_{\text{CO}_2} = m_C + 2m_O </script></p>
 <p>By definition, one mole of any substance has a mass in grams numerically equal to its molecular mass in atomic mass units. Therefore, the molar mass of CO₂ (mass per mole) is:<br />
@@ -2962,7 +2183,7 @@ Both forms are equivalent, but the latter is more compact.</p>
 <p>This simplifies to:<br />
 <script type="math/tex; mode=display"> m = \frac{N (m_C + 2m_O)}{N_A} </script></p>
 <p>Thus, the mass of the sample in grams is given by the derived expression.</p>
-<h3 id="toc_27">Answer</h3>
+<h3 id="toc_26">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{N (m_C + 2m_O)}{N_A}}</script></p>
 <hr />
 <h2 id="problem-7">Problem 7</h2>
@@ -2972,9 +2193,9 @@ Both forms are equivalent, but the latter is more compact.</p>
             Calculate the moment of inertia of a thin circular hoop of mass <script type="math/tex">M</script> and radius <script type="math/tex">R</script> about an axis perpendicular to its plane and passing through its center.
         </div>
     </div>
-<h3 id="toc_29">Problem</h3>
+<h3 id="toc_28">Problem</h3>
 <p>A thin circular hoop of radius <script type="math/tex">R</script> and mass <script type="math/tex">M</script> is made from a wire of uniform linear density. A straight wire segment of the same linear density is rigidly attached along a diameter of the hoop, forming a single rigid body. Determine the moment of inertia of this composite object about an axis perpendicular to the plane of the hoop and passing through its center. Express your answer in terms of <script type="math/tex">M</script> and <script type="math/tex">R</script>.</p>
-<h3 id="toc_30">Solution</h3>
+<h3 id="toc_29">Solution</h3>
 <p>The composite object consists of two parts: the circular hoop and the diameter wire. We calculate the moment of inertia for each part separately and sum them.</p>
 <p><strong>Part 1: Circular Hoop</strong></p>
 <ul>
@@ -3004,7 +2225,7 @@ since the integrand is even.</li>
 <p><strong>Total Moment of Inertia</strong><br />
 Sum the contributions:<br />
 <script type="math/tex; mode=display"> I_{\text{total}} = I_{\text{hoop}} + I_{\text{d}} = M R^2 + \frac{M R^2}{3\pi} = M R^2 \left( 1 + \frac{1}{3\pi} \right) </script></p>
-<h3 id="toc_31">Answer</h3>
+<h3 id="toc_30">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{M R^{2} \left(1 + \frac{1}{3\pi}\right)}</script></p>
 <hr />
 <h2 id="problem-8">Problem 8</h2>
@@ -3014,9 +2235,9 @@ Sum the contributions:<br />
             Find the distance from the central maximum to the fifth bright fringe if the slit separation is 0.4 mm, screen distance is 2 m, and wavelength is 650 nm.
         </div>
     </div>
-<h3 id="toc_33">Problem</h3>
+<h3 id="toc_32">Problem</h3>
 <p>In a modified Young's double-slit experiment, the apparatus is submerged in a transparent liquid with refractive index <script type="math/tex">n</script>. The two parallel slits are separated by a distance <script type="math/tex">d</script>. A monochromatic light source (wavelength <script type="math/tex">\lambda</script> in vacuum) illuminates the slits, and the interference pattern forms on a screen at distance <script type="math/tex">L</script> from the slits. Determine the distance from the central maximum to the fifth bright fringe. Express your answer symbolically in terms of <script type="math/tex">\lambda</script>, <script type="math/tex">d</script>, <script type="math/tex">L</script>, and <script type="math/tex">n</script>.</p>
-<h3 id="toc_34">Solution</h3>
+<h3 id="toc_33">Solution</h3>
 <p>The condition for constructive interference (bright fringes) in a double-slit experiment is given by the path difference being an integer multiple of the wavelength in the medium. The wavelength in the liquid is <script type="math/tex">\lambda_{\text{liquid}} = \frac{\lambda}{n}</script> due to the refractive index <script type="math/tex">n</script>. For the <script type="math/tex">m</script>-th bright fringe:</p>
 <p><script type="math/tex; mode=display"> d \sin \theta_m = m \lambda_{\text{liquid}} = m \frac{\lambda}{n} </script></p>
 <p>where <script type="math/tex">\theta_m</script> is the angle from the central axis to the <script type="math/tex">m</script>-th fringe. For small angles (<script type="math/tex">\theta_m \ll 1</script> radian), the approximation <script type="math/tex">\sin \theta_m \approx \tan \theta_m = \frac{y_m}{L}</script> holds, with <script type="math/tex">y_m</script> being the fringe distance from the central maximum. Substituting:</p>
@@ -3026,7 +2247,7 @@ Sum the contributions:<br />
 <p>For the fifth bright fringe, <script type="math/tex">m = 5</script>:</p>
 <p><script type="math/tex; mode=display"> y_5 = \frac{5 \lambda L}{n d} </script></p>
 <p>Thus, the distance from the central maximum to the fifth bright fringe is <script type="math/tex">\frac{5 \lambda L}{n d}</script>.</p>
-<h3 id="toc_35">Answer</h3>
+<h3 id="toc_34">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{5\lambda L}{n d}}</script></p>
 <hr />
 <h2 id="problem-9">Problem 9</h2>
@@ -3036,9 +2257,9 @@ Sum the contributions:<br />
             Calculate the work done by friction when a 10 kg box slides 5 m on a horizontal surface with a coefficient of kinetic friction of 0.4.
         </div>
     </div>
-<h3 id="toc_37">Problem</h3>
+<h3 id="toc_36">Problem</h3>
 <p>A box of mass <script type="math/tex">m</script> slides a total distance <script type="math/tex">d</script> along a straight horizontal surface. The first half of this distance (<script type="math/tex">d/2</script>) has a coefficient of kinetic friction <script type="math/tex">\mu_{k1}</script>, while the second half (<script type="math/tex">d/2</script>) has a coefficient of kinetic friction <script type="math/tex">\mu_{k2}</script>. Calculate the total work done by kinetic friction on the box during the entire motion. Express your answer symbolically in terms of <script type="math/tex">m</script>, <script type="math/tex">g</script> (acceleration due to gravity), <script type="math/tex">d</script>, <script type="math/tex">\mu_{k1}</script>, and <script type="math/tex">\mu_{k2}</script>.</p>
-<h3 id="toc_38">Solution</h3>
+<h3 id="toc_37">Solution</h3>
 <p>The work done by friction on the box is calculated by summing the work done over each segment of the path. Since friction opposes motion, the work is negative.</p>
 <p><strong>Step 1: Work done on the first segment (distance <script type="math/tex">d/2</script>)</strong></p>
 <ul>
@@ -3059,7 +2280,7 @@ Sum the contributions:<br />
 <li>Factor out common terms:<br />
 <script type="math/tex; mode=display">W_{\text{total}} = -\frac{1}{2} mgd (\mu_{k1} + \mu_{k2})</script></li>
 </ul>
-<h3 id="toc_39">Answer</h3>
+<h3 id="toc_38">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{-\frac{1}{2} m g d \left( \mu_{k1} + \mu_{k2} \right)}</script></p>
 <hr />
 <h2 id="problem-10">Problem 10</h2>
@@ -3069,7 +2290,7 @@ Sum the contributions:<br />
             A flywheel with moment of inertia <script type="math/tex">I</script> accelerates from rest under constant torque <script type="math/tex">\tau</script>; find its kinetic energy after 5 rotations.
         </div>
     </div>
-<h3 id="toc_41">Problem</h3>
+<h3 id="toc_40">Problem</h3>
 <p>A flywheel, with moment of inertia <script type="math/tex">I</script> about its axis of rotation, is initially at rest. Starting at time <script type="math/tex">t=0</script>, a constant torque <script type="math/tex">\tau</script> is applied to the flywheel. Determine the rotational kinetic energy of the flywheel after it has completed exactly 5 full rotations.</p>
 <p>Express your answer as an analytic expression in terms of the given quantities <script type="math/tex">I</script> and <script type="math/tex">\tau</script>, and the constant <script type="math/tex">\pi</script>. Do not substitute numerical values for any constants.</p>
 <p><strong>Final Answer Format Instructions:</strong></p>
@@ -3079,7 +2300,7 @@ Sum the contributions:<br />
 <li>Use standard mathematical notation: multiplication must be denoted explicitly (e.g., <script type="math/tex">a \cdot b</script> or <script type="math/tex">ab</script>), and fractions must be written using \frac{}{}.</li>
 <li>The expression must be boxed using <script type="math/tex">\boxed{}</script>.</li>
 </ul>
-<h3 id="toc_42">Solution</h3>
+<h3 id="toc_41">Solution</h3>
 <p>The rotational kinetic energy <script type="math/tex">K</script> of a flywheel is given by:<br />
 <script type="math/tex; mode=display"> K = \frac{1}{2} I \omega^2 </script><br />
 where <script type="math/tex">\omega</script> is the angular velocity at the instant of interest.</p>
@@ -3096,7 +2317,7 @@ Substitute <script type="math/tex">\omega_0 = 0</script>, <script type="math/tex
 Simplify the expression. The <script type="math/tex">I</script> cancels:<br />
 <script type="math/tex; mode=display"> K = \frac{1}{2} \times 20\pi \tau = 10\pi \tau </script></p>
 <p>Thus, the rotational kinetic energy after 5 rotations is <script type="math/tex">10\pi \tau</script>.</p>
-<h3 id="toc_43">Answer</h3>
+<h3 id="toc_42">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{10\pi\tau}</script></p>
 <hr />
 <h2 id="problem-11">Problem 11</h2>
@@ -3106,7 +2327,7 @@ Simplify the expression. The <script type="math/tex">I</script> cancels:<br />
             Find the angular position of the first minimum for a single slit of width 0.1 mm illuminated by 650 nm light.
         </div>
     </div>
-<h3 id="toc_45">Problem</h3>
+<h3 id="toc_44">Problem</h3>
 <p>In a laboratory experiment, monochromatic light of wavelength <script type="math/tex"> \lambda </script> illuminates a single slit of width <script type="math/tex"> a </script>. Derive an expression for the angular position <script type="math/tex"> \theta </script> (in radians) of the first minimum in the diffraction pattern relative to the central maximum. Express your answer in terms of <script type="math/tex"> \lambda </script> and <script type="math/tex"> a </script>. Use the standard notation <code class="language-python">\arcsin</code> for the inverse sine function. Assume the angle <script type="math/tex"> \theta </script> is measured from the central axis of the slit.</p>
 <p><strong>Answer Format Requirements:</strong></p>
 <ul>
@@ -3115,7 +2336,7 @@ Simplify the expression. The <script type="math/tex">I</script> cancels:<br />
 <li>Angles are in radians.</li>
 <li>Do not include the degree symbol or any units in the final expression.</li>
 </ul>
-<h3 id="toc_46">Solution</h3>
+<h3 id="toc_45">Solution</h3>
 <p>The condition for destructive interference (minimum) in a single-slit diffraction pattern is derived from the path difference between waves from opposite edges of the slit. For the first minimum, the path difference must be equal to one wavelength. This leads to the equation:</p>
 <p><script type="math/tex; mode=display"> a \sin \theta = \lambda </script></p>
 <p>where:</p>
@@ -3129,7 +2350,7 @@ Simplify the expression. The <script type="math/tex">I</script> cancels:<br />
 <p>Applying the inverse sine function to both sides:</p>
 <p><script type="math/tex; mode=display"> \theta = \arcsin\left( \frac{\lambda}{a} \right) </script></p>
 <p>This expression gives the angular position of the first minimum in radians.</p>
-<h3 id="toc_47">Answer</h3>
+<h3 id="toc_46">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\arcsin\left( \frac{\lambda}{a} \right)}</script></p>
 <hr />
 <h2 id="problem-12">Problem 12</h2>
@@ -3139,9 +2360,9 @@ Simplify the expression. The <script type="math/tex">I</script> cancels:<br />
             Determine the specific heat capacity of an unknown metal if a 150 g sample heated to 95°C raises 300 g water from 22°C to 28°C in a calorimeter.
         </div>
     </div>
-<h3 id="toc_49">Problem</h3>
+<h3 id="toc_48">Problem</h3>
 <p>A calorimeter of heat capacity <script type="math/tex">C</script> contains water of mass <script type="math/tex">m_w</script> at an initial temperature <script type="math/tex">T_{wi}</script>. A sample of an unknown metal with mass <script type="math/tex">m_m</script>, initially at temperature <script type="math/tex">T_{mi}</script>, is placed into the calorimeter. The system reaches thermal equilibrium at temperature <script type="math/tex">T_f</script>. The specific heat capacity of water is <script type="math/tex">c_w</script>. Assuming no heat exchange with the surroundings, derive an expression for the specific heat capacity of the metal, <script type="math/tex">c_m</script>, in terms of <script type="math/tex">m_m</script>, <script type="math/tex">m_w</script>, <script type="math/tex">C</script>, <script type="math/tex">T_{mi}</script>, <script type="math/tex">T_{wi}</script>, <script type="math/tex">T_f</script>, and <script type="math/tex">c_w</script>.</p>
-<h3 id="toc_50">Solution</h3>
+<h3 id="toc_49">Solution</h3>
 <p>By conservation of energy, the heat lost by the metal equals the total heat gained by the water and the calorimeter. The heat lost by the metal is given by:<br />
 <script type="math/tex; mode=display"> Q_{\text{metal}} = m_m c_m (T_{mi} - T_f) </script></p>
 <p>The heat gained by the water is:<br />
@@ -3154,7 +2375,7 @@ Simplify the expression. The <script type="math/tex">I</script> cancels:<br />
 <script type="math/tex; mode=display"> m_m c_m (T_{mi} - T_f) = (T_f - T_{wi}) (m_w c_w + C) </script></p>
 <p>Solve for <script type="math/tex">c_m</script> by dividing both sides by <script type="math/tex">m_m (T_{mi} - T_f)</script>:<br />
 <script type="math/tex; mode=display"> c_m = \frac{(T_f - T_{wi}) (m_w c_w + C)}{m_m (T_{mi} - T_f)} </script></p>
-<h3 id="toc_51">Answer</h3>
+<h3 id="toc_50">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{(T_f - T_{wi}) (m_w  c_w + C)}{m_m (T_{mi} - T_f)}}</script></p>
 <hr />
 <h2 id="problem-13">Problem 13</h2>
@@ -3164,12 +2385,12 @@ Simplify the expression. The <script type="math/tex">I</script> cancels:<br />
             Given velocity v(t) = 3t² - 4t + 2 (m/s), find the average acceleration between t=1s and t=3s.
         </div>
     </div>
-<h3 id="toc_53">Problem</h3>
+<h3 id="toc_52">Problem</h3>
 <p>In a physics experiment, a remote-controlled car moves along a straight test track. The car's velocity as a function of time is determined to be:<br />
 <script type="math/tex; mode=display">v(t) = a t^{2} + b t + c</script><br />
 where <script type="math/tex">a</script>, <script type="math/tex">b</script>, and <script type="math/tex">c</script> are constants (with units m/s³, m/s², and m/s respectively), and <script type="math/tex">t</script> is time in seconds.</p>
 <p>Derive a general expression for the average acceleration of the car over the time interval from <script type="math/tex">t = t_1</script> to <script type="math/tex">t = t_2</script>. Express your final answer symbolically in terms of the given parameters <script type="math/tex">a</script>, <script type="math/tex">b</script>, <script type="math/tex">t_1</script>, and <script type="math/tex">t_2</script>.</p>
-<h3 id="toc_54">Solution</h3>
+<h3 id="toc_53">Solution</h3>
 <p>The average acceleration over a time interval <script type="math/tex">[t_1, t_2]</script> is defined as the change in velocity divided by the change in time:<br />
 <script type="math/tex; mode=display">a_{\text{avg}} = \frac{\Delta v}{\Delta t} = \frac{v(t_2) - v(t_1)}{t_2 - t_1}</script></p>
 <p>Substitute the given velocity function <script type="math/tex">v(t) = a t^{2} + b t + c</script>:<br />
@@ -3189,7 +2410,7 @@ Factor out <script type="math/tex">(t_2 - t_1)</script>:<br />
 <p>Cancel the common factor <script type="math/tex">(t_2 - t_1)</script> (assuming <script type="math/tex">t_2 \neq t_1</script>):<br />
 <script type="math/tex; mode=display">a_{\text{avg}} = a (t_2 + t_1) + b</script></p>
 <p>Thus, the average acceleration is expressed solely in terms of <script type="math/tex">a</script>, <script type="math/tex">b</script>, <script type="math/tex">t_1</script>, and <script type="math/tex">t_2</script>.</p>
-<h3 id="toc_55">Answer</h3>
+<h3 id="toc_54">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{a(t_{2} + t_{1}) + b}</script></p>
 <hr />
 <h2 id="problem-14">Problem 14</h2>
@@ -3199,10 +2420,10 @@ Factor out <script type="math/tex">(t_2 - t_1)</script>:<br />
             A 20 g bullet strikes a stationary 4 kg ballistic pendulum, causing it to swing with an initial angular velocity of 0.4 rad/s; find the bullet's original speed.
         </div>
     </div>
-<h3 id="toc_57">Problem</h3>
+<h3 id="toc_56">Problem</h3>
 <p>A bullet of mass <script type="math/tex"> m_b </script> is fired horizontally at a stationary ballistic pendulum of mass <script type="math/tex"> m_p </script>. The pendulum is suspended by a massless rigid rod of length <script type="math/tex"> L </script> that rotates freely about a fixed pivot. The bullet embeds completely into the pendulum block at the end of the rod, which is at a distance <script type="math/tex"> L </script> from the pivot. Immediately after the collision, the pendulum-block system rotates with an initial angular velocity <script type="math/tex"> \omega </script>. Derive an expression for the initial speed <script type="math/tex"> v_b </script> of the bullet.</p>
 <p>Express your answer symbolically in terms of <script type="math/tex"> m_b </script>, <script type="math/tex"> m_p </script>, <script type="math/tex"> \omega </script>, and <script type="math/tex"> L </script>.</p>
-<h3 id="toc_58">Solution</h3>
+<h3 id="toc_57">Solution</h3>
 <p>The collision between the bullet and the pendulum is inelastic, and the bullet embeds into the pendulum. Since there are no external horizontal forces acting on the system during the collision, linear momentum is conserved in the horizontal direction. Let <script type="math/tex"> v </script> be the linear speed of the combined mass (bullet and pendulum) immediately after the collision. The conservation of momentum equation is:</p>
 <p><script type="math/tex; mode=display">
 m_b v_b = (m_b + m_p) v
@@ -3220,7 +2441,7 @@ m_b v_b = (m_b + m_p) (\omega L)
 v_b = \frac{(m_b + m_p) \omega L}{m_b}
 </script></p>
 <p>This is the expression for the initial speed of the bullet.</p>
-<h3 id="toc_59">Answer</h3>
+<h3 id="toc_58">Answer</h3>
 <p><script type="math/tex; mode=display">
 \boxed{\dfrac{(m_b + m_p) \omega L}{m_b}}
 </script></p>
@@ -3232,10 +2453,10 @@ v_b = \frac{(m_b + m_p) \omega L}{m_b}
             A car accelerates uniformly from rest to 20 m/s in 5 seconds; find the average acceleration.
         </div>
     </div>
-<h3 id="toc_61">Problem</h3>
+<h3 id="toc_60">Problem</h3>
 <p>A car starts from rest and moves along a straight road. The car's acceleration increases linearly with time according to <script type="math/tex">a(t) = k  t</script>, where <script type="math/tex">k</script> is a constant. After a time <script type="math/tex">T</script>, the car has traveled a distance <script type="math/tex">D</script>. Determine the average acceleration of the car over the time interval from <script type="math/tex">t=0</script> to <script type="math/tex">t=T</script>.</p>
 <p>Express your answer in terms of <script type="math/tex">D</script> and <script type="math/tex">T</script> only.</p>
-<h3 id="toc_62">Solution</h3>
+<h3 id="toc_61">Solution</h3>
 <p>The average acceleration is defined as the change in velocity divided by the time interval:<br />
 <script type="math/tex; mode=display"> a_{\text{avg}} = \frac{\Delta v}{\Delta t} = \frac{v(T) - v(0)}{T - 0} </script><br />
 Since the car starts from rest, <script type="math/tex">v(0) = 0</script>. Thus:<br />
@@ -3259,7 +2480,7 @@ Solve for <script type="math/tex">k</script>:<br />
 <script type="math/tex; mode=display"> k = \frac{6D}{T^{3}} </script></p>
 <p>Substitute <script type="math/tex">k</script> into the average acceleration expression:<br />
 <script type="math/tex; mode=display"> a_{\text{avg}} = \frac{1}{2} \left( \frac{6D}{T^{3}} \right) T = \frac{6D}{2 T^{2}} = \frac{3D}{T^{2}} </script></p>
-<h3 id="toc_63">Answer</h3>
+<h3 id="toc_62">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{3D}{T^{2}}}</script></p>
 <hr />
 <h2 id="problem-16">Problem 16</h2>
@@ -3269,10 +2490,10 @@ Solve for <script type="math/tex">k</script>:<br />
             An ideal gas undergoes adiabatic expansion with γ=1.4 from 400 K to 300 K at initial volume 0.2 m³; find work done.
         </div>
     </div>
-<h3 id="toc_65">Problem</h3>
+<h3 id="toc_64">Problem</h3>
 <p>An ideal gas with adiabatic index <script type="math/tex">\gamma</script> undergoes an adiabatic expansion. The gas starts at an initial volume <script type="math/tex">V_1</script> and initial temperature <script type="math/tex">T_1</script>, and expands until its temperature is <script type="math/tex">T_2</script>. The gas consists of <script type="math/tex">n</script> moles. Find the work done by the gas.</p>
 <p>Express your answer in terms of <script type="math/tex">n</script>, <script type="math/tex">R</script> (the universal gas constant), <script type="math/tex">\gamma</script>, <script type="math/tex">T_1</script>, and <script type="math/tex">T_2</script>.</p>
-<h3 id="toc_66">Solution</h3>
+<h3 id="toc_65">Solution</h3>
 <p>The work done by an ideal gas during an adiabatic expansion is given by:<br />
 <script type="math/tex; mode=display"> W = \int_{V_1}^{V_2} P  dV </script><br />
 For an adiabatic process, <script type="math/tex">PV^\gamma = \text{constant}</script>. Using the initial state:<br />
@@ -3296,7 +2517,7 @@ Apply the ideal gas law at the initial state: <script type="math/tex">P_1 V_1 = 
 Since <script type="math/tex">1 - \gamma = -(\gamma - 1)</script>, rewrite as:<br />
 <script type="math/tex; mode=display"> W = \frac{n R (T_2 - T_1)}{-(\gamma - 1)} = \frac{n R (T_1 - T_2)}{\gamma - 1} </script><br />
 Thus, the work done by the gas is <script type="math/tex">\frac{n R (T_1 - T_2)}{\gamma - 1}</script>.</p>
-<h3 id="toc_67">Answer</h3>
+<h3 id="toc_66">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{n R (T_1 - T_2)}{\gamma - 1}}</script></p>
 <hr />
 <h2 id="problem-17">Problem 17</h2>
@@ -3306,7 +2527,7 @@ Thus, the work done by the gas is <script type="math/tex">\frac{n R (T_1 - T_2)}
             Two inductors (L₁=0.2 H, L₂=0.3 H) are connected in series with 5 A current; calculate the total stored energy.
         </div>
     </div>
-<h3 id="toc_69">Problem</h3>
+<h3 id="toc_68">Problem</h3>
 <p>Two inductors with inductances <script type="math/tex"> L_1 </script> and <script type="math/tex"> L_2 </script> are connected in series. A steady current <script type="math/tex"> I </script> flows through the circuit. Derive an expression for the total magnetic energy stored in both inductors. Express your final answer symbolically in terms of <script type="math/tex"> L_1 </script>, <script type="math/tex"> L_2 </script>, and <script type="math/tex"> I </script>.</p>
 <p><strong>Formatting Instructions for Final Answer:</strong></p>
 <ul>
@@ -3315,7 +2536,7 @@ Thus, the work done by the gas is <script type="math/tex">\frac{n R (T_1 - T_2)}
 <li>Use explicit multiplication symbols where needed (e.g., <script type="math/tex"> L_1 I^2 </script>, not <script type="math/tex"> L_1I^2 </script>).</li>
 <li>Exponents must be written with a caret and curly braces (e.g., <script type="math/tex"> I^{2} </script>).</li>
 </ul>
-<h3 id="toc_70">Solution</h3>
+<h3 id="toc_69">Solution</h3>
 <p>The magnetic energy stored in a single inductor with inductance <script type="math/tex"> L </script> carrying current <script type="math/tex"> I </script> is given by the formula:<br />
 <script type="math/tex; mode=display"> U = \frac{1}{2} L I^{2} </script></p>
 <p>For the first inductor with inductance <script type="math/tex"> L_1 </script>, the stored energy is:<br />
@@ -3326,7 +2547,7 @@ Thus, the work done by the gas is <script type="math/tex">\frac{n R (T_1 - T_2)}
 <script type="math/tex; mode=display"> U_{\text{total}} = U_1 + U_2 = \frac{1}{2} L_1 I^{2} + \frac{1}{2} L_2 I^{2} </script></p>
 <p>Factor out the common terms <script type="math/tex"> \frac{1}{2} </script> and <script type="math/tex"> I^{2} </script>:<br />
 <script type="math/tex; mode=display"> U_{\text{total}} = \frac{1}{2} I^{2} (L_1 + L_2) </script></p>
-<h3 id="toc_71">Answer</h3>
+<h3 id="toc_70">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{1}{2} \left( L_1 + L_2 \right) I^{2}}</script></p>
 <hr />
 <h2 id="problem-18">Problem 18</h2>
@@ -3336,9 +2557,9 @@ Thus, the work done by the gas is <script type="math/tex">\frac{n R (T_1 - T_2)}
             Calculate the kinetic energy of a 1200 kg car moving at 25 m/s.
         </div>
     </div>
-<h3 id="toc_73">Problem</h3>
+<h3 id="toc_72">Problem</h3>
 <p>A train is moving due east at a constant speed <script type="math/tex">v_T</script> relative to the ground. On the flatbed of this train, a car of mass <script type="math/tex">m</script> is moving due north at a constant speed <script type="math/tex">v_C</script> relative to the train. Derive an expression for the kinetic energy of the car relative to the ground. Express your answer in terms of <script type="math/tex">m</script>, <script type="math/tex">v_T</script>, and <script type="math/tex">v_C</script>.</p>
-<h3 id="toc_74">Solution</h3>
+<h3 id="toc_73">Solution</h3>
 <p>The kinetic energy of an object is given by <script type="math/tex">KE = \frac{1}{2} m v^2</script>, where <script type="math/tex">v</script> is the speed of the object relative to the reference frame. Here, the reference frame is the ground.</p>
 <p>The velocity of the car relative to the ground (<script type="math/tex">\vec{v}_{CG}</script>) is the vector sum of the velocity of the car relative to the train (<script type="math/tex">\vec{v}_{CT}</script>) and the velocity of the train relative to the ground (<script type="math/tex">\vec{v}_{TG}</script>). Since the car moves due north relative to the train and the train moves due east relative to the ground, these velocities are perpendicular. Thus:</p>
 <p><script type="math/tex; mode=display">
@@ -3361,7 +2582,7 @@ KE = \frac{1}{2} m \left( \sqrt{v_T^2 + v_C^2} \right)^2.
 KE = \frac{1}{2} m (v_T^2 + v_C^2).
 </script></p>
 <p>Thus, the kinetic energy of the car relative to the ground is <script type="math/tex">\frac{1}{2} m (v_T^2 + v_C^2)</script>.</p>
-<h3 id="toc_75">Answer</h3>
+<h3 id="toc_74">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\frac{1}{2} m \left( v_{T}^{2} + v_{C}^{2} \right)}</script></p>
 <hr />
 <h2 id="problem-19">Problem 19</h2>
@@ -3371,9 +2592,9 @@ KE = \frac{1}{2} m (v_T^2 + v_C^2).
             Determine the path difference for the third dark fringe when monochromatic light of wavelength 500 nm passes through slits 0.2 mm apart.
         </div>
     </div>
-<h3 id="toc_77">Problem</h3>
+<h3 id="toc_76">Problem</h3>
 <p>In a Young's double-slit experiment, monochromatic light of wavelength <script type="math/tex">\lambda</script> is incident on two narrow slits separated by a distance <script type="math/tex">d</script>. The interference pattern is observed on a distant screen. Determine the path difference <script type="math/tex">\delta</script> for the third dark fringe from the central maximum. Express your answer solely in terms of <script type="math/tex">\lambda</script>.</p>
-<h3 id="toc_78">Solution</h3>
+<h3 id="toc_77">Solution</h3>
 <p>The condition for destructive interference (dark fringes) in Young's double-slit experiment is given by the path difference <script type="math/tex">\delta</script> satisfying:<br />
 <script type="math/tex; mode=display">\delta = \left(m + \frac{1}{2}\right) \lambda, \quad \text{where} \quad m = 0, 1, 2, \dots</script><br />
 Here, <script type="math/tex">m</script> denotes the order of the dark fringe.</p>
@@ -3386,7 +2607,7 @@ Here, <script type="math/tex">m</script> denotes the order of the dark fringe.</
 <p>Substituting <script type="math/tex">m=2</script> into the condition for destructive interference:<br />
 <script type="math/tex; mode=display">\delta = \left(2 + \frac{1}{2}\right) \lambda = \frac{5}{2} \lambda</script></p>
 <p>Thus, the path difference for the third dark fringe is <script type="math/tex">\frac{5}{2} \lambda</script>.</p>
-<h3 id="toc_79">Answer</h3>
+<h3 id="toc_78">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{5\lambda}{2}}</script></p>
 <hr />
 <h2 id="problem-20">Problem 20</h2>
@@ -3396,11 +2617,11 @@ Here, <script type="math/tex">m</script> denotes the order of the dark fringe.</
             Compute the time required for a 1.5 kW heater to melt 4 kg of ice at 0°C initially, given latent heat of fusion.
         </div>
     </div>
-<h3 id="toc_81">Problem</h3>
+<h3 id="toc_80">Problem</h3>
 <p>A portable electric heater with power output <script type="math/tex">P</script> is used to melt a block of ice initially at <script type="math/tex">0^\circ</script>C. The ice has mass <script type="math/tex">m</script>, and the latent heat of fusion for ice is <script type="math/tex">L_f</script>.</p>
 <p>Derive an expression for the time <script type="math/tex">t</script> required to completely melt the ice.</p>
 <p>Express your answer solely in terms of the given symbols <script type="math/tex">P</script>, <script type="math/tex">m</script>, and <script type="math/tex">L_f</script>.</p>
-<h3 id="toc_82">Solution</h3>
+<h3 id="toc_81">Solution</h3>
 <p>The energy <script type="math/tex">Q</script> required to melt the ice is determined by the phase change from solid to liquid. Since the ice is already at the melting point (<script type="math/tex">0^\circ</script>C), no temperature change occurs, and the energy is given by the product of the mass and the latent heat of fusion:<br />
 <script type="math/tex; mode=display"> Q = m L_f </script></p>
 <p>The heater supplies energy at a constant rate equal to its power <script type="math/tex">P</script>. The relationship between energy supplied, power, and time is:<br />
@@ -3409,7 +2630,7 @@ Here, <script type="math/tex">m</script> denotes the order of the dark fringe.</
 <script type="math/tex; mode=display"> m L_f = P t </script></p>
 <p>Solving for the time <script type="math/tex">t</script>:<br />
 <script type="math/tex; mode=display"> t = \frac{m L_f}{P} </script></p>
-<h3 id="toc_83">Answer</h3>
+<h3 id="toc_82">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{mL_{f}}{P}}</script></p>
 <hr />
 <h2 id="problem-21">Problem 21</h2>
@@ -3419,11 +2640,11 @@ Here, <script type="math/tex">m</script> denotes the order of the dark fringe.</
             If pressure <script type="math/tex">P</script> is related to density <script type="math/tex">\rho</script> and velocity <script type="math/tex">v</script> as <script type="math/tex">P = k\rho^a v^b</script>, find exponents <script type="math/tex">a</script> and <script type="math/tex">b</script> that make the equation dimensionally consistent.
         </div>
     </div>
-<h3 id="toc_85">Problem</h3>
+<h3 id="toc_84">Problem</h3>
 <p>In fluid dynamics, pressure <script type="math/tex">P</script> is defined as force per unit area, density <script type="math/tex">\rho</script> as mass per unit volume, and velocity <script type="math/tex">v</script> as distance per unit time. The fundamental dimensions are mass (<script type="math/tex">M</script>), length (<script type="math/tex">L</script>), and time (<script type="math/tex">T</script>).</p>
 <p>Given the equation <script type="math/tex">P = k \rho^a v^b</script>, where <script type="math/tex">k</script> is a dimensionless constant, find the exponents <script type="math/tex">a</script> and <script type="math/tex">b</script> that make this equation dimensionally consistent.</p>
 <p>Express your answer as the values of <script type="math/tex">a</script> and <script type="math/tex">b</script> in the form <script type="math/tex">a = \ldots</script> and <script type="math/tex">b = \ldots</script>.</p>
-<h3 id="toc_86">Solution</h3>
+<h3 id="toc_85">Solution</h3>
 <p>To ensure dimensional consistency, the dimensions of both sides of the equation <script type="math/tex">P = k \rho^a v^b</script> must be equal. Since <script type="math/tex">k</script> is dimensionless, it does not contribute to the dimensions. Therefore, we equate the dimensions of <script type="math/tex">P</script> to the dimensions of <script type="math/tex">\rho^a v^b</script>.</p>
 <p>The dimensions of the quantities are:</p>
 <ul>
@@ -3446,7 +2667,7 @@ Here, <script type="math/tex">m</script> denotes the order of the dark fringe.</
 <p>From the time equation: <script type="math/tex">-2 = -b</script> gives <script type="math/tex">b = 2</script>.</p>
 <p>Substitute <script type="math/tex">a=1</script> into the length equation: <script type="math/tex">-1 = -3(1) + b</script> gives <script type="math/tex">-1 = -3 + b</script>, so <script type="math/tex">b = 2</script>. This is consistent.</p>
 <p>Therefore, the exponents are <script type="math/tex">a=1</script> and <script type="math/tex">b=2</script>.</p>
-<h3 id="toc_87">Answer</h3>
+<h3 id="toc_86">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{a=1,\ b=2}</script></p>
 <hr />
 <h2 id="problem-22">Problem 22</h2>
@@ -3456,10 +2677,10 @@ Here, <script type="math/tex">m</script> denotes the order of the dark fringe.</
             Find the centripetal acceleration of a geosynchronous satellite if the gravitational acceleration at that orbit is g/36, where g is Earth's surface gravity.
         </div>
     </div>
-<h3 id="toc_89">Problem</h3>
+<h3 id="toc_88">Problem</h3>
 <p>A geosynchronous satellite orbits Earth in a circular path. The gravitational acceleration due to Earth at the satellite's orbital distance is measured to be <script type="math/tex"> \frac{g}{36} </script>, where <script type="math/tex"> g </script> is the gravitational acceleration at Earth's surface. Determine the satellite's centripetal acceleration.</p>
 <p>Express your answer symbolically in terms of <script type="math/tex"> g </script>.</p>
-<h3 id="toc_90">Solution</h3>
+<h3 id="toc_89">Solution</h3>
 <p>The gravitational force provides the centripetal force for a satellite in circular orbit. For a satellite of mass <script type="math/tex"> m </script>, the gravitational force is:</p>
 <p><script type="math/tex; mode=display"> F_g = \frac{G M m}{r^2} </script></p>
 <p>where <script type="math/tex"> M </script> is Earth's mass, <script type="math/tex"> r </script> is the orbital radius, and <script type="math/tex"> G </script> is the gravitational constant. This equals the centripetal force:</p>
@@ -3473,7 +2694,7 @@ Here, <script type="math/tex">m</script> denotes the order of the dark fringe.</
 <p>The problem states that <script type="math/tex"> g_{\text{orbit}} = \frac{g}{36} </script>. Substituting this value:</p>
 <p><script type="math/tex; mode=display"> a_c = \frac{g}{36} </script></p>
 <p>Therefore, the centripetal acceleration equals the given gravitational acceleration at the orbital distance.</p>
-<h3 id="toc_91">Answer</h3>
+<h3 id="toc_90">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{g}{36}}</script></p>
 <hr />
 <h2 id="problem-23">Problem 23</h2>
@@ -3483,10 +2704,10 @@ Here, <script type="math/tex">m</script> denotes the order of the dark fringe.</
             Determine the distance where the magnetic field is 40 μT for a wire with 12 A current.
         </div>
     </div>
-<h3 id="toc_93">Problem</h3>
+<h3 id="toc_92">Problem</h3>
 <p>In a laboratory, a long straight wire is aligned horizontally. It carries a steady current <script type="math/tex">I</script>. A scientist measures the magnitude of the magnetic field at a point near the wire and obtains a reading of <script type="math/tex">B</script>. The scientist knows that the magnetic field is due to the current in the wire and that the field strength depends on the distance from the wire. However, the exact relationship is not immediately known. Starting from the fundamental law for the magnetic field produced by a steady current, derive an expression for the perpendicular distance <script type="math/tex">r</script> from the wire to the measurement point. Express <script type="math/tex">r</script> in terms of <script type="math/tex">I</script>, <script type="math/tex">B</script>, and the permeability of free space <script type="math/tex">\mu_0</script>.</p>
 <p>Express your answer as a symbolic expression in terms of <script type="math/tex">I</script>, <script type="math/tex">B</script>, and <script type="math/tex">\mu_0</script>.</p>
-<h3 id="toc_94">Solution</h3>
+<h3 id="toc_93">Solution</h3>
 <p>To derive the expression for the distance <script type="math/tex">r</script>, we begin with Ampère's circuital law, which relates the magnetic field around a closed loop to the current passing through the loop. The law states:<br />
 <script type="math/tex; mode=display"> \oint \vec{B} \cdot d\vec{l} = \mu_0 I_{\text{enclosed}} </script></p>
 <p>Consider a circular path of radius <script type="math/tex">r</script> centered on the wire and lying in a plane perpendicular to it. Due to the symmetry of the straight wire, the magnetic field <script type="math/tex">\vec{B}</script> is everywhere tangent to this circular path and has constant magnitude <script type="math/tex">B</script> along the path. The direction of <script type="math/tex">\vec{B}</script> is azimuthal (following the right-hand rule relative to the current direction).</p>
@@ -3498,7 +2719,7 @@ since the path length is the circumference <script type="math/tex">2\pi r</scrip
 <p>Solving for <script type="math/tex">r</script>:<br />
 <script type="math/tex; mode=display"> r = \frac{\mu_0 I}{2\pi B} </script></p>
 <p>This gives the perpendicular distance <script type="math/tex">r</script> from the wire to the point where the magnetic field magnitude is <script type="math/tex">B</script>.</p>
-<h3 id="toc_95">Answer</h3>
+<h3 id="toc_94">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{\mu_{0} I}{2\pi B}}</script></p>
 <hr />
 <h2 id="problem-24">Problem 24</h2>
@@ -3508,10 +2729,10 @@ since the path length is the circumference <script type="math/tex">2\pi r</scrip
             A circular arc of radius 0.8 m and central angle 120 degrees carries a current of 3 A; calculate the magnetic field at its center of curvature.
         </div>
     </div>
-<h3 id="toc_97">Problem</h3>
+<h3 id="toc_96">Problem</h3>
 <p>A circular wire segment (arc) of radius <script type="math/tex">R</script> subtends a central angle <script type="math/tex">\phi</script> (in degrees) and carries a steady current <script type="math/tex">I</script>. Derive an expression for the magnitude of the magnetic field at the center of curvature. Express your final answer symbolically in terms of <script type="math/tex">\mu_0</script> (the permeability of free space), <script type="math/tex">I</script>, <script type="math/tex">R</script>, and <script type="math/tex">\phi</script>.</p>
 <p>Ensure your derivation starts from fundamental principles and clearly shows all steps. Do not assume or use any pre-derived formulas for the magnetic field of an arc.</p>
-<h3 id="toc_98">Solution</h3>
+<h3 id="toc_97">Solution</h3>
 <p>The magnetic field due to a current-carrying wire can be found using the Biot-Savart law:
 <script type="math/tex; mode=display"> d\vec{B} = \frac{\mu_0}{4\pi} \frac{I  d\vec{l} \times \hat{r}}{r^2} </script>
 where <script type="math/tex">d\vec{l}</script> is an infinitesimal length element of the wire, <script type="math/tex">\hat{r}</script> is the unit vector from the length element to the point of interest, and <script type="math/tex">r</script> is the distance between them.</p>
@@ -3525,7 +2746,7 @@ The direction of <script type="math/tex">d\vec{B}</script> is perpendicular to t
 Substitute <script type="math/tex">\alpha = \phi \cdot \frac{\pi}{180}</script>:
 <script type="math/tex; mode=display"> B = \frac{\mu_0 I}{4\pi R} \left( \phi \cdot \frac{\pi}{180} \right) = \frac{\mu_0 I \phi \pi}{4\pi R \cdot 180} = \frac{\mu_0 I \phi}{720 R} </script>
 Thus, the magnitude of the magnetic field at the center of curvature is <script type="math/tex">\frac{\mu_0 I \phi}{720 R}</script>.</p>
-<h3 id="toc_99">Answer</h3>
+<h3 id="toc_98">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{\mu_{0} I \phi}{720 R}}</script></p>
 <hr />
 <h2 id="problem-25">Problem 25</h2>
@@ -3535,18 +2756,18 @@ Thus, the magnitude of the magnetic field at the center of curvature is <script 
             Estimate the number of water molecules in a raindrop.
         </div>
     </div>
-<h3 id="toc_101">Problem</h3>
+<h3 id="toc_100">Problem</h3>
 <p>A typical raindrop is approximately spherical with a diameter of 2 millimeters. The density of water is 1 gram per cubic centimeter. Water has a molar mass of 18 grams per mole, and Avogadro's number is <script type="math/tex"> 6.022 \times 10^{23} </script> molecules per mole.</p>
 <p>Estimate the number of water molecules in the raindrop. Express your answer as a power of 10 and round the exponent to the nearest integer.</p>
-<h3 id="toc_102">Solution</h3>
-<h3 id="toc_103">Step 1: Convert units for consistency</h3>
+<h3 id="toc_101">Solution</h3>
+<h3 id="toc_102">Step 1: Convert units for consistency</h3>
 <ul>
 <li>Diameter <script type="math/tex"> d = 2 \, \text{mm} = 0.2 \, \text{cm} </script> (since 1 cm = 10 mm).</li>
 <li>Density <script type="math/tex"> \rho = 1 \, \text{g/cm}^3 </script>.</li>
 <li>Molar mass <script type="math/tex"> M = 18 \, \text{g/mol} </script>.</li>
 <li>Avogadro's number <script type="math/tex"> N_A = 6.022 \times 10^{23} \, \text{molecules/mol} </script>.</li>
 </ul>
-<h3 id="toc_104">Step 2: Calculate the volume of the raindrop</h3>
+<h3 id="toc_103">Step 2: Calculate the volume of the raindrop</h3>
 <p>The volume of a sphere is given by:<br />
 <script type="math/tex; mode=display"> V = \frac{4}{3} \pi r^3 </script><br />
 where the radius <script type="math/tex"> r = \frac{d}{2} = 0.1 \, \text{cm} </script>.<br />
@@ -3554,24 +2775,24 @@ Substitute the radius:<br />
 <script type="math/tex; mode=display"> V = \frac{4}{3} \pi (0.1)^3 = \frac{4}{3} \pi (0.001) = \frac{4\pi}{3000} \, \text{cm}^3 </script><br />
 Using <script type="math/tex"> \pi \approx 3.1416 </script>:<br />
 <script type="math/tex; mode=display"> V \approx \frac{4 \times 3.1416}{3000} = \frac{12.5664}{3000} \approx 0.0041888 \, \text{cm}^3 </script></p>
-<h3 id="toc_105">Step 3: Calculate the mass of the raindrop</h3>
+<h3 id="toc_104">Step 3: Calculate the mass of the raindrop</h3>
 <p>Mass is density multiplied by volume:<br />
 <script type="math/tex; mode=display"> m = \rho V = 1 \times 0.0041888 = 0.0041888 \, \text{g} </script></p>
-<h3 id="toc_106">Step 4: Calculate the number of moles</h3>
+<h3 id="toc_105">Step 4: Calculate the number of moles</h3>
 <p>Number of moles <script type="math/tex"> n </script> is mass divided by molar mass:<br />
 <script type="math/tex; mode=display"> n = \frac{m}{M} = \frac{0.0041888}{18} \approx 0.00023271 \, \text{mol} </script></p>
-<h3 id="toc_107">Step 5: Calculate the number of water molecules</h3>
+<h3 id="toc_106">Step 5: Calculate the number of water molecules</h3>
 <p>Number of molecules <script type="math/tex"> N </script> is moles multiplied by Avogadro's number:<br />
 <script type="math/tex; mode=display"> N = n \times N_A = 0.00023271 \times 6.022 \times 10^{23} </script><br />
 Compute the product:<br />
 <script type="math/tex; mode=display"> N \approx 1.401 \times 10^{20} </script></p>
-<h3 id="toc_108">Step 6: Express as a power of 10 and round the exponent</h3>
+<h3 id="toc_107">Step 6: Express as a power of 10 and round the exponent</h3>
 <p>The result is <script type="math/tex"> 1.401 \times 10^{20} </script>. To express as a power of 10:<br />
 <script type="math/tex; mode=display"> N = 10^{\log_{10}(1.401 \times 10^{20})} = 10^{20 + \log_{10}(1.401)} \approx 10^{20.146} </script><br />
 The exponent is 20.146. Rounding to the nearest integer:<br />
 <script type="math/tex; mode=display"> 20.146 \approx 20 </script><br />
 Thus, the order of magnitude is <script type="math/tex"> 10^{20} </script>.</p>
-<h3 id="toc_109">Answer</h3>
+<h3 id="toc_108">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{10^{20}}</script></p>
 <hr />
 <h2 id="problem-26">Problem 26</h2>
@@ -3581,9 +2802,9 @@ Thus, the order of magnitude is <script type="math/tex"> 10^{20} </script>.</p>
             Calculate the direction and magnitude of friction force acting on a 5 kg block pushed with 30 N force on a horizontal surface if it remains stationary.
         </div>
     </div>
-<h3 id="toc_111">Problem</h3>
+<h3 id="toc_110">Problem</h3>
 <p>A block of mass <script type="math/tex">m</script> is placed on an inclined plane with an angle of inclination <script type="math/tex">\alpha</script>. A horizontal force of magnitude <script type="math/tex">F</script> is applied to the block, acting toward the plane (i.e., in the direction that would push the block up the incline if there were no friction). The block remains stationary. Find the friction force <script type="math/tex">f</script> acting on the block, using the sign convention that a positive <script type="math/tex">f</script> means the force is directed up the incline, and a negative <script type="math/tex">f</script> means down the incline. Express your answer in terms of <script type="math/tex">m</script>, <script type="math/tex">g</script>, <script type="math/tex">\alpha</script>, and <script type="math/tex">F</script>.</p>
-<h3 id="toc_112">Solution</h3>
+<h3 id="toc_111">Solution</h3>
 <p>To determine the friction force, we analyze the forces acting on the block. We use a coordinate system where the x-axis is parallel to the incline (positive direction up the incline) and the y-axis is perpendicular to the incline (positive direction outward from the incline).</p>
 <p><strong>Forces in the y-direction (perpendicular to the incline):</strong></p>
 <ul>
@@ -3612,7 +2833,7 @@ Solving for <script type="math/tex">f</script>:<br />
 <li>If <script type="math/tex">mg \sin \alpha = F \cos \alpha</script>, then <script type="math/tex">f = 0</script>: No friction needed.</li>
 </ul>
 <p>The expression <script type="math/tex">f = mg \sin \alpha - F \cos \alpha</script> gives the magnitude and direction (via sign) of the friction force.</p>
-<h3 id="toc_113">Answer</h3>
+<h3 id="toc_112">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{mg \sin \alpha - F \cos \alpha}</script></p>
 <hr />
 <h2 id="problem-27">Problem 27</h2>
@@ -3622,7 +2843,7 @@ Solving for <script type="math/tex">f</script>:<br />
             A compound microscope has an objective lens with focal length 4 mm and an eyepiece with focal length 25 mm; find the total magnification when the object is placed 4.1 mm from the objective and the final image is at infinity.
         </div>
     </div>
-<h3 id="toc_115">Problem</h3>
+<h3 id="toc_114">Problem</h3>
 <p>A compound microscope consists of an objective lens with focal length <script type="math/tex"> f_o </script> and an eyepiece with focal length <script type="math/tex"> f_e </script>. The object is placed at a distance <script type="math/tex"> d_o </script> from the objective lens. The final image is formed at infinity, and the least distance of distinct vision is <script type="math/tex"> D </script>.</p>
 <p>Derive an expression for the total magnification <script type="math/tex"> M </script> of the microscope. Express your answer in terms of <script type="math/tex"> f_o </script>, <script type="math/tex"> f_e </script>, <script type="math/tex"> d_o </script>, and <script type="math/tex"> D </script>.</p>
 <p><strong>Answer Format Instructions</strong></p>
@@ -3632,7 +2853,7 @@ Solving for <script type="math/tex">f</script>:<br />
 <li>Do not evaluate any constants numerically.</li>
 <li>Do not include units in the expression.</li>
 </ul>
-<h3 id="toc_116">Solution</h3>
+<h3 id="toc_115">Solution</h3>
 <p><strong>Step 1: Determine the image distance for the objective lens</strong><br />
 The lens formula for the objective is:<br />
 <script type="math/tex; mode=display"> \frac{1}{f_o} = \frac{1}{d_o} + \frac{1}{d_i} </script><br />
@@ -3653,7 +2874,7 @@ The total magnification is the product of the magnifications of the objective an
 <script type="math/tex; mode=display"> M = m_o \times m_e = \left( -\frac{f_o}{d_o - f_o} \right) \times \left( \frac{D}{f_e} \right) </script><br />
 Simplify the expression:<br />
 <script type="math/tex; mode=display"> M = -\frac{f_o D}{f_e (d_o - f_o)} </script></p>
-<h3 id="toc_117">Answer</h3>
+<h3 id="toc_116">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{ -\dfrac{ f_o D }{ f_e \left( d_o - f_o \right) } }</script></p>
 <hr />
 <h2 id="problem-28">Problem 28</h2>
@@ -3663,7 +2884,7 @@ Simplify the expression:<br />
             A hiker walks 3 km at 30° north of east, then 4 km due south; determine the displacement vector's magnitude.
         </div>
     </div>
-<h3 id="toc_119">Problem</h3>
+<h3 id="toc_118">Problem</h3>
 <p>A robotic vacuum cleaner starts at the origin of a coordinate system and cleans in two segments. First, it travels a distance <script type="math/tex"> d_1 </script> at an angle <script type="math/tex"> \theta </script> north of east. It then changes direction and travels due south a distance <script type="math/tex"> d_2 </script>. Determine the magnitude of the vacuum cleaner's total displacement from the origin.</p>
 <p>Express your answer symbolically in terms of <script type="math/tex"> d_1 </script>, <script type="math/tex"> d_2 </script>, and <script type="math/tex"> \theta </script>. Use standard mathematical notation:</p>
 <ul>
@@ -3672,7 +2893,7 @@ Simplify the expression:<br />
 <li>Use <script type="math/tex">\sqrt{\ }</script> for square roots.</li>
 <li>Do not simplify numerical constants or substitute any values.</li>
 </ul>
-<h3 id="toc_120">Solution</h3>
+<h3 id="toc_119">Solution</h3>
 <p><strong>Step 1: Establish coordinate system</strong><br />
 Set east as the positive <script type="math/tex">x</script>-direction and north as the positive <script type="math/tex">y</script>-direction. The origin is the starting point.</p>
 <p><strong>Step 2: Resolve first displacement into components</strong><br />
@@ -3725,7 +2946,7 @@ Expand the squares:</p>
 <p><script type="math/tex; mode=display">
 \text{Magnitude} = \sqrt{ d_1^2 + d_2^2 - 2 d_1 d_2 \sin(\theta) }
 </script></p>
-<h3 id="toc_121">Answer</h3>
+<h3 id="toc_120">Answer</h3>
 <p><script type="math/tex; mode=display">
 \boxed{\sqrt{d_1^{2} + d_2^{2} - 2 d_1 d_2 \sin(\theta)}}
 </script></p>
@@ -3737,9 +2958,9 @@ Expand the squares:</p>
             An object in SHM has maximum acceleration 12 m/s² when its displacement is 0.04 m; find its maximum speed.
         </div>
     </div>
-<h3 id="toc_123">Problem</h3>
+<h3 id="toc_122">Problem</h3>
 <p>In a laboratory experiment, a sensitive accelerometer is mounted on a platform that oscillates vertically with simple harmonic motion. The platform's motion is characterized by an amplitude <script type="math/tex">A</script>, which is the maximum distance from its equilibrium position. During the oscillation, the accelerometer records a maximum acceleration magnitude of <script type="math/tex">a_{\text{max}}</script>. Derive an expression for the maximum speed <script type="math/tex">v_{\text{max}}</script> attained by the platform during its motion. Express your final answer solely in terms of <script type="math/tex">a_{\text{max}}</script> and <script type="math/tex">A</script>.</p>
-<h3 id="toc_124">Solution</h3>
+<h3 id="toc_123">Solution</h3>
 <p>In simple harmonic motion (SHM), the acceleration <script type="math/tex">a</script> and displacement <script type="math/tex">x</script> from equilibrium are related by:</p>
 <p><script type="math/tex; mode=display">
 a = -\omega^2 x
@@ -3773,7 +2994,7 @@ v_{\text{max}} = \left( \sqrt{\frac{a_{\text{max}}}{A}} \right) A = \sqrt{\frac{
 v_{\text{max}} = \sqrt{a_{\text{max}} \cdot A}
 </script></p>
 <p>Thus, the maximum speed is <script type="math/tex">\sqrt{a_{\text{max}} \cdot A}</script>.</p>
-<h3 id="toc_125">Answer</h3>
+<h3 id="toc_124">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\sqrt{a_{\text{max}} \cdot A}}</script></p>
 <hr />
 <h2 id="problem-30">Problem 30</h2>
@@ -3783,7 +3004,7 @@ v_{\text{max}} = \sqrt{a_{\text{max}} \cdot A}
             An ancient bone fragment has 25% of the carbon-14 activity of living tissue; given carbon-14's half-life is 5730 years, calculate its age.
         </div>
     </div>
-<h3 id="toc_127">Problem</h3>
+<h3 id="toc_126">Problem</h3>
 <p>In carbon-14 dating, the activity of carbon-14 in a sample is compared to that in living tissue. An ancient bone fragment has a current carbon-14 activity that is a fraction <script type="math/tex"> f </script> of the activity in living tissue. The half-life of carbon-14 is <script type="math/tex"> T_{1/2} </script>.</p>
 <p>Derive an expression for the age <script type="math/tex"> t </script> of the bone fragment in terms of <script type="math/tex"> f </script> and <script type="math/tex"> T_{1/2} </script>.</p>
 <ul>
@@ -3791,7 +3012,7 @@ v_{\text{max}} = \sqrt{a_{\text{max}} \cdot A}
 <li>The final expression must be simplified and should not include any constants beyond <script type="math/tex"> f </script> and <script type="math/tex"> T_{1/2} </script>.</li>
 <li>Do not substitute any numerical values.</li>
 </ul>
-<h3 id="toc_128">Solution</h3>
+<h3 id="toc_127">Solution</h3>
 <p>The decay of radioactive nuclei follows an exponential law. The activity <script type="math/tex"> A </script> at time <script type="math/tex"> t </script> is given by:<br />
 <script type="math/tex; mode=display"> A = A_0 e^{-\lambda t} </script><br />
 where:</p>
@@ -3828,7 +3049,7 @@ Thus:<br />
 <script type="math/tex; mode=display"> t = \frac{T_{1/2}}{\ln(2)} \ln\left(\frac{1}{f}\right) </script><br />
 The expression for the age <script type="math/tex"> t </script> is:<br />
 <script type="math/tex; mode=display"> t = \frac{T_{1/2} \ln\left(\frac{1}{f}\right)}{\ln(2)} </script></p>
-<h3 id="toc_129">Answer</h3>
+<h3 id="toc_128">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{T_{1/2} \ln \left( \dfrac{1}{f} \right)}{\ln(2)}}</script></p>
 <hr />
 <h2 id="problem-31">Problem 31</h2>
@@ -3838,10 +3059,10 @@ The expression for the age <script type="math/tex"> t </script> is:<br />
             Calculate the weight in newtons of a 5 kg object on Earth's surface with g = 9.8 m/s².
         </div>
     </div>
-<h3 id="toc_131">Problem</h3>
+<h3 id="toc_130">Problem</h3>
 <p>A spherical exoplanet of mass <script type="math/tex">M</script> has a radius <script type="math/tex">R</script>. A robotic probe lands on its surface and deploys an instrument package of mass <script type="math/tex">m</script>. Derive an expression for the weight of the instrument package in newtons. Use the universal gravitational constant <script type="math/tex">G</script> in your derivation.</p>
 <p>Express your final answer solely in terms of the given symbolic quantities: <script type="math/tex">M</script>, <script type="math/tex">R</script>, <script type="math/tex">m</script>, and <script type="math/tex">G</script>. Do not include any numerical values or approximations.</p>
-<h3 id="toc_132">Solution</h3>
+<h3 id="toc_131">Solution</h3>
 <p>The weight of an object is defined as the gravitational force exerted on it by a celestial body. According to Newton's law of universal gravitation, the magnitude of the gravitational force <script type="math/tex">F</script> between two masses <script type="math/tex">m_1</script> and <script type="math/tex">m_2</script> separated by a distance <script type="math/tex">r</script> is given by:<br />
 <script type="math/tex; mode=display"> F = G \frac{m_1 m_2}{r^2} </script></p>
 <p>In this scenario:</p>
@@ -3855,7 +3076,7 @@ The expression for the age <script type="math/tex"> t </script> is:<br />
 <p>This force <script type="math/tex">F</script> is precisely the weight <script type="math/tex">W</script> of the instrument package. Therefore:<br />
 <script type="math/tex; mode=display"> W = G \frac{M m}{R^2} </script></p>
 <p>No further simplification is required. The expression is complete and matches the required symbolic form.</p>
-<h3 id="toc_133">Answer</h3>
+<h3 id="toc_132">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{G M m}{R^{2}}}</script></p>
 <hr />
 <h2 id="problem-32">Problem 32</h2>
@@ -3865,7 +3086,7 @@ The expression for the age <script type="math/tex"> t </script> is:<br />
             Find the horizontal range of a projectile launched from ground level with initial velocity <script type="math/tex">v_0</script> at angle <script type="math/tex">\theta</script>, landing at the same elevation.
         </div>
     </div>
-<h3 id="toc_135">Problem</h3>
+<h3 id="toc_134">Problem</h3>
 <p>A projectile is launched from ground level with an initial speed <script type="math/tex">v_0</script> at an angle <script type="math/tex">\theta</script> above the horizontal. Throughout its flight, the projectile experiences a constant horizontal deceleration <script type="math/tex">a</script> due to wind resistance (opposing the initial horizontal velocity component), in addition to the constant vertical acceleration due to gravity <script type="math/tex">g</script>. The projectile lands at ground level. Derive an expression for the horizontal range <script type="math/tex">R</script> of the projectile.</p>
 <p>Express your answer in terms of <script type="math/tex">v_0</script>, <script type="math/tex">\theta</script>, <script type="math/tex">g</script>, and <script type="math/tex">a</script> only. Use standard mathematical notation:</p>
 <ul>
@@ -3873,7 +3094,7 @@ The expression for the age <script type="math/tex"> t </script> is:<br />
 <li>Fractions: <script type="math/tex">\frac{numerator}{denominator}</script></li>
 <li>Exponents: <script type="math/tex">x^y</script></li>
 </ul>
-<h3 id="toc_136">Solution</h3>
+<h3 id="toc_135">Solution</h3>
 <p>The motion is analyzed in two components: vertical and horizontal. The vertical motion determines the time of flight, while the horizontal motion determines the range.</p>
 <p><strong>Step 1: Vertical motion</strong><br />
 Initial vertical velocity: <script type="math/tex">v_{0y} = v_0 \sin\theta</script><br />
@@ -3901,7 +3122,7 @@ Simplify:<br />
 Factor out <script type="math/tex">\frac{2 v_0^2 \sin\theta}{g}</script>:<br />
 <script type="math/tex; mode=display"> R = \frac{2 v_0^2 \sin\theta}{g} \left( \cos\theta - \frac{a \sin\theta}{g} \right) </script><br />
 This is the expression for the horizontal range.</p>
-<h3 id="toc_137">Answer</h3>
+<h3 id="toc_136">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{2 v_{0}^{2} \sin\theta}{g} \left( \cos\theta - \dfrac{a \sin\theta}{g} \right)}</script></p>
 <hr />
 <h2 id="problem-33">Problem 33</h2>
@@ -3911,10 +3132,10 @@ This is the expression for the horizontal range.</p>
             A 1500 kg car traveling east at 20 m/s collides with a 1000 kg car moving north at 15 m/s in a perfectly inelastic collision; determine the velocity vector of the wreckage.
         </div>
     </div>
-<h3 id="toc_139">Problem</h3>
+<h3 id="toc_138">Problem</h3>
 <p>In a physics demonstration, two robotic carts collide on a frictionless horizontal surface. Cart A has mass <script type="math/tex">m_1</script> and moves east at speed <script type="math/tex">v_1</script>. Cart B has mass <script type="math/tex">m_2</script> and moves north at speed <script type="math/tex">v_2</script>. They undergo a perfectly inelastic collision and stick together. Determine the velocity vector of the combined object immediately after the collision.</p>
 <p>Express your answer as an ordered pair of the form <script type="math/tex">(V_x, V_y)</script>, where <script type="math/tex">V_x</script> is the east component and <script type="math/tex">V_y</script> is the north component, in terms of the variables <script type="math/tex">m_1</script>, <script type="math/tex">m_2</script>, <script type="math/tex">v_1</script>, and <script type="math/tex">v_2</script>.</p>
-<h3 id="toc_140">Solution</h3>
+<h3 id="toc_139">Solution</h3>
 <p>The total momentum of the system is conserved in the collision because there are no external forces. We analyze the momentum components along the east-west (x-axis) and north-south (y-axis) directions.</p>
 <p><strong>Initial momentum:</strong></p>
 <ul>
@@ -3940,7 +3161,7 @@ Solving for <script type="math/tex">V_x</script>:<br />
 Solving for <script type="math/tex">V_y</script>:<br />
 <script type="math/tex; mode=display"> V_y = \frac{m_2 v_2}{m_1 + m_2} </script></p>
 <p>The velocity vector is <script type="math/tex">(V_x, V_y)</script>.</p>
-<h3 id="toc_141">Answer</h3>
+<h3 id="toc_140">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{ \left( \dfrac{ m_1 v_1 }{ m_1 + m_2 }, \dfrac{ m_2 v_2 }{ m_1 + m_2 } \right) }</script></p>
 <hr />
 <h2 id="problem-34">Problem 34</h2>
@@ -3950,9 +3171,9 @@ Solving for <script type="math/tex">V_y</script>:<br />
             At what Celsius temperature will a gas's volume double from its volume at 0°C under constant pressure?
         </div>
     </div>
-<h3 id="toc_143">Problem</h3>
+<h3 id="toc_142">Problem</h3>
 <p>A gas is confined in a cylinder with a movable piston that maintains constant pressure. At 0°C, the gas occupies a volume <script type="math/tex">V_0</script>. Using the conversion between Celsius and Kelvin scales (where <script type="math/tex">T_{\mathrm{K}} = T_{\mathrm{C}} + 273.15</script>), determine the Celsius temperature at which the gas volume becomes <script type="math/tex">2V_0</script>. Express your final answer as a numerical value without including the unit symbol (degrees Celsius).</p>
-<h3 id="toc_144">Solution</h3>
+<h3 id="toc_143">Solution</h3>
 <p><strong>Step 1: State Charles's Law</strong><br />
 Charles's law states that for a fixed amount of gas at constant pressure, volume <script type="math/tex">V</script> is proportional to absolute temperature <script type="math/tex">T_{\mathrm{K}}</script>:<br />
 <script type="math/tex; mode=display"> \frac{V_1}{T_{1,\mathrm{K}}} = \frac{V_2}{T_{2,\mathrm{K}}} </script><br />
@@ -3975,7 +3196,7 @@ Cross-multiply:<br />
 Isolate <script type="math/tex">T_{2,\mathrm{C}}</script>:<br />
 <script type="math/tex; mode=display"> T_{2,\mathrm{C}} = 546.30 - 273.15 = 273.15 </script><br />
 The Celsius temperature is 273.15.</p>
-<h3 id="toc_145">Answer</h3>
+<h3 id="toc_144">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{273.15}</script></p>
 <hr />
 <h2 id="problem-35">Problem 35</h2>
@@ -3985,7 +3206,7 @@ The Celsius temperature is 273.15.</p>
             Unpolarized light of intensity <script type="math/tex">I_0</script> passes through two polarizers with transmission axes at 30°; find transmitted intensity.
         </div>
     </div>
-<h3 id="toc_147">Problem</h3>
+<h3 id="toc_146">Problem</h3>
 <p>In a laboratory studying polarized light, unpolarized laser light with an intensity of <script type="math/tex">I_0</script> is passed through two linear polarizers. The first polarizer has its transmission axis aligned vertically. The second polarizer is rotated such that its transmission axis makes an angle <script type="math/tex">\theta</script> (in radians) with the vertical direction. Derive an expression for the intensity of the light transmitted through the second polarizer. Express your answer in terms of <script type="math/tex">I_0</script> and <script type="math/tex">\theta</script>.</p>
 <p><strong>Answer Format Instructions</strong></p>
 <ul>
@@ -3995,7 +3216,7 @@ The Celsius temperature is 273.15.</p>
 <li>Use <code class="language-python">\frac{}{}</code> for fractions.</li>
 <li>Do not include any units in the final answer.</li>
 </ul>
-<h3 id="toc_148">Solution</h3>
+<h3 id="toc_147">Solution</h3>
 <p><strong>Step 1: Intensity after the first polarizer</strong><br />
 Unpolarized light has equal components of polarization in all directions. When it passes through a linear polarizer, the intensity is reduced by half, regardless of the orientation of the transmission axis. The transmitted light becomes linearly polarized along the transmission axis of the first polarizer. Therefore, after the first polarizer (vertical transmission axis), the intensity is:<br />
 <script type="math/tex; mode=display"> I_1 = \frac{I_0}{2} </script><br />
@@ -4007,7 +3228,7 @@ where <script type="math/tex">\phi</script> is the angle between the polarizatio
 <script type="math/tex; mode=display"> I_2 = \left( \frac{I_0}{2} \right) \cos^{2} \theta </script></p>
 <p><strong>Conclusion</strong><br />
 The intensity of the light transmitted through the second polarizer is <script type="math/tex">\dfrac{I_0}{2} \cos^{2} \theta</script>.</p>
-<h3 id="toc_149">Answer</h3>
+<h3 id="toc_148">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{I_{0}}{2}\cos^{2}\theta}</script></p>
 <hr />
 <h2 id="problem-36">Problem 36</h2>
@@ -4017,10 +3238,10 @@ The intensity of the light transmitted through the second polarizer is <script t
             A block of mass <script type="math/tex">m</script> slides from rest down a frictionless incline of height <script type="math/tex">h</script>; find its speed at the bottom using energy conservation.
         </div>
     </div>
-<h3 id="toc_151">Problem</h3>
+<h3 id="toc_150">Problem</h3>
 <p>A block of mass <script type="math/tex">m</script> is released from rest at the top of a fixed frictionless incline of height <script type="math/tex">h</script>. At the bottom of the incline, the block encounters a horizontal frictionless surface. Attached to the end of this surface is a massless spring with spring constant <script type="math/tex">k</script>, fixed to a rigid wall. Find the maximum compression of the spring when the block collides with it.</p>
 <p>Express the maximum compression <script type="math/tex">x</script> in terms of the given parameters <script type="math/tex">m</script>, <script type="math/tex">g</script>, <script type="math/tex">h</script>, and <script type="math/tex">k</script>.</p>
-<h3 id="toc_152">Solution</h3>
+<h3 id="toc_151">Solution</h3>
 <p>The system is conservative, so mechanical energy is conserved. The initial total mechanical energy equals the final total mechanical energy. Choose the gravitational potential energy reference point as the horizontal surface at the bottom of the incline.</p>
 <p><strong>Initial state (block at top of incline):</strong></p>
 <ul>
@@ -4043,7 +3264,7 @@ The intensity of the light transmitted through the second polarizer is <script t
 <script type="math/tex; mode=display">x^2 = \frac{2 m g h}{k}</script>
 <script type="math/tex; mode=display">x = \sqrt{\frac{2 m g h}{k}}</script></p>
 <p>The expression is positive since compression is a magnitude. Thus, the maximum compression is <script type="math/tex">\sqrt{\frac{2 m g h}{k}}</script>.</p>
-<h3 id="toc_153">Answer</h3>
+<h3 id="toc_152">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\sqrt{\dfrac{2mgh}{k}}}</script></p>
 <hr />
 <h2 id="problem-37">Problem 37</h2>
@@ -4053,9 +3274,9 @@ The intensity of the light transmitted through the second polarizer is <script t
             A 0.5 kg horizontal wire of length 1 m is suspended in a 0.6 T perpendicular magnetic field; find the current needed to levitate it against gravity.
         </div>
     </div>
-<h3 id="toc_155">Problem</h3>
+<h3 id="toc_154">Problem</h3>
 <p>A horizontal wire of mass <script type="math/tex">m</script> and length <script type="math/tex">L</script> is suspended in a uniform magnetic field of magnitude <script type="math/tex">B</script>. The magnetic field is perpendicular to the wire and oriented such that the magnetic force can act vertically. Determine the magnitude of the current <script type="math/tex">I</script> that must flow through the wire to levitate it against Earth's gravitational acceleration <script type="math/tex">g</script>. Express your answer solely in terms of the given symbols <script type="math/tex">m</script>, <script type="math/tex">L</script>, <script type="math/tex">B</script>, and <script type="math/tex">g</script>.</p>
-<h3 id="toc_156">Solution</h3>
+<h3 id="toc_155">Solution</h3>
 <p>The magnetic force on a straight current-carrying wire is given by:
 <script type="math/tex; mode=display"> F_{\text{mag}} = I L B \sin \theta </script>
 where <script type="math/tex">\theta</script> is the angle between the wire and the magnetic field. Since the magnetic field is perpendicular to the wire, <script type="math/tex">\theta = 90^\circ</script> and <script type="math/tex">\sin 90^\circ = 1</script>. Thus:
@@ -4069,7 +3290,7 @@ Substituting the expressions:
 <p>Solving for the current <script type="math/tex">I</script>:
 <script type="math/tex; mode=display"> I = \frac{m g}{L B} </script>
 This is the magnitude of the current required for levitation.</p>
-<h3 id="toc_157">Answer</h3>
+<h3 id="toc_156">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{m g}{L B}}</script></p>
 <hr />
 <h2 id="problem-38">Problem 38</h2>
@@ -4079,10 +3300,10 @@ This is the magnitude of the current required for levitation.</p>
             A stone thrown vertically upward at 20 m/s; determine when its velocity becomes zero.
         </div>
     </div>
-<h3 id="toc_159">Problem</h3>
+<h3 id="toc_158">Problem</h3>
 <p>A stone is thrown vertically upward from the ground with an initial velocity of magnitude <script type="math/tex">v_0</script>. The acceleration due to gravity is <script type="math/tex">g</script>, directed downward. Assume no air resistance and a constant gravitational acceleration.</p>
 <p>Derive an expression for the time <script type="math/tex">t</script> at which the stone's instantaneous velocity becomes zero. Express your answer solely in terms of <script type="math/tex">v_0</script> and <script type="math/tex">g</script>.</p>
-<h3 id="toc_160">Solution</h3>
+<h3 id="toc_159">Solution</h3>
 <p>We use a coordinate system where the upward direction is positive. The initial velocity is <script type="math/tex">u = v_0</script> (positive since it is upward). The acceleration due to gravity acts downward, so <script type="math/tex">a = -g</script>.</p>
 <p>The velocity <script type="math/tex">v</script> at time <script type="math/tex">t</script> for motion under constant acceleration is given by:<br />
 <script type="math/tex; mode=display"> v = u + at </script><br />
@@ -4095,7 +3316,7 @@ Substitute the known values:<br />
 <script type="math/tex; mode=display"> gt = v_0 </script><br />
 <script type="math/tex; mode=display"> t = \frac{v_0}{g} </script></p>
 <p>Thus, the time at which the velocity becomes zero is <script type="math/tex">\frac{v_0}{g}</script>.</p>
-<h3 id="toc_161">Answer</h3>
+<h3 id="toc_160">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{v_0}{g}}</script></p>
 <hr />
 <h2 id="problem-39">Problem 39</h2>
@@ -4105,10 +3326,10 @@ Substitute the known values:<br />
             Calculate the work function of a metal in electron volts if the threshold wavelength is <script type="math/tex">400 \text{ nm}</script>.
         </div>
     </div>
-<h3 id="toc_163">Problem</h3>
+<h3 id="toc_162">Problem</h3>
 <p>The threshold wavelength for a certain metal is denoted by <script type="math/tex">\lambda_0</script>. Using the principles of the photoelectric effect, derive an expression for the work function <script type="math/tex">\phi</script> of this metal in electron volts (eV) in terms of <script type="math/tex">\lambda_0</script> and the fundamental constants: Planck's constant <script type="math/tex">h</script>, the speed of light <script type="math/tex">c</script>, and the elementary charge <script type="math/tex">e</script>.</p>
 <p>Express your answer as a single analytic expression. Do not substitute numerical values for any constants. Use standard notation: fractions must be written with two fields (e.g., <script type="math/tex">\frac{a}{b}</script>), and exponents must use curly braces (e.g., <script type="math/tex">x^{2}</script>).</p>
-<h3 id="toc_164">Solution</h3>
+<h3 id="toc_163">Solution</h3>
 <p>The work function <script type="math/tex">\phi</script> is defined as the minimum energy required to remove an electron from the metal surface. In the photoelectric effect, this energy corresponds to the energy of a photon at the threshold wavelength <script type="math/tex">\lambda_0</script>, where the maximum kinetic energy of emitted electrons is zero.</p>
 <p>The energy <script type="math/tex">E</script> of a photon with wavelength <script type="math/tex">\lambda_0</script> is given by:<br />
 <script type="math/tex; mode=display"> E = \frac{h c}{\lambda_0} </script><br />
@@ -4120,7 +3341,7 @@ where <script type="math/tex">\phi_{\text{joules}}</script> is the work function
 Simplifying the expression:<br />
 <script type="math/tex; mode=display"> \phi_{\text{eV}} = \frac{h c}{e \lambda_0} </script><br />
 This is the work function in electron volts.</p>
-<h3 id="toc_165">Answer</h3>
+<h3 id="toc_164">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{h c}{\lambda_{0} e}}</script></p>
 <hr />
 <h2 id="problem-40">Problem 40</h2>
@@ -4130,9 +3351,9 @@ This is the work function in electron volts.</p>
             An electron passes undeflected through crossed E (1.5 kV/m) and B (0.03 T) fields; determine its velocity.
         </div>
     </div>
-<h3 id="toc_167">Problem</h3>
+<h3 id="toc_166">Problem</h3>
 <p>An electron moves through a region of space with uniform, constant, and mutually perpendicular electric and magnetic fields. The electron is traveling in a direction perpendicular to both fields and passes through without any deflection. Derive an expression for the speed <script type="math/tex">v</script> of the electron in terms of the magnitudes of the electric field <script type="math/tex">E</script> and the magnetic field <script type="math/tex">B</script>.</p>
-<h3 id="toc_168">Solution</h3>
+<h3 id="toc_167">Solution</h3>
 <p>For the electron to pass undeflected, the net force acting on it must be zero. The Lorentz force law gives the total force on a charged particle as:</p>
 <p><script type="math/tex; mode=display"> \vec{F} = q\vec{E} + q(\vec{v} \times \vec{B}) </script></p>
 <p>where <script type="math/tex">q</script> is the charge of the electron. Setting the net force to zero:</p>
@@ -4155,7 +3376,7 @@ This is the work function in electron volts.</p>
 <p>Solving for <script type="math/tex">v</script>:</p>
 <p><script type="math/tex; mode=display"> v = \frac{E}{B} </script></p>
 <p>The charge <script type="math/tex">q</script> cancels out in the derivation, so the result holds for the electron despite its negative charge. The speed <script type="math/tex">v</script> is independent of the particle's charge and mass.</p>
-<h3 id="toc_169">Answer</h3>
+<h3 id="toc_168">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\frac{E}{B}}</script></p>
 <hr />
 <h2 id="problem-41">Problem 41</h2>
@@ -4165,10 +3386,10 @@ This is the work function in electron volts.</p>
             A solid sphere of mass <script type="math/tex">m</script> and radius <script type="math/tex">r</script> rolls without slipping down a <script type="math/tex">30^\circ</script> incline; find its acceleration.
         </div>
     </div>
-<h3 id="toc_171">Problem</h3>
+<h3 id="toc_170">Problem</h3>
 <p>A solid sphere of mass <script type="math/tex">m</script> and radius <script type="math/tex">r</script> rolls without slipping down an inclined plane. The inclined plane makes an angle <script type="math/tex">\theta</script> with the horizontal. Derive an expression for the linear acceleration of the center of mass of the sphere along the incline. Express your answer in terms of <script type="math/tex">g</script> (the acceleration due to gravity), <script type="math/tex">\theta</script>, and any necessary mathematical constants.</p>
 <p>Note: The moment of inertia of a solid sphere about its center of mass is <script type="math/tex">\frac{2}{5} m r^{2}</script>.</p>
-<h3 id="toc_172">Solution</h3>
+<h3 id="toc_171">Solution</h3>
 <p>The forces acting on the sphere are gravity, the normal force, and the friction force. The component of gravity parallel to the incline is <script type="math/tex">mg \sin\theta</script>, directed down the incline. The friction force <script type="math/tex">f</script> acts up the incline (opposing the motion).</p>
 <p>Apply Newton's second law for translation along the incline (positive direction down the incline):</p>
 <p><script type="math/tex; mode=display"> mg \sin\theta - f = m a \quad (1) </script></p>
@@ -4192,7 +3413,7 @@ This is the work function in electron volts.</p>
 <p>Solve for <script type="math/tex">a</script>:</p>
 <p><script type="math/tex; mode=display"> a = \frac{5}{7} g \sin\theta </script></p>
 <p>Thus, the linear acceleration of the center of mass is <script type="math/tex">\dfrac{5}{7} g \sin\theta</script>.</p>
-<h3 id="toc_173">Answer</h3>
+<h3 id="toc_172">Answer</h3>
 <p><script type="math/tex; mode=display">\boxed{\dfrac{5}{7} g \sin\theta}</script></p>
 <hr />
 
@@ -4200,7 +3421,7 @@ This is the work function in electron volts.</p>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         const collapsedSections = ["Problem", "Solution"];
-        const isDarkTheme = true;
+        const isDarkTheme = false;
         
         // Apply dark theme only to pre code blocks if needed
         if (isDarkTheme) {
